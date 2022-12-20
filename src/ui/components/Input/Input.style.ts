@@ -5,13 +5,19 @@ margin-left: 43px;
 display: flex;
 align-items: center;
 background: #F0F4EF;
-
+border-radius: 16px;
+width: 630px;
 .block__image {
-max-width: 24px;
-max-height: 24px;
-margin-right: 20px;
+  
+  max-width: 24px;
+  max-height: 24px;
+  margin-right: 20px;
+  margin-left: 26px;
 }
 .block__input {
+  padding: 20px 0;
   background: #F0F4EF;
+  margin-right: 20px;
+  width: 100%;
 }
 `;
