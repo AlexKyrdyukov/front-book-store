@@ -5,5 +5,5 @@ export const StyledButton = styled.button`
   padding: 10px 50px;
   border-radius: 16px;
   color: #F0F4EF;
-  margin-left: 97px;
+  white-space: nowrap;
 `;

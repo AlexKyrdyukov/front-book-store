@@ -7,6 +7,16 @@ align-items: center;
 background: #F0F4EF;
 border-radius: 16px;
 width: 630px;
+margin-right: 97px;
+  @media  (min-width: 425px) and (max-width: 850px)  { 
+  margin-right: 51px;
+  width: 247px;
+
+  }
+    @media  (min-width: 425px)  { 
+  /* margin-right: 51px; */
+  }
+
 .block__image {
   
   max-width: 24px;
