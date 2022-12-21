@@ -77,6 +77,35 @@ margin-bottom: 40px;
 .footer__container {
   max-width: 834px;
 }
+
+.footer__url {
+  font-size: 16px;
+}
+
+.footer__phone-number {
+  font-size: 16px;
+}
+
+.footer__link {
+    font-size: 16px;
+  }
+
+.footer__address {
+  font-size: 16px;
+}
+
+
+.footer__contacts {
+
+}
+
+.footer__map-image {
+  border-radius: 6px;
+  max-width: 392px;
+  height: 160px;
+  width: 100%;
+}
+
 }
 
 @media (max-width: 834px)  { 
@@ -92,6 +121,7 @@ margin-bottom: 40px;
     margin-bottom: 40px;
   }
 
+  
   .footer__phone-number {
     margin-bottom: 40px;
   }
