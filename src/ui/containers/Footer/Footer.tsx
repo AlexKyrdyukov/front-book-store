@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
   return (
     <StyledFooter>
       <div className="footer__container">
-        <div className="left__column">
+        <div className="footer__contacts">
           <img className="footer__logo" src={logoSite} alt="site logo" />
           <span className="footer__url">tranthuy.nute@gmail.com</span>
           <span className="footer__phone-nuber">(480) 555-0103</span>
@@ -19,9 +19,10 @@ const Footer: React.FC = () => {
           <li><a className="footer__link" href="#">Cart</a></li>
         </ul>
         <div className="footer__map-block">
-          <span className="footer__adress">6391 Elgin St. Celina, Delaware</span>
-          <span className="footer__index">10299</span>
-          <img className="footer__map-image" src={mapCart} alt="map adress" />
+          <p className="footer__address">
+            6391 Elgin St. Celina, Delaware 10299
+          </p>
+          <img className="footer__map-image" src={mapCart} alt="map address" />
         </div>
       </div>
     </StyledFooter>
