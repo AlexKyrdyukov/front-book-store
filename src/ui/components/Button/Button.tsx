@@ -3,13 +3,13 @@ import React from 'react';
 import { StyledButton } from './Button.style';
 
 type PropType = {
-  value?: string;
-} & React.PropsWithChildren;
+  text?: string;
+};
 
 const Button: React.FC<PropType> = (props) => {
   return (
     <StyledButton>
-      {props.children}
+      {props.text}
     </StyledButton>
   );
 };

@@ -1,16 +1,25 @@
 import React from 'react';
 import { StyledInput } from './Input.style';
-import searchImg from './image/Search.svg';
 
-const Input: React.FC = () => {
+type PropType = {
+  placeholder: string;
+  type: string;
+  src: string;
+  text?: string;
+  error?: string;
+  alt: string;
+};
+
+const Input: React.FC<PropType> = (props) => {
   return (
     <StyledInput>
       <img
         className="block__image"
-        src={searchImg}
-        alt="search image"
+        src={props.src}
+        alt={props.alt}
       />
-      <input className="block__input" type="text" placeholder="search" />
+      <input className="block__input" type={props.type} placeholder={props.placeholder} />
+      {props.error ? props.error : props.text}
     </StyledInput>
   );
 };

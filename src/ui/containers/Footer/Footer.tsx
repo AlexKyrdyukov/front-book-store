@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { StyledFooter } from './Footer.style';
 import logoSite from './images/logo.svg';
 import mapCart from './images/map.svg';
@@ -8,15 +9,17 @@ const Footer: React.FC = () => {
     <StyledFooter>
       <div className="footer__container">
         <div className="footer__contacts">
-          <img className="footer__logo" src={logoSite} alt="site logo" />
+          <Link to="/home">
+            <img className="footer__logo" src={logoSite} alt="site logo" />
+          </Link>
           <span className="footer__url">tranthuy.nute@gmail.com</span>
           <span className="footer__phone-nuber">(480) 555-0103</span>
         </div>
         <ul className="links__list">
-          <li><a className="footer__link" href="#">Home Page</a></li>
-          <li><a className="footer__link" href="#">Catalog</a></li>
-          <li><a className="footer__link" href="#">My Account</a></li>
-          <li><a className="footer__link" href="#">Cart</a></li>
+          <li><Link className="footer__link" to="/home">Home Page</Link></li>
+          <li><Link className="footer__link" to="/catalog">Catalog</Link></li>
+          <li><Link className="footer__link" to="/account">My Account</Link></li>
+          <li><Link className="footer__link" to="/cart">Cart</Link></li>
         </ul>
         <div className="footer__map-block">
           <p className="footer__address">
