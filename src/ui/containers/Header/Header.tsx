@@ -14,32 +14,32 @@ type PropType = {
 const Header: React.FC<PropType> = () => {
   return (
     <StyledHeader>
-        <Link to="/home">
-          <img
-            className="header__logo"
-            src={headerLogo}
-            alt="logo site"
-          />
-        </Link>
-        <Link
-          className="header__link-catalog"
-          to="/catalog"
-        >
-          Catalog
-        </Link>
-        <Input
-          placeholder="search"
-          type="text"
-          alt="logo search"
-          src={inputLogo}
-          class="header__input"
-          isHeader
+      <Link to="/home">
+        <img
+          className="header__logo"
+          src={headerLogo}
+          alt="logo site"
         />
-        <Link to="/signUp">
-          <Button
-            text="Log In/ Sign Up"
-          />
-        </Link>
+      </Link>
+      <Link
+        className="header__link-catalog"
+        to="/catalog"
+      >
+        Catalog
+      </Link>
+      <Input
+        placeholder="search"
+        type="text"
+        alt="logo search"
+        src={inputLogo}
+        className="header__input"
+        isHeader
+      />
+      <Link to="/signUp">
+        <Button
+          text="Log In/ Sign Up"
+        />
+      </Link>
     </StyledHeader >
   );
 };

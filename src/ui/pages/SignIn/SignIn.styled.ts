@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledSignUpPage = styled.main`
+export const StyledSignInPage = styled.main`
 .sign-up__input {
   width: 413px;
 }

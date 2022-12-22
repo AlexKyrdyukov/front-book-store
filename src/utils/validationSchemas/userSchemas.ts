@@ -1,27 +1,29 @@
+import * as yup from 'yup';
+
 import sharedValidation from './dataValidation';
 
-const signUp = {
+const signUp = yup.object().shape({
   email: sharedValidation.requiredEmail,
   password: sharedValidation.requiredPassword,
-  repeatPassword: sharedValidation.repeatPassword,
-};
+  confirmPassword: sharedValidation.confirmPassword,
+});
 
-const signIn = {
+const signIn = yup.object().shape({
   email: sharedValidation.requiredEmail,
   password: sharedValidation.requiredPassword,
-};
+});
 
-const updatedPass = {
+const updatedPass = yup.object().shape({
   password: sharedValidation.requiredPassword,
   newPassword: sharedValidation.newPassword,
-  repeatNewPassword: sharedValidation.repeatNewPassword,
+  confirmNewPassword: sharedValidation.confirmNewPassword,
 
-};
+});
 
-const updatedInfo = {
+const updatedInfo = yup.object().shape({
   fullName: sharedValidation.fullName,
   email: sharedValidation.requiredEmail,
-};
+});
 
 export default {
   signIn,

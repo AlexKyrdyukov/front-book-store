@@ -24,8 +24,8 @@ const password = yup.string()
   .max(8, 'password cannot be longer than 8 character');
 const requiredPassword = password.required('field password is required');
 
-const repeatPassword = yup.string()
-  .oneOf([yup.ref('requiredPassword')], 'entered password must be the same')
+const confirmPassword = yup.string()
+  .oneOf([yup.ref('password'), null], 'entered password must be the same')
   .required();
 
 const newPassword = yup.string()
@@ -34,8 +34,8 @@ const newPassword = yup.string()
   .min(3, 'password cannot be shorter than 3 characters')
   .max(8, 'password cannot be longer than 8 character');
 
-const repeatNewPassword = yup.string()
-  .oneOf([yup.ref('newPassword')], 'entered password must be the same')
+const confirmNewPassword = yup.string()
+  .oneOf([yup.ref('newPassword'), null], 'entered password must be the same')
   .required();
 
 export default {
@@ -44,9 +44,9 @@ export default {
   email,
   dob,
   password,
-  repeatPassword,
+  confirmPassword,
   requiredPassword,
-  repeatNewPassword,
+  confirmNewPassword,
   newPassword,
   requiredDob,
   requiredEmail,

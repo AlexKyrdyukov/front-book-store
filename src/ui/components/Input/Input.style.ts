@@ -7,11 +7,23 @@ type StyleType = {
 export const StyledInput = styled.div<StyleType>`
 position: relative;
 
+.input__text {
+  position: absolute;
+  white-space: nowrap;
+  top: 75px;
+  font-size: 14px;
+  color: #344966;
+}
+
 .block__style { 
   display: flex;
   align-items: center;
   background: #F0F4EF;
   border-radius: 16px;
+}
+
+.error__text {
+  color: red;
 }
 
 .image {
@@ -28,13 +40,6 @@ position: relative;
   width: 100%;
 }
 
-.input__text {
-  position: absolute;
-  white-space: nowrap;
-  top: 75px;
-  font-size: 14px;
-  color: #344966;
-}
 
 @media (max-width: 1440px)  { 
 }
@@ -48,7 +53,6 @@ position: relative;
   .input__text {
     font-size: 14px;
     top: 55px;
-
   }
 }
 `;
