@@ -1,42 +1,54 @@
 import styled from 'styled-components';
 
-export const StyledInput = styled.div`
-display: flex;
-align-items: center;
-background: #F0F4EF;
-border-radius: 16px;
-width: 630px;
-margin-right: 97px;
+type StyleType = {
+  isHeader?: boolean;
+};
 
-.block__image {
-  
-  max-width: 24px;
-  max-height: 24px;
+export const StyledInput = styled.div<StyleType>`
+position: relative;
+
+.block__style { 
+  display: flex;
+  align-items: center;
+  background: #F0F4EF;
+  border-radius: 16px;
+}
+
+.image {
+  max-width: 18px;
+  max-height: 18px;
   margin-right: 20px;
   margin-left: 26px;
 }
 
-.block__input {
-  padding: 20px 0;
+.input {
+  padding: 22px 0;
   background: #F0F4EF;
   margin-right: 20px;
   width: 100%;
 }
 
+.input__text {
+  position: absolute;
+  white-space: nowrap;
+  top: 75px;
+  font-size: 14px;
+  color: #344966;
+}
 
 @media (max-width: 1440px)  { 
-  width: 247px;
-  margin-right: 51px;
 }
 
 @media (max-width: 834px)  { 
-  margin-right: 0px;
-  order: 1;
-  width: 290px;
-.block__input {
-  padding: 10px 0;
-}
+  order: ${(props) => (props.isHeader ? 1 : 0)};
+  .input {
+    padding: 14px 0;
+  }
 
-}
+  .input__text {
+    font-size: 14px;
+    top: 55px;
 
+  }
+}
 `;

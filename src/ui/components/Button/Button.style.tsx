@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const StyledButton = styled.button`
+type StyleType ={
+  isMobile?: boolean;
+};
+
+export const StyledButton = styled.button<StyleType>`
   background: #344966;
   padding: 10px 50px;
   border-radius: 16px;
@@ -13,8 +17,10 @@ export const StyledButton = styled.button`
   }
   @media (max-width: 834px)  { 
     font-size: 12px;
-    /* max-width: 101px; */
-    padding: 10px 9px;
+    padding-left:  ${(props) => (props.isMobile ? '50px' : '20px')};
+    padding-right: ${(props) => (props.isMobile ? '50px' : '20px')};
+    padding-bottom: 10px;
+    padding-top: 10px;
   }
 
 `;
