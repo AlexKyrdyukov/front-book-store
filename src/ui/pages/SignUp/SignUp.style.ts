@@ -6,8 +6,8 @@ export const StyledSignUpPage = styled.main`
 }
 
 .input__error {
-  border: 3px solid red;
-  opacity: 0.5;
+  outline: 3px solid red;
+  opacity: 0.7;
 }
 
 .sign-up__wrapper {

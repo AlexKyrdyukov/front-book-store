@@ -24,8 +24,6 @@ const Input: React.FC<PropType> = (props) => {
     [`${props.className}`]: true,
     [`${props.classNameError}`]: true,
   });
-  // eslint-disable-next-line no-console
-  console.log(props.error);
   const textStyle = classNames({
     error__text: props.error,
     input__text: true,

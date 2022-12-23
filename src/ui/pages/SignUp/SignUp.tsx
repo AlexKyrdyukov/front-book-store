@@ -1,6 +1,11 @@
 import React from 'react';
 import { ErrorMessage, useFormik } from 'formik';
 
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../store/index';
+import userThunks from '../../../store/userThunks';
 import { StyledSignUpPage } from './SignUp.style';
 import mailLogo from './images/mail.svg';
 import hideLogo from './images/hide.svg';
@@ -9,12 +14,9 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import schema from '../../../utils/validationSchemas/userSchemas';
 
-const onSubmit = (values: unknown, actions: unknown) => {
-  // eslint-disable-next-line no-console
-  console.log('submitted');
-};
-
 const SignUp: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -22,13 +24,24 @@ const SignUp: React.FC = () => {
       confirmPassword: '',
     },
     validationSchema: schema.signUp,
-    onSubmit,
+    onSubmit: async (values, actions) => {
+      try {
+        await dispatch(userThunks.createUser({
+          email: values.email,
+          password: values.password,
+        }));
+      } catch (error) {
+        console.error(error);
+      }
+      actions.resetForm({
+        values: {
+          email: '',
+          password: '',
+          confirmPassword: '',
+        },
+      });
+    },
   });
-
-  // eslint-disable-next-line no-console
-  console.log(formik.errors);
-  // eslint-disable-next-line no-console
-  console.log(formik.touched);
 
   return (
     <StyledSignUpPage>
@@ -112,6 +125,7 @@ const SignUp: React.FC = () => {
               text="Sing Up"
               type="submit"
               isMobile
+            // onClick={formik.handleReset}
             />
           </span>
         </form>
