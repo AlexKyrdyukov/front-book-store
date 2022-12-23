@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import { StyledInput } from './Input.style';
 
@@ -20,6 +20,8 @@ type PropType = {
 };
 
 const Input: React.FC<PropType> = (props) => {
+  const [inputState, setInputState] = React.useState(false);
+
   const blockClass = classNames('block__style', {
     [`${props.className}`]: true,
     [`${props.classNameError}`]: true,
@@ -37,11 +39,15 @@ const Input: React.FC<PropType> = (props) => {
         <div className={textStyle}>
           {props.error ? props.error : props.text}
         </div>
-        <img
-          className="image"
-          src={props.src}
-          alt={props.alt}
-        />
+        <button
+          onClick={ }
+        >
+          <img
+            className="image"
+            src={props.src}
+            alt={props.alt}
+          />
+        </button>
         <input
           onChange={props.onChange}
           onBlur={props.onBlur}
@@ -52,6 +58,11 @@ const Input: React.FC<PropType> = (props) => {
           type={props.type}
           placeholder={props.placeholder}
         />
+        <span
+          className="custom__placeholder"
+        >
+          {props.placeholder}
+        </span>
       </div>
     </StyledInput>
   );

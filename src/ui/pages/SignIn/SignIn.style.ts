@@ -6,7 +6,7 @@ export const StyledSignInPage = styled.main`
 }
 
 .input__error {
-  border: 3px solid red;
+  outline: 3px solid red;
   opacity: 0.5;
 }
 

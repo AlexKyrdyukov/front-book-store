@@ -35,9 +35,16 @@ const Header: React.FC<PropType> = () => {
         className="header__input"
         isHeader
       />
+      <Link to="/signIn">
+        <Button
+          text="Log In"
+          left
+        />
+      </Link>
       <Link to="/signUp">
         <Button
-          text="Log In/ Sign Up"
+          text="/ Sign Up"
+          right
         />
       </Link>
     </StyledHeader >

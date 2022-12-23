@@ -7,6 +7,14 @@ type StyleType = {
 export const StyledInput = styled.div<StyleType>`
 position: relative;
 
+  .custom__placeholder{
+    position: absolute;
+    display: none;
+  white-space: nowrap;
+
+  }
+
+
 .input__text {
   position: absolute;
   white-space: nowrap;
@@ -40,8 +48,45 @@ position: relative;
   width: 100%;
 }
 
+.input:focus + .custom__placeholder {
+  font-size: 16px;
+  display: inline;
+  left: 65px;
+  top: 8px;
+  color: #B9BAC4;
+}
+
+
+.input::placeholder {
+  font-size: 16px;
+  color: #B9BAC4;
+}
+
+.input:focus::placeholder {
+  color:#F0F4EF;
+}
+
+.input:focus {
+  padding-bottom: 5px;
+  padding-top: 39px ;
+}
 
 @media (max-width: 1440px)  { 
+
+.input:focus {
+  padding-bottom: 5px;
+  padding-top: 39px ;
+}
+.input:focus + .custom__placeholder {
+  font-size: 16px;
+  display: inline;
+  left: 65px;
+  top: 7px;
+  color: #B9BAC4;
+}
+
+
+
 }
 
 @media (max-width: 834px)  { 
@@ -54,5 +99,20 @@ position: relative;
     font-size: 14px;
     top: 55px;
   }
+
+  .input:focus {
+  padding-bottom: 3px;
+  padding-top: 25px ;
+}
+
+.input:focus + .custom__placeholder {
+  font-size: 16px;
+  display: inline;
+  left: 65px;
+  top: 3px;
+  color: #B9BAC4;
+}
+
+
 }
 `;

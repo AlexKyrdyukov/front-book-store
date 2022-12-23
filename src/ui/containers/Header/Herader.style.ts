@@ -4,7 +4,6 @@ export const StyledHeader = styled.header`
   max-width: 1280px;
   display: flex;
   align-items: center;
-  /* margin: 24px auto 0 auto; */
   margin: 0px auto;
   margin-top: 24px;
   padding: 0 15px;
@@ -44,7 +43,7 @@ export const StyledHeader = styled.header`
     width: 247px;
     margin-right: 51px;
   }
- 
+
 }
 
 @media (max-width: 834px)  { 
