@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import { ErrorMessage, useFormik } from 'formik';
 
 import {
@@ -13,6 +14,7 @@ import mainImage from './images/human.png';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import schema from '../../../utils/validationSchemas/userSchemas';
+// import { AxiosError } from 'axios';
 
 const SignUp: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -25,14 +27,11 @@ const SignUp: React.FC = () => {
     },
     validationSchema: schema.signUp,
     onSubmit: async (values, actions) => {
-      try {
-        await dispatch(userThunks.createUser({
-          email: values.email,
-          password: values.password,
-        }));
-      } catch (error) {
-        console.error(error);
-      }
+      await dispatch(userThunks.createUser({
+        email: values.email,
+        password: values.password,
+      })).unwrap()
+        .catch((error) => toast.error(error.message));
       actions.resetForm({
         values: {
           email: '',
@@ -45,6 +44,7 @@ const SignUp: React.FC = () => {
 
   return (
     <StyledSignUpPage>
+      <ToastContainer />
       <div className="sign-up__wrapper">
         <form
           onSubmit={formik.handleSubmit}

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { UserType } from '../types/userType';
-
+import type { UserType, SignUpPostType } from '../types/userType';
+import Cookies from '../coookieHelper/CookieStorage';
 import userThunk from './userThunks';
 
 const user: UserType = {};
@@ -16,10 +16,13 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(userThunk.createUser.fulfilled, (state, action: PayloadAction<UserType>) => {
-        const fullName = action.payload;
-        // eslint-disable-next-line no-console
-        console.log(fullName);
+      // eslint-disable-next-line max-len
+      .addCase(userThunk.createUser.fulfilled, (state, action: PayloadAction<SignUpPostType | undefined>) => {
+        if (action.payload) {
+          const { token, user } = action.payload;
+          Cookies.token.set(token);
+          state.user = user;
+        }
       });
   },
 });

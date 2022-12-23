@@ -1,40 +1,36 @@
 import Cookies from 'js-cookie';
 
-import type { UserType } from '../types/userType';
-
 class CookieStorage<D> {
   key: string;
 
-  defaultValue: D | null;
+  defaultValue: D | undefined;
 
   constructor(key: string, defaultValue?: D) {
     this.key = key;
-    this.defaultValue = defaultValue ?? null;
+    this.defaultValue = defaultValue ?? undefined;
   }
 
   set(data: D) {
-    Cookies.set(this.key, JSON.stringify(data));
+    Cookies.set(this.key, data as string);
   }
 
-  get(): D | null {
+  get(): string | D | undefined {
     try {
       const storedItem = Cookies.get(this.key);
-      const parsedItem = JSON.parse(storedItem as string);
 
-      return parsedItem || this.defaultValue;
+      return storedItem || this.defaultValue;
     } catch (error) {
       return this.defaultValue;
     }
   }
 
   remove() {
-    localStorage.removeItem(this.key);
+    Cookies.remove(this.key);
   }
 }
 
 const storage = {
-  user: new CookieStorage<UserType>('user', {}),
-  token: new CookieStorage<string>('token', ''),
+  token: new CookieStorage<string>('token'),
 };
 
-export default CookieStorage;
+export default storage;

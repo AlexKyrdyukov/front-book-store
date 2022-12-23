@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Routes,
   Route,
@@ -16,14 +15,15 @@ import Catalog from './ui/pages/Catalog';
 import Cart from './ui/pages/Cart';
 import Home from './ui/pages/Home';
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <>
       <Header />
       <Routes>
+        <Route path="/" element={<Catalog />} />
+        <Route path="/catalog" element={<Catalog />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/signIn" element={<SignIn />} />
-        <Route path="/catalog" element={<Catalog />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/home" element={<Home />} />
       </Routes>
