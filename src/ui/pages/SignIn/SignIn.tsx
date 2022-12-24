@@ -45,6 +45,7 @@ const SignUp: React.FC = () => {
       <ToastContainer />
       <div className="sign-up__wrapper">
         <form
+          autoComplete="off"
           onSubmit={formik.handleSubmit}
           className="block__form"
         >
@@ -66,7 +67,7 @@ const SignUp: React.FC = () => {
               ? 'input__error'
               : ''
             }
-            error={formik.errors.email &&
+            errorText={formik.errors.email &&
               formik.touched.email
               ? formik.errors.email
               : ''
@@ -89,7 +90,7 @@ const SignUp: React.FC = () => {
               ? 'input__error'
               : ''
             }
-            error={formik.errors.password &&
+            errorText={formik.errors.password &&
               formik.touched.password
               ? formik.errors.password
               : ''
@@ -98,7 +99,7 @@ const SignUp: React.FC = () => {
           <span className="block__button">
             <Button
               disabled={formik.isSubmitting}
-              text="Sing Up"
+              text="Log In"
               type="submit"
               isMobile
             // onClick={formik.handleReset}

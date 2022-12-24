@@ -27,8 +27,8 @@ export const StyledButton = styled.button<StyleType>`
     font-size: 12px;
     padding-left:  ${(props) => (props.isMobile ? '50px' : '20px')};
     padding-right: ${(props) => (props.isMobile ? '50px' : '20px')};
-    padding-right: ${(props) => (props.left ? '0px' : '20px')};
-    padding-left: ${(props) => (props.right ? '0px' : '20px')};
+    padding-right: ${(props) => (props.left ? '0px' : '')};
+    padding-left: ${(props) => (props.right ? '0px' : '')};
     padding-bottom: 10px;
     padding-top: 10px;
   }

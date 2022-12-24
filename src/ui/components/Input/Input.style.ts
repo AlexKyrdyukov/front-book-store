@@ -34,12 +34,21 @@ position: relative;
   color: red;
 }
 
-.image {
-  max-width: 18px;
-  max-height: 18px;
-  margin-right: 20px;
+
+.image__block {
   margin-left: 26px;
+  margin-right: 16px;
+  /* max-width: 18px; */
+  /* max-height: 18px; */
+  max-width: ${(props) => (props.isHeader ? '19px' : '25px')};
+  max-height: ${(props) => (props.isHeader ? '19px' : '20px')};
 }
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
 
 .input {
   padding: 22px 0;
@@ -58,6 +67,7 @@ position: relative;
 
 
 .input::placeholder {
+
   font-size: 16px;
   color: #B9BAC4;
 }
@@ -77,6 +87,7 @@ position: relative;
   padding-bottom: 5px;
   padding-top: 39px ;
 }
+
 .input:focus + .custom__placeholder {
   font-size: 16px;
   display: inline;
@@ -85,12 +96,11 @@ position: relative;
   color: #B9BAC4;
 }
 
-
-
 }
 
 @media (max-width: 834px)  { 
   order: ${(props) => (props.isHeader ? 1 : 0)};
+
   .input {
     padding: 14px 0;
   }
@@ -112,7 +122,6 @@ position: relative;
   top: 3px;
   color: #B9BAC4;
 }
-
 
 }
 `;

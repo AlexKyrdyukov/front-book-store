@@ -14,7 +14,10 @@ type PropType = {
 const Header: React.FC<PropType> = () => {
   return (
     <StyledHeader>
-      <Link to="/home">
+      <Link
+        className="block__image"
+        to="/home"
+      >
         <img
           className="header__logo"
           src={headerLogo}

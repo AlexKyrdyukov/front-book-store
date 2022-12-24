@@ -14,7 +14,6 @@ import mainImage from './images/human.png';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import schema from '../../../utils/validationSchemas/userSchemas';
-// import { AxiosError } from 'axios';
 
 const SignUp: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -47,6 +46,7 @@ const SignUp: React.FC = () => {
       <ToastContainer />
       <div className="sign-up__wrapper">
         <form
+          autoComplete="off"
           onSubmit={formik.handleSubmit}
           className="block__form"
         >
@@ -68,7 +68,7 @@ const SignUp: React.FC = () => {
               ? 'input__error'
               : ''
             }
-            error={formik.errors.email &&
+            errorText={formik.errors.email &&
               formik.touched.email
               ? formik.errors.email
               : ''
@@ -91,7 +91,7 @@ const SignUp: React.FC = () => {
               ? 'input__error'
               : ''
             }
-            error={formik.errors.password &&
+            errorText={formik.errors.password &&
               formik.touched.password
               ? formik.errors.password
               : ''
@@ -114,7 +114,7 @@ const SignUp: React.FC = () => {
               ? 'input__error'
               : ''
             }
-            error={formik.errors.confirmPassword && formik.touched.confirmPassword
+            errorText={formik.errors.confirmPassword && formik.touched.confirmPassword
               ? formik.errors.confirmPassword
               : ''
             }

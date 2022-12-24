@@ -25,7 +25,9 @@ const Footer: React.FC = () => {
           <p className="footer__address">
             6391 Elgin St. Celina, Delaware 10299
           </p>
-          <img className="footer__map-image" src={mapCart} alt="map address" />
+          <div className="image__block">
+            <img className="footer__map-image" src={mapCart} alt="map address" />
+          </div>
         </div>
       </div>
     </StyledFooter>

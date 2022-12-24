@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { StyledInput } from './Input.style';
+import imageEye from './image/View.svg';
 
 type PropType = {
   placeholder: string;
   type: string;
   src: string;
   text?: string;
-  error?: string;
+  errorText?: string;
   alt: string;
   className?: string;
   classNameError?: string;
@@ -20,14 +21,14 @@ type PropType = {
 };
 
 const Input: React.FC<PropType> = (props) => {
-  const [inputState, setInputState] = React.useState(false);
+  const [inputState, setInputState] = React.useState<boolean>(false);
 
   const blockClass = classNames('block__style', {
     [`${props.className}`]: true,
     [`${props.classNameError}`]: true,
   });
   const textStyle = classNames({
-    error__text: props.error,
+    error__text: props.errorText,
     input__text: true,
   });
 
@@ -36,15 +37,21 @@ const Input: React.FC<PropType> = (props) => {
       <div
         className={blockClass}
       >
-        <div className={textStyle}>
-          {props.error ? props.error : props.text}
-        </div>
+        <label className={textStyle}>
+          {props.errorText ? props.errorText : props.text}
+        </label>
         <button
-          onClick={ }
+          className="image__block"
+          type="button"
+          onClick={() => setInputState((prevValue) => !prevValue)}
         >
           <img
             className="image"
-            src={props.src}
+            src={
+              props.type === 'password' && inputState
+                ? imageEye
+                : props.src
+            }
             alt={props.alt}
           />
         </button>
@@ -55,7 +62,11 @@ const Input: React.FC<PropType> = (props) => {
           id={props.id}
           name={props.name}
           className="input"
-          type={props.type}
+          type={
+            props.type === 'password' && inputState
+              ? 'text'
+              : props.type
+          }
           placeholder={props.placeholder}
         />
         <span

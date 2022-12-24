@@ -14,6 +14,7 @@ import SignIn from './ui/pages/SignIn';
 import Catalog from './ui/pages/Catalog';
 import Cart from './ui/pages/Cart';
 import Home from './ui/pages/Home';
+import Account from './ui/pages/UserAccount';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
       <Footer />
     </>
