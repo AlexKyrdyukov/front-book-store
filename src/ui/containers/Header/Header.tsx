@@ -6,12 +6,14 @@ import Button from '../../components/Button';
 import headerLogo from './images/logo.svg';
 import { StyledHeader } from './Herader.style';
 import inputLogo from './images/search.svg';
+import { useAppSelector } from '../../../store';
 
 type PropType = {
   value?: string;
 };
 
 const Header: React.FC<PropType> = () => {
+  const user = useAppSelector(({ user }) => user);
   return (
     <StyledHeader>
       <Link
@@ -38,18 +40,28 @@ const Header: React.FC<PropType> = () => {
         className="header__input"
         isHeader
       />
-      <Link to="/signIn">
-        <Button
-          text="Log In"
-          left
-        />
-      </Link>
-      <Link to="/signUp">
-        <Button
-          text="/ Sign Up"
-          right
-        />
-      </Link>
+      {user ? (
+        <>
+          <Link to="/signIn">
+            <Button
+              text="Log In"
+              left
+            />
+          </Link>
+          <Link to="/signUp">
+            <Button
+              text="/ Sign Up"
+              right
+            />
+          </Link>
+        </>
+      ) : (
+        <Link to="/cart">
+          <Button
+            type="button"
+            text="boobs"
+          />
+        </Link>)}
     </StyledHeader >
   );
 };

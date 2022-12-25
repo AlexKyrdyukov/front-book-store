@@ -15,6 +15,16 @@ const createUser = createAsyncThunk('createUser', async (user: SignUpType, { rej
   }
 });
 
+const getUser = createAsyncThunk('getUser', async () => {
+  try {
+    const response = await axiosInstance.get('/auth/me');
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 export default {
   createUser,
+  getUser,
 };

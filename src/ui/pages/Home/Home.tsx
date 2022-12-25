@@ -1,14 +1,19 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
+
 import { StyledHomePage } from './Home.style';
 import Button from '../../components/Button/Button';
 import imageHuman from './images/human.png';
 import book from './images/bgWithBook.png';
+import { useAppSelector } from '../../../store';
 
 type PropsType = {
   value?: string;
 };
 
 const Home: React.FC<PropsType> = () => {
+  // const user = useAppSelector(({ user }) => user);
+
   return (
     <StyledHomePage>
       <div className="banner__wrapper">

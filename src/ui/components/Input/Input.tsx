@@ -43,7 +43,7 @@ const Input: React.FC<PropType> = (props) => {
         <button
           className="image__block"
           type="button"
-          onClick={() => setInputState((prevValue) => !prevValue)}
+          onClick={() => setInputState(!inputState)}
         >
           <img
             className="image"

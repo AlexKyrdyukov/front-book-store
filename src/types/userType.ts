@@ -20,3 +20,12 @@ export type SignUpPostType = {
     avatar?: string | null;
   };
 };
+
+export type GetUserType = {
+  user: {
+    email: string;
+    id: number;
+    fullName?: string | null;
+    avatar?: string | null;
+  };
+};

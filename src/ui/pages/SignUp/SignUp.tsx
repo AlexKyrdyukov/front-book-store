@@ -5,7 +5,7 @@ import { ErrorMessage, useFormik } from 'formik';
 import {
   useAppDispatch,
   useAppSelector,
-} from '../../../store/index';
+} from '../../../store';
 import userThunks from '../../../store/userThunks';
 import { StyledSignUpPage } from './SignUp.style';
 import mailLogo from './images/mail.svg';
