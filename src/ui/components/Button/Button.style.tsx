@@ -14,6 +14,7 @@ export const StyledButton = styled.button<StyleType>`
   color: #F0F4EF;
   white-space: nowrap;
   font-size: 16px;
+  margin-right:  ${(props) => (props.left ? '-1px' : '')};
   border-top-right-radius: ${(props) => (props.left ? '0px' : '16px')};
   border-bottom-right-radius: ${(props) => (props.left ? '0px' : '16px')};
   border-top-left-radius: ${(props) => (props.right ? '0px' : '16px')};

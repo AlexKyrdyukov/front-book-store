@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledFooter = styled.footer`
 background: #0D1821;
+padding: 0 15px;
 
 .footer__container {
   margin: 0px auto;
@@ -9,7 +10,6 @@ background: #0D1821;
   justify-content: space-between;
   column-gap: 10px;
   max-width: 1310px;
-  padding: 0 15px;
   padding-top: 73px;
   padding-bottom: 73px;
 }

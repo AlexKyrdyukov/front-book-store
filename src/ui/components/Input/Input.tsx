@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { StyledInput } from './Input.style';
 import imageEye from './image/View.svg';
@@ -13,7 +13,7 @@ type PropType = {
   className?: string;
   classNameError?: string;
   isHeader?: boolean;
-  id?: string;
+  // id?: string;
   name?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -59,7 +59,7 @@ const Input: React.FC<PropType> = (props) => {
           onChange={props.onChange}
           onBlur={props.onBlur}
           value={props.value}
-          id={props.id}
+          // id={props.id}
           name={props.name}
           className="input"
           type={

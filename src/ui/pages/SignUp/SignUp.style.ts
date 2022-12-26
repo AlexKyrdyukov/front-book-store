@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledSignUpPage = styled.main`
+  padding: 0 15px;
 .sign-up__input {
   width: 413px;
 }
@@ -15,8 +16,7 @@ export const StyledSignUpPage = styled.main`
   justify-content: space-between;
   margin: 0px auto;
   margin-top: 90px;
-  max-width: 1280px;
-  padding: 0 15px;
+  max-width: 1310px;
   margin-bottom: 154px;
 }
 
@@ -46,7 +46,7 @@ export const StyledSignUpPage = styled.main`
 
 @media (max-width: 1440px)  { 
   .sign-up__wrapper {
-    max-width: 834px;
+    max-width: 864px;
     margin-bottom: 104px;
   }
   .sign-up__input {
@@ -70,10 +70,10 @@ export const StyledSignUpPage = styled.main`
 
 @media (max-width: 834px)  { 
   .sign-up__wrapper {
-    max-width: 290x;
+    max-width: 320x;
     flex-direction: column;
     align-items: center;
-  margin-top: 30px;
+    margin-top: 30px;
 
   }
 

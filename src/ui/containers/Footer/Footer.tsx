@@ -16,8 +16,8 @@ const Footer: React.FC = () => {
           <span className="footer__phone-nuber">(480) 555-0103</span>
         </div>
         <ul className="links__list">
-          <li><Link className="footer__link" to="/home">Home Page</Link></li>
-          <li><Link className="footer__link" to="/catalog">Catalog</Link></li>
+          <li><Link className="footer__link" to="/">Home Page</Link></li>
+          <li><Link className="footer__link" to="/">Catalog</Link></li>
           <li><Link className="footer__link" to="/account">My Account</Link></li>
           <li><Link className="footer__link" to="/cart">Cart</Link></li>
         </ul>

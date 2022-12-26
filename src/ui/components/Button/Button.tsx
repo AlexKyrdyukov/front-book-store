@@ -7,7 +7,6 @@ type PropType = {
   type?: 'button' | 'submit' | 'reset' | undefined;
   isMobile?: boolean;
   disabled?: boolean;
-  isHeader?: boolean;
   isLogin?: boolean;
   left?: boolean;
   right?: boolean;

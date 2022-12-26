@@ -53,7 +53,7 @@ const SignUp: React.FC = () => {
           <h2 className="title">Sign Up</h2>
           <Input
             placeholder="Email"
-            id="email"
+            // id="email"
             name="email"
             type="email"
             src={mailLogo}
@@ -76,7 +76,7 @@ const SignUp: React.FC = () => {
           />
           <Input
             placeholder="Password"
-            id="password"
+            // id="password"
             name="password"
             type="password"
             alt="logo password"
@@ -99,7 +99,7 @@ const SignUp: React.FC = () => {
           />
           <Input
             placeholder="Password replay"
-            id="confirmPassword"
+            // id="confirmPassword"
             name="confirmPassword"
             type="password"
             alt="logo password"

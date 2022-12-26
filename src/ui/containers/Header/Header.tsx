@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button';
+import CircleButton from '../../components/CircleButton';
 import headerLogo from './images/logo.svg';
 import { StyledHeader } from './Herader.style';
-import inputLogo from './images/search.svg';
 import { useAppSelector } from '../../../store';
+import inputLogo from './images/search.svg';
+import cart from './images/Cart.svg';
+import heart from './images/heart.svg';
+import profile from './images/profile.svg';
 
 type PropType = {
   value?: string;
@@ -15,10 +19,12 @@ type PropType = {
 const Header: React.FC<PropType> = () => {
   const user = useAppSelector(({ user }) => user);
   return (
-    <StyledHeader>
+    <StyledHeader
+    user={!user}
+    >
       <Link
         className="block__image"
-        to="/home"
+        to="/"
       >
         <img
           className="header__logo"
@@ -28,7 +34,7 @@ const Header: React.FC<PropType> = () => {
       </Link>
       <Link
         className="header__link-catalog"
-        to="/catalog"
+        to="/"
       >
         Catalog
       </Link>
@@ -40,7 +46,7 @@ const Header: React.FC<PropType> = () => {
         className="header__input"
         isHeader
       />
-      {user ? (
+      {!user ? (
         <>
           <Link to="/signIn">
             <Button
@@ -56,12 +62,37 @@ const Header: React.FC<PropType> = () => {
           </Link>
         </>
       ) : (
-        <Link to="/cart">
-          <Button
-            type="button"
-            text="boobs"
-          />
-        </Link>)}
+        <>
+          <Link to="/cart">
+            <div className="button__cart">
+              {user
+                ? <div><span>{!!user}</span></div>
+                : null
+              }
+              <CircleButton
+                type="button"
+                src={cart}
+              />
+            </div>
+          </Link>
+          <Link to="/favorites">
+            <div className="button__likes-books">
+              <CircleButton
+                type="button"
+                src={heart}
+              />
+            </div>
+          </Link>
+          <Link to="/account">
+            <div className="button__account">
+              <CircleButton
+                type="button"
+                src={profile}
+              />
+            </div>
+          </Link>
+        </>
+      )}
     </StyledHeader >
   );
 };
