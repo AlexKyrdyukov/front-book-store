@@ -20,7 +20,7 @@ const Header: React.FC<PropType> = () => {
   const user = useAppSelector(({ user }) => user);
   return (
     <StyledHeader
-    user={!user}
+      user={!!user}
     >
       <Link
         className="block__image"

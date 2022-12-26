@@ -7,12 +7,12 @@ import Header from './ui/containers/Header';
 import Footer from './ui/containers/Footer';
 import SignUp from './ui/pages/SignUp';
 import SignIn from './ui/pages/SignIn';
-import Favorites from './ui/pages/Favorites/Favorites';
+import Favorites from './ui/pages/Favorites';
 import Cart from './ui/pages/Cart';
 import MainPage from './ui/pages/MainPage';
 import Account from './ui/pages/UserAccount';
 import userThunks from './store/userThunks';
-import ProtectedRoute from './utils/ptivateRoute/ProtectedRoute';
+import ProtectedRoute from './utils/privateRoute';
 import {
   useAppDispatch,
 } from './store';

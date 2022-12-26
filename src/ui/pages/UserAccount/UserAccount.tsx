@@ -5,7 +5,7 @@ type PropsType = {
   value?: string | undefined;
 };
 
-const UserAccount: React.FC<PropsType> = (props) => {
+const UserAccount: React.FC<PropsType> = () => {
   return (
     <StyledUserAccount>
       <div

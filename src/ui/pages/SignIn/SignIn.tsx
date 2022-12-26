@@ -1,10 +1,9 @@
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { ErrorMessage, useFormik } from 'formik';
+import { useFormik } from 'formik';
 
 import {
   useAppDispatch,
-  useAppSelector,
 } from '../../../store/index';
 import userThunks from '../../../store/userThunks';
 import { StyledSignInPage } from './SignIn.style';
@@ -14,7 +13,6 @@ import mainImage from './images/human.png';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import schema from '../../../utils/validationSchemas/userSchemas';
-// import { AxiosError } from 'axios';
 
 const SignUp: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -49,7 +47,7 @@ const SignUp: React.FC = () => {
           onSubmit={formik.handleSubmit}
           className="block__form"
         >
-          <h2 className="title">Sign Up</h2>
+          <h2 className="title">Sign In</h2>
           <Input
             placeholder="Email"
             // id="email"
