@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type {
   UserType,
   SignUpPostType,
   GetUserType,
 } from '../types/userType';
+
 import Cookies from '../coookieHelper/CookieStorage';
 import userThunks from './userThunks';
 

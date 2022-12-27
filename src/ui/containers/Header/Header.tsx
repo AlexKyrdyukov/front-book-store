@@ -20,7 +20,7 @@ const Header: React.FC<PropType> = () => {
   const user = useAppSelector(({ user }) => user);
   return (
     <StyledHeader
-      user={!!user}
+      user={Boolean(user)}
     >
       <Link
         className="block__image"
@@ -52,12 +52,14 @@ const Header: React.FC<PropType> = () => {
             <Button
               text="Log In"
               left
+              isHeader
             />
           </Link>
           <Link to="/signUp">
             <Button
               text="/ Sign Up"
               right
+              isHeader
             />
           </Link>
         </>

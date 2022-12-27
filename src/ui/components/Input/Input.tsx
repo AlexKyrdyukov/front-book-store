@@ -23,13 +23,12 @@ type PropType = {
 const Input: React.FC<PropType> = (props) => {
   const [inputState, setInputState] = React.useState<boolean>(false);
 
-  const blockClass = classNames('block__style', {
+  const blockClass = classNames('block__style', props.className, props.classNameError, {
     [`${props.className}`]: true,
     [`${props.classNameError}`]: true,
   });
-  const textStyle = classNames({
+  const textStyle = classNames('input__text', {
     error__text: props.errorText,
-    input__text: true,
   });
 
   return (

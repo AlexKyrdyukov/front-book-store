@@ -11,9 +11,7 @@ export const StyledInput = styled.div<StyleType>`
     position: absolute;
     display: none;
     white-space: nowrap;
-
   }
-
 
   .input__text {
     position: absolute;
@@ -31,9 +29,8 @@ export const StyledInput = styled.div<StyleType>`
   }
 
   .error__text {
-    color: red;
+    color: #C30052;
   }
-
 
   .image__block {
     margin-left: 26px;
@@ -81,18 +78,18 @@ export const StyledInput = styled.div<StyleType>`
 
   @media (max-width: 1440px)  { 
 
-  .input:focus {
-    padding-bottom: 5px;
-    padding-top: 39px ;
-  }
+    .input:focus {
+      padding-bottom: 5px;
+      padding-top: 39px ;
+    }
 
-  .input:focus + .custom__placeholder {
-    font-size: 16px;
-    display: inline;
-    left: 65px;
-    top: 7px;
-    color: #B9BAC4;
-  }
+    .input:focus + .custom__placeholder {
+      font-size: 16px;
+      display: inline;
+      left: 65px;
+      top: 7px;
+      color: #B9BAC4;
+    }
   }
 
   @media (max-width: 834px)  { 
@@ -108,16 +105,16 @@ export const StyledInput = styled.div<StyleType>`
     }
 
     .input:focus {
-    padding-bottom: 3px;
-    padding-top: 25px ;
-  }
+      padding-bottom: 3px;
+      padding-top: 25px ;
+    }
 
-  .input:focus + .custom__placeholder {
-    font-size: 16px;
-    display: inline;
-    left: 65px;
-    top: 3px;
-    color: #B9BAC4;
+    .input:focus + .custom__placeholder {
+      font-size: 16px;
+      display: inline;
+      left: 65px;
+      top: 3px;
+      color: #B9BAC4;
+    }
   }
-  }
-  `;
+`;

@@ -17,7 +17,6 @@ export type SignUpPostType = {
     email: string;
     id: number;
     fullName?: string | null;
-    avatar?: string | null;
   };
 };
 

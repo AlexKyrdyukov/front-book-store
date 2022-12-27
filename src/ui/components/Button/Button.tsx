@@ -4,10 +4,11 @@ import { StyledButton } from './Button.style';
 
 type PropType = {
   text?: string;
-  type?: 'button' | 'submit' | 'reset' | undefined;
+  type?: 'button' | 'submit';
   isMobile?: boolean;
   disabled?: boolean;
   isLogin?: boolean;
+  isHeader?: boolean;
   left?: boolean;
   right?: boolean;
 };
@@ -20,6 +21,7 @@ const Button: React.FC<PropType> = (props) => {
       disabled={props.disabled}
       isMobile={props.isMobile}
       type={props.type}
+      isHeader={props.isHeader}
     >
       {props.text}
     </StyledButton>

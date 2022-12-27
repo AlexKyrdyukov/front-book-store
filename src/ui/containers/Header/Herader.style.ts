@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 type StyleType = {
-  user?: boolean;
+  user: boolean;
 };
 
 export const StyledHeader = styled.header<StyleType>`
@@ -13,8 +13,8 @@ export const StyledHeader = styled.header<StyleType>`
   padding: 0 15px;
 
   .header__logo {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
   }
 
   .block__image {
@@ -44,7 +44,6 @@ export const StyledHeader = styled.header<StyleType>`
 
   .button__likes-books {
     margin-right: 27px;
-
   }
 
   @media (max-width: 1440px)  { 
@@ -73,7 +72,7 @@ export const StyledHeader = styled.header<StyleType>`
   }
 
   @media (max-width: 834px)  { 
-  padding: 0 12px;
+    padding: 0 12px;
 
     margin: 33px auto 0 auto;
     max-width: 320px;
@@ -102,14 +101,12 @@ export const StyledHeader = styled.header<StyleType>`
     }
 
     .button__cart {
-    margin-right: 18px;
-  }
+      margin-right: 18px;
+    }
 
-  .button__likes-books {
-    margin-right: 18px;
-
-  }
-
+    .button__likes-books {
+      margin-right: 18px;
+    }
   }
 
   @media (max-width: 330px)  { 

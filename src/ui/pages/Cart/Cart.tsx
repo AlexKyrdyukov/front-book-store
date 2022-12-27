@@ -8,7 +8,9 @@ type PropsType = {
 
 const Cart: React.FC<PropsType> = () => {
   return (
-    <div>Cart</div>
+    <StyledCartPage>
+      <div>Cart</div>
+    </StyledCartPage>
   );
 };
 

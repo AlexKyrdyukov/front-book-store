@@ -37,18 +37,18 @@ const Home: React.FC = () => {
         </div>
         <div className="books__wrapper">
           <picture>
-            <source className="books" media="(max-width: 1440px)" srcSet={booksTablet} />
-            <source className="books" media="(max-width: 834px)" srcSet={booksMobile} />
-            <img className="books" src={booksDesktop} alt="Flowers" />
+            <source className="books" media="(min-width: 1440px)" srcSet={booksDesktop} />
+            <source className="books" media="(min-width: 834px)" srcSet={booksTablet} />
+            <img className="books" src={booksMobile} alt="Flowers" />
           </picture>
         </div>
         <div
           className="human__wrapper"
         >
           <picture>
-            <source className="human" media="(max-width: 1440px)" srcSet={humanTablet} />
-            <source className="human" media="(max-width: 834px)" srcSet={humanMobile} />
-            <img className="human" src={humanDesktop} alt="Flowers" />
+            <source className="human" media="(min-width: 1440px)" srcSet={humanDesktop} />
+            <source className="human" media="(min-width: 834px)" srcSet={humanTablet} />
+            <img className="human" src={humanMobile} alt="Flowers" />
           </picture>
         </div>
       </div>

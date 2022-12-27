@@ -15,7 +15,7 @@ export const StyledCircleButton = styled.button<StyleType>`
   justify-content: center;
   align-items: center;
  
-    .image__block {
+  .image__block {
     max-width: 25px;
     height: 25px;
   }
@@ -25,13 +25,13 @@ export const StyledCircleButton = styled.button<StyleType>`
     height: 100%;
   }
 
-@media (max-width: 834px)  { 
-  width: 32px;
-  height: 32px;
+  @media (max-width: 834px)  { 
+    width: 32px;
+    height: 32px;
 
-  .image__block {
-    max-width: 17px;
-    height: 17px;
+    .image__block {
+      max-width: 17px;
+      height: 17px;
   }
 }
 `;

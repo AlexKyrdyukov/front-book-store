@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-export const StyledTopBanner = styled.header`
+export const StyledTopBanner = styled.section`
 padding: 0px 15px;
-margin-bottom: 400px;
+margin-bottom: 40px;
+
 .banner__wrapper {
   margin: 0px auto;
   max-width: 1310px;
@@ -60,59 +61,58 @@ margin-bottom: 400px;
     width: 100%;
     height: 100%;
   }
-@media (max-width: 1440px)  {
-  .banner__wrapper {
-    width: 804px;
-    margin-top: 45px;
+  @media (max-width: 1440px)  {
+    
+    .banner__wrapper {
+      width: 804px;
+      margin-top: 45px;
+    }
+
+    .banner__title {
+      font-size: 32px;
+    }
+
+    .banner__subtitle p {
+      line-height: 24px;
+      font-size: 16px;
+    }
+
+    .banner__subtitle {
+      margin-bottom: 40px;
+    }
+
+    .books__wrapper {
+      margin-top: 78px;
+      max-width: 361px;
+      height: 218px;
+    }
+
+    .books {
+      width: 100%;
+      height: 100%;
+    }
+
+    .human__wrapper {
+      width: 328px;
+      height: 364px;
+      margin-right: 14px;
+      position: absolute;
+      left: 470px;
+    }
+
+    .human {
+      width: 100%;
+      height: 100%;
+    }
+
+    .block__text-button {
+      position: absolute;
+      top:50px;
+      left: 40px;
+    }
+
   }
 
-  .banner__title {
-    font-size: 32px;
-  }
-
-
-
-  .banner__subtitle p {
-    line-height: 24px;
-    font-size: 16px;
-  }
-
-  .banner__subtitle {
-    margin-bottom: 40px;
-  }
-
-  .books__wrapper {
-    margin-top: 78px;
-    max-width: 361px;
-    height: 218px;
-  }
-
-  .books {
-    width: 100%;
-    height: 100%;
-  }
-
-  .human__wrapper {
-    width: 328px;
-    height: 364px;
-    margin-right: 14px;
-    position: absolute;
-    left: 470px;
-  }
-
-  .human {
-    width: 100%;
-    height: 100%;
-  }
-
-
-  .block__text-button {
-    position: absolute;
-    top:50px;
-    left: 40px;
-  }
-
-}
   @media (max-width: 834px)  { 
     padding: 0px 5px;
     
@@ -161,7 +161,7 @@ margin-bottom: 400px;
     .banner__subtitle p {
     line-height: 21px;
     font-size: 14px;
-  }
+    }
 
-  }
+}
 `;

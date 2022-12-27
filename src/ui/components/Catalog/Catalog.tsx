@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { StyledCatalog } from './Catalog.style';
 
 const Catalog: React.FC = () => {

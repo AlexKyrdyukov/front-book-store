@@ -1,10 +1,9 @@
 import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import { ErrorMessage, useFormik } from 'formik';
+import { toast } from 'react-toastify';
+import { useFormik } from 'formik';
 
 import {
   useAppDispatch,
-  useAppSelector,
 } from '../../../store';
 import userThunks from '../../../store/userThunks';
 import { StyledSignUpPage } from './SignUp.style';
@@ -30,7 +29,16 @@ const SignUp: React.FC = () => {
         email: values.email,
         password: values.password,
       })).unwrap()
-        .catch((error) => toast.error(error.message));
+        .catch((error) => toast.error(error.message, {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        }));
       actions.resetForm({
         values: {
           email: '',
@@ -43,7 +51,6 @@ const SignUp: React.FC = () => {
 
   return (
     <StyledSignUpPage>
-      <ToastContainer />
       <div className="sign-up__wrapper">
         <form
           autoComplete="off"
@@ -53,7 +60,6 @@ const SignUp: React.FC = () => {
           <h2 className="title">Sign Up</h2>
           <Input
             placeholder="Email"
-            // id="email"
             name="email"
             type="email"
             src={mailLogo}
@@ -76,7 +82,6 @@ const SignUp: React.FC = () => {
           />
           <Input
             placeholder="Password"
-            // id="password"
             name="password"
             type="password"
             alt="logo password"
@@ -99,7 +104,6 @@ const SignUp: React.FC = () => {
           />
           <Input
             placeholder="Password replay"
-            // id="confirmPassword"
             name="confirmPassword"
             type="password"
             alt="logo password"

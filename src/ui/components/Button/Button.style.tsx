@@ -7,6 +7,7 @@ type StyleType = {
   left?: boolean;
   right?: boolean;
 };
+
 export const StyledButton = styled.button<StyleType>`
   background: #344966;
   padding: 10px 50px;
@@ -21,11 +22,9 @@ export const StyledButton = styled.button<StyleType>`
   border-bottom-left-radius: ${(props) => (props.right ? '0px' : '16px')};
   padding-right: ${(props) => (props.left ? '0px' : '50px')};
   padding-left: ${(props) => (props.right ? '0px' : '50px')};
-  @media (max-width: 1440px)  { 
-  
-  }
+
   @media (max-width: 834px)  { 
-    font-size: 12px;
+    font-size: ${(props) => (props.isHeader ? '12px' : '16px')};
     padding-left:  ${(props) => (props.isMobile ? '50px' : '20px')};
     padding-right: ${(props) => (props.isMobile ? '50px' : '20px')};
     padding-right: ${(props) => (props.left ? '0px' : '')};

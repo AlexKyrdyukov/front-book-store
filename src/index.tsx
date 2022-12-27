@@ -9,18 +9,19 @@ import reportWebVitals from './reportWebVitals';
 
 import { GlobalStyles } from './ui/containers/GlobalStyles/GlobalStyle';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
-  <>
-    <GlobalStyles />
-    <Provider store={store}>
+  <Provider store={store}>
     <BrowserRouter>
+      <GlobalStyles />
+
       <App />
     </BrowserRouter>
-    </Provider>
-  </>,
+  </Provider>,
 );
 
 reportWebVitals();

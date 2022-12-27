@@ -1,4 +1,6 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
+
 import {
   Routes,
   Route,
@@ -21,17 +23,18 @@ const App = () => {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    const fetchData = async () => {
-      // eslint-disable-next-line no-console
-      console.log('event');
-      dispatch(userThunks.getUser());
-    };
-    fetchData().catch(console.error);
+    dispatch(userThunks.getUser());
   }, [dispatch]);
 
   return (
     <>
       <Header />
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+      />
+
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/signUp" element={<SignUp />} />
@@ -44,6 +47,7 @@ const App = () => {
         </Route>
         <Route path="*" element={<p>Theres nothing here: 404!</p>} />
       </Routes>
+
       <Footer />
     </>
   );
