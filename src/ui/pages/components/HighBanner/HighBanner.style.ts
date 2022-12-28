@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledTopBanner = styled.section`
-padding: 0px 15px;
 margin-bottom: 40px;
 
 .banner__wrapper {
+  padding: 0px 80px;
   margin: 0px auto;
-  max-width: 1310px;
+  max-width: 1440px;
   margin-top: 40px;
   background: #F0F4EF;
   border-radius: 16px;
@@ -27,6 +27,10 @@ margin-bottom: 40px;
     font-size: 40px;
     font-weight: 700;
     line-height: 60px;
+  }
+
+  .button__block {
+    padding: 10px 50px;
   }
 
   .banner__subtitle p {

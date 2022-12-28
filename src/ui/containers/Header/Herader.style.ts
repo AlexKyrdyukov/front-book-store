@@ -5,12 +5,11 @@ type StyleType = {
 };
 
 export const StyledHeader = styled.header<StyleType>`
-  max-width: 1310px;
+  max-width: 1440px;
   display: flex;
   align-items: center;
   margin: 0px auto;
-  margin-top: 24px;
-  padding: 0 15px;
+  padding: 24px 80px;
 
   .header__logo {
     width: 100%;
@@ -18,18 +17,27 @@ export const StyledHeader = styled.header<StyleType>`
   }
 
   .block__image {
-    display: block;
     max-height: 46px;
     max-width: 88px;
-    margin-right: 125px;
+    margin-right: 128px;
   }
 
   .header__input {
-    display: flex;
     margin-right: ${(props) => (!props.user ? '97px' : '127px')};
-    width: 630px;
   } 
 
+    .block__button {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+  .block__button :first-child button {
+    margin-right: 10px;
+  }
+
+  .header__form-block {
+    display: flex;
+    flex-grow: 1;
+  }
 
   .header__link-catalog {
     font-weight: 500;
@@ -46,8 +54,14 @@ export const StyledHeader = styled.header<StyleType>`
     margin-right: 27px;
   }
 
-  @media (max-width: 1440px)  { 
+  .sign-in__button {
+    padding: 10px 20px;
+  }
+
+  @media (max-width: 1024px)  { 
     max-width: 834px;
+    padding: 20px 15px;
+
 
     .block__image {
       max-width: 88px;
@@ -65,7 +79,7 @@ export const StyledHeader = styled.header<StyleType>`
     }
 
     .header__input {
-      width: 247px;
+      /* width: 247px; */
       margin-right: 81px;
     }
 
@@ -96,8 +110,8 @@ export const StyledHeader = styled.header<StyleType>`
     }
 
     .header__input {
-      width: 290px;
       margin-right: 0px;
+      order: 1;
     }
 
     .button__cart {

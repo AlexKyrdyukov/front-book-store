@@ -1,10 +1,10 @@
 import React from 'react';
 
+import HighBanner from '../components/HighBanner';
+import Pagination from '../components/Pagination/Pagination';
+import Catalog from '../components/Catalog/Catalog';
+import LowBanner from '../components/LowBanner';
 import { StyledMainPage } from './MainPage.style';
-import HighBanner from '../../components/HighBanner';
-import Pagination from '../../components/Pagination';
-import Catalog from '../../components/Catalog';
-import LowBanner from '../../components/LowBanner';
 
 type PropsType = {
   value?: string;

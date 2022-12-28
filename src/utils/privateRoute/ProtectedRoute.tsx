@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { useAppSelector } from '../../store';
 
 const ProtectedRoute = () => {
-  const user = useAppSelector(({ user }) => user);
+  const user = useAppSelector(({ userReducer }) => userReducer.user);
   if (!user) {
     return <Navigate to="/signIn" replace />;
   }

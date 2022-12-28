@@ -2,16 +2,14 @@ import styled from 'styled-components';
 
 export const StyledFooter = styled.footer`
 background: #0D1821;
-padding: 0 15px;
 
 .footer__container {
   margin: 0px auto;
   display: flex;
   justify-content: space-between;
   column-gap: 10px;
-  max-width: 1310px;
-  padding-top: 73px;
-  padding-bottom: 73px;
+  max-width: 1440px;
+  padding: 73px 80px;
 }
 
 .footer__contacts {
@@ -37,7 +35,9 @@ padding: 0 15px;
     
 }
 
-.links__list li {
+.links__list a {
+  display: block;
+
   margin-bottom: 15px;
   white-space: nowrap;
 }
@@ -143,7 +143,8 @@ padding: 0 15px;
     margin-bottom: 30px;
   }
 
-  .links__list li {
+  .links__list a {
+    display: block;
     margin-bottom: 13px;
     white-space: nowrap;
   }

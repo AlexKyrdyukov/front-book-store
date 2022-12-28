@@ -10,11 +10,20 @@ export const StyledLowBanner = styled.section`
     display: flex;
     justify-content: end;
     flex-wrap: nowrap;
-    width: 1280px;
+    width: 1440px;
+    padding: 0px 80px;
     position: relative;
     border-radius: 16px;
     height: 400px;
     overflow: hidden;
+  }
+
+  .button {
+    padding: 10px 20px;
+  }
+
+  .button__block :first-child button {
+    margin-right: 10px;
   }
 
   .image__castle-block {

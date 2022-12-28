@@ -1,7 +1,7 @@
 import React from 'react';
 import StyledLoader from './Preloader.style';
 
-const Preloader = () => {
+const Preloader: React.FC = () => {
   return (
     <StyledLoader>
       <div className="preloader">

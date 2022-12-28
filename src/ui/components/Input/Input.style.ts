@@ -6,6 +6,11 @@ type StyleType = {
 
 export const StyledInput = styled.div<StyleType>`
   position: relative;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  border-radius: 16px;
+  background: #F0F4EF;
 
   .custom__placeholder{
     position: absolute;
@@ -25,7 +30,6 @@ export const StyledInput = styled.div<StyleType>`
     display: flex;
     align-items: center;
     background: #F0F4EF;
-    border-radius: 16px;
   }
 
   .error__text {
@@ -52,29 +56,12 @@ export const StyledInput = styled.div<StyleType>`
     width: 100%;
   }
 
-  .input:focus + .custom__placeholder {
-    font-size: 16px;
-    display: inline;
-    left: 65px;
-    top: 8px;
-    color: #B9BAC4;
-  }
-
-
   .input::placeholder {
-
     font-size: 16px;
     color: #B9BAC4;
   }
 
-  .input:focus::placeholder {
-    color:#F0F4EF;
-  }
-
-  .input:focus {
-    padding-bottom: 5px;
-    padding-top: 39px ;
-  }
+ 
 
   @media (max-width: 1440px)  { 
 
@@ -93,7 +80,8 @@ export const StyledInput = styled.div<StyleType>`
   }
 
   @media (max-width: 834px)  { 
-    order: ${(props) => (props.isHeader ? 1 : 0)};
+    /* order: ${(props) => (props.isHeader ? 1 : 0)}; */
+    /* order: 1; */
 
     .input {
       padding: 14px 0;

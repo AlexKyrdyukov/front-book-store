@@ -1,44 +1,35 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
+import * as yup from 'yup';
 
-import {
-  useAppDispatch,
-} from '../../../store';
-import userThunks from '../../../store/userThunks';
-import { StyledSignUpPage } from './SignUp.style';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+import authApi from '../../../api/authApi';
+import validationData from '../../../utils/validationSchemas/dataValidation';
+
 import mailLogo from './images/mail.svg';
 import hideLogo from './images/hide.svg';
 import mainImage from './images/human.png';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
-import schema from '../../../utils/validationSchemas/userSchemas';
+import { StyledSignUpPage } from './SignUp.style';
 
 const SignUp: React.FC = () => {
-  const dispatch = useAppDispatch();
-
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
       confirmPassword: '',
     },
-    validationSchema: schema.signUp,
+    validationSchema: yup.object({
+      email: validationData.requiredEmail,
+      password: validationData.requiredPassword,
+      confirmPassword: validationData.confirmPassword,
+    }),
     onSubmit: async (values, actions) => {
-      await dispatch(userThunks.createUser({
+      await authApi.signUp({
         email: values.email,
         password: values.password,
-      })).unwrap()
-        .catch((error) => toast.error(error.message, {
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        }));
+      });
       actions.resetForm({
         values: {
           email: '',
@@ -126,11 +117,10 @@ const SignUp: React.FC = () => {
           <span className="block__button">
             <Button
               disabled={formik.isSubmitting}
-              text="Sing Up"
               type="submit"
-              isMobile
             // onClick={formik.handleReset}
-            />
+            >Sing Up
+            </Button>
           </span>
         </form>
         <div className="block__image">

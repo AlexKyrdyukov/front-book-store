@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledLoader = styled.div`
+background-color: black;
 .preloader {
   /*фиксированное позиционирование*/
   position: fixed;

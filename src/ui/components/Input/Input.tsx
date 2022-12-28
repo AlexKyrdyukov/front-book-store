@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import { StyledInput } from './Input.style';
+
 import imageEye from './image/View.svg';
+import { StyledInput } from './Input.style';
 
 type PropType = {
   placeholder: string;
@@ -23,22 +24,15 @@ type PropType = {
 const Input: React.FC<PropType> = (props) => {
   const [inputState, setInputState] = React.useState<boolean>(false);
 
-  const blockClass = classNames('block__style', props.className, props.classNameError, {
-    [`${props.className}`]: true,
-    [`${props.classNameError}`]: true,
-  });
-  const textStyle = classNames('input__text', {
-    error__text: props.errorText,
-  });
+  // const blockClass = classNames('block__style', props.className, props.classNameError);
+  // const textStyle = classNames('input__text', {
+  // error__text: props.errorText,
+  // });
 
   return (
-    <StyledInput isHeader={props.isHeader}>
-      <div
-        className={blockClass}
+    <StyledInput isHeader={props.isHeader}
+      className={props.className}
       >
-        <label className={textStyle}>
-          {props.errorText ? props.errorText : props.text}
-        </label>
         <button
           className="image__block"
           type="button"
@@ -68,12 +62,6 @@ const Input: React.FC<PropType> = (props) => {
           }
           placeholder={props.placeholder}
         />
-        <span
-          className="custom__placeholder"
-        >
-          {props.placeholder}
-        </span>
-      </div>
     </StyledInput>
   );
 };

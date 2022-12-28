@@ -1,23 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Input from '../../components/Input/Input';
+import Input from '../../components/Input';
 import Button from '../../components/Button';
 import CircleButton from '../../components/CircleButton';
 import headerLogo from './images/logo.svg';
-import { StyledHeader } from './Herader.style';
 import { useAppSelector } from '../../../store';
+
 import inputLogo from './images/search.svg';
 import cart from './images/Cart.svg';
 import heart from './images/heart.svg';
 import profile from './images/profile.svg';
+import { StyledHeader } from './Herader.style';
 
-type PropType = {
-  value?: string;
-};
-
-const Header: React.FC<PropType> = () => {
-  const user = useAppSelector(({ user }) => user);
+const Header: React.FC = () => {
+  const user = useAppSelector(({ userReducer }) => userReducer.user);
   return (
     <StyledHeader
       user={Boolean(user)}
@@ -38,31 +35,35 @@ const Header: React.FC<PropType> = () => {
       >
         Catalog
       </Link>
-      <Input
-        placeholder="search"
-        type="text"
-        alt="logo search"
-        src={inputLogo}
-        className="header__input"
-        isHeader
-      />
+      <form
+      className="header__form-block"
+      action="submit"
+      >
+        <Input
+          placeholder="search"
+          type="text"
+          alt="logo search"
+          src={inputLogo}
+          className="header__input"
+          isHeader
+        />
+      </form>
       {!user ? (
-        <>
+        <div className="block__button">
           <Link to="/signIn">
             <Button
-              text="Log In"
-              left
-              isHeader
-            />
+              className="sign-in__button"
+            >log in
+            </Button>
           </Link>
           <Link to="/signUp">
             <Button
-              text="/ Sign Up"
-              right
-              isHeader
-            />
+              className="sign-in__button"
+            >Sign Up
+            </Button>
+
           </Link>
-        </>
+        </div>
       ) : (
         <>
           <Link to="/cart">

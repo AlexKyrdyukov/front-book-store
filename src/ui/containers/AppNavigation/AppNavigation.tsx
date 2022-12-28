@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import ReactDOM from 'react-dom';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from '../../pages/MainPage';
@@ -12,10 +11,9 @@ const Cart = React.lazy(() => import('../../pages/Cart'));
 const Account = React.lazy(() => import('../../pages/UserAccount'));
 const Favorites = React.lazy(() => import('../../pages/Favorites'));
 
-const domElement: HTMLElement = document.createElement('div');
 const AppNavigation = () => {
   return (
-    <Suspense fallback={ReactDOM.createPortal(<Preloader />, domElement)}>
+    <Suspense fallback={<Preloader />}>
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/signUp" element={<SignUp />} />

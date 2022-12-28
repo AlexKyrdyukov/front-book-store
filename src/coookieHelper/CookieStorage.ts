@@ -3,25 +3,16 @@ import Cookies from 'js-cookie';
 class CookieStorage<D> {
   key: string;
 
-  defaultValue: D | undefined;
-
-  constructor(key: string, defaultValue?: D) {
+  constructor(key: string) {
     this.key = key;
-    this.defaultValue = defaultValue ?? undefined;
   }
 
   set(data: D) {
     Cookies.set(this.key, data as string);
   }
 
-  get(): string | D | undefined {
-    try {
-      const storedItem = Cookies.get(this.key);
-
-      return storedItem || this.defaultValue;
-    } catch (error) {
-      return this.defaultValue;
-    }
+  get(): string | undefined {
+    return Cookies.get(this.key);
   }
 
   remove() {

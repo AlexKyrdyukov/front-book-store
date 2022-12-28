@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyledTopBanner } from './HighBanner.style';
-import Button from '../Button/Button';
+
+import Button from '../../../components/Button';
+
 import humanDesktop from './images/human.png';
 import humanTablet from './images/humanTablet.svg';
 import humanMobile from './images/humanMobile.svg';
 import booksDesktop from './images/bgWithBook.png';
 import booksTablet from './images/bookTablet.svg';
 import booksMobile from './images/bookMobile.svg';
+import { StyledTopBanner } from './HighBanner.style';
 
 const Home: React.FC = () => {
   return (
@@ -28,10 +30,10 @@ const Home: React.FC = () => {
               href="https://babenki.top/krasivye-siski/7540-krasivye-sisi-52-foto.html"
             >
               <Button
-                text="Choose a book"
                 type="button"
-                isMobile
-              />
+                className="button__block"
+              >Choose a book
+              </Button>
             </a>
           </div>
         </div>

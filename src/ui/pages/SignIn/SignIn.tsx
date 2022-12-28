@@ -1,34 +1,33 @@
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { useFormik } from 'formik';
+import * as yup from 'yup';
 
-import {
-  useAppDispatch,
-} from '../../../store/index';
-import userThunks from '../../../store/userThunks';
-import { StyledSignInPage } from './SignIn.style';
-import mailLogo from './images/mail.svg';
-import hideLogo from './images/hide.svg';
-import mainImage from './images/human.png';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import schema from '../../../utils/validationSchemas/userSchemas';
+import authApi from '../../../api/authApi';
+import validationDate from '../../../utils/validationSchemas/dataValidation';
+
+import mainImage from './images/human.png';
+import hideLogo from './images/hide.svg';
+import mailLogo from './images/mail.svg';
+import { StyledSignInPage } from './SignIn.style';
 
 const SignUp: React.FC = () => {
-  const dispatch = useAppDispatch();
-
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
-    validationSchema: schema.signUp,
+    validationSchema: yup.object({
+      email: validationDate.requiredEmail,
+      password: validationDate.requiredPassword,
+    }),
     onSubmit: async (values, actions) => {
-      await dispatch(userThunks.createUser({
+      await authApi.signIn({
         email: values.email,
         password: values.password,
-      })).unwrap()
-        .catch((error) => toast.error(error.message));
+      });
       actions.resetForm({
         values: {
           email: '',
@@ -94,15 +93,15 @@ const SignUp: React.FC = () => {
               : ''
             }
           />
-          <span className="block__button">
+          <div className="block__button">
             <Button
+              className="button"
               disabled={formik.isSubmitting}
-              text="Log In"
               type="submit"
-              isMobile
             // onClick={formik.handleReset}
-            />
-          </span>
+            >Log In
+            </Button>
+          </div>
         </form>
         <div className="block__image">
           <img

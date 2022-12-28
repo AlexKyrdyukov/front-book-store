@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { StyledLowBanner } from './LowBanner.style';
 
-import Button from '../Button';
+import Button from '../../../components/Button';
+
 import castle from './images/castleTable.png';
 import fairyDesktop from './images/fairyDesktop.png';
 import fairyTablet from './images/fairyTablet.png';
@@ -25,20 +26,18 @@ const LowBanner = () => {
         <div className="button-text__block">
           <h2>Authorize now</h2>
           <p>Authorize now and discover the fabulous world of books</p>
-          <div>
+          <div className="button__block">
             <Link to="/signIn">
               <Button
-                text="Log In"
-                left
-                isMobile
-              />
+                className="button"
+              >Log In
+              </Button>
             </Link>
             <Link to="/signUp">
               <Button
-                text="/ Sign Up"
-                right
-                isMobile
-              />
+                className="button"
+              >/ Sign Up
+              </Button>
             </Link>
           </div>
         </div>
