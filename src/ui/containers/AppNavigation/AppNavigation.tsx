@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MainPage from '../../pages/MainPage';
+
 import Preloader from '../PreLoader/Preloader';
 
 const SignUp = React.lazy(() => import('../../pages/SignUp'));
@@ -10,7 +10,7 @@ const ProtectedRoute = React.lazy(() => import('../../../utils/privateRoute'));
 const Cart = React.lazy(() => import('../../pages/Cart'));
 const Account = React.lazy(() => import('../../pages/UserAccount'));
 const Favorites = React.lazy(() => import('../../pages/Favorites'));
-
+const MainPage = React.lazy(() => import('../../pages/MainPage'));
 const AppNavigation = () => {
   return (
     <Suspense fallback={<Preloader />}>

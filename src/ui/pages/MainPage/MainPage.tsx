@@ -4,7 +4,7 @@ import HighBanner from '../components/HighBanner';
 import Pagination from '../components/Pagination/Pagination';
 import Catalog from '../components/Catalog/Catalog';
 import LowBanner from '../components/LowBanner';
-import { StyledMainPage } from './MainPage.style';
+import StyledMainPage from './MainPage.style';
 
 type PropsType = {
   value?: string;

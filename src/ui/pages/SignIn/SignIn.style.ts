@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledSignInPage = styled.main`
+const StyledSignInPage = styled.main`
   padding: 0 15px;
   
   .sign-up__input {
@@ -10,6 +10,10 @@ export const StyledSignInPage = styled.main`
   .input__error {
     outline: 3px solid #ED2E7E;
     opacity: 0.5;
+  }
+
+  .button {
+    padding: 10px 50px;
   }
 
   .sign-up__wrapper {
@@ -104,3 +108,5 @@ export const StyledSignInPage = styled.main`
     }
   }
 `;
+
+export default StyledSignInPage;

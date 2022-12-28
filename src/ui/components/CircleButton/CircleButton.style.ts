@@ -6,7 +6,7 @@ type StyleType = {
   isLogin?: boolean;
 };
 
-export const StyledCircleButton = styled.button<StyleType>`
+const StyledCircleButton = styled.button<StyleType>`
   background: #344966;
   border-radius: 63px;
   width: 48px;
@@ -35,3 +35,5 @@ export const StyledCircleButton = styled.button<StyleType>`
   }
 }
 `;
+
+export default StyledCircleButton;

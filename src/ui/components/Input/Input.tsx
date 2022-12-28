@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import imageEye from './image/View.svg';
-import { StyledInput } from './Input.style';
+import StyledInput from './Input.style';
 
 type PropType = {
   placeholder: string;
@@ -32,36 +32,36 @@ const Input: React.FC<PropType> = (props) => {
   return (
     <StyledInput isHeader={props.isHeader}
       className={props.className}
+    >
+      <button
+        className="image__block"
+        type="button"
+        onClick={() => setInputState(!inputState)}
       >
-        <button
-          className="image__block"
-          type="button"
-          onClick={() => setInputState(!inputState)}
-        >
-          <img
-            className="image"
-            src={
-              props.type === 'password' && inputState
-                ? imageEye
-                : props.src
-            }
-            alt={props.alt}
-          />
-        </button>
-        <input
-          onChange={props.onChange}
-          onBlur={props.onBlur}
-          value={props.value}
-          // id={props.id}
-          name={props.name}
-          className="input"
-          type={
+        <img
+          className="image"
+          src={
             props.type === 'password' && inputState
-              ? 'text'
-              : props.type
+              ? imageEye
+              : props.src
           }
-          placeholder={props.placeholder}
+          alt={props.alt}
         />
+      </button>
+      <input
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+        value={props.value}
+        // id={props.id}
+        name={props.name}
+        className="input"
+        type={
+          props.type === 'password' && inputState
+            ? 'text'
+            : props.type
+        }
+        placeholder={props.placeholder}
+      />
     </StyledInput>
   );
 };

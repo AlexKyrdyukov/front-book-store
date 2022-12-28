@@ -17,5 +17,6 @@ export const StyledButton = styled.button<StyleType>`
   
   @media (max-width: 728px)  { 
   }
-
 `;
+
+export default StyledButton;

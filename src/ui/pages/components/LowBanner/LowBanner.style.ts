@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledLowBanner = styled.section`
+const StyledLowBanner = styled.section`
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
@@ -183,3 +183,5 @@ export const StyledLowBanner = styled.section`
     }
   }
 `;
+
+export default StyledLowBanner;

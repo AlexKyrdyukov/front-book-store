@@ -11,7 +11,7 @@ import inputLogo from './images/search.svg';
 import cart from './images/Cart.svg';
 import heart from './images/heart.svg';
 import profile from './images/profile.svg';
-import { StyledHeader } from './Herader.style';
+import StyledHeader from './Herader.style';
 
 const Header: React.FC = () => {
   const user = useAppSelector(({ userReducer }) => userReducer.user);
@@ -36,8 +36,8 @@ const Header: React.FC = () => {
         Catalog
       </Link>
       <form
-      className="header__form-block"
-      action="submit"
+        className="header__form-block"
+        action="submit"
       >
         <Input
           placeholder="search"
@@ -61,7 +61,6 @@ const Header: React.FC = () => {
               className="sign-in__button"
             >Sign Up
             </Button>
-
           </Link>
         </div>
       ) : (

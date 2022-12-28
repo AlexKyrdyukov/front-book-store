@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyledPagination } from './Pagination.style';
+import StyledPagination from './Pagination.style';
 
 const Pagination: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledMainPage = styled.main`
+const StyledMainPage = styled.main`
   .banner__wrapper {
     margin-top: 40px;
     background: #F0F4EF;
@@ -39,3 +39,5 @@ export const StyledMainPage = styled.main`
     height: 100%;
   }
 `;
+
+export default StyledMainPage;

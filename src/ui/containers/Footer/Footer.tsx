@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import logoSite from './images/logo.svg';
 import mapCart from './images/map.svg';
-import { StyledFooter } from './Footer.style';
+import StyledFooter from './Footer.style';
 
 const Footer: React.FC = () => {
   return (

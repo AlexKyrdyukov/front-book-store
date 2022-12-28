@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledCatalogPages } from './Favorites.style';
+import StyledCatalogPages from './Favorites.style';
 
 type PropsType = {
   value?: string;

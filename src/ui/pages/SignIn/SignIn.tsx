@@ -11,7 +11,7 @@ import validationDate from '../../../utils/validationSchemas/dataValidation';
 import mainImage from './images/human.png';
 import hideLogo from './images/hide.svg';
 import mailLogo from './images/mail.svg';
-import { StyledSignInPage } from './SignIn.style';
+import StyledSignInPage from './SignIn.style';
 
 const SignUp: React.FC = () => {
   const formik = useFormik({

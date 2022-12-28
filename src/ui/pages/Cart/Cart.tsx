@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyledCartPage } from './Cart.style';
+import StyledCartPage from './Cart.style';
 
 type PropsType = {
   value?: string;

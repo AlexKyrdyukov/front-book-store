@@ -4,7 +4,7 @@ type StyleType = {
   user: boolean;
 };
 
-export const StyledHeader = styled.header<StyleType>`
+const StyledHeader = styled.header<StyleType>`
   max-width: 1440px;
   display: flex;
   align-items: center;
@@ -136,3 +136,5 @@ export const StyledHeader = styled.header<StyleType>`
 
   }
 `;
+
+export default StyledHeader;

@@ -4,7 +4,7 @@ import { useAppSelector } from '../../store';
 
 const ProtectedRoute = () => {
   const user = useAppSelector(({ userReducer }) => userReducer.user);
-  if (!user) {
+  if (user) {
     return <Navigate to="/signIn" replace />;
   }
   return <Outlet />;

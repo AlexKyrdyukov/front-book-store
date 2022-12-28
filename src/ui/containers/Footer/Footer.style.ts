@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledFooter = styled.footer`
+const StyledFooter = styled.footer`
 background: #0D1821;
 
 .footer__container {
@@ -171,3 +171,5 @@ background: #0D1821;
 }
 
 `;
+
+export default StyledFooter;

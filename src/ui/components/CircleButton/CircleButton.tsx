@@ -1,19 +1,16 @@
 import React from 'react';
 
-import { StyledCircleButton } from './CircleButton.style';
+import StyledCircleButton from './CircleButton.style';
 
 type PropsType = {
   type?: 'button' | 'submit' | 'reset' | undefined;
-  isMobile?: boolean;
-  isLogin?: boolean;
   src?: string;
   alt?: string;
-};
+} & React.PropsWithChildren;
 
 const CircleButton: React.FC<PropsType> = (props) => {
   return (
     <StyledCircleButton
-      isMobile={props.isMobile}
       type={props.type}
     >
       <div className="image__block">

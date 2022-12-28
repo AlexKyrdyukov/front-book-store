@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledUserAccount = styled.main`
+const StyledUserAccount = styled.main`
 color: red;
 `;
+
+export default StyledUserAccount;

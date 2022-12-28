@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyledButton } from './Button.style';
+import StyledButton from './Button.style';
 
 type PropType = {
   type?: 'button' | 'submit';

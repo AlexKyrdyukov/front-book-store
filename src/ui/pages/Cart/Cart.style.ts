@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledCartPage = styled.main`
+const StyledCartPage = styled.main`
   color:blue;
 `;
+
+export default StyledCartPage;

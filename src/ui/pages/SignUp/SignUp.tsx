@@ -11,7 +11,7 @@ import validationData from '../../../utils/validationSchemas/dataValidation';
 import mailLogo from './images/mail.svg';
 import hideLogo from './images/hide.svg';
 import mainImage from './images/human.png';
-import { StyledSignUpPage } from './SignUp.style';
+import StyledSignUpPage from './SignUp.style';
 
 const SignUp: React.FC = () => {
   const formik = useFormik({
@@ -116,6 +116,7 @@ const SignUp: React.FC = () => {
           />
           <span className="block__button">
             <Button
+              className="button"
               disabled={formik.isSubmitting}
               type="submit"
             // onClick={formik.handleReset}

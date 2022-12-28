@@ -4,7 +4,7 @@ type StyleType = {
   isHeader?: boolean;
 };
 
-export const StyledInput = styled.div<StyleType>`
+const StyledInput = styled.div<StyleType>`
   position: relative;
   display: flex;
   align-items: center;
@@ -106,3 +106,5 @@ export const StyledInput = styled.div<StyleType>`
     }
   }
 `;
+
+export default StyledInput;

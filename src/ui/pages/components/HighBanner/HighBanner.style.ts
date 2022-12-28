@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledTopBanner = styled.section`
+const StyledHighBanner = styled.section`
 margin-bottom: 40px;
 
 .banner__wrapper {
@@ -169,3 +169,5 @@ margin-bottom: 40px;
 
 }
 `;
+
+export default StyledHighBanner;

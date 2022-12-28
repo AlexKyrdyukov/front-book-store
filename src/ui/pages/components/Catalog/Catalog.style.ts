@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledCatalog = styled.main`
+const StyledCatalog = styled.main`
   color:red;
   margin: 20px auto;
   
@@ -9,3 +9,5 @@ export const StyledCatalog = styled.main`
     justify-content: center;
     }
 `;
+
+export default StyledCatalog;

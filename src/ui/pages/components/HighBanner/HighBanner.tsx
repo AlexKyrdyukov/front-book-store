@@ -8,7 +8,8 @@ import humanMobile from './images/humanMobile.svg';
 import booksDesktop from './images/bgWithBook.png';
 import booksTablet from './images/bookTablet.svg';
 import booksMobile from './images/bookMobile.svg';
-import { StyledTopBanner } from './HighBanner.style';
+
+import StyledTopBanner from './HighBanner.style';
 
 const Home: React.FC = () => {
   return (

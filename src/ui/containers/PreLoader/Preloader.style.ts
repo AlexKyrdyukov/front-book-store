@@ -3,16 +3,12 @@ import styled from 'styled-components';
 const StyledLoader = styled.div`
 background-color: black;
 .preloader {
-  /*фиксированное позиционирование*/
   position: fixed;
-  /* координаты положения */
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  /* фоновый цвет элемента */
-  background: #e0e0e0;
-  /* размещаем блок над всеми элементами на странице (это значение должно быть больше, чем у любого другого позиционированного элемента на странице) */
+  background: #000000;  /* #e0e0e0;*/
   z-index: 1001;
 }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StyledLowBanner } from './LowBanner.style';
 
 import Button from '../../../components/Button';
 
@@ -8,6 +7,8 @@ import castle from './images/castleTable.png';
 import fairyDesktop from './images/fairyDesktop.png';
 import fairyTablet from './images/fairyTablet.png';
 import fairyMobile from './images/fairyMobile.png';
+
+import StyledLowBanner from './LowBanner.style';
 
 const LowBanner = () => {
   return (
