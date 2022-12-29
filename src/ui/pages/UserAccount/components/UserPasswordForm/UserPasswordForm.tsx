@@ -6,17 +6,22 @@ import Button from '../../../../components/Button/Button';
 import Input from '../../../../components/Input/Input';
 
 import validationDate from '../../../../../utils/validationSchemas/dataValidation';
+
 import userApi from '../../../../../api/userApi';
+import { useAppSelector } from '../../../../../store';
+
 import eyeImage from './images/eyeInput.svg';
 
 import StyledFormPassword from './UserPasswordForm.style';
 
 const UserPasswordForm = () => {
+  const iserId = useAppSelector((reducer) => reducer.userReducer.user?.id);
+  
   const [formState, setFormState] = React.useState<boolean>(false);
   const formik = useFormik({
     initialValues: {
-      password: '',
-      newPassword: '',
+      password: 'sssssssssssssss',
+      newPassword: 'wwwwwwwwwwwwwwwwwwwww',
       confirmNewPassword: '',
     },
     validationSchema: yup.object({
@@ -25,7 +30,7 @@ const UserPasswordForm = () => {
       confirmPassword: validationDate.confirmNewPassword,
     }),
     onSubmit: async (values, actions) => {
-      await userApi.changePassword(14, values.password, values.newPassword);
+      await userApi.changePassword(userId, values.password, values.newPassword);
       actions.resetForm({
         values: {
           newPassword: '',
@@ -73,33 +78,24 @@ const UserPasswordForm = () => {
                 type="password"
                 alt="eye  image"
                 src={eyeImage}
-                {...formik.getFieldProps('firstName')}
+                {...formik.getFieldProps('oldPassword')}
               />
-              {formik.touched.password && formik.errors.password ? (
-                <div>{formik.errors.password}</div>
-              ) : null}
               <Input
                 id="newPassword"
                 placeholder="New Password"
                 type="password"
                 alt="eye  image"
                 src={eyeImage}
-                {...formik.getFieldProps('firstName')}
+                {...formik.getFieldProps('newPassword')}
               />
-              {formik.touched.newPassword && formik.errors.newPassword ? (
-                <div>{formik.errors.newPassword}</div>
-              ) : null}
               <Input
                 id="confirmNewPassword"
                 placeholder="Password replay"
                 type="password"
                 alt="eye  image"
                 src={eyeImage}
-                {...formik.getFieldProps('firstName')}
+                {...formik.getFieldProps('confirmNewPassword')}
               />
-              {formik.touched.confirmNewPassword && formik.errors.confirmNewPassword ? (
-                <div>{formik.errors.confirmNewPassword}</div>
-              ) : null}
               <Button
                 type="button"
                 className="confirm-button"

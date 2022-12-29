@@ -59,8 +59,6 @@ const SignUp: React.FC = () => {
             className="sign-up__input"
             {...formik.getFieldProps('email')}
           />
-          {formik.errors.email && formik.touched.email && formik.errors.email}
-          {formik.errors.email ? <div>{formik.errors.email}</div> : null}
           <Input
             placeholder="Password"
             id="password"
@@ -71,8 +69,6 @@ const SignUp: React.FC = () => {
             className="sign-up__input"
             {...formik.getFieldProps('password')}
           />
-          {formik.errors.password && formik.touched.password && formik.errors.password}
-          {formik.errors.password ? <div>{formik.errors.password}</div> : null}
           <Input
             placeholder="Password replay"
             id="confirmPassword"
@@ -83,12 +79,6 @@ const SignUp: React.FC = () => {
             className="sign-up__input"
             {...formik.getFieldProps('confirmPassword')}
           />
-          {formik.errors.confirmPassword &&
-            formik.touched.confirmPassword &&
-            formik.errors.confirmPassword
-            }
-          {formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
-
           <span className="block__button">
             <Button
               className="button"
