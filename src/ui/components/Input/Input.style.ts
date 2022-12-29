@@ -65,18 +65,6 @@ const StyledInput = styled.div<StyleType>`
 
   @media (max-width: 1440px)  { 
 
-    .input:focus {
-      padding-bottom: 5px;
-      padding-top: 39px ;
-    }
-
-    .input:focus + .custom__placeholder {
-      font-size: 16px;
-      display: inline;
-      left: 65px;
-      top: 7px;
-      color: #B9BAC4;
-    }
   }
 
   @media (max-width: 834px)  { 
@@ -92,18 +80,6 @@ const StyledInput = styled.div<StyleType>`
       top: 55px;
     }
 
-    .input:focus {
-      padding-bottom: 3px;
-      padding-top: 25px ;
-    }
-
-    .input:focus + .custom__placeholder {
-      font-size: 16px;
-      display: inline;
-      left: 65px;
-      top: 3px;
-      color: #B9BAC4;
-    }
   }
 `;
 

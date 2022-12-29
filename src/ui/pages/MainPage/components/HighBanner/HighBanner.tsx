@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '../../../components/Button';
+import Button from '../../../../components/Button/Button';
 
 import humanDesktop from './images/human.png';
 import humanTablet from './images/humanTablet.svg';

@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Preloader from '../PreLoader/Preloader';
+import Preloader from '../PreLoader';
 
 const SignUp = React.lazy(() => import('../../pages/SignUp'));
 const SignIn = React.lazy(() => import('../../pages/SignIn'));
