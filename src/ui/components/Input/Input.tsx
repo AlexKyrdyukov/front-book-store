@@ -5,12 +5,14 @@ import imageEye from './image/View.svg';
 import StyledInput from './Input.style';
 
 type PropType = {
+  id?: string;
   placeholder: string;
   type: string;
   src: string;
   text?: string;
   errorText?: string;
   alt: string;
+  label?: string;
   className?: string;
   classNameError?: string;
   isHeader?: boolean;
@@ -48,6 +50,14 @@ const Input: React.FC<PropType> = (props) => {
           alt={props.alt}
         />
       </button>
+      {props.label &&
+        (<label
+          className="label__input"
+          htmlFor={props.id}
+        >
+          {props.label}
+         </label>)
+        }
       <input
         onChange={props.onChange}
         onBlur={props.onBlur}

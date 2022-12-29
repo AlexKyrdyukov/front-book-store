@@ -37,7 +37,7 @@ const LowBanner = () => {
             <Link to="/signUp">
               <Button
                 className="button"
-              >/ Sign Up
+              >Sign Up
               </Button>
             </Link>
           </div>

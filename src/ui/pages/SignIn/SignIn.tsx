@@ -50,49 +50,30 @@ const SignUp: React.FC = () => {
           <Input
             placeholder="Email"
             // id="email"
-            name="email"
+            id="email"
             type="email"
             src={mailLogo}
             alt="logo email"
             text="Enter your email"
             className="sign-up__input"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-            classNameError={formik.errors.email &&
-              formik.touched.email
-              ? 'input__error'
-              : ''
-            }
-            errorText={formik.errors.email &&
-              formik.touched.email
-              ? formik.errors.email
-              : ''
-            }
+            {...formik.getFieldProps('email')}
           />
+          {formik.errors.email && formik.touched.email && formik.errors.email}
+          {formik.errors.email ? <div>{formik.errors.email}</div> : null}
           <Input
             placeholder="Password"
             // id="password"
-            name="password"
+            id="password"
             type="password"
             alt="logo password"
             src={hideLogo}
             text="Enter your password"
             className="sign-up__input"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            classNameError={formik.errors.password &&
-              formik.touched.password
-              ? 'input__error'
-              : ''
-            }
-            errorText={formik.errors.password &&
-              formik.touched.password
-              ? formik.errors.password
-              : ''
-            }
+            {...formik.getFieldProps('password')}
           />
+          {formik.errors.password && formik.touched.password && formik.errors.password}
+          {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+
           <div className="block__button">
             <Button
               className="button"

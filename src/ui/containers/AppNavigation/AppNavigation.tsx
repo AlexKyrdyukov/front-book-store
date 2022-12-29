@@ -11,6 +11,7 @@ const Cart = React.lazy(() => import('../../pages/Cart'));
 const Account = React.lazy(() => import('../../pages/UserAccount'));
 const Favorites = React.lazy(() => import('../../pages/Favorites'));
 const MainPage = React.lazy(() => import('../../pages/MainPage'));
+
 const AppNavigation = () => {
   return (
     <Suspense fallback={<Preloader />}>

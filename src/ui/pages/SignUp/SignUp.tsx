@@ -51,69 +51,44 @@ const SignUp: React.FC = () => {
           <h2 className="title">Sign Up</h2>
           <Input
             placeholder="Email"
-            name="email"
+            id="email"
             type="email"
             src={mailLogo}
             alt="logo email"
             text="Enter your email"
             className="sign-up__input"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-            classNameError={formik.errors.email &&
-              formik.touched.email
-              ? 'input__error'
-              : ''
-            }
-            errorText={formik.errors.email &&
-              formik.touched.email
-              ? formik.errors.email
-              : ''
-            }
+            {...formik.getFieldProps('email')}
           />
+          {formik.errors.email && formik.touched.email && formik.errors.email}
+          {formik.errors.email ? <div>{formik.errors.email}</div> : null}
           <Input
             placeholder="Password"
-            name="password"
+            id="password"
             type="password"
             alt="logo password"
             src={hideLogo}
             text="Enter your password"
             className="sign-up__input"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            classNameError={formik.errors.password &&
-              formik.touched.password
-              ? 'input__error'
-              : ''
-            }
-            errorText={formik.errors.password &&
-              formik.touched.password
-              ? formik.errors.password
-              : ''
-            }
+            {...formik.getFieldProps('password')}
           />
+          {formik.errors.password && formik.touched.password && formik.errors.password}
+          {formik.errors.password ? <div>{formik.errors.password}</div> : null}
           <Input
             placeholder="Password replay"
-            name="confirmPassword"
+            id="confirmPassword"
             type="password"
             alt="logo password"
             src={hideLogo}
             text="Repeat your password without errors"
             className="sign-up__input"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.confirmPassword}
-            classNameError={formik.errors.confirmPassword &&
-              formik.touched.confirmPassword
-              ? 'input__error'
-              : ''
-            }
-            errorText={formik.errors.confirmPassword && formik.touched.confirmPassword
-              ? formik.errors.confirmPassword
-              : ''
-            }
+            {...formik.getFieldProps('confirmPassword')}
           />
+          {formik.errors.confirmPassword &&
+            formik.touched.confirmPassword &&
+            formik.errors.confirmPassword
+            }
+          {formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
+
           <span className="block__button">
             <Button
               className="button"
