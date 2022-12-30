@@ -6,7 +6,12 @@ import * as yup from 'yup';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import authApi from '../../../api/authApi';
+
+import cookies from '../../../coookieHelper/CookieStorage';
+
 import validationDate from '../../../utils/validationSchemas/dataValidation';
+import { useAppDispatch } from '../../../store';
+import { userSliceActions } from '../../../store/userSlice';
 
 import mainImage from './images/human.png';
 import hideLogo from './images/hide.svg';
@@ -14,6 +19,8 @@ import mailLogo from './images/mail.svg';
 import StyledSignInPage from './SignIn.style';
 
 const SignUp: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -24,10 +31,17 @@ const SignUp: React.FC = () => {
       password: validationDate.requiredPassword,
     }),
     onSubmit: async (values, actions) => {
-      await authApi.signIn({
-        email: values.email,
-        password: values.password,
-      });
+      try {
+        const response = await authApi.signIn({
+          email: values.email,
+          password: values.password,
+        });
+        cookies.token.set(response.token);
+        dispatch(userSliceActions.setUser(response.user));
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      }
       actions.resetForm({
         values: {
           email: '',
@@ -42,7 +56,6 @@ const SignUp: React.FC = () => {
       <ToastContainer />
       <div className="sign-up__wrapper">
         <form
-          autoComplete="off"
           onSubmit={formik.handleSubmit}
           className="block__form"
         >

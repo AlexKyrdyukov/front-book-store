@@ -1,18 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import logoSite from './images/logo.svg';
+import { userSliceActions } from '../../../store/userSlice';
+import { useAppDispatch, useAppSelector } from '../../../store';
+import cookies from '../../../coookieHelper/CookieStorage';
+
 import mapCart from './images/map.svg';
+import logoSite from './images/logo.svg';
+
 import StyledFooter from './Footer.style';
 
 const Footer: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
+  const logOut = () => {
+    // eslint-disable-next-line no-console
+    console.log('event');
+    if (!user) {
+      return;
+    }
+    dispatch(userSliceActions.removeUser());
+    cookies.token.remove();
+  };
   return (
     <StyledFooter>
       <div className="footer__container">
         <div className="footer__contacts">
-          <Link to="/home">
+          <button
+            className="button__log-out"
+            onClick={logOut}
+          >
             <img className="footer__logo" src={logoSite} alt="site logo" />
-          </Link>
+          </button>
           <span className="footer__url">tranthuy.nute@gmail.com</span>
           <span className="footer__phone-nuber">(480) 555-0103</span>
         </div>

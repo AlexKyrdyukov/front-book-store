@@ -12,6 +12,14 @@ background: #0D1821;
   padding: 73px 80px;
 }
 
+.button__log-out {
+  display: inline-block;
+  max-height: 46px;
+  max-width: 88px;
+  margin-bottom: 40px;
+  background-color: #0D1821;
+}
+
 .footer__contacts {
   white-space: nowrap;
   display: flex;
@@ -22,9 +30,8 @@ background: #0D1821;
 }
 
 .footer__logo {
-  height: 46px;
-  width: 88px;
-  margin-bottom: 40px;
+  height: 100%;
+  width: 100%;
 } 
 
 .footer__url {
@@ -139,7 +146,7 @@ background: #0D1821;
     margin-bottom: 40px;
   }
 
-  .footer__logo {
+  .button__log-out {
     margin-bottom: 30px;
   }
 

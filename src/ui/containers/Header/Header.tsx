@@ -14,7 +14,7 @@ import profile from './images/profile.svg';
 import StyledHeader from './Herader.style';
 
 const Header: React.FC = () => {
-  const user = useAppSelector(({ userReducer }) => userReducer.user);
+  const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
   return (
     <StyledHeader
       user={Boolean(user)}

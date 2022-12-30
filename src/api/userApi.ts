@@ -6,18 +6,20 @@ type UserType = {
   avatar: string;
 };
 
-const changeData = async (user: UserType) => {
-  const response = await axiosInstance.patch<unknown>('/user/chage-data', user);
+const changeData = async (userId: number | undefined, fullName: string, email: string) => {
+  const response = await axiosInstance.patch<unknown>(`/user/${userId}`, { fullName, email });
   return response.data;
 };
 
-const deleteUser = async (userId: number) => {
-  const response = await axiosInstance.delete<unknown>(`/user/:${userId}`);
+const deleteUser = async (userId: number | undefined) => {
+  const response = await axiosInstance.delete<unknown>(`/user/${userId}`);
   return response.data;
 };
 
-const changePassword = async (userId: number, password: string, newPassword: string) => {
-  const response = await axiosInstance.patch<unknown>(`/user/:${userId}/password`, { password, newPassword });
+const changePassword = async (
+  userId: number | undefined, password: string, newPassword: string,
+) => {
+  const response = await axiosInstance.patch<unknown>(`/user/${userId}/password`, { password, newPassword });
   return response.data;
 };
 

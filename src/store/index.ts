@@ -3,11 +3,11 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import type { TypedUseSelectorHook } from 'react-redux';
 
-import userReducer from './userSlice';
+import rootSlice from './rootSlice';
 
 export const store = configureStore({
   reducer: {
-    userReducer,
+    rootSlice,
   },
   devTools: true,
 });

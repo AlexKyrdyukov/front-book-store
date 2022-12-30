@@ -6,7 +6,9 @@ import Preloader from '../PreLoader';
 
 const SignUp = React.lazy(() => import('../../pages/SignUp'));
 const SignIn = React.lazy(() => import('../../pages/SignIn'));
-const ProtectedRoute = React.lazy(() => import('../../../utils/privateRoute'));
+const ProtectedRoute = React.lazy(() => import('../../../utils/privateRoute/ProtectedRoute'));
+const ProtectedUserRoute = React.lazy(() => import('../../../utils/privateRoute/ProtectedUserRoute'));
+
 const Cart = React.lazy(() => import('../../pages/Cart'));
 const Account = React.lazy(() => import('../../pages/UserAccount'));
 const Favorites = React.lazy(() => import('../../pages/Favorites'));
@@ -17,9 +19,11 @@ const AppNavigation = () => {
     <Suspense fallback={<Preloader />}>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/signUp" element={<SignUp />} />
         <Route path="/book/:bookId" element={<SignUp />} />
-        <Route path="/signIn" element={<SignIn />} />
+        <Route element={<ProtectedUserRoute />}>
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/signIn" element={<SignIn />} />
+        </Route>
         <Route element={<ProtectedRoute />}>
           <Route path="/cart" element={<Cart />} />
           <Route path="/account" element={<Account />} />

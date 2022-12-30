@@ -8,20 +8,30 @@ import Input from '../../../../components/Input/Input';
 import validationDate from '../../../../../utils/validationSchemas/dataValidation';
 
 import userApi from '../../../../../api/userApi';
-import { useAppSelector } from '../../../../../store';
+import { userSliceActions } from '../../../../../store/userSlice';
+import { useAppSelector, useAppDispatch } from '../../../../../store';
 
 import eyeImage from './images/eyeInput.svg';
 
 import StyledFormPassword from './UserPasswordForm.style';
 
 const UserPasswordForm = () => {
-  const iserId = useAppSelector((reducer) => reducer.userReducer.user?.id);
-  
+  const dispatch = useAppDispatch();
+  const userId = useAppSelector((reducer) => reducer.rootSlice.userSlice.user?.id);
+
+  const removeUser = async () => {
+    try {
+      await userApi.deleteUser(userId);
+      dispatch(userSliceActions.removeUser());
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const [formState, setFormState] = React.useState<boolean>(false);
   const formik = useFormik({
     initialValues: {
-      password: 'sssssssssssssss',
-      newPassword: 'wwwwwwwwwwwwwwwwwwwww',
+      password: '',
+      newPassword: '',
       confirmNewPassword: '',
     },
     validationSchema: yup.object({
@@ -43,50 +53,30 @@ const UserPasswordForm = () => {
 
   return (
     <StyledFormPassword>
-      {formState
-        ? (<div> <h3>Password</h3>
-          <button
-            type="button"
-            onClick={() => setFormState(!formState)}
-          >
-            Change information
-          </button>
-          <form action="">
-            <Input
-              placeholder="picka@mail.com"
-              label="Your password"
+      <div> <h3>Password</h3>
+        <button
+          type="button"
+          onClick={() => setFormState(!formState)}
+        >
+          Change information
+        </button>
+        <form action="">
+          <Input
+            id="password"
+            placeholder="picka@mail.com"
+            label="Your password"
+            type="password"
+            alt="eye  image"
+            src={eyeImage}
+          />
+          {formState
+            ? (<><Input
+              id="newPassword"
+              placeholder="New Password"
               type="password"
               alt="eye  image"
               src={eyeImage}
-            />
-          </form>
-           </div>)
-        : (
-          <div>
-            <h3>Password</h3>
-            <button
-              type="button"
-              onClick={() => setFormState(!formState)}
-            >
-              Change information
-            </button>
-            <form action="#">
-              <Input
-                id="oldPassword"
-                placeholder="picka@mail.com"
-                label="Old password"
-                type="password"
-                alt="eye  image"
-                src={eyeImage}
-                {...formik.getFieldProps('oldPassword')}
-              />
-              <Input
-                id="newPassword"
-                placeholder="New Password"
-                type="password"
-                alt="eye  image"
-                src={eyeImage}
-                {...formik.getFieldProps('newPassword')}
+              {...formik.getFieldProps('newPassword')}
               />
               <Input
                 id="confirmNewPassword"
@@ -95,16 +85,27 @@ const UserPasswordForm = () => {
                 alt="eye  image"
                 src={eyeImage}
                 {...formik.getFieldProps('confirmNewPassword')}
-              />
-              <Button
-                type="button"
-                className="confirm-button"
-              >Confirm
-              </Button>
-            </form>
-          </div>)
-      }
-    </StyledFormPassword>
+                />
+                <Button
+                  type="button"
+                  className="confirm-button"
+                >
+                Confirm
+                </Button>
+                <Button
+                  type="button"
+                  className="confirm-button"
+                  onClick={removeUser}
+                >
+                Remove user
+                </Button>
+               </>)
+            : null
+          }
+        </form>
+      </div>
+
+    </StyledFormPassword >
   );
 };
 

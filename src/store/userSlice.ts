@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 import type { UserType } from '../types/userType';
 
-import Cookies from '../coookieHelper/CookieStorage';
 import userThunks from './userThunks';
 
 const getInitialState = () => ({
@@ -13,6 +13,12 @@ export const userSlice = createSlice({
   name: 'userSlice',
   initialState: getInitialState,
   reducers: {
+    setUser(state, action: PayloadAction<UserType>) {
+      state.user = action.payload;
+    },
+    removeUser(state) {
+      state.user = null;
+    },
   },
   extraReducers: (builder) => {
     builder

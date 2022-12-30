@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 
 import Header from './ui/containers/Header';
 import Footer from './ui/containers/Footer';
-import AppNavigation from './ui/containers/AppNavigation/AppNavigation';
+import AppNavigation from './ui/containers/AppNavigation';
 import userThunks from './store/userThunks';
 import { useAppDispatch } from './store';
 
@@ -11,7 +11,9 @@ const App = () => {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    dispatch(userThunks.getUser());
+    dispatch(userThunks.getUser())
+      .unwrap()
+      .catch((error) => console.error(error));
   }, [dispatch]);
 
   return (
