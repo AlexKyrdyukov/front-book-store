@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 import Header from './ui/containers/Header';
 import Footer from './ui/containers/Footer';
@@ -11,9 +11,18 @@ const App = () => {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    dispatch(userThunks.getUser())
-      .unwrap()
-      .catch((error) => console.error(error));
+    const getUser = async () => {
+      const res = await dispatch(userThunks.getUser());
+      // eslint-disable-next-line no-console
+      console.log(res);
+      if (res.payload.status === 403) {
+        toast(res.payload.message);
+      }
+      if (!res.payload.status) {
+        toast('error server connection');
+      }
+    };
+    getUser();
   }, [dispatch]);
 
   return (

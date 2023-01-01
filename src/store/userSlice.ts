@@ -24,7 +24,9 @@ export const userSlice = createSlice({
     builder
       .addCase(userThunks.getUser.fulfilled,
         (state, action) => {
-          state.user = action.payload.user;
+          // eslint-disable-next-line no-console
+          console.log(action);
+          state.user = action.payload;
         });
   },
 });

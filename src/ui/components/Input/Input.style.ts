@@ -8,8 +8,6 @@ const StyledInput = styled.div<StyleType>`
   position: relative;
   display: flex;
   align-items: center;
-  flex-grow: 1;
-  /* flex-grow: 1; */
   border-radius: 16px;
   background: #F0F4EF;
 

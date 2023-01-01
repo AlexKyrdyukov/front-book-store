@@ -20,11 +20,11 @@ const Header: React.FC = () => {
       user={Boolean(user)}
     >
       <Link
-        className="block__image"
+        className="block__logo"
         to="/"
       >
         <img
-          className="header__logo"
+          className="logo"
           src={headerLogo}
           alt="logo site"
         />
