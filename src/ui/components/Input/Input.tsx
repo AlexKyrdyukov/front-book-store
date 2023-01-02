@@ -16,7 +16,6 @@ type PropType = {
   className?: string;
   classNameError?: string;
   isHeader?: boolean;
-  // id?: string;
   name?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -51,13 +50,14 @@ const Input: React.FC<PropType> = (props) => {
         />
       </button>
       {props.label &&
-        (<label
-          className="label__input"
-          htmlFor={props.id}
-        >
-          {props.label}
-         </label>)
-        }
+        (
+          <label
+            className="label__input"
+            htmlFor={props.id}
+          >
+            {props.label}
+          </label>)
+      }
       <input
         onChange={props.onChange}
         onBlur={props.onBlur}

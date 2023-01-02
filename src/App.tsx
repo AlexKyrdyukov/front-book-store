@@ -13,12 +13,10 @@ const App = () => {
   React.useEffect(() => {
     const getUser = async () => {
       const res = await dispatch(userThunks.getUser());
-      // eslint-disable-next-line no-console
-      console.log(res);
-      if (res.payload.status === 403) {
-        toast(res.payload.message);
+      if (res.payload?.status === 403) {
+        toast(res.payload?.message);
       }
-      if (!res.payload.status) {
+      if (!res.payload?.status && res.type.split('/')[1] === 'rejected') {
         toast('error server connection');
       }
     };

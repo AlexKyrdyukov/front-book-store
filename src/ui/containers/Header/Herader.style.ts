@@ -36,7 +36,6 @@ const StyledHeader = styled.header<StyleType>`
     font-weight: 500;
   }
 
-
   .header__form-block {
     margin-right: ${(props) => (!props.user ? '97px' : '127px')};
     flex-grow: 1;
@@ -81,9 +80,6 @@ const StyledHeader = styled.header<StyleType>`
       margin-right: 51px;
     }
 
-    .header__link-catalog{
-    }
-
   }
 
   @media (max-width: 655px)  {
@@ -91,6 +87,7 @@ const StyledHeader = styled.header<StyleType>`
     justify-content: space-between;
     row-gap: 17px;
     flex-grow: 1;
+
     .block__logo {
       margin-right: 81px;
     }
@@ -115,12 +112,13 @@ const StyledHeader = styled.header<StyleType>`
     }
   }
   @media (max-width: 553px)  {
+    
     .block__button {
       flex-grow: 0;
     }
 
     .header__link-catalog{
-      margin-right: 17px;
+      margin-right: ${(props) => (props.user ? '57px' : '17px')};
       font-weight: 500;
       font-size: 14px;
     }
@@ -140,6 +138,14 @@ const StyledHeader = styled.header<StyleType>`
       max-width: 62px;
       margin-right: 17px;
     }
+
+    .button__cart {
+    margin-right: 17px;
+  }
+
+  .button__likes-books {
+    margin-right: 17px;
+  }
   }
 
   @media (max-width: 355px)  {

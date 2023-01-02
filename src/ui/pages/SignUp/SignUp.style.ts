@@ -1,28 +1,23 @@
 import styled from 'styled-components';
 
 const StyledSignUpPage = styled.main`
-  padding: 0 15px;
+  margin: 0px auto;
+  margin-top: 80px;
+  max-width: 1440px;
+  margin-bottom: 80px;
+  display: flex;
+  padding: 0 80px;
   
-  .sign-up__input {
-    width: 413px;
-  }
-
   .input__error {
     outline: 3px solid #ED2E7E;
-    opacity: 0.7;
+    opacity: 0.5;
   }
 
   .button {
     padding: 10px 50px;
-  }
-
-  .sign-up__wrapper {
-    display: flex;
-    justify-content: space-between;
-    margin: 0px auto;
-    margin-top: 90px;
-    max-width: 1310px;
-    margin-bottom: 154px;
+    color: #F0F4EF;
+    font-weight: 500;
+    font-size: 16px;
   }
 
   .title {
@@ -33,6 +28,8 @@ const StyledSignUpPage = styled.main`
     display: flex;
     flex-direction: column;
     row-gap:63px;
+    flex-grow: 1;
+    margin-right: 255px;
   }
 
   .block__image {
@@ -49,21 +46,38 @@ const StyledSignUpPage = styled.main`
     margin-top: 30px;
   }
 
-  @media (max-width: 1440px)  {
+  @media (max-width: 1400px)  { 
+  
+    .block__form {
+    margin-right: 100px;
+  }
+  }
 
-    .sign-up__wrapper {
-      max-width: 864px;
-      margin-bottom: 104px;
+
+  @media (max-width: 1028px)  { 
+    padding: 0px 40px;
+
+    .block__form {
+      margin-right: 50px;
     }
+  }
 
+
+  @media (max-width: 834px)  { 
+    max-width: 834px;
+    padding: 0px 15px;
+    margin-bottom: 104px;
+
+    .block__form {
+      margin-right: 20px;
+    }
     .sign-up__input {
-    width: 392px;
     }
   
     .block__image {
       max-width: 390px;
       max-height: 333px;
-      margin-top: 50px;
+      align-self: center;
     }
 
     .image__human {
@@ -76,35 +90,21 @@ const StyledSignUpPage = styled.main`
     }
   }
 
-  @media (max-width: 834px)  { 
-    .sign-up__wrapper {
-      max-width: 320x;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 30px;
+  @media (max-width: 651px)  { 
+    margin-bottom: 70px;
+    flex-direction: column;
+    
+    .block__image {
+      align-self: center;
     }
+  }
 
-    .block__form {
-      row-gap:44px;
-    }
-
-    .sign-up__input {
-      width: 290px;
-    }
-
+  @media (max-width: 350px)  { 
+      
     .block__image {
       max-width: 290px;
       max-height: 247px;
-      order: 1;
-    }
-
-    .image__human {
-      width: 100%;
-      height: 100%;
-    }
-
-    .title {
-      font-size: 18px;
+      margin-top: 50px;
     }
   }
 `;

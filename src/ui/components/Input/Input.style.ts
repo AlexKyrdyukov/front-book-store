@@ -5,17 +5,12 @@ type StyleType = {
 };
 
 const StyledInput = styled.div<StyleType>`
+  
   position: relative;
   display: flex;
   align-items: center;
   border-radius: 16px;
   background: #F0F4EF;
-
-  .custom__placeholder{
-    position: absolute;
-    display: none;
-    white-space: nowrap;
-  }
 
   .input__text {
     position: absolute;
@@ -47,7 +42,6 @@ const StyledInput = styled.div<StyleType>`
     height: 100%;
   }
 
-
   .input {
     padding: 22px 0;
     background: #F0F4EF;
@@ -60,25 +54,24 @@ const StyledInput = styled.div<StyleType>`
     color: #B9BAC4;
   }
 
- 
-
-  @media (max-width: 1440px)  { 
-
-  }
-
   @media (max-width: 834px)  { 
-    /* order: ${(props) => (props.isHeader ? 1 : 0)}; */
-    /* order: 1; */
-
-    .input {
-      padding: 14px 0;
-    }
 
     .input__text {
       font-size: 14px;
       top: 55px;
     }
+  }
 
+  @media (max-width: 553px) {
+    
+    .input::placeholder {
+      font-size: 16px;
+      color: #B9BAC4;
+    }
+
+    .input {
+      padding: 14px 0;
+    }
   }
 `;
 

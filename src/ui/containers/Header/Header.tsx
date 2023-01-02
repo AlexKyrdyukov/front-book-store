@@ -68,7 +68,7 @@ const Header: React.FC = () => {
           <Link to="/cart">
             <div className="button__cart">
               {user
-                ? <div><span>{!!user}</span></div>
+                ? <div><span>{Boolean(user)}</span></div>
                 : null
               }
               <CircleButton

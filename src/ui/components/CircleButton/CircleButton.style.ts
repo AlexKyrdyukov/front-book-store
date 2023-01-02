@@ -25,7 +25,7 @@ const StyledCircleButton = styled.button<StyleType>`
     height: 100%;
   }
 
-  @media (max-width: 834px)  { 
+  @media (max-width: 651px)  { 
     width: 32px;
     height: 32px;
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
@@ -38,67 +37,64 @@ const SignUp: React.FC = () => {
         });
         cookies.token.set(response.token);
         dispatch(userSliceActions.setUser(response.user));
+        actions.resetForm({
+          values: {
+            email: '',
+            password: '',
+          },
+        });
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log(error);
       }
-      actions.resetForm({
-        values: {
-          email: '',
-          password: '',
-        },
-      });
     },
   });
 
   return (
     <StyledSignInPage>
-      <ToastContainer />
-      <div className="sign-up__wrapper">
-        <form
-          onSubmit={formik.handleSubmit}
-          className="block__form"
-        >
-          <h2 className="title">Sign In</h2>
-          <Input
-            placeholder="Email"
-            // id="email"
-            id="email"
-            type="email"
-            src={mailLogo}
-            alt="logo email"
-            text="Enter your email"
-            className="sign-up__input"
-            {...formik.getFieldProps('email')}
-          />
-          <Input
-            placeholder="Password"
-            // id="password"
-            id="password"
-            type="password"
-            alt="logo password"
-            src={hideLogo}
-            text="Enter your password"
-            className="sign-up__input"
-            {...formik.getFieldProps('password')}
-          />
-          <div className="block__button">
-            <Button
-              className="button"
-              disabled={formik.isSubmitting}
-              type="submit"
-            // onClick={formik.handleReset}
-            >Log In
-            </Button>
-          </div>
-        </form>
-        <div className="block__image">
-          <img
-            className="image__human"
-            src={mainImage}
-            alt="image with reading human"
-          />
+      <form
+        onSubmit={formik.handleSubmit}
+        className="block__form"
+      >
+        <h2 className="title">Sign In</h2>
+        <Input
+          placeholder="Email"
+          // id="email"
+          id="email"
+          type="email"
+          src={mailLogo}
+          alt="logo email"
+          text="Enter your email"
+          className="sign-up__input"
+          {...formik.getFieldProps('email')}
+        />
+        <Input
+          placeholder="Password"
+          // id="password"
+          id="password"
+          type="password"
+          alt="logo password"
+          src={hideLogo}
+          text="Enter your password"
+          className="sign-up__input"
+          {...formik.getFieldProps('password')}
+        />
+        <div className="block__button">
+          <Button
+            className="button"
+            disabled={formik.isSubmitting}
+            type="submit"
+          // onClick={formik.handleReset}
+          >Log In
+          </Button>
         </div>
+      </form>
+      <div className="block__image">
+        <img
+          className="image__human"
+          src={mainImage}
+          alt="image with reading human"
+        />
       </div>
     </StyledSignInPage>
   );

@@ -5,7 +5,7 @@ import authApi from '../api/authApi';
 const getUser = createAsyncThunk('getUser', async (_, { rejectWithValue }) => {
   try {
     const response = await authApi.getMe();
-    return (response.data);
+    return (response);
   } catch (error) {
     if (error instanceof AxiosError) {
       // eslint-disable-next-line max-len

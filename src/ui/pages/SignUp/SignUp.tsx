@@ -57,60 +57,58 @@ const SignUp: React.FC = () => {
 
   return (
     <StyledSignUpPage>
-      <div className="sign-up__wrapper">
-        <form
-          // autoComplete="off"
-          onSubmit={formik.handleSubmit}
-          className="block__form"
-        >
-          <h2 className="title">Sign Up</h2>
-          <Input
-            placeholder="Email"
-            id="email"
-            type="email"
-            src={mailLogo}
-            alt="logo email"
-            text="Enter your email"
-            className="sign-up__input"
-            {...formik.getFieldProps('email')}
-          />
-          <Input
-            placeholder="Password"
-            id="password"
-            type="password"
-            alt="logo password"
-            src={hideLogo}
-            text="Enter your password"
-            className="sign-up__input"
-            {...formik.getFieldProps('password')}
-          />
-          <Input
-            placeholder="Password replay"
-            id="confirmPassword"
-            type="password"
-            alt="logo password"
-            src={hideLogo}
-            text="Repeat your password without errors"
-            className="sign-up__input"
-            {...formik.getFieldProps('confirmPassword')}
-          />
-          <span className="block__button">
-            <Button
-              className="button"
-              disabled={formik.isSubmitting}
-              type="submit"
-            // onClick={formik.handleReset}
-            >Sing Up
-            </Button>
-          </span>
-        </form>
-        <div className="block__image">
-          <img
-            className="image__human"
-            src={mainImage}
-            alt="image with reading human"
-          />
-        </div>
+      <form
+        // autoComplete="off"
+        onSubmit={formik.handleSubmit}
+        className="block__form"
+      >
+        <h2 className="title">Sign Up</h2>
+        <Input
+          placeholder="Email"
+          id="email"
+          type="email"
+          src={mailLogo}
+          alt="logo email"
+          text="Enter your email"
+          className="sign-up__input"
+          {...formik.getFieldProps('email')}
+        />
+        <Input
+          placeholder="Password"
+          id="password"
+          type="password"
+          alt="logo password"
+          src={hideLogo}
+          text="Enter your password"
+          className="sign-up__input"
+          {...formik.getFieldProps('password')}
+        />
+        <Input
+          placeholder="Password replay"
+          id="confirmPassword"
+          type="password"
+          alt="logo password"
+          src={hideLogo}
+          text="Repeat your password without errors"
+          className="sign-up__input"
+          {...formik.getFieldProps('confirmPassword')}
+        />
+        <span className="block__button">
+          <Button
+            className="button"
+            disabled={formik.isSubmitting}
+            type="submit"
+          // onClick={formik.handleReset}
+          >Sing Up
+          </Button>
+        </span>
+      </form>
+      <div className="block__image">
+        <img
+          className="image__human"
+          src={mainImage}
+          alt="image with reading human"
+        />
       </div>
     </StyledSignUpPage>
   );

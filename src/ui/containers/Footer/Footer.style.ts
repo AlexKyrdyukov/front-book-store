@@ -21,7 +21,6 @@ background: #0D1821;
 }
 
 .footer__contacts {
-  white-space: nowrap;
   display: flex;
   flex-direction: column;
   color: #F0F4EF;
@@ -44,7 +43,6 @@ background: #0D1821;
 
 .links__list a {
   display: block;
-
   margin-bottom: 15px;
   white-space: nowrap;
 }
@@ -69,7 +67,6 @@ background: #0D1821;
   color: #F0F4EF;
   font-weight: 500;
   font-size: 20px;
-  margin-bottom: 7px;
   margin-right: 5px;
   margin-bottom: 7px;
 }
@@ -88,11 +85,19 @@ background: #0D1821;
 
 }
 
+@media (max-width: 1028px)  { 
+  .footer__container {
+    padding: 73px 40px;
+  }
+}
 
-@media (max-width: 1440px)  { 
+
+@media (max-width: 834px)  { 
 
   .footer__container {
-    max-width: 864px;
+    max-width: 834px;
+    padding: 73px 15px;
+
   }
 
   .footer__url {
@@ -127,7 +132,7 @@ background: #0D1821;
 
 }
 
-@media (max-width: 834px)  { 
+@media (max-width: 553px)  {  
 
   .footer__container {
     flex-direction: column;
@@ -163,6 +168,7 @@ background: #0D1821;
   .footer__address {
     line-height: 24px;
     margin-bottom: 0px;
+    margin-right: 0px;
   }
 
     .image__block {
