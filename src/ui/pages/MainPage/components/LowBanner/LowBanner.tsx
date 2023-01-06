@@ -13,14 +13,14 @@ import StyledLowBanner from './LowBanner.style';
 const LowBanner = () => {
   return (
     <StyledLowBanner>
-      <div className="footer__wrapper">
+      <div className="low-banner__wrapper">
         <div className="image__castle-block">
           <img className="castle" src={castle} alt="fairytale castle" />
         </div>
         <div className="image__fairy-block">
           <picture>
-            <source className="fairy" media="(min-width: 1440px)" srcSet={fairyDesktop} />
-            <source className="fairy" media="(min-width: 834px)" srcSet={fairyTablet} />
+            <source className="fairy" media="(min-width: 926px)" srcSet={fairyDesktop} />
+            <source className="fairy" media="(min-width: 720px)" srcSet={fairyTablet} />
             <img className="fairy" src={fairyMobile} alt="fly fairy" />
           </picture>
         </div>

@@ -99,6 +99,11 @@ const StyledSignInPage = styled.main`
     .block__image {
       align-self: center;
     }
+
+    .block__form {
+      margin-right: 0px;
+      margin-bottom: 60px;
+    }
   }
 
   @media (max-width: 350px)  { 

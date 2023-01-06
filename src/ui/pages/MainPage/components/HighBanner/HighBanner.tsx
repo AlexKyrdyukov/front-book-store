@@ -1,12 +1,11 @@
 import React from 'react';
 
-import Button from '../../../../components/Button/Button';
+import Button from '../../../../components/Button';
 
 import humanDesktop from './images/human.png';
 import humanTablet from './images/humanTablet.svg';
 import humanMobile from './images/humanMobile.svg';
 import booksDesktop from './images/bgWithBook.png';
-import booksTablet from './images/bookTablet.svg';
 import booksMobile from './images/bookMobile.svg';
 
 import StyledTopBanner from './HighBanner.style';
@@ -14,9 +13,9 @@ import StyledTopBanner from './HighBanner.style';
 const Home: React.FC = () => {
   return (
     <StyledTopBanner>
-      <div className="banner__wrapper">
+      <div className="high-banner__wrapper">
         <div className="block__text-button">
-          <h1 className="banner__title">
+          <h1 className="high-banner__title">
             Build your library with us
           </h1>
           <h3 className="banner__subtitle">
@@ -28,7 +27,7 @@ const Home: React.FC = () => {
           <div className="button__wrapper">
             <a
               target="blank"
-              href="https://babenki.top/krasivye-siski/7540-krasivye-sisi-52-foto.html"
+              href="https://www.sostav.ru/app/public/images/news/2014/02/18/sasha_grey_wallpaper_10-other.jpg?rand=0.3434210647828877"
             >
               <Button
                 type="button"
@@ -40,8 +39,8 @@ const Home: React.FC = () => {
         </div>
         <div className="books__wrapper">
           <picture>
-            <source className="books" media="(min-width: 1440px)" srcSet={booksDesktop} />
-            <source className="books" media="(min-width: 834px)" srcSet={booksTablet} />
+            {/* <source className="books" media="(min-width: 1440px)" srcSet={booksDesktop} /> */}
+            <source className="books" media="(min-width: 651px)" srcSet={booksDesktop} />
             <img className="books" src={booksMobile} alt="Flowers" />
           </picture>
         </div>

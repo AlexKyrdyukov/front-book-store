@@ -1,21 +1,20 @@
 import styled from 'styled-components';
 
 const StyledLowBanner = styled.section`
-  display: flex;
-  justify-content: center;
+  padding: 0px 80px;
+  max-width: 1440px;
+  margin: 0px auto;
+  margin-top: 20px;
   margin-bottom: 40px;
 
-  .footer__wrapper {
+  .low-banner__wrapper {
     background: #F0F4EF;
+    border-radius: 16px;
     display: flex;
-    justify-content: end;
-    flex-wrap: nowrap;
-    width: 1440px;
-    padding: 0px 80px;
+    justify-content: flex-end;
     position: relative;
     border-radius: 16px;
     height: 400px;
-    overflow: hidden;
   }
 
   .button {
@@ -42,7 +41,8 @@ const StyledLowBanner = styled.section`
     max-height: 400px;
     max-width: 478px;
     position: absolute;
-    bottom: 60px;
+    right: -20px;
+    top: -60px;
   }
 
   .fairy {
@@ -51,9 +51,8 @@ const StyledLowBanner = styled.section`
   }
 
   .button-text__block {
-    position: absolute;
-    left: 757px;
-    top: 80px;
+    margin-top: 80px;
+    margin-right: 50px
   }
 
   .button-text__block h2 {
@@ -69,119 +68,114 @@ const StyledLowBanner = styled.section`
     font-size: 20px;
     line-height: 30px;
     color: #0D1821;
-    max-width: 415px;
+    max-width: 435px;
     margin-bottom: 50px;
   }
 
-  @media (max-width: 1440px)  {
-
-    .footer__wrapper {
-      width: 803px;
-    }
+  @media (max-width: 1280px) {
     
     .image__castle-block {
-    position: absolute;
-    width: 389px;
-    height: 345px;
-    left: 0px;
-    bottom: 0px;
-    }
-
-    .castle {
-      height: 100%;
-    }
-
-    .button-text__block {
-      position: absolute;
-      left: 410px;
-      top: 80px;
-    }
-
-    .button-text__block h2 {
-      font-weight: 700;
-      font-size: 32px;
-      line-height: 48px;
-      margin-bottom: 22px;
-
-    }
-
-    .button-text__block p {
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 24px;
-      color: #0D1821;
-      max-width: 392px;
-      margin-bottom: 40px;
-    }
-
-    .image__fairy-block {
-      max-height: 400px;
-      max-width: 377px;
-      position: absolute;
-      bottom: 62px;
-      right: -10px;
-    }
-
-    .fairy {
-      width: 100%;
-      height: 100%;
-    }
-
-  }
-
-  @media (max-width: 834px)  { 
-    
-    .footer__wrapper {
-      width: 289px;
-      height: 501px;
-    }
-
-    .image__castle-block {
-      position: absolute;
-      width: 282px;
-      height: 250px;
+      width: 421px;
+      height: 362px;
       left: 0px;
-      bottom: 0px;
+    } 
+
+    .button-text__block h2 {
+      font-size: 36px;
+    }
+
+    .button-text__block p {
+      font-size: 18px;
+    }
+
+    .button-text__block {
+      margin-right: 20px
+    }
+
+  }
+  
+  @media (max-width: 1028px) {
+    padding: 0px 40px;
+
+    .low-banner__wrapper{
+      overflow: hidden;
+    }
+    .image__castle-block {
+      left: 0px;
+    }
+
+    .image__fairy-block {
+      right: -40px;
+    }
+
+    .image__castle-block {
+      width: 389px;
+      height: 345px;
+    }
+    
+    .button-text__block {
+      margin-right: 5px
+    }
+  }
+
+  @media (max-width: 926px) {
+
+    .button-text__block h2 {
+      font-size: 32px;
+    }
+
+    .button-text__block p {
+      font-size: 16px;
+      max-width: 330px;
+    }
+
+    .button-text__block {
+      margin-right: 15px
+    }
+
+  }
+
+  @media (max-width: 834px) {
+    padding: 0px 15px;
+
+    .button-text__block {
+      margin-right: 5px;
+      max-width: 300px;
+    }
+
+  }
+
+  @media (max-width: 750px) {
+
+    .image__castle-block {
+      width: 342px;
+      height: 350px;
     }
 
     .castle {
       height: 100%;
-    }
-
-    .button-text__block {
-      left: 20px;
-      top: 20px;
-      
-    }
-
-    .button-text__block h2 {
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 27px;
-      margin-bottom: 20px;
-    }
-
-    .button-text__block p {
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 21px;
-      max-width: 249px;
-      margin-bottom: 20px;
-    }
-
-    .image__fairy-block {
-      max-height: 341px;
-      max-width: 246px;
-      position: absolute;
-      right: 0px;
-      top: 0px;
-    }
-
-    .fairy {
       width: 100%;
-      height: 100%;
     }
   }
+
+  @media (max-width: 720px) {
+    .low-banner__wrapper {
+    height: auto;
+    flex-direction: column-reverse;
+  }
+
+  .image__castle-block {
+    position: static;
+  }
+
+  .image__fairy-block {
+    /* position: static; */
+  }
+
+  }
+
+
+
 `;
 
 export default StyledLowBanner;
