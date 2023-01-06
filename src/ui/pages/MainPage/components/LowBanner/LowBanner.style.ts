@@ -17,12 +17,19 @@ const StyledLowBanner = styled.section`
     height: 400px;
   }
 
-  .button {
+  .low-banner__button {
     padding: 10px 20px;
+    font-weight: 500;
+    font-size: 16px;
   }
 
   .button__block :first-child button {
     margin-right: 10px;
+  }
+
+  .button__block {
+    position: absolute;
+    z-index: 3;
   }
 
   .image__castle-block {
@@ -38,6 +45,7 @@ const StyledLowBanner = styled.section`
   }
 
   .image__fairy-block {
+    z-index: 0;
     max-height: 400px;
     max-width: 478px;
     position: absolute;

@@ -31,6 +31,8 @@ const StyledHighBanner = styled.section`
 
   .button__block {
     padding: 10px 50px;
+    font-weight: 500;
+    font-size: 16px;
   }
 
   .banner__subtitle p {

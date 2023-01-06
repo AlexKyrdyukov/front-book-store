@@ -30,13 +30,13 @@ const LowBanner = () => {
           <div className="button__block">
             <Link to="/signIn">
               <Button
-                className="button"
+                className="low-banner__button"
               >Log In
               </Button>
             </Link>
             <Link to="/signUp">
               <Button
-                className="button"
+                className="low-banner__button"
               >Sign Up
               </Button>
             </Link>

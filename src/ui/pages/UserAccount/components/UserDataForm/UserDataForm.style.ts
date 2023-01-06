@@ -13,7 +13,7 @@ const StyledUserForm = styled.div`
   .high-block {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 30px;
+    margin-bottom: 30px;
   }
 
   .high-block h3 {
@@ -46,6 +46,19 @@ const StyledUserForm = styled.div`
     
     .high-block button {
       font-size: 12px;
+    }
+  }
+
+  @media (max-width: 655px) {
+    
+    .high-block {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .high-block h3 {
+      margin-top: 30px;
+      margin-bottom: 10px;
     }
   }
 `;

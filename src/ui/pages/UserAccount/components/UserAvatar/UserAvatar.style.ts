@@ -73,6 +73,11 @@ const StyledAvatar = styled.div`
     }
   }
 
+  @media(max-width: 655px) {
+    width: 290px;
+    height: 290px;
+  }
+
 `;
 
 export default StyledAvatar;

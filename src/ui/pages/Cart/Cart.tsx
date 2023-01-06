@@ -1,15 +1,15 @@
 import React from 'react';
 
 import StyledCartPage from './Cart.style';
+import { useAppSelector } from '../../../store';
 
-type PropsType = {
-  value?: string;
-};
+import EmptyCart from './components/EmptyCart';
 
-const Cart: React.FC<PropsType> = () => {
+const Cart: React.FC = () => {
+  const book = useAppSelector(({ rootSlice }) => rootSlice.bookSlice.book);
   return (
     <StyledCartPage>
-      <div>Cart</div>
+      {!book && <EmptyCart />}
     </StyledCartPage>
   );
 };

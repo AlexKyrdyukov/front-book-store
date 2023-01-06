@@ -22,12 +22,19 @@ const StyledUserAccount = styled.main`
   @media (max-width: 1028px) {
     padding-left: 40px;
     padding-right: 15px;
-
   }
 
   @media (max-width: 834px) {
     padding-left: 15px ;
+  }
 
+  @media (max-width: 655px) {
+    flex-direction: column;
+    align-items: center;
+
+  .user__avatar-block {
+    margin-right: 0px;
+  }
   }
 `;
 

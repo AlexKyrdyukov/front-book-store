@@ -41,7 +41,7 @@ const StyledPassword = styled.div`
     }
   }
 
-   @media (max-width: 834px) {
+  @media (max-width: 834px) {
 
     .block__title h3 {
       font-size: 16px;
@@ -49,6 +49,24 @@ const StyledPassword = styled.div`
     
     .block-title button {
       font-size: 12px;
+    }
+  }
+
+  @media (max-width: 655px) {
+
+    .block__title h3 {
+      font-size: 14px;
+    }
+
+  .confirm-button {
+    margin-top: 10px;
+  }
+  }
+
+  @media (max-width: 410px) {
+
+    .confirm-button {
+      margin-bottom: 30px;
     }
   }
 `;
