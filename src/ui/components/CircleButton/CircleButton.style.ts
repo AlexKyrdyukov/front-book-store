@@ -1,16 +1,8 @@
 import styled from 'styled-components';
 
-type StyleType = {
-  isMobile?: boolean;
-  isHeader?: boolean;
-  isLogin?: boolean;
-};
-
-const StyledCircleButton = styled.button<StyleType>`
+const StyledCircleButton = styled.button`
   background: #344966;
   border-radius: 63px;
-  width: 48px;
-  height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,8 +18,6 @@ const StyledCircleButton = styled.button<StyleType>`
   }
 
   @media (max-width: 651px)  { 
-    width: 32px;
-    height: 32px;
 
     .image__block {
       max-width: 17px;

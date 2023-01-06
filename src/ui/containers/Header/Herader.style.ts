@@ -16,6 +16,11 @@ const StyledHeader = styled.header<StyleType>`
     height: 100%;
   }
 
+  .circle__button {
+    width: 48px;
+    height: 48px;
+  }
+
   .block__logo {
     max-height: 46px;
     max-width: 88px;
@@ -112,6 +117,11 @@ const StyledHeader = styled.header<StyleType>`
     }
   }
   @media (max-width: 553px)  {
+
+    .circle__button {
+      width: 32px;
+      height: 32px;
+    }
     
     .block__button {
       flex-grow: 0;

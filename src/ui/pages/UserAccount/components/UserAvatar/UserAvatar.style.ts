@@ -1,7 +1,78 @@
 import styled from 'styled-components';
 
 const StyledAvatar = styled.div`
-color:red;
+  width: 305px;
+  height: 305px;
+  border-radius: 16px;
+  background: #F0F4EF;
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  .circle__button {
+    width: 48px;
+    height: 48px;
+  }
+
+  .block__user-photo {
+    max-width: 151px;
+    max-height: 151px;
+    align-self: center;
+  }
+
+  .user-photo {
+    width: 100%;
+    height: 100%;
+  }
+
+  .input__block {
+    position: relative;
+  }
+
+  .input__file {
+    position: absolute;
+    width: 48px;
+    min-height: 48px;
+    border-radius: 63px;
+    top: 0px;
+    opacity: 0;
+  }
+
+  .input__block {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  @media(max-width: 834px) {
+    width: 255px;
+    height: 255px;
+
+    .circle__button {
+      width: 40px;
+      height: 40px;
+    }
+
+    .input__file {
+      width: 40px;
+      min-height: 40px;
+    }
+
+    .block__user-photo {
+      max-width: 135px;
+      max-height: 135px;
+    }
+
+    .input__block {
+      width: 40px;
+      height: 40px;
+      bottom: 15px;
+      right: 15px;
+    }
+  }
+
 `;
 
 export default StyledAvatar;

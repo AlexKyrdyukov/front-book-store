@@ -25,8 +25,8 @@ const AppNavigation = () => {
           <Route path="/signIn" element={<SignIn />} />
         </Route>
         <Route element={<ProtectedRoute />}>
-          <Route path="/cart" element={<Cart />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/favorites" element={<Favorites />} />
         </Route>
         <Route path="*" element={<p>Theres nothing here: 404!</p>} />

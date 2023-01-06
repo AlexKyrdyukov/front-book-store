@@ -15,10 +15,14 @@ import { useAppSelector } from '../../../../../store';
 
 import StyledUserDataForm from './UserDataForm.style';
 
-const UserDataForm: React.FC = () => {
+type PropType = {
+  className?: string;
+};
+
+const UserDataForm: React.FC<PropType> = (props) => {
   const [formState, setFormState] = React.useState<boolean>(false);
 
-  const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user!.id);
+  const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.id);
   const fullName = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user!.fullName);
   const email = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user!.email);
 
@@ -44,8 +48,10 @@ const UserDataForm: React.FC = () => {
   });
 
   return (
-    <StyledUserDataForm>
-      <div>
+    <StyledUserDataForm
+      className={props.className}
+    >
+      <div className="high-block">
         <h3>
           Personal information
         </h3>
@@ -55,33 +61,37 @@ const UserDataForm: React.FC = () => {
         >
           Change information
         </button>
-        <form action="#">
-          <Input
-            id="fullName"
-            placeholder="fucking pidr"
-            label="Your name"
-            type="text"
-            alt="human image"
-            src={mailImage}
-            {...formik.getFieldProps('fullName')}
-          />
-          <Input
-            id="email"
-            placeholder="picka@mail.com"
-            label="Your email"
-            type="email"
-            alt="envelope  image"
-            src={userImage}
-            {...formik.getFieldProps('email')}
-          />
-          {formState
-            ? (<Button
+      </div>
+      <form action="#">
+        <Input
+          id="fullName"
+          placeholder="name"
+          label="Your name"
+          type="text"
+          alt="human image"
+          src={mailImage}
+          className="input-change__name"
+          {...formik.getFieldProps('fullName')}
+        />
+        <Input
+          id="email"
+          placeholder="picka@mail.com"
+          label="Your email"
+          type="email"
+          alt="envelope  image"
+          className="input-change__email"
+          src={userImage}
+          {...formik.getFieldProps('email')}
+        />
+        {formState
+          ? (
+            <Button
               type="button"
               className="confirm-button"
-            >Confirm
-               </Button>) : null}
-        </form>
-      </div>
+            >
+              Confirm
+            </Button>) : null}
+      </form>
     </StyledUserDataForm>
   );
 };

@@ -6,16 +6,20 @@ import UserChangePassword from './components/UserPasswordForm';
 
 import StyledUserAccount from './UserAccount.style';
 
-type PropsType = {
-  value?: string | undefined;
-};
-
-const UserAccount: React.FC<PropsType> = () => {
+const UserAccount: React.FC = () => {
   return (
     <StyledUserAccount>
-     <UserAvatar />
-     <UserChangeData />
-     <UserChangePassword />
+      <UserAvatar
+        className="user__avatar-block"
+      />
+      <div className="change-data-block">
+        <UserChangeData
+          className="user__data-block"
+        />
+        <UserChangePassword
+          className="user__password-block"
+        />
+      </div>
     </StyledUserAccount>
   );
 };

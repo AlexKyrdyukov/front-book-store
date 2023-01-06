@@ -39,7 +39,6 @@ const Home: React.FC = () => {
         </div>
         <div className="books__wrapper">
           <picture>
-            {/* <source className="books" media="(min-width: 1440px)" srcSet={booksDesktop} /> */}
             <source className="books" media="(min-width: 651px)" srcSet={booksDesktop} />
             <img className="books" src={booksMobile} alt="Flowers" />
           </picture>

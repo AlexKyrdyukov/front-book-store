@@ -1,18 +1,33 @@
 import styled from 'styled-components';
 
 const StyledUserAccount = styled.main`
-  .input__block {
-    position: relative;
+  padding-top: 40px;
+  max-width: 1055px;
+  padding-left: 80px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 104px;
+  
+  .user__avatar-block {
+    margin-right: 20px;
+  }
+
+  .change-data-block {
+    display: flex;
+    flex-direction: column;
+    max-width: 520px;
+    flex-grow: 1;
+  }
+
+  @media (max-width: 1028px) {
+    padding-left: 40px;
+    padding-right: 15px;
 
   }
 
-  .input__file {
-    position: absolute;
-    width: 50px;
-    min-height: 40px;
-    border-radius: 60px;
-    top: 0px;
-    opacity: 0;
+  @media (max-width: 834px) {
+    padding-left: 15px ;
+
   }
 `;
 

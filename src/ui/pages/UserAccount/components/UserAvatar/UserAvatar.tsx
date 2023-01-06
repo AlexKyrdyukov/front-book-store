@@ -1,13 +1,20 @@
 import React from 'react';
 
 import CircleButton from '../../../../components/CircleButton/CircleButton';
+import { useAppSelector } from '../../../../../store';
 
 import pseudoPhoto from './images/user.svg';
 import camera from './images/camera.png';
 
 import StyledAvatar from './UserAvatar.style';
 
-const UserAvatar: React.FC = () => {
+type PropsType = {
+  className?: string;
+};
+
+const UserAvatar: React.FC<PropsType> = (props) => {
+  const avatar = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.avatar);
+
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     // const file = event.target.files[0];
     // eslint-disable-next-line no-console
@@ -15,27 +22,24 @@ const UserAvatar: React.FC = () => {
   };
 
   return (
-    <StyledAvatar>
+    <StyledAvatar className={props.className}>
       <div className="block__user-photo">
-        <picture>
-          <source className="books" media="(min-width: 1440px)" srcSet={pseudoPhoto} />
-          <source className="books" media="(min-width: 834px)" srcSet={pseudoPhoto} />
-          <img className="books" src={pseudoPhoto} alt="Flowers" />
-        </picture>
-        <div className="input__block">
-          <form action="">
-            <CircleButton
-              type="button"
-              src={camera}
-            />
-            <input
-              className="input__file"
-              accept="image/*"
-              type="file"
-              onChange={changeHandler}
-            />
-          </form>
-        </div>
+        <img className="user-photo" src={avatar || pseudoPhoto} alt="plug" />
+      </div>
+      <div className="input__block">
+        <form action="#">
+          <CircleButton
+            className="circle__button"
+            type="button"
+            src={camera}
+          />
+          <input
+            className="input__file"
+            accept="image/*"
+            type="file"
+            onChange={changeHandler}
+          />
+        </form>
       </div>
     </StyledAvatar>
   );

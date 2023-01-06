@@ -15,7 +15,11 @@ import eyeImage from './images/eyeInput.svg';
 
 import StyledFormPassword from './UserPasswordForm.style';
 
-const UserPasswordForm = () => {
+type PropType = {
+  className: string;
+};
+
+const UserPasswordForm: React.FC<PropType> = (props) => {
   const dispatch = useAppDispatch();
   const userId = useAppSelector((reducer) => reducer.rootSlice.userSlice.user?.id);
 
@@ -52,58 +56,66 @@ const UserPasswordForm = () => {
   });
 
   return (
-    <StyledFormPassword>
-      <div> <h3>Password</h3>
+    <StyledFormPassword
+      className={props.className}
+    >
+      <div className="block__title">
+        <h3>Password</h3>
         <button
           type="button"
           onClick={() => setFormState(!formState)}
         >
-          Change information
+          Change password
         </button>
-        <form action="">
-          <Input
-            id="password"
-            placeholder="picka@mail.com"
-            label="Your password"
-            type="password"
-            alt="eye  image"
-            src={eyeImage}
-          />
-          {formState
-            ? (<><Input
+      </div>
+      <form action="">
+        <Input
+          name="pasword"
+          id="password"
+          placeholder="picka@mail.com"
+          className="input__margin"
+          label="Your password"
+          type="password"
+          alt="eye  image"
+          src={eyeImage}
+        />
+        {formState
+          ? (
+            <><Input
               id="newPassword"
               placeholder="New Password"
               type="password"
               alt="eye  image"
+              className="input__margin"
               src={eyeImage}
               {...formik.getFieldProps('newPassword')}
-              />
+            />
               <Input
                 id="confirmNewPassword"
                 placeholder="Password replay"
                 type="password"
+                className="input__margin"
                 alt="eye  image"
                 src={eyeImage}
                 {...formik.getFieldProps('confirmNewPassword')}
-                />
-                <Button
-                  type="button"
-                  className="confirm-button"
-                >
+              />
+              <Button
+                type="button"
+                className="confirm-button"
+              >
                 Confirm
-                </Button>
-                <Button
-                  type="button"
-                  className="confirm-button"
-                  onClick={removeUser}
-                >
+              </Button>
+              <Button
+                type="button"
+                className="delete-button"
+                onClick={removeUser}
+              >
                 Remove user
-                </Button>
-               </>)
-            : null
-          }
-        </form>
-      </div>
+              </Button>
+            </>)
+          : null
+        }
+      </form>
 
     </StyledFormPassword >
   );

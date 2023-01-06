@@ -1,4 +1,6 @@
 import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+
 import classNames from 'classnames';
 
 import imageEye from './image/View.svg';
@@ -9,14 +11,12 @@ type PropType = {
   placeholder: string;
   type: string;
   src: string;
-  text?: string;
-  errorText?: string;
+  hintText?: string;
   alt: string;
   label?: string;
   className?: string;
-  classNameError?: string;
   isHeader?: boolean;
-  name?: string;
+  name: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -72,6 +72,7 @@ const Input: React.FC<PropType> = (props) => {
         }
         placeholder={props.placeholder}
       />
+      {/* <ErrorMessage name={props.name} /> */}
     </StyledInput>
   );
 };

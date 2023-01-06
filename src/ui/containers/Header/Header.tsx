@@ -40,6 +40,7 @@ const Header: React.FC = () => {
         action="submit"
       >
         <Input
+          name="search"
           placeholder="search"
           type="text"
           alt="logo search"
@@ -74,6 +75,7 @@ const Header: React.FC = () => {
               <CircleButton
                 type="button"
                 src={cart}
+                className="circle__button"
               />
             </div>
           </Link>
@@ -82,6 +84,7 @@ const Header: React.FC = () => {
               <CircleButton
                 type="button"
                 src={heart}
+                className="circle__button"
               />
             </div>
           </Link>
@@ -90,6 +93,7 @@ const Header: React.FC = () => {
               <CircleButton
                 type="button"
                 src={profile}
+                className="circle__button"
               />
             </div>
           </Link>

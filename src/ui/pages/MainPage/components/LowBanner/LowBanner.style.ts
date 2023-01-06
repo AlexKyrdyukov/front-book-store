@@ -91,7 +91,6 @@ const StyledLowBanner = styled.section`
     .button-text__block {
       margin-right: 20px
     }
-
   }
   
   @media (max-width: 1028px) {
@@ -100,6 +99,7 @@ const StyledLowBanner = styled.section`
     .low-banner__wrapper{
       overflow: hidden;
     }
+
     .image__castle-block {
       left: 0px;
     }
@@ -132,7 +132,6 @@ const StyledLowBanner = styled.section`
     .button-text__block {
       margin-right: 15px
     }
-
   }
 
   @media (max-width: 834px) {
@@ -142,7 +141,6 @@ const StyledLowBanner = styled.section`
       margin-right: 5px;
       max-width: 300px;
     }
-
   }
 
   @media (max-width: 750px) {
@@ -159,23 +157,33 @@ const StyledLowBanner = styled.section`
   }
 
   @media (max-width: 720px) {
+    margin-bottom: 70px;
+    
     .low-banner__wrapper {
-    height: auto;
-    flex-direction: column-reverse;
+      height: auto;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+
+    .image__castle-block {
+      position: static;
+    }
+
+    .image__fairy-block {
+      right: 0%;
+      top:10px;
+      height: 391px;
+      width: 246px;
+    }
+
+    .button-text__block {
+      margin-top: 20px;
+      margin-bottom: 80px;
+      margin-right: 0px;
+      padding-left: 20px;
+      
+    }
   }
-
-  .image__castle-block {
-    position: static;
-  }
-
-  .image__fairy-block {
-    /* position: static; */
-  }
-
-  }
-
-
-
 `;
 
 export default StyledLowBanner;

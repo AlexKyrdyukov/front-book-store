@@ -64,7 +64,7 @@ const SignUp: React.FC = () => {
           type="email"
           src={mailLogo}
           alt="logo email"
-          text="Enter your email"
+          hintText="Enter your email"
           className="sign-up__input"
           {...formik.getFieldProps('email')}
         />
@@ -75,7 +75,7 @@ const SignUp: React.FC = () => {
           type="password"
           alt="logo password"
           src={hideLogo}
-          text="Enter your password"
+          hintText="Enter your password"
           className="sign-up__input"
           {...formik.getFieldProps('password')}
         />
