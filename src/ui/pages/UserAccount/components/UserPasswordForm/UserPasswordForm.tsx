@@ -41,7 +41,7 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
     validationSchema: yup.object({
       password: validationDate.password,
       newPassword: validationDate.newPassword,
-      confirmPassword: validationDate.confirmNewPassword,
+      confirmNewPassword: validationDate.confirmNewPassword,
     }),
     onSubmit: async (values, actions) => {
       await userApi.changePassword(userId, values.password, values.newPassword);
@@ -54,7 +54,6 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
       });
     },
   });
-
   return (
     <StyledFormPassword
       className={props.className}
@@ -68,16 +67,20 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
           Change password
         </button>
       </div>
-      <form action="">
+      <form
+        onSubmit={formik.handleSubmit}
+      >
         <Input
-          name="pasword"
           id="password"
-          placeholder="picka@mail.com"
+          placeholder=""
           className="input__margin"
           label="Your password"
           type="password"
           alt="eye  image"
+          errorText={formik.errors.password}
+          touchedInfo={formik.touched.password}
           src={eyeImage}
+          {...formik.getFieldProps('password')}
         />
         {formState
           ? (
@@ -88,6 +91,9 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
               alt="eye  image"
               className="input__margin"
               src={eyeImage}
+              errorText={formik.errors.newPassword}
+              hintText="Enter your password"
+              touchedInfo={formik.touched.newPassword}
               {...formik.getFieldProps('newPassword')}
             />
               <Input
@@ -97,11 +103,15 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
                 className="input__margin"
                 alt="eye  image"
                 src={eyeImage}
+                hintText="Repeat your password without errors"
+                errorText={formik.errors.confirmNewPassword}
+                touchedInfo={formik.touched.confirmNewPassword}
                 {...formik.getFieldProps('confirmNewPassword')}
               />
               <Button
-                type="button"
+                type="submit"
                 className="confirm-button"
+              // disabled={formik.isSubmitting}
               >
                 Confirm
               </Button>

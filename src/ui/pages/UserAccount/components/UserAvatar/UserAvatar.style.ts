@@ -77,7 +77,6 @@ const StyledAvatar = styled.div`
     width: 290px;
     height: 290px;
   }
-
 `;
 
 export default StyledAvatar;

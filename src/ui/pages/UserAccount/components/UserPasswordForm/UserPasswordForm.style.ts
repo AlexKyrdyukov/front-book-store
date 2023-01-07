@@ -58,9 +58,9 @@ const StyledPassword = styled.div`
       font-size: 14px;
     }
 
-  .confirm-button {
-    margin-top: 10px;
-  }
+    .confirm-button {
+      margin-top: 10px;
+    }
   }
 
   @media (max-width: 410px) {

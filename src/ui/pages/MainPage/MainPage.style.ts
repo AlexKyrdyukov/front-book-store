@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
 const StyledMainPage = styled.main`
-  /* .banner__wrapper {
-    margin-top: 40px;
-    background: #F0F4EF;
-    display: grid;
-  } */
 
   .banner__title {
     color: #0D1821;

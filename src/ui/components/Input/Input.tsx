@@ -1,5 +1,5 @@
 import React from 'react';
-import { useField, Formik, Form, Field, ErrorMessage } from 'formik';
+import type { FormikErrors } from 'formik';
 
 import classNames from 'classnames';
 
@@ -12,6 +12,8 @@ type PropType = {
   type: string;
   src: string;
   hintText?: string;
+  errorText?: FormikErrors<string>;
+  touchedInfo?: unknown;
   alt: string;
   label?: string;
   className?: string;
@@ -23,21 +25,15 @@ type PropType = {
 
 const Input: React.FC<PropType> = (props) => {
   const [inputState, setInputState] = React.useState<boolean>(false);
-  // const [field, meta] = useField(props);
 
-  // const [field, meta, helpers] = useField(props.name);
-  // eslint-disable-next-line no-console
-  console.log(props);
-  // eslint-disable-next-line no-console
-  // console.log(field, meta, helpers);
-  // const blockClass = classNames('block__style', props.className, props.classNameError);
-  // const textStyle = classNames('input__text', {
-  // error__text: props.errorText,
-  // });
+  const inputStyle = classNames(props.className, {
+    input__error: props.errorText && props.touchedInfo,
+  });
 
   return (
-    <StyledInput label={props.label}
-      className={props.className}
+    <StyledInput
+      label={props.label}
+      className={inputStyle}
     >
       <button
         className="image__block"
@@ -67,7 +63,6 @@ const Input: React.FC<PropType> = (props) => {
         onChange={props.onChange}
         onBlur={props.onBlur}
         value={props.value}
-        // id={props.id}
         name={props.name}
         className="input"
         type={
@@ -77,7 +72,8 @@ const Input: React.FC<PropType> = (props) => {
         }
         placeholder={props.placeholder}
       />
-      {/* {meta.error && meta.touched && <div>{meta.error}</div>} */}
+      {props.errorText && props.touchedInfo
+        ? <div className="hint__text error__text">{props.errorText}</div> : <div className="hint__text">{props.hintText}</div>}
     </StyledInput>
   );
 };

@@ -13,7 +13,7 @@ export const userSlice = createSlice({
   name: 'userSlice',
   initialState: getInitialState,
   reducers: {
-    setUser(state, action: PayloadAction<UserType>) {
+    setUser(state, action) {
       state.user = action.payload;
     },
     removeUser(state) {
@@ -26,7 +26,7 @@ export const userSlice = createSlice({
         (state, action) => {
           // eslint-disable-next-line no-console
           console.log(action);
-          state.user = action.payload;
+          state.user = action.payload.user;
         });
   },
 });

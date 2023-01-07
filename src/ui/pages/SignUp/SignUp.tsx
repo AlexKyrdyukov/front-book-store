@@ -1,6 +1,8 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -37,28 +39,28 @@ const SignUp: React.FC = () => {
           email: values.email,
           password: values.password,
         });
-        // eslint-disable-next-line no-console
-        console.log(response);
         cookies.token.set(response.token);
+        actions.resetForm({
+          values: {
+            email: '',
+            password: '',
+            confirmPassword: '',
+          },
+        });
         dispatch(userSliceActions.setUser(response.user));
       } catch (error) {
+        if (error instanceof AxiosError && error.response?.status === 400) {
+          return toast(error.response.data.message);
+        }
         // eslint-disable-next-line no-console
-        console.log(error);
+        console.error(error);
       }
-      actions.resetForm({
-        values: {
-          email: '',
-          password: '',
-          confirmPassword: '',
-        },
-      });
     },
   });
 
   return (
     <StyledSignUpPage>
       <form
-        // autoComplete="off"
         onSubmit={formik.handleSubmit}
         className="block__form"
       >
@@ -71,6 +73,8 @@ const SignUp: React.FC = () => {
           alt="logo email"
           hintText="Enter your email"
           className="sign-up__input"
+          errorText={formik.errors.email}
+          touchedInfo={formik.touched.email}
           {...formik.getFieldProps('email')}
         />
         <Input
@@ -81,6 +85,8 @@ const SignUp: React.FC = () => {
           src={hideLogo}
           hintText="Enter your password"
           className="sign-up__input"
+          errorText={formik.errors.password}
+          touchedInfo={formik.touched.password}
           {...formik.getFieldProps('password')}
         />
         <Input
@@ -91,6 +97,8 @@ const SignUp: React.FC = () => {
           src={hideLogo}
           hintText="Repeat your password without errors"
           className="sign-up__input"
+          errorText={formik.errors.confirmPassword}
+          touchedInfo={formik.touched.confirmPassword}
           {...formik.getFieldProps('confirmPassword')}
         />
         <span className="block__button">

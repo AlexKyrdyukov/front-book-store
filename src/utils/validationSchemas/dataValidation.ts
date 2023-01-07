@@ -8,8 +8,8 @@ const fullName = yup.string()
   .min(2, 'please enter correctly name & last name')
   .max(40, 'please enter correctly name & last name')
   .test('is-full-name', 'Please enter both your first and last name', (value) => {
-    const nameArray = value!.split(' ');
-    return nameArray.length >= 2;
+    const nameArray = value?.split(' ');
+    return nameArray!.length >= 2;
   });
 const requiredFullName = fullName.required('this field is required');
 

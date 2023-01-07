@@ -1,6 +1,8 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -44,12 +46,13 @@ const SignUp: React.FC = () => {
           },
         });
       } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log(error);
+        if (error instanceof AxiosError && error.response?.status === 400) {
+          return toast(error.response.data.message);
+        }
+        console.error(error);
       }
     },
   });
-
   return (
     <StyledSignInPage>
       <form
@@ -66,6 +69,8 @@ const SignUp: React.FC = () => {
           alt="logo email"
           hintText="Enter your email"
           className="sign-up__input"
+          errorText={formik.errors.email}
+          touchedInfo={formik.touched.email}
           {...formik.getFieldProps('email')}
         />
         <Input
@@ -77,6 +82,8 @@ const SignUp: React.FC = () => {
           src={hideLogo}
           hintText="Enter your password"
           className="sign-up__input"
+          errorText={formik.errors.password}
+          touchedInfo={formik.touched.password}
           {...formik.getFieldProps('password')}
         />
         <div className="block__button">

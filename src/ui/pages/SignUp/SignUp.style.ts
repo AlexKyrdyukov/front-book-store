@@ -8,11 +8,6 @@ const StyledSignUpPage = styled.main`
   display: flex;
   padding: 0 80px;
   
-  .input__error {
-    outline: 3px solid #ED2E7E;
-    opacity: 0.5;
-  }
-
   .button {
     padding: 10px 50px;
     color: #F0F4EF;
@@ -50,7 +45,7 @@ const StyledSignUpPage = styled.main`
   
     .block__form {
     margin-right: 100px;
-  }
+    }
   }
 
 
@@ -71,9 +66,7 @@ const StyledSignUpPage = styled.main`
     .block__form {
       margin-right: 20px;
     }
-    .sign-up__input {
-    }
-  
+    
     .block__image {
       max-width: 390px;
       max-height: 333px;

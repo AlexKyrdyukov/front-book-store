@@ -7,7 +7,7 @@ type UserType = {
 };
 
 const changeData = async (userId: number | undefined, fullName: string, email: string) => {
-  const response = await axiosInstance.patch<unknown>(`/user/${userId}`, { fullName, email });
+  const response = await axiosInstance.patch<{ user: UserType }>(`/user/${userId}`, { fullName, email });
   return response.data;
 };
 

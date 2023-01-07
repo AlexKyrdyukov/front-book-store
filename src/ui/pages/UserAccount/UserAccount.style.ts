@@ -32,9 +32,9 @@ const StyledUserAccount = styled.main`
     flex-direction: column;
     align-items: center;
 
-  .user__avatar-block {
-    margin-right: 0px;
-  }
+    .user__avatar-block {
+      margin-right: 0px;
+    }
   }
 `;
 

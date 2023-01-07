@@ -12,10 +12,17 @@ const StyledInput = styled.div<StyleType>`
   border-radius: 16px;
   background: #F0F4EF;
 
-  .block__style {
-    display: flex;
-    align-items: center;
-    background: #F0F4EF;
+  &.input__error {
+    outline: 3px solid #ED2E7E;
+    opacity: 0.5;
+  }
+
+  .hint__text {
+    font-weight: 500;
+    font-size: 14px;
+    color: #344966;
+    position: absolute;
+    bottom: -20px;
   }
 
   .error__text {
@@ -32,6 +39,10 @@ const StyledInput = styled.div<StyleType>`
     height: 20px;
   }
 
+  input:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px #F0F4EF inset;
+  }
+
   .input {
     padding-top: ${(props) => (props.label ? '34px' : '20px')} ;
     padding-bottom: ${(props) => (props.label ? '6px' : '20px')} ;
@@ -41,6 +52,9 @@ const StyledInput = styled.div<StyleType>`
     font-weight: 400;
     font-size: 16px;
     color: #344966;
+  }
+
+  input:-internal-autofill-selected {
   }
 
   .input::placeholder {

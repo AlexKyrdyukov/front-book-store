@@ -8,15 +8,6 @@ const StyledSignInPage = styled.main`
   display: flex;
   padding: 0 80px;
   
-
-  .sign-up__input {
-  }
-
-  .input__error {
-    outline: 3px solid #ED2E7E;
-    opacity: 0.5;
-  }
-
   .button {
     padding: 10px 50px;
     color: #F0F4EF;
@@ -51,9 +42,9 @@ const StyledSignInPage = styled.main`
   }
 
   @media (max-width: 1400px)  { 
-  .block__form {
-    margin-right: 100px;
-  }
+    .block__form {
+      margin-right: 100px;
+    }
   }
 
 
@@ -113,7 +104,6 @@ const StyledSignInPage = styled.main`
       margin-top: 50px;
     }
   }
-
 `;
 
 export default StyledSignInPage;
