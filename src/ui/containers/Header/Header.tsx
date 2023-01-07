@@ -46,7 +46,6 @@ const Header: React.FC = () => {
           alt="logo search"
           src={inputLogo}
           className="header__input"
-          isHeader
         />
       </form>
       {!user ? (

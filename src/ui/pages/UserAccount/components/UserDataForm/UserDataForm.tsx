@@ -69,7 +69,7 @@ const UserDataForm: React.FC<PropType> = (props) => {
           label="Your name"
           type="text"
           alt="human image"
-          src={mailImage}
+          src={userImage}
           className="input-change__name"
           {...formik.getFieldProps('fullName')}
         />
@@ -80,7 +80,7 @@ const UserDataForm: React.FC<PropType> = (props) => {
           type="email"
           alt="envelope  image"
           className="input-change__email"
-          src={userImage}
+          src={mailImage}
           {...formik.getFieldProps('email')}
         />
         {formState

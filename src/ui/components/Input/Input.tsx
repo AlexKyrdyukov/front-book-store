@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useField, Formik, Form, Field, ErrorMessage } from 'formik';
 
 import classNames from 'classnames';
 
@@ -15,7 +15,6 @@ type PropType = {
   alt: string;
   label?: string;
   className?: string;
-  isHeader?: boolean;
   name: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -24,14 +23,20 @@ type PropType = {
 
 const Input: React.FC<PropType> = (props) => {
   const [inputState, setInputState] = React.useState<boolean>(false);
+  // const [field, meta] = useField(props);
 
+  // const [field, meta, helpers] = useField(props.name);
+  // eslint-disable-next-line no-console
+  console.log(props);
+  // eslint-disable-next-line no-console
+  // console.log(field, meta, helpers);
   // const blockClass = classNames('block__style', props.className, props.classNameError);
   // const textStyle = classNames('input__text', {
   // error__text: props.errorText,
   // });
 
   return (
-    <StyledInput isHeader={props.isHeader}
+    <StyledInput label={props.label}
       className={props.className}
     >
       <button
@@ -72,7 +77,7 @@ const Input: React.FC<PropType> = (props) => {
         }
         placeholder={props.placeholder}
       />
-      {/* <ErrorMessage name={props.name} /> */}
+      {/* {meta.error && meta.touched && <div>{meta.error}</div>} */}
     </StyledInput>
   );
 };
