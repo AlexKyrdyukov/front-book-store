@@ -6,8 +6,8 @@ import Preloader from '../PreLoader';
 
 const SignUp = React.lazy(() => import('../../pages/SignUp'));
 const SignIn = React.lazy(() => import('../../pages/SignIn'));
-const ProtectedRoute = React.lazy(() => import('../../../utils/privateRoute/ProtectedRoute'));
-const ProtectedUserRoute = React.lazy(() => import('../../../utils/privateRoute/ProtectedUserRoute'));
+const ProtectedNoAuthRoute = React.lazy(() => import('../../../utils/privateRoute/ProtectedUserNoAuth'));
+const ProtectedAuthRoute = React.lazy(() => import('../../../utils/privateRoute/ProtectedUserAuth'));
 
 const Cart = React.lazy(() => import('../../pages/Cart'));
 const Account = React.lazy(() => import('../../pages/UserAccount'));
@@ -20,11 +20,11 @@ const AppNavigation = () => {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/book/:bookId" element={<SignUp />} />
-        <Route element={<ProtectedUserRoute />}>
+        <Route element={<ProtectedAuthRoute />}>
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/signIn" element={<SignIn />} />
         </Route>
-        <Route element={<ProtectedRoute />}>
+        <Route element={<ProtectedNoAuthRoute />}>
           <Route path="/account" element={<Account />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/favorites" element={<Favorites />} />

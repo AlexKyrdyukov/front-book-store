@@ -18,6 +18,7 @@ import mainImage from './images/human.png';
 import hideLogo from './images/hide.svg';
 import mailLogo from './images/mail.svg';
 import StyledSignInPage from './SignIn.style';
+import errorHandler from '../../../utils/errorHandler';
 
 const SignUp: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -27,10 +28,12 @@ const SignUp: React.FC = () => {
       email: '',
       password: '',
     },
+
     validationSchema: yup.object({
       email: validationDate.requiredEmail,
       password: validationDate.requiredPassword,
     }),
+
     onSubmit: async (values, actions) => {
       try {
         const response = await authApi.signIn({
@@ -46,8 +49,8 @@ const SignUp: React.FC = () => {
           },
         });
       } catch (error) {
-        if (error instanceof AxiosError && error.response?.status === 400) {
-          return toast(error.response.data.message);
+        if (error instanceof AxiosError) {
+          return actions.setErrors(errorHandler(error));
         }
         console.error(error);
       }

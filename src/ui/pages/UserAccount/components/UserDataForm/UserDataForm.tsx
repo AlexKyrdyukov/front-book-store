@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { AxiosError } from 'axios';
 
 import Button from '../../../../components/Button';
 import Input from '../../../../components/Input';
@@ -15,6 +16,7 @@ import { useAppSelector, useAppDispatch } from '../../../../../store';
 import { userSliceActions } from '../../../../../store/userSlice';
 
 import StyledUserDataForm from './UserDataForm.style';
+import errorHandler from '../../../../../utils/errorHandler';
 
 type PropType = {
   className?: string;
@@ -33,10 +35,12 @@ const UserDataForm: React.FC<PropType> = (props) => {
       fullName: fullName || '',
       email: userEmail,
     },
+
     validationSchema: yup.object({
       fullName: validationDate.fullName,
       email: validationDate.email,
     }),
+
     onSubmit: async (values, actions) => {
       try {
         const response = await userApi.changeData(userId, values.fullName, values.email);
@@ -48,12 +52,14 @@ const UserDataForm: React.FC<PropType> = (props) => {
           },
         });
       } catch (error) {
+        if (error instanceof AxiosError) {
+          return actions.setErrors(errorHandler(error));
+        }
         console.error(error);
       }
     },
   });
-  // eslint-disable-next-line no-console
-  console.log(formik, userEmail);
+
   return (
     <StyledUserDataForm
       className={props.className}

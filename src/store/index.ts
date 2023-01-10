@@ -10,9 +10,9 @@ export const store = configureStore({
     rootSlice,
   },
   devTools: true,
-  // middleware: getDefaultMiddleware({
-  // serializableCheck: false,
-  // }),
+  middleware: getDefaultMiddleware({
+    serializableCheck: false,
+  }),
 });
 
 export type AppStateType = typeof store.getState;

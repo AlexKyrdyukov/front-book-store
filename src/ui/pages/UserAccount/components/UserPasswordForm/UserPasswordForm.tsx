@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { AxiosError } from 'axios';
 
 import Button from '../../../../components/Button/Button';
 import Input from '../../../../components/Input/Input';
@@ -14,6 +15,7 @@ import { useAppSelector, useAppDispatch } from '../../../../../store';
 import eyeImage from './images/eyeInput.svg';
 
 import StyledFormPassword from './UserPasswordForm.style';
+import errorHandler from '../../../../../utils/errorHandler';
 
 type PropType = {
   className: string;
@@ -38,20 +40,31 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
       newPassword: '',
       confirmNewPassword: '',
     },
+
     validationSchema: yup.object({
       password: validationDate.password,
       newPassword: validationDate.newPassword,
       confirmNewPassword: validationDate.confirmNewPassword,
     }),
+
     onSubmit: async (values, actions) => {
-      await userApi.changePassword(userId, values.password, values.newPassword);
-      actions.resetForm({
-        values: {
-          newPassword: '',
-          password: '',
-          confirmNewPassword: '',
-        },
-      });
+      try {
+        await userApi.changePassword(
+          userId, values.password, values.newPassword,
+        );
+        actions.resetForm({
+          values: {
+            newPassword: '',
+            password: '',
+            confirmNewPassword: '',
+          },
+        });
+      } catch (error) {
+        if (error instanceof AxiosError) {
+          return actions.setErrors(errorHandler(error));
+        }
+        console.error(error);
+      }
     },
   });
   return (
@@ -111,7 +124,7 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
               <Button
                 type="submit"
                 className="confirm-button"
-              // disabled={formik.isSubmitting}
+                disabled={formik.isSubmitting}
               >
                 Confirm
               </Button>

@@ -2,7 +2,8 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { AxiosError } from 'axios';
-import { toast } from 'react-toastify';
+
+import type { FormikErrors } from 'formik';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -12,6 +13,7 @@ import cookies from '../../../coookieHelper/CookieStorage';
 import validationData from '../../../utils/validationSchemas/dataValidation';
 import { useAppDispatch } from '../../../store';
 import { userSliceActions } from '../../../store/userSlice';
+import errorHandler from '../../../utils/errorHandler';
 
 import mailLogo from './images/mail.svg';
 import hideLogo from './images/hide.svg';
@@ -49,10 +51,9 @@ const SignUp: React.FC = () => {
         });
         dispatch(userSliceActions.setUser(response.user));
       } catch (error) {
-        if (error instanceof AxiosError && error.response?.status === 400) {
-          return toast(error.response.data.message);
+        if (error instanceof AxiosError) {
+          return actions.setErrors(errorHandler(error));
         }
-        // eslint-disable-next-line no-console
         console.error(error);
       }
     },
@@ -106,7 +107,7 @@ const SignUp: React.FC = () => {
             className="button"
             disabled={formik.isSubmitting}
             type="submit"
-          // onClick={formik.handleReset}
+            onClick={() => formik.handleReset}
           >Sing Up
           </Button>
         </span>

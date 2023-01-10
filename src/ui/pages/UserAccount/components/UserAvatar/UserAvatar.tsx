@@ -16,9 +16,13 @@ const UserAvatar: React.FC<PropsType> = (props) => {
   const avatar = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.avatar);
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // const file = event.target.files[0];
-    // eslint-disable-next-line no-console
-    console.log(event.target.value);
+    const file = event.target.files;
+
+    if (file) {
+      // eslint-disable-next-line no-console
+      console.log(file[0].name);
+      return file[0].name;
+    }
   };
 
   return (

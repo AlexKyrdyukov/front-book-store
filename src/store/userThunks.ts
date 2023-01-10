@@ -7,9 +7,12 @@ const getUser = createAsyncThunk('getUser', async (_, { rejectWithValue }) => {
     const response = await authApi.getMe();
     return (response);
   } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
     if (error instanceof AxiosError) {
       // eslint-disable-next-line max-len
-      throw rejectWithValue({ message: error.response?.data?.message, status: error.response?.status });
+      // throw rejectWithValue({ message: error.response?.data?.message, status: error.response?.status });
+      throw rejectWithValue(error);
     }
   }
 });
