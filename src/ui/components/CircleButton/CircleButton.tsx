@@ -3,7 +3,7 @@ import React from 'react';
 import StyledCircleButton from './CircleButton.style';
 
 type PropsType = {
-  type?: 'button' | 'submit' | 'reset' | undefined;
+  type?: 'button' | 'submit' | undefined;
   src?: string;
   alt?: string;
   className: string;

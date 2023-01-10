@@ -1,5 +1,5 @@
 import React from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { AxiosError } from 'axios';
 
 import Header from './ui/containers/Header';
@@ -16,8 +16,6 @@ const App = () => {
   React.useEffect(() => {
     const getUser = async () => {
       const res = await dispatch(userThunks.getUser());
-      // eslint-disable-next-line no-console
-      console.log(res);
       if (res.payload instanceof AxiosError) {
         errorHandler(res.payload);
       }

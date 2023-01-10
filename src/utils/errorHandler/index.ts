@@ -2,6 +2,9 @@ import { toast } from 'react-toastify';
 import type { FormikErrors } from 'formik';
 import type { AxiosError } from 'axios';
 
+import { userSliceActions } from '../../store/userSlice';
+import { store } from '../../store';
+
 type ErrorType = {
   path: string;
   message: string;
@@ -14,7 +17,7 @@ type CustomErrorType = {
 };
 
 const errorHandler = (error: AxiosError<CustomErrorType>) => {
-  const obj: FormikErrors<{ [index: string]: string }> = {};
+  const errors: FormikErrors<{ [index: string]: string }> = {};
 
   if (!error.response?.status) {
     toast('error server connection');
@@ -22,12 +25,15 @@ const errorHandler = (error: AxiosError<CustomErrorType>) => {
   if (error.response?.status) {
     toast(error.response?.data?.message);
   }
+  if (error.response?.data?.message === 'please log in') {
+    store.dispatch(userSliceActions.removeUser());
+  }
   if (error.response?.data?.errors) {
     error.response.data.errors.forEach((item: ErrorType) => {
-      obj[item.key] = item.message;
+      errors[item.key] = item.message;
     });
   }
-  return obj;
+  return errors;
 };
 
 export default errorHandler;

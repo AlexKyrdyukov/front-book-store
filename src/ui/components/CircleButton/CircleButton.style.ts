@@ -6,7 +6,7 @@ const StyledCircleButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
- 
+
   .image__block {
     max-width: 25px;
     height: 25px;
@@ -22,7 +22,7 @@ const StyledCircleButton = styled.button`
     .image__block {
       max-width: 17px;
       height: 17px;
-  }
+    }
 }
 `;
 

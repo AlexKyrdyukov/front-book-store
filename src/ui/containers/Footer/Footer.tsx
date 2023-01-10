@@ -13,15 +13,15 @@ import StyledFooter from './Footer.style';
 const Footer: React.FC = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
+
   const logOut = () => {
-    // eslint-disable-next-line no-console
-    console.log('event');
     if (!user) {
       return;
     }
     dispatch(userSliceActions.removeUser());
     cookies.token.remove();
   };
+
   return (
     <StyledFooter>
       <div className="footer__container">

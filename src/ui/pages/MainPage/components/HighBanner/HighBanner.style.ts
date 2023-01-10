@@ -188,8 +188,8 @@ const StyledHighBanner = styled.section`
     }
 
     .human__wrapper {
-        width: 253px;
-        height: 282px;
+      width: 253px;
+      height: 282px;
     }
   }
 `;

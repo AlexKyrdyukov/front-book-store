@@ -3,8 +3,6 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { AxiosError } from 'axios';
 
-import type { FormikErrors } from 'formik';
-
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
@@ -116,7 +114,7 @@ const SignUp: React.FC = () => {
         <img
           className="image__human"
           src={mainImage}
-          alt="image with reading human"
+          alt="human"
         />
       </div>
     </StyledSignUpPage>

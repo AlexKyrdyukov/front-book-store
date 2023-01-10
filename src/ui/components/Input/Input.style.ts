@@ -5,7 +5,6 @@ type StyleType = {
 };
 
 const StyledInput = styled.div<StyleType>`
-
   position: relative;
   display: flex;
   align-items: center;
@@ -54,9 +53,6 @@ const StyledInput = styled.div<StyleType>`
     color: #344966;
   }
 
-  input:-internal-autofill-selected {
-  }
-
   .input::placeholder {
     font-size: 16px;
     color: #344966;
@@ -85,7 +81,6 @@ const StyledInput = styled.div<StyleType>`
 
     .input::placeholder {
       font-size: 16px;
-      /* color: #B9BAC4; */
     }
 
     .input {

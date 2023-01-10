@@ -48,7 +48,6 @@ input,
 button,
 textarea {
   font-family: inherit;
-  /* style: none; */
 }
 
 input::-ms-clear {
@@ -95,10 +94,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-
-
 }
-
 `;
 
 export default GlobalStyles;

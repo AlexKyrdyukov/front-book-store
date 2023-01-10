@@ -7,15 +7,14 @@ import Button from '../../../../components/Button/Button';
 import Input from '../../../../components/Input/Input';
 
 import validationDate from '../../../../../utils/validationSchemas/dataValidation';
-
 import userApi from '../../../../../api/userApi';
 import { userSliceActions } from '../../../../../store/userSlice';
 import { useAppSelector, useAppDispatch } from '../../../../../store';
+import errorHandler from '../../../../../utils/errorHandler';
 
 import eyeImage from './images/eyeInput.svg';
 
 import StyledFormPassword from './UserPasswordForm.style';
-import errorHandler from '../../../../../utils/errorHandler';
 
 type PropType = {
   className: string;

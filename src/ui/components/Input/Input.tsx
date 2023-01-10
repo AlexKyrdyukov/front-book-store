@@ -73,7 +73,8 @@ const Input: React.FC<PropType> = (props) => {
         placeholder={props.placeholder}
       />
       {props.errorText && props.touchedInfo
-        ? <div className="hint__text error__text">{props.errorText}</div> : <div className="hint__text">{props.hintText}</div>}
+        ? <div className="hint__text error__text">{props.errorText}</div>
+        : <div className="hint__text">{props.hintText}</div>}
     </StyledInput>
   );
 };

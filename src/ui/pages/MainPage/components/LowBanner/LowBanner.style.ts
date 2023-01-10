@@ -189,7 +189,6 @@ const StyledLowBanner = styled.section`
       margin-bottom: 80px;
       margin-right: 0px;
       padding-left: 20px;
-      
     }
   }
 `;

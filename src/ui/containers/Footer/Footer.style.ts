@@ -37,10 +37,6 @@ background: #0D1821;
   margin-bottom: 10px;
 }
 
-.footer__phone-number {
-    
-}
-
 .links__list a {
   display: block;
   margin-bottom: 15px;
@@ -71,7 +67,6 @@ background: #0D1821;
   margin-bottom: 7px;
 }
 
-
 .image__block {
   max-width: 413px;
   height: 160px;
@@ -82,10 +77,10 @@ background: #0D1821;
   height: 100%;
   width: 100%;
   object-fit: cover;
-
 }
 
 @media (max-width: 1028px)  { 
+  
   .footer__container {
     padding: 73px 40px;
   }
@@ -97,7 +92,6 @@ background: #0D1821;
   .footer__container {
     max-width: 834px;
     padding: 73px 15px;
-
   }
 
   .footer__url {
@@ -129,7 +123,6 @@ background: #0D1821;
     height: 100%;
     width: 100%;
   }
-
 }
 
 @media (max-width: 553px)  {  
@@ -182,7 +175,6 @@ background: #0D1821;
     width: 100%;
   }
 }
-
 `;
 
 export default StyledFooter;

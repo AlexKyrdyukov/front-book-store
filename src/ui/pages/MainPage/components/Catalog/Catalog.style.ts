@@ -7,7 +7,7 @@ const StyledCatalog = styled.main`
   div {
     display: flex;
     justify-content: center;
-    }
+  }
 `;
 
 export default StyledCatalog;

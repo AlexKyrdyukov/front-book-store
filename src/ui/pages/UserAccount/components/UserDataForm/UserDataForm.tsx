@@ -7,16 +7,15 @@ import Button from '../../../../components/Button';
 import Input from '../../../../components/Input';
 
 import validationDate from '../../../../../utils/validationSchemas/dataValidation';
+import userApi from '../../../../../api/userApi';
+import { useAppSelector, useAppDispatch } from '../../../../../store';
+import { userSliceActions } from '../../../../../store/userSlice';
+import errorHandler from '../../../../../utils/errorHandler';
 
 import mailImage from './images/mailInput.svg';
 import userImage from './images/userInput.svg';
 
-import userApi from '../../../../../api/userApi';
-import { useAppSelector, useAppDispatch } from '../../../../../store';
-import { userSliceActions } from '../../../../../store/userSlice';
-
 import StyledUserDataForm from './UserDataForm.style';
-import errorHandler from '../../../../../utils/errorHandler';
 
 type PropType = {
   className?: string;

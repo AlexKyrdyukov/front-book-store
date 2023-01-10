@@ -2,7 +2,6 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { AxiosError } from 'axios';
-import { toast } from 'react-toastify';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -65,7 +64,6 @@ const SignUp: React.FC = () => {
         <h2 className="title">Sign In</h2>
         <Input
           placeholder="Email"
-          // id="email"
           id="email"
           type="email"
           src={mailLogo}
@@ -78,7 +76,6 @@ const SignUp: React.FC = () => {
         />
         <Input
           placeholder="Password"
-          // id="password"
           id="password"
           type="password"
           alt="logo password"
@@ -94,7 +91,6 @@ const SignUp: React.FC = () => {
             className="button"
             disabled={formik.isSubmitting}
             type="submit"
-          // onClick={formik.handleReset}
           >Log In
           </Button>
         </div>
@@ -103,7 +99,7 @@ const SignUp: React.FC = () => {
         <img
           className="image__human"
           src={mainImage}
-          alt="image with reading human"
+          alt="human"
         />
       </div>
     </StyledSignInPage>

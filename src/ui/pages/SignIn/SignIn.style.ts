@@ -42,6 +42,7 @@ const StyledSignInPage = styled.main`
   }
 
   @media (max-width: 1400px)  { 
+    
     .block__form {
       margin-right: 100px;
     }
@@ -65,9 +66,7 @@ const StyledSignInPage = styled.main`
     .block__form {
       margin-right: 20px;
     }
-    .sign-up__input {
-    }
-  
+    
     .block__image {
       max-width: 390px;
       max-height: 333px;
@@ -98,7 +97,8 @@ const StyledSignInPage = styled.main`
   }
 
   @media (max-width: 350px)  { 
-      .block__image {
+
+    .block__image {
       max-width: 290px;
       max-height: 247px;
       margin-top: 50px;
