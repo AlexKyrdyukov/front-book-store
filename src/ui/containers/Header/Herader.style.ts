@@ -113,7 +113,7 @@ const StyledHeader = styled.header<StyleType>`
     }
     
     .block__button :first-child button {
-    margin-right: 10px;
+      margin-right: 10px;
     }
   }
   @media (max-width: 553px)  {

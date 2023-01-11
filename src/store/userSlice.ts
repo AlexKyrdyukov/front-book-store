@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 
 import type { UserType } from '../types/userType';
 
@@ -18,6 +17,9 @@ export const userSlice = createSlice({
     },
     removeUser(state) {
       state.user = null;
+    },
+    setAvatar(state, action) {
+      state.user!.avatar = action.payload.avatar;
     },
   },
   extraReducers: (builder) => {

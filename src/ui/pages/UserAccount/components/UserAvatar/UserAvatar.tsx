@@ -2,8 +2,9 @@ import React from 'react';
 import { AxiosError } from 'axios';
 
 import CircleButton from '../../../../components/CircleButton/CircleButton';
-import { useAppSelector } from '../../../../../store';
+import { useAppSelector, useAppDispatch } from '../../../../../store';
 import userApi from '../../../../../api/userApi';
+import { userSliceActions } from '../../../../../store/userSlice';
 
 import pseudoPhoto from './images/user.svg';
 import camera from './images/camera.png';
@@ -16,7 +17,12 @@ type PropsType = {
 };
 
 const UserAvatar: React.FC<PropsType> = (props) => {
-  const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
+  const dispatch = useAppDispatch();
+  const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.id);
+
+  const userAvatar = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.avatar);
+
+  const avatar = userAvatar || pseudoPhoto;
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files;
@@ -28,13 +34,14 @@ const UserAvatar: React.FC<PropsType> = (props) => {
     reader.readAsDataURL(file![0]);
     reader.onloadend = async () => {
       try {
-        await userApi.setAvatar(user?.id, reader.result);
-        // eslint-disable-next-line no-console
-        console.log('event');
+        const fileName = await userApi.setAvatar(userId, reader.result);
+        dispatch(userSliceActions.setAvatar(fileName));
       } catch (error) {
         if (error instanceof AxiosError) {
           errorHandler(error);
         }
+        // eslint-disable-next-line no-console
+        console.log(error);
       }
     };
   };
@@ -42,7 +49,7 @@ const UserAvatar: React.FC<PropsType> = (props) => {
   return (
     <StyledAvatar className={props.className}>
       <div className="block__user-photo">
-        <img className="user-photo" src={user?.avatar || pseudoPhoto} alt="plug" />
+        <img className="user-photo" src={avatar} alt="plug" />
       </div>
       <div className="input__block">
         <form action="#">

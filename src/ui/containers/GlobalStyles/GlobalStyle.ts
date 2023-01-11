@@ -91,8 +91,6 @@ h6 {
 
 body {
   font-family: 'Poppins', sans-serif;
-  display: flex;
-  flex-direction: column;
   height: 100%;
 }
 `;

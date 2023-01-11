@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const StyledMainPage = styled.main`
-
+  padding-top: 20px;
+  
   .banner__title {
     color: #0D1821;
     font-size: 40px;

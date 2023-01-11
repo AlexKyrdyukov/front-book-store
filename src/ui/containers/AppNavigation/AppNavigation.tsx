@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Preloader from '../PreLoader';
 
+import StyledNavigation from './AppNavigation.style';
+
 const SignUp = React.lazy(() => import('../../pages/SignUp'));
 const SignIn = React.lazy(() => import('../../pages/SignIn'));
 const ProtectedNoAuthRoute = React.lazy(() => import('../../../utils/privateRoute/ProtectedUserNoAuth'));
@@ -16,22 +18,24 @@ const MainPage = React.lazy(() => import('../../pages/MainPage'));
 
 const AppNavigation = () => {
   return (
-    <Suspense fallback={<Preloader />}>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/book/:bookId" element={<SignUp />} />
-        <Route element={<ProtectedAuthRoute />}>
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/signIn" element={<SignIn />} />
-        </Route>
-        <Route element={<ProtectedNoAuthRoute />}>
-          <Route path="/account" element={<Account />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/favorites" element={<Favorites />} />
-        </Route>
-        <Route path="*" element={<p>Theres nothing here: 404!</p>} />
-      </Routes >
-    </Suspense>
+    <StyledNavigation>
+      <Suspense fallback={<Preloader />}>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/book/:bookId" element={<SignUp />} />
+          <Route element={<ProtectedAuthRoute />}>
+            <Route path="/signUp" element={<SignUp />} />
+            <Route path="/signIn" element={<SignIn />} />
+          </Route>
+          <Route element={<ProtectedNoAuthRoute />}>
+            <Route path="/account" element={<Account />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/favorites" element={<Favorites />} />
+          </Route>
+          <Route path="*" element={<p>Theres nothing here: 404!</p>} />
+        </Routes >
+      </Suspense>
+    </StyledNavigation>
   );
 };
 

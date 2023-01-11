@@ -4,7 +4,6 @@ const StyledHighBanner = styled.section`
   padding: 0px 80px;
   max-width: 1440px;
   margin: 0px auto;
-  margin-top: 20px;
   margin-bottom: 40px;
 
   .high-banner__wrapper {

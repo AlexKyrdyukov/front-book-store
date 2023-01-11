@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 const StyledSignInPage = styled.main`
   margin: 0px auto;
-  margin-top: 70px;
   max-width: 1440px;
   margin-bottom: 80px;
   display: flex;
   padding: 0 80px;
+  padding-top: 70px;
   
   .button {
     padding: 10px 50px;
@@ -51,6 +51,8 @@ const StyledSignInPage = styled.main`
 
   @media (max-width: 1028px)  { 
     padding: 0px 40px;
+    padding-top: 70px;
+
 
     .block__form {
       margin-right: 50px;
@@ -62,6 +64,8 @@ const StyledSignInPage = styled.main`
     max-width: 834px;
     padding: 0px 15px;
     margin-bottom: 104px;
+    padding-top: 70px;
+
 
     .block__form {
       margin-right: 20px;

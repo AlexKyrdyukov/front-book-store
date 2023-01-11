@@ -15,8 +15,8 @@ const StyledAvatar = styled.div`
   }
 
   .block__user-photo {
-    max-width: 151px;
-    max-height: 151px;
+    max-width: 305px;
+    max-height: 305px;
     align-self: center;
   }
 
@@ -58,11 +58,6 @@ const StyledAvatar = styled.div`
     .input__file {
       width: 40px;
       min-height: 40px;
-    }
-
-    .block__user-photo {
-      max-width: 135px;
-      max-height: 135px;
     }
 
     .input__block {

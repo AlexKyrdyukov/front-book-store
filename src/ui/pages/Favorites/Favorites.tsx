@@ -8,7 +8,7 @@ type PropsType = {
 const Catalog: React.FC<PropsType> = () => {
   return (
     <StyledCatalogPages>
-      Catalog
+      Favorites
     </StyledCatalogPages>
   );
 };

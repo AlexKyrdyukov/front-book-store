@@ -27,7 +27,7 @@ const changePassword = async (
 };
 
 const setAvatar = async (userId: number | undefined, file: string | ArrayBuffer | null) => {
-  const response = await axiosInstance.post<UserType['avatar'] | AxiosError>(`user/${userId}/avatar`, { file });
+  const response = await axiosInstance.post<UserType['avatar']>(`user/${userId}/avatar`, { file });
   return response.data;
 };
 
