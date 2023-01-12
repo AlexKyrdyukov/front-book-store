@@ -94,7 +94,7 @@ const StyledHeader = styled.header<StyleType>`
     flex-grow: 1;
 
     .block__logo {
-      margin-right: 81px;
+      margin-right: 31px;
     }
 
     .header__form-block {
@@ -128,7 +128,7 @@ const StyledHeader = styled.header<StyleType>`
     }
 
     .header__link-catalog{
-      margin-right: ${(props) => (props.user ? '57px' : '17px')};
+      margin-right: ${(props) => (props.user ? '47px' : '17px')};
       font-weight: 500;
       font-size: 14px;
     }
@@ -150,15 +150,16 @@ const StyledHeader = styled.header<StyleType>`
     }
 
     .button__cart {
-    margin-right: 17px;
-  }
+      margin-right: 17px;
+    }
 
-  .button__likes-books {
-    margin-right: 17px;
-  }
+    .button__likes-books {
+      margin-right: 17px;
+    }
   }
 
   @media (max-width: 355px)  {
+    
     .block__button :first-child button {
       margin-right: 5px;
     }
