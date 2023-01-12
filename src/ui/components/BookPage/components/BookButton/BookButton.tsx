@@ -1,6 +1,6 @@
 import React from 'react';
 
-import StyledButton from './Button.style';
+import StyledButton from './BookButton.style';
 
 type PropType = {
   type?: 'button' | 'submit';
@@ -9,7 +9,7 @@ type PropType = {
   onClick?: () => void;
 } & React.PropsWithChildren;
 
-const Button: React.FC<PropType> = ({ children, ...props }) => {
+const BookButton: React.FC<PropType> = ({ children, ...props }) => {
   return (
     <StyledButton
       {...props}
@@ -19,4 +19,4 @@ const Button: React.FC<PropType> = ({ children, ...props }) => {
   );
 };
 
-export default Button;
+export default BookButton;
