@@ -6,10 +6,10 @@ import { AxiosError } from 'axios';
 import Button from '../../../../components/Button';
 import Input from '../../../../components/Input';
 
-import validationDate from '../../../../../utils/validationSchemas/dataValidation';
-import userApi from '../../../../../api/userApi';
 import { useAppSelector, useAppDispatch } from '../../../../../store';
-import { userSliceActions } from '../../../../../store/userSlice';
+import { userSliceActions } from '../../../../../store/slices/userSlice';
+import validationDate from '../../../../../utils/validationSchemas';
+import userApi from '../../../../../api/userApi';
 import errorHandler from '../../../../../utils/errorHandler';
 
 import mailImage from './images/mailInput.svg';

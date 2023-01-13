@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import type { FormikErrors } from 'formik';
 import type { AxiosError } from 'axios';
 
-import { userSliceActions } from '../../store/userSlice';
+import { userSliceActions } from '../../store/slices/userSlice';
 import { store } from '../../store';
 
 type ErrorType = {

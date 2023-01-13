@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { userSliceActions } from '../../../store/userSlice';
+import { userSliceActions } from '../../../store/slices/userSlice';
 import { useAppDispatch, useAppSelector } from '../../../store';
-import cookies from '../../../coookieHelper/CookieStorage';
+import cookies from '../../../coookieHelper';
 
 import mapCart from './images/map.svg';
 import logoSite from './images/logo.svg';

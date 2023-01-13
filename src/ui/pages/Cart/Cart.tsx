@@ -1,15 +1,16 @@
 import React from 'react';
 
-import StyledCartPage from './Cart.style';
-import { useAppSelector } from '../../../store';
-
 import EmptyCart from './components/EmptyCart';
 
+import { useAppSelector } from '../../../store';
+
+import StyledCartPage from './Cart.style';
+
 const Cart: React.FC = () => {
-  const book = useAppSelector(({ rootSlice }) => rootSlice.bookSlice.book);
+  const books = useAppSelector(({ rootSlice }) => rootSlice.cartSlice.books);
   return (
     <StyledCartPage>
-      {!book && <EmptyCart />}
+      {!books && <EmptyCart />}
     </StyledCartPage>
   );
 };

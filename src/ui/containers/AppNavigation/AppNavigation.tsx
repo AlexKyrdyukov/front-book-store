@@ -10,8 +10,8 @@ const SignUp = React.lazy(() => import('../../pages/SignUp'));
 const SignIn = React.lazy(() => import('../../pages/SignIn'));
 const ProtectedNoAuthRoute = React.lazy(() => import('../../../utils/privateRoute/ProtectedUserNoAuth'));
 const ProtectedAuthRoute = React.lazy(() => import('../../../utils/privateRoute/ProtectedUserAuth'));
-
 const Cart = React.lazy(() => import('../../pages/Cart'));
+const ProductPage = React.lazy(() => import('../../pages/ProductCard'));
 const Account = React.lazy(() => import('../../pages/UserAccount'));
 const Favorites = React.lazy(() => import('../../pages/Favorites'));
 const MainPage = React.lazy(() => import('../../pages/MainPage'));
@@ -22,7 +22,7 @@ const AppNavigation = () => {
       <Suspense fallback={<Preloader />}>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/book/:bookId" element={<SignUp />} />
+          <Route path="/productCard/:bookId" element={<ProductPage />} />
           <Route element={<ProtectedAuthRoute />}>
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/signIn" element={<SignIn />} />
@@ -32,7 +32,7 @@ const AppNavigation = () => {
             <Route path="/cart" element={<Cart />} />
             <Route path="/favorites" element={<Favorites />} />
           </Route>
-          <Route path="*" element={<p>Theres nothing here: 404!</p>} />
+          <Route path="*" element={<MainPage />} />
         </Routes >
       </Suspense>
     </StyledNavigation>

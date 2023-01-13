@@ -7,17 +7,17 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import authApi from '../../../api/authApi';
 
-import cookies from '../../../coookieHelper/CookieStorage';
-
-import validationDate from '../../../utils/validationSchemas/dataValidation';
 import { useAppDispatch } from '../../../store';
-import { userSliceActions } from '../../../store/userSlice';
+import { userSliceActions } from '../../../store/slices/userSlice';
+import cookies from '../../../coookieHelper';
+import validationDate from '../../../utils/validationSchemas';
+import errorHandler from '../../../utils/errorHandler';
 
 import mainImage from './images/human.png';
 import hideLogo from './images/hide.svg';
 import mailLogo from './images/mail.svg';
+
 import StyledSignInPage from './SignIn.style';
-import errorHandler from '../../../utils/errorHandler';
 
 const SignUp: React.FC = () => {
   const dispatch = useAppDispatch();

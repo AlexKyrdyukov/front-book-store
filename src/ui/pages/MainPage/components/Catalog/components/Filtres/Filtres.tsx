@@ -4,7 +4,7 @@ import GanrDropDown from './components/GanrDropDown';
 import SortDropDown from './components/SortDropDown';
 import PriceDropDown from './components/PriceDropDown';
 
-import StyledFiltres from '../Filtres.style';
+import StyledFiltres from './Filtres.style';
 
 const Filtres: React.FC = () => {
   return (

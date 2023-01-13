@@ -4,6 +4,7 @@ import type { FormikErrors } from 'formik';
 import classNames from 'classnames';
 
 import imageEye from './image/View.svg';
+
 import StyledInput from './Input.style';
 
 type PropType = {

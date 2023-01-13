@@ -3,12 +3,12 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { AxiosError } from 'axios';
 
-import Button from '../../../../components/Button/Button';
-import Input from '../../../../components/Input/Input';
+import Button from '../../../../components/Button';
+import Input from '../../../../components/Input';
 
-import validationDate from '../../../../../utils/validationSchemas/dataValidation';
+import validationDate from '../../../../../utils/validationSchemas';
 import userApi from '../../../../../api/userApi';
-import { userSliceActions } from '../../../../../store/userSlice';
+import { userSliceActions } from '../../../../../store/slices/userSlice';
 import { useAppSelector, useAppDispatch } from '../../../../../store';
 import errorHandler from '../../../../../utils/errorHandler';
 

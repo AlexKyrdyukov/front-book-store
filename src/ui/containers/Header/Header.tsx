@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import CircleButton from '../../components/CircleButton';
+
 import headerLogo from './images/logo.svg';
 import { useAppSelector } from '../../../store';
-
 import inputLogo from './images/search.svg';
 import cart from './images/Cart.svg';
 import heart from './images/heart.svg';
 import profile from './images/profile.svg';
+
 import StyledHeader from './Herader.style';
 
 const Header: React.FC = () => {

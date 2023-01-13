@@ -2,15 +2,16 @@ import React from 'react';
 import { AxiosError } from 'axios';
 
 import CircleButton from '../../../../components/CircleButton/CircleButton';
+
 import { useAppSelector, useAppDispatch } from '../../../../../store';
+import { userSliceActions } from '../../../../../store/slices/userSlice';
 import userApi from '../../../../../api/userApi';
-import { userSliceActions } from '../../../../../store/userSlice';
+import errorHandler from '../../../../../utils/errorHandler';
 
 import pseudoPhoto from './images/user.svg';
 import camera from './images/camera.png';
 
 import StyledAvatar from './UserAvatar.style';
-import errorHandler from '../../../../../utils/errorHandler';
 
 type PropsType = {
   className?: string;
