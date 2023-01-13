@@ -3,20 +3,21 @@ import React from 'react';
 import StyledCircleButton from './CircleButton.style';
 
 type PropsType = {
+  disabled?: boolean;
   type?: 'button' | 'submit' | undefined;
   src?: string;
   alt?: string;
   className: string;
+  onClick?: () => void;
 } & React.PropsWithChildren;
 
-const CircleButton: React.FC<PropsType> = (props) => {
+const CircleButton: React.FC<PropsType> = ({ src, alt, ...props }) => {
   return (
     <StyledCircleButton
-      type={props.type}
-      className={props.className}
+      {...props}
     >
       <div className="image__block">
-        <img className="image" src={props.src} alt={props.alt} />
+        <img className="image" src={src} alt={alt} />
       </div>
     </StyledCircleButton>
   );

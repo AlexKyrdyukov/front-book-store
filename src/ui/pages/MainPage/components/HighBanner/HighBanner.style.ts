@@ -4,7 +4,7 @@ const StyledHighBanner = styled.section`
   padding: 0px 80px;
   max-width: 1440px;
   margin: 0px auto;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 
   .high-banner__wrapper {
     background: #F0F4EF;
@@ -17,7 +17,7 @@ const StyledHighBanner = styled.section`
 
   .block__text-button {
     position: absolute;
-    top:80px;
+    top: 80px;
     left: 108px;
   }
 

@@ -1,16 +1,22 @@
 import React from 'react';
 
+import star from './images/star.svg';
+
 import StyledRaiting from './Raiting.style';
 
-const Raiting: React.FC = () => {
+type PropType = {
+  raiting?: number;
+};
+
+const Raiting: React.FC<PropType> = (props) => {
   return (
     <StyledRaiting>
-      <span className="star">&#9733;</span>
-      <span className="star">&#9733;</span>
-      <span className="star">&#9733;</span>
-      <span className="star">&#9733;</span>
-      <span className="star">&#9733;</span>
-
+      <span className="star"><img src={star} alt="star" /></span>
+      <span className="star"><img src={star} alt="star" /></span>
+      <span className="star"><img src={star} alt="star" /></span>
+      <span className="star"><img src={star} alt="star" /></span>
+      <span className="star"><img src={star} alt="star" /></span>
+      <span className="integer__value">{props.raiting}</span>
     </StyledRaiting>
   );
 };

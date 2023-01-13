@@ -1,6 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+
 import LowBanner from '../components/LowBanner';
+import Recommendation from './components/Recommendation';
 
 import StyledProductCard from './ProductCard.style';
 
@@ -15,7 +17,10 @@ const ProductCard: React.FC = () => {
   return (
     <StyledProductCard>
       ProductCart
+      {bookId}
       <LowBanner />
+      <h2 className="recommendation__title">Recommendations</h2>
+      <Recommendation />
     </StyledProductCard>
   );
 };

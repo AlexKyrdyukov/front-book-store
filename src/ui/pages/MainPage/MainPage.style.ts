@@ -2,38 +2,6 @@ import styled from 'styled-components';
 
 const StyledMainPage = styled.main`
   padding-top: 20px;
-  
-  .banner__title {
-    color: #0D1821;
-    font-size: 40px;
-    font-weight: 700;
-  }
-
-  .banner__subtitle {
-    font-weight: 500;
-    font-size: 20px;
-    color: #344966;
-  }
-
-  .book__wrapper {
-    max-width: 542px;
-    height: 327px;
-  }
-
-  .book {
-    width: 100%;
-    height: 100%;
-  }
-
-  .human__wrapper {
-    max-width: 406px;
-    height: 400px;
-  }
-
-  .human {
-    width: 100%;
-    height: 100%;
-  }
 `;
 
 export default StyledMainPage;

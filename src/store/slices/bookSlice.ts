@@ -23,10 +23,16 @@ export const bookSlice = createSlice({
   name: 'bookSlice',
   initialState: getInitialState,
   reducers: {
-    getBook(state, action: PayloadAction<BookType[]>) {
+    setBooksState(state, action) {
       // eslint-disable-next-line no-console
-      console.log(state.books, action.payload);
-      // state.book = action.payload;
+      state.books = action.payload;
+    },
+    changeBookDarling(state, action) {
+      const book = state.books.findIndex(
+        (item) => item.id === action.payload,
+      );
+      state.books[book].darling =
+        !state.books[book].darling;
     },
   },
 });
