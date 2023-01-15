@@ -10,7 +10,7 @@ const Cart: React.FC = () => {
   const books = useAppSelector(({ rootSlice }) => rootSlice.cartSlice.books);
   return (
     <StyledCartPage>
-      {!books && <EmptyCart />}
+      {books && <EmptyCart />}
     </StyledCartPage>
   );
 };

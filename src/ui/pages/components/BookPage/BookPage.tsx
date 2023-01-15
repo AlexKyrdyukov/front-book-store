@@ -47,7 +47,7 @@ const BookPage: React.FC<PropsType> = (props) => {
       >
         <span className="block__circle-button">
           <CircleButton
-            disabled={Boolean(user)}
+            disabled={Boolean(!user)}
             type="button"
             onClick={handleDarling}
             className="darling__button"

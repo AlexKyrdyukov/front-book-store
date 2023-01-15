@@ -24,7 +24,6 @@ export const bookSlice = createSlice({
   initialState: getInitialState,
   reducers: {
     setBooksState(state, action) {
-      // eslint-disable-next-line no-console
       state.books = action.payload;
     },
     changeBookDarling(state, action) {
