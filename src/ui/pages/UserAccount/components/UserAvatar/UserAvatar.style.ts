@@ -18,6 +18,7 @@ const StyledAvatar = styled.div`
     max-width: 305px;
     max-height: 305px;
     align-self: center;
+    overflow: hidden;
   }
 
   .user-photo {
