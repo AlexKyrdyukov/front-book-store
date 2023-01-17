@@ -26,7 +26,7 @@ const BookPage: React.FC<PropsType> = (props) => {
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
 
   const handleClick = () => {
-    navigate(`productCard/:${props.book.id}`);
+    navigate(`productCard/${props.book.id}`);
   };
 
   const annotationStyle = classNames('annotation-new__block', {
@@ -34,7 +34,7 @@ const BookPage: React.FC<PropsType> = (props) => {
   });
 
   const buyButtonStyle = classNames('buy__button', {
-    disabled: !props.book.price,
+    disabled: !props.book.isAvailable,
   });
 
   const handleDarling = () => {
@@ -57,7 +57,7 @@ const BookPage: React.FC<PropsType> = (props) => {
         </span>
         <img
           onClick={handleClick}
-          src={props.book.src} alt="book cover"
+          src={props.book.image} alt="book cover"
         />
         {props.book.annotation &&
           <div className={annotationStyle}>{props.book.annotation}</div>
@@ -71,8 +71,8 @@ const BookPage: React.FC<PropsType> = (props) => {
         className={buyButtonStyle}
         type="button"
       >
-        {props.book.price
-          ? props.book.price
+        {props.book.isAvailable
+          ? `$ ${props.book.price} USD`
           : 'Not available'}
       </BookButton>
     </StyledBookPage>

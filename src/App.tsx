@@ -6,7 +6,7 @@ import Header from './ui/containers/Header';
 import Footer from './ui/containers/Footer';
 import AppNavigation from './ui/containers/AppNavigation';
 
-import userThunks from './store/userThunks';
+import userThunks from './store/thunks/userThunks';
 import { useAppDispatch } from './store';
 import errorHandler from './utils/errorHandler';
 
@@ -15,9 +15,9 @@ const App = () => {
 
   React.useEffect(() => {
     const getUser = async () => {
-      const res = await dispatch(userThunks.getUser());
-      if (res.payload instanceof AxiosError) {
-        errorHandler(res.payload);
+      const response = await dispatch(userThunks.getUser());
+      if (response.payload instanceof AxiosError) {
+        errorHandler(response.payload);
       }
     };
     getUser();

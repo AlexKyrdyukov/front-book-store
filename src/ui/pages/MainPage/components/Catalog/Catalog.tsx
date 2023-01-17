@@ -1,58 +1,25 @@
 import React from 'react';
+import { AxiosError } from 'axios';
 
 import Filtres from './components/Filtres';
 import BooksList from './components/BooksList';
 
 import { useAppDispatch } from '../../../../../store';
-import { bookSliceActions } from '../../../../../store/slices/bookSlice';
-
-import bookCover from './images/book_narnia.svg';
+import bookThunks from '../../../../../store/thunks/bookThunks';
+import errorHandler from '../../../../../utils/errorHandler';
 
 import StyledCatalog from './Catalog.style';
 
 const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
-  const books = [{
-    id: 1,
-    name: 'The Chronicles of Narnia',
-    author: 'C. S. Lewis',
-    darling: false,
-    raiting: 4.6,
-    annotation: 'Bestseller',
-    price: '$14.99 USD',
-    inBasket: false,
-    src: bookCover,
-  }, {
-    id: 2,
-    name: 'The Chronicles of Narnia',
-    author: 'C. S. Lewis',
-    darling: false,
-    raiting: 4.6,
-    annotation: 'new',
-    inBasket: false,
-    src: bookCover,
-  }, {
-    id: 3,
-    name: 'The Chronicles of Narnia',
-    author: 'C. S. Lewis',
-    darling: false,
-    raiting: 4.6,
-    inBasket: false,
-    src: bookCover,
-  }, {
-    id: 4,
-    name: 'The Chronicles of Narnia',
-    author: 'C. S. Lewis',
-    darling: false,
-    raiting: 4.6,
-    annotation: 'new',
-    inBasket: false,
-    src: bookCover,
-  }];
-
   React.useEffect(() => {
-    dispatch(bookSliceActions.setBooksState(books));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const getBooks = async () => {
+      const response = await dispatch(bookThunks.getBooks());
+      if (response.payload instanceof AxiosError) {
+        errorHandler(response.payload);
+      }
+    };
+    getBooks();
   }, [dispatch]);
 
   return (

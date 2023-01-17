@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
-import authApi from '../api/authApi';
+import bookApi from '../../api/bookApi';
 
-const getUser = createAsyncThunk('getUser', async (_, { rejectWithValue }) => {
+const getBooks = createAsyncThunk('getBooks', async (_, { rejectWithValue }) => {
   try {
-    const response = await authApi.getMe();
-    return (response);
+    const response = await bookApi.getAll();
+    return response;
   } catch (error) {
     if (error instanceof AxiosError) {
       throw rejectWithValue(error);
@@ -15,5 +15,5 @@ const getUser = createAsyncThunk('getUser', async (_, { rejectWithValue }) => {
 });
 
 export default {
-  getUser,
+  getBooks,
 };

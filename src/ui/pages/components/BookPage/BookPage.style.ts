@@ -4,6 +4,7 @@ const StyledBookPage = styled.div`
   max-width: 305px;
   margin-left: 10px;
   margin-right: 10px;
+  margin-bottom: 80px;
 
   .darling__button {
     width: 48px;
