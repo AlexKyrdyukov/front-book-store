@@ -13,6 +13,7 @@ import bookApi from '../../../api/bookApi';
 import errorHandler from '../../../utils/errorHandler';
 
 import StyledProductCard from './ProductCard.style';
+import CommentsBook from './components/CommentsBook/CommentsBook';
 
 const ProductCard: React.FC = () => {
   const [bookState, setBookState] = React.useState<BookType>();
@@ -40,6 +41,7 @@ const ProductCard: React.FC = () => {
     <StyledProductCard>
       ProductCart
       <SelectedProduct book={bookState} />
+      <CommentsBook />
       {!user && <LowBanner />}
       <h2 className="recommendation__title">Recommendations</h2>
       <Recommendation />
