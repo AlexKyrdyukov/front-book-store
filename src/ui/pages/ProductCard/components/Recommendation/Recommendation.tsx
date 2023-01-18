@@ -12,7 +12,7 @@ const Recommendation: React.FC = () => {
   const recommendation = books.slice(10, 14);
   return (
     <StyledRecommendation>
-      {recommendation.map((item) => <BookPage key={item.id} book={item} />)}
+      {recommendation.map((item) => <BookPage key={item.bookId} book={item} />)}
     </StyledRecommendation>
   );
 };

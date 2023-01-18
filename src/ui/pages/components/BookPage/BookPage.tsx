@@ -26,7 +26,7 @@ const BookPage: React.FC<PropsType> = (props) => {
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
 
   const handleClick = () => {
-    navigate(`/productCard/${props.book.id}`);
+    navigate(`/productCard/${props.book.bookId}`);
   };
 
   const annotationStyle = classNames('annotation-new__block', {
@@ -38,7 +38,7 @@ const BookPage: React.FC<PropsType> = (props) => {
   });
 
   const handleDarling = () => {
-    dispatch(bookSliceActions.changeBookDarling(props.book.id));
+    dispatch(bookSliceActions.changeBookDarling(props.book.bookId));
   };
 
   return (

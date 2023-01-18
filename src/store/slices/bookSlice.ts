@@ -4,7 +4,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import bookThunks from '../thunks/bookThunks';
 
 export type BookType = {
-  id: number;
+  bookId: number;
   name: string;
   author: string;
   darling?: boolean;
@@ -33,7 +33,7 @@ export const bookSlice = createSlice({
     },
     changeBookDarling(state, action) {
       const book = state!.books!.findIndex(
-        (item) => item.id === action.payload,
+        (item) => item.bookId === action.payload,
       );
       state.books[book].darling =
         !state.books[book].darling;

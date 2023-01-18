@@ -22,7 +22,7 @@ type PropType = {
 
 const UserPasswordForm: React.FC<PropType> = (props) => {
   const dispatch = useAppDispatch();
-  const userId = useAppSelector((reducer) => reducer.rootSlice.userSlice.user?.id);
+  const userId = useAppSelector((reducer) => reducer.rootSlice.userSlice.user?.userId);
 
   const removeUser = async () => {
     try {

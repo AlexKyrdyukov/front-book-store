@@ -25,7 +25,7 @@ const UserDataForm: React.FC<PropType> = (props) => {
   const [formState, setFormState] = React.useState<boolean>(false);
   const dispatch = useAppDispatch();
 
-  const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.id);
+  const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.userId);
   const fullName = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.fullName);
   const userEmail = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user!.email);
 

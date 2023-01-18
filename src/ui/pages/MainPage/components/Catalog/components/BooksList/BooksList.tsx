@@ -11,7 +11,7 @@ const BooksList: React.FC = () => {
 
   return (
     <StyledBooksLists>
-      {books.map((item) => <BookPage key={item.id} book={item} />)}
+      {books.map((item) => <BookPage key={item.bookId} book={item} />)}
     </StyledBooksLists>
 
   );

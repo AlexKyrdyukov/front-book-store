@@ -1,6 +1,6 @@
 export type UserType = {
   email: string;
-  id: number;
+  userId: number;
   fullName?: string | null;
   avatar?: string | null;
 };

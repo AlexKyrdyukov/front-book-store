@@ -19,7 +19,7 @@ type PropsType = {
 
 const UserAvatar: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
-  const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.id);
+  const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.userId);
 
   const userAvatar = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.avatar);
 
