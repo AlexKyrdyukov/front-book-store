@@ -8,7 +8,6 @@ import imageEye from './image/View.svg';
 import StyledInput from './Input.style';
 
 type PropType = {
-  id?: string;
   placeholder: string;
   type: string;
   src: string;
@@ -55,7 +54,7 @@ const Input: React.FC<PropType> = (props) => {
         (
           <label
             className="label__input"
-            htmlFor={props.id}
+            htmlFor={props.name}
           >
             {props.label}
           </label>)

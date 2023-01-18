@@ -8,7 +8,8 @@ import StyledRecommendation from './Recommendation.style';
 
 const Recommendation: React.FC = () => {
   const books = useAppSelector(({ rootSlice }) => rootSlice.bookSlice.books);
-  const recommendation = books.slice(6, 10);
+
+  const recommendation = books.slice(10, 14);
   return (
     <StyledRecommendation>
       {recommendation.map((item) => <BookPage key={item.id} book={item} />)}

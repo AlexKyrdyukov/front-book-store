@@ -26,7 +26,7 @@ const BookPage: React.FC<PropsType> = (props) => {
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
 
   const handleClick = () => {
-    navigate(`productCard/${props.book.id}`);
+    navigate(`/productCard/${props.book.id}`);
   };
 
   const annotationStyle = classNames('annotation-new__block', {

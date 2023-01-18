@@ -6,26 +6,30 @@ import Raiting from '../../../components/BookPage/components/Raiting/Raiting';
 import StyledSelectedProduct from './SelectedProduct.style';
 
 type PropsType = {
-  book: BookType | undefined;
+  book: BookType | null | undefined;
 };
 
 const SelectedProduct: React.FC<PropsType> = ({ book }) => {
   return (
     <StyledSelectedProduct>
-      <div>
-        <img src={book?.image} alt="book cover" />
+      <div className="product__image-block">
+        <img className="product__image" src={book?.image} alt="book cover" />
       </div>
-      <div>
+      <div className="product__text-block">
         <h3>{book?.name}</h3>
         <h5>{book?.author}</h5>
         <Raiting raiting={book?.raiting} />
-        <div>
+        <div className="product__description-block">
           <h4>Description</h4>
           <p>{book?.description}</p>
         </div>
+      </div>
+      <div>
         <div>
           <span>Paperback</span>
           <BookButton>{book?.coverType === 'Paperback' ? book.price : 'Not available'}</BookButton>
+        </div>
+        <div>
           <span>HardCover</span>
           <BookButton>{book?.coverType === 'Hardcover' ? book.price : 'Not available'}</BookButton>
         </div>

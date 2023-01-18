@@ -64,7 +64,6 @@ const SignUp: React.FC = () => {
         <h2 className="title">Sign In</h2>
         <Input
           placeholder="Email"
-          id="email"
           type="email"
           src={mailLogo}
           alt="logo email"
@@ -76,7 +75,6 @@ const SignUp: React.FC = () => {
         />
         <Input
           placeholder="Password"
-          id="password"
           type="password"
           alt="logo password"
           src={hideLogo}

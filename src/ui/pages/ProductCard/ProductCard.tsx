@@ -16,12 +16,12 @@ import StyledProductCard from './ProductCard.style';
 import CommentsBook from './components/CommentsBook/CommentsBook';
 
 const ProductCard: React.FC = () => {
-  const [bookState, setBookState] = React.useState<BookType>();
+  const [bookState, setBookState] = React.useState<BookType | null>(null);
+
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
 
   const { bookId } = useParams();
-  // eslint-disable-next-line no-console
-  console.log(bookId);
+
   React.useEffect(() => {
     (async () => {
       try {
@@ -33,10 +33,8 @@ const ProductCard: React.FC = () => {
         }
       }
     })();
-    // return setBookState({});
+    return setBookState(null);
   }, [bookId]);
-  // eslint-disable-next-line no-console
-  console.log(bookState);
   return (
     <StyledProductCard>
       ProductCart

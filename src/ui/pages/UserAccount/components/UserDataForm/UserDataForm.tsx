@@ -78,7 +78,6 @@ const UserDataForm: React.FC<PropType> = (props) => {
         onSubmit={formik.handleSubmit}
       >
         <Input
-          id="fullName"
           placeholder=""
           label="Your name"
           type="text"
@@ -90,7 +89,6 @@ const UserDataForm: React.FC<PropType> = (props) => {
           {...formik.getFieldProps('fullName')}
         />
         <Input
-          id="email"
           placeholder=""
           label="Your email"
           type="email"

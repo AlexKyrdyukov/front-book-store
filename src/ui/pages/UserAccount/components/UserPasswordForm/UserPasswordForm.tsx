@@ -83,7 +83,6 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
         onSubmit={formik.handleSubmit}
       >
         <Input
-          id="password"
           placeholder=""
           className="input__margin"
           label="Your password"
@@ -97,7 +96,6 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
         {formState
           ? (
             <><Input
-              id="newPassword"
               placeholder="New Password"
               type="password"
               alt="eye  image"
@@ -109,7 +107,6 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
               {...formik.getFieldProps('newPassword')}
             />
               <Input
-                id="confirmNewPassword"
                 placeholder="Password replay"
                 type="password"
                 className="input__margin"
