@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Button from '../../../../components/Button';
 
 import books from './images/books.svg';
+
 import StyledEmptyCart from './EmptyCart.style';
 
 const EmptyCart: React.FC = () => {

@@ -5,8 +5,8 @@ import classNames from 'classnames';
 import type { BookType } from '../../../../store/slices/bookSlice';
 
 import CircleButton from '../../../components/CircleButton';
-import BookButton from './components/BookButton';
-import Raiting from './components/Raiting';
+import BookButton from '../BookButton';
+import Raiting from '../Raiting';
 
 import { bookSliceActions } from '../../../../store/slices/bookSlice';
 import { useAppSelector, useAppDispatch } from '../../../../store';
@@ -30,11 +30,11 @@ const BookPage: React.FC<PropsType> = (props) => {
   };
 
   const annotationStyle = classNames('annotation-new__block', {
-    'annotation-bestseller__block': props.book.annotation === 'Bestseller',
+    'annotation-bestseller__block': props.book.bestSeller,
   });
 
   const buyButtonStyle = classNames('buy__button', {
-    disabled: !props.book.isAvailable,
+    disabled: !props.book.isInStock,
   });
 
   const handleDarling = () => {
@@ -59,20 +59,25 @@ const BookPage: React.FC<PropsType> = (props) => {
           onClick={handleClick}
           src={props.book.image} alt="book cover"
         />
-        {props.book.annotation &&
-          <div className={annotationStyle}>{props.book.annotation}</div>
+        {props.book.bestSeller
+          ? <div className={annotationStyle}>Bestseller</div>
+          : null
+        }
+        {props.book.new
+          ? <div className={annotationStyle}>New</div>
+          : null
         }
       </div>
       <h4 className="book__name">{props.book.name}</h4>
       <h5 className="book__author">{props.book.author}</h5>
       <Raiting raiting={props.book.raiting} />
       <BookButton
-        disabled={Boolean(props.book.price)}
+        disabled={Boolean(props.book.priceInDollar)}
         className={buyButtonStyle}
         type="button"
       >
-        {props.book.isAvailable
-          ? `$ ${props.book.price} USD`
+        {props.book.isInStock
+          ? `$ ${props.book.priceInDollar} USD`
           : 'Not available'}
       </BookButton>
     </StyledBookPage>

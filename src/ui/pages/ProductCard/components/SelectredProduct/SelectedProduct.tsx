@@ -1,7 +1,8 @@
 import React from 'react';
+
 import type { BookType } from '../../../../../store/slices/bookSlice';
-import BookButton from '../../../components/BookPage/components/BookButton/BookButton';
-import Raiting from '../../../components/BookPage/components/Raiting/Raiting';
+import BookButton from '../../../components/BookButton';
+import Raiting from '../../../components/Raiting';
 
 import StyledSelectedProduct from './SelectedProduct.style';
 
@@ -27,11 +28,11 @@ const SelectedProduct: React.FC<PropsType> = ({ book }) => {
       <div>
         <div>
           <span>Paperback</span>
-          <BookButton>{book?.coverType === 'Paperback' ? book.price : 'Not available'}</BookButton>
+          <BookButton>{book?.coverType.includes('Paperback') ? book.priceInDollar : 'Not available'}</BookButton>
         </div>
         <div>
           <span>HardCover</span>
-          <BookButton>{book?.coverType === 'Hardcover' ? book.price : 'Not available'}</BookButton>
+          <BookButton>{book?.coverType.includes('Hardcover') ? book.priceInDollar : 'Not available'}</BookButton>
         </div>
       </div>
 

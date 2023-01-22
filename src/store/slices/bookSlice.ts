@@ -4,18 +4,18 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import bookThunks from '../thunks/bookThunks';
 
 export type BookType = {
-  bookId: number;
-  name: string;
   author: string;
-  darling?: boolean;
-  raiting: number;
-  annotation: string | null;
-  price: number;
-  inBasket?: boolean;
-  image: string;
-  coverType: string;
+  bestSeller: boolean;
+  bookId: number;
+  coverType: string[];
   description: string;
-  isAvailable: boolean;
+  image: string;
+  isInStock: boolean;
+  name: string;
+  new: boolean;
+  priceInDollar: number;
+  raiting: number;
+  darling: boolean;
 };
 
 const BooksStore: BookType[] = [];

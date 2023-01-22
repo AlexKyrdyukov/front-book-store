@@ -37,7 +37,6 @@ const ProductCard: React.FC = () => {
   }, [bookId]);
   return (
     <StyledProductCard>
-      ProductCart
       <SelectedProduct book={bookState} />
       <CommentsBook />
       {!user && <LowBanner />}
