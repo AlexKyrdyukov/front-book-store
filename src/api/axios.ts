@@ -8,11 +8,11 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use((request) => {
   const token = cookies.token.get();
+  const customRequest = request;
   if (token) {
-    // eslint-disable-next-line no-param-reassign
-    request.headers = {
-      ...request.headers,
+    customRequest.headers = {
       authorization: `Bearer ${token}`,
+      ...request.headers,
     };
   }
   return request;
