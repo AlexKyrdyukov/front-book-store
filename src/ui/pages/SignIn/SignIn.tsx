@@ -9,7 +9,7 @@ import authApi from '../../../api/authApi';
 
 import { useAppDispatch } from '../../../store';
 import { userSliceActions } from '../../../store/slices/userSlice';
-import cookies from '../../../coookieHelper';
+import cookies from '../../../utils/coookieHelper';
 import validationDate from '../../../utils/validationSchemas';
 import errorHandler from '../../../utils/errorHandler';
 

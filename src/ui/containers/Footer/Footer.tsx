@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { userSliceActions } from '../../../store/slices/userSlice';
 import { useAppDispatch, useAppSelector } from '../../../store';
-import cookies from '../../../coookieHelper';
+import cookies from '../../../utils/coookieHelper';
 
 import mapCart from './images/map.svg';
 import logoSite from './images/logo.svg';
