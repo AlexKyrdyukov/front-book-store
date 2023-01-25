@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import cookies from '../utils/coookieHelper/CookieStorage';
+import cookies from '../utils/coookieHelper';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:4000/api',

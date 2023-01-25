@@ -61,7 +61,7 @@ const UserAvatar: React.FC<PropsType> = (props) => {
           />
           <input
             className="input__file"
-            // accept="image/*"
+            accept="image/*"
             type="file"
             onChange={changeHandler}
           />
