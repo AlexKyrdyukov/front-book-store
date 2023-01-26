@@ -23,7 +23,7 @@ const getMe = async () => {
 };
 
 const refresh = async () => {
-  const response = await axiosInstance.get('/refresh');
+  const response = await axiosInstance.post('/auth/refresh');
   return response.data;
 };
 
