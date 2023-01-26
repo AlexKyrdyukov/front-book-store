@@ -19,7 +19,8 @@ const Footer: React.FC = () => {
       return;
     }
     dispatch(userSliceActions.removeUser());
-    cookies.token.remove();
+    cookies.access.remove();
+    cookies.refresh.remove();
   };
 
   return (

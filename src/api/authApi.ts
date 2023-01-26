@@ -8,12 +8,12 @@ type AuthType = {
 };
 
 const signUp = async (user: AuthType) => {
-  const response = await axiosInstance.post<{ token: string; user: UserType }>('/auth/sign-up', user);
+  const response = await axiosInstance.post<{ accessToken: string; refreshToken: string; user: UserType }>('/auth/sign-up', user);
   return response.data;
 };
 
 const signIn = async (user: AuthType) => {
-  const response = await axiosInstance.post<{ token: string; user: UserType }>('/auth/sign-in', user);
+  const response = await axiosInstance.post<{ accessToken: string; refreshToken: string; user: UserType }>('/auth/sign-in', user);
   return response.data;
 };
 
@@ -22,8 +22,14 @@ const getMe = async () => {
   return response.data;
 };
 
+const refresh = async () => {
+  const response = await axiosInstance.get('/refresh');
+  return response.data;
+};
+
 export default {
   signIn,
   signUp,
   getMe,
+  refresh,
 };

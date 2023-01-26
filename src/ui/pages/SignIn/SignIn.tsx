@@ -39,8 +39,10 @@ const SignUp: React.FC = () => {
           email: values.email,
           password: values.password,
         });
-        cookies.token.set(response.token);
-        dispatch(userSliceActions.setUser(response.user));
+        const { accessToken, refreshToken, user } = response;
+        cookies.access.set(accessToken);
+        cookies.refresh.set(refreshToken);
+        dispatch(userSliceActions.setUser(user));
         actions.resetForm({
           values: {
             email: '',

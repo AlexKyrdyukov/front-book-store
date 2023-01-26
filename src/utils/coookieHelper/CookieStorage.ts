@@ -21,7 +21,8 @@ class CookieStorage<D> {
 }
 
 const storage = {
-  token: new CookieStorage<string>('token'),
+  access: new CookieStorage<string>('access'),
+  refresh: new CookieStorage<string>('refresh'),
 };
 
 export default storage;

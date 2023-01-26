@@ -1,38 +1,24 @@
 import axios from 'axios';
-import { v4 as uuidv4, v4 } from 'uuid';
 
 import cookies from '../utils/coookieHelper';
 
+import getDeviceId from '../utils/deviceHelper';
+
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:4000/api',
+  headers: {
+    deviceId: getDeviceId(),
+  },
 });
 
-const storageItem = {
-  get() {
-    const data = localStorage.getItem('deviceId');
-    return data;
-  },
-  set(value: string) {
-    localStorage.setItem('deviceId', value);
-  },
-};
-
-const getDeviceId = () => {
-  const deviceId = storageItem.get();
-  if (!deviceId) {
-    return v4();
-  }
-  return deviceId;
-};
-
 axiosInstance.interceptors.request.use((request) => {
-  const token = cookies.token.get();
+  const accessToken = cookies.access.get();
+  const refreshToken = cookies.refresh.get();
   const customRequest = request;
-  if (token) {
+  if (accessToken && refreshToken) {
     customRequest.headers = {
-      authorization: `Bearer ${token}`,
+      authorization: [`Bearer ${accessToken}`, `Bearer ${refreshToken}`],
       ...request.headers,
-      deviceId: getDeviceId(),
     };
   }
   return request;

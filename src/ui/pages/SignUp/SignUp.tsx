@@ -40,7 +40,9 @@ const SignUp: React.FC = () => {
           email: values.email,
           password: values.password,
         });
-        cookies.token.set(response.token);
+        const { accessToken, refreshToken, user } = response;
+        cookies.access.set(accessToken);
+        cookies.refresh.set(refreshToken);
         actions.resetForm({
           values: {
             email: '',
@@ -48,7 +50,7 @@ const SignUp: React.FC = () => {
             confirmPassword: '',
           },
         });
-        dispatch(userSliceActions.setUser(response.user));
+        dispatch(userSliceActions.setUser(user));
       } catch (error) {
         if (error instanceof AxiosError) {
           return actions.setErrors(errorHandler(error));
