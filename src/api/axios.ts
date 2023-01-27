@@ -5,20 +5,21 @@ import authApi from './authApi';
 import getDeviceId from '../utils/deviceHelper';
 
 const axiosInstance = axios.create({
-  withCredentials: true,
   baseURL: 'http://localhost:4000/api',
   headers: {
-    deviceId: getDeviceId(),
+    device_id: getDeviceId(),
   },
 });
 
 axiosInstance.interceptors.response.use((response) => {
+  // eslint-disable-next-line no-console
+  console.log(response);
   return response;
 }, async (error) => {
   try {
     const originalRequest = error.config;
     if (error instanceof AxiosError && error.response?.status === 401) {
-      originalRequest.isRetry = true;
+      // originalRequest.isRetry = true;
       // eslint-disable-next-line no-console
       console.log(originalRequest);
       const respone = await authApi.refresh();
@@ -26,15 +27,17 @@ axiosInstance.interceptors.response.use((response) => {
       cookies.access.set(accessToken);
       cookies.access.set(refreshToken);
       if (originalRequest) {
+        // eslint-disable-next-line no-console
+        console.log('repeat request');
         return axiosInstance.request(originalRequest);
       }
     }
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
+    throw error;
   }
-  // eslint-disable-next-line no-console
-  console.log('unknown error', error);
+  throw error;
 });
 
 axiosInstance.interceptors.request.use((request) => {

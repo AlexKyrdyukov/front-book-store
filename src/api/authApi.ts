@@ -18,8 +18,10 @@ const signIn = async (user: AuthType) => {
 };
 
 const getMe = async () => {
+  // eslint-disable-next-line no-console
+  console.log('event');
   const response = await axiosInstance.get('/auth/me');
-  return response.data;
+  return response.data || null;
 };
 
 const refresh = async () => {

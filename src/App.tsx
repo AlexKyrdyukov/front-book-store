@@ -1,26 +1,25 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
-import { AxiosError } from 'axios';
 
 import Header from './ui/containers/Header';
 import Footer from './ui/containers/Footer';
 import AppNavigation from './ui/containers/AppNavigation';
+import cookies from './utils/coookieHelper';
 
 import userThunks from './store/thunks/userThunks';
 import { useAppDispatch } from './store';
-import errorHandler from './utils/errorHandler';
 
 const App = () => {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
+    const token = cookies.access.get();
     const getUser = async () => {
-      const response = await dispatch(userThunks.getUser());
-      if (response.payload instanceof AxiosError) {
-        errorHandler(response.payload);
-      }
+      await dispatch(userThunks.getUser());
     };
-    getUser();
+    if (token) {
+      getUser();
+    }
   }, [dispatch]);
   return (
     <>
