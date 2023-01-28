@@ -13,7 +13,7 @@ const App = () => {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    const token = cookies.access.get();
+    const token = cookies.refresh.get();
     const getUser = async () => {
       await dispatch(userThunks.getUser());
     };
