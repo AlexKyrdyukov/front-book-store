@@ -34,6 +34,7 @@ const StyledAvatar = styled.div`
   }
 
   .input__file {
+    cursor: pointer;
     position: absolute;
     width: 48px;
     min-height: 48px;

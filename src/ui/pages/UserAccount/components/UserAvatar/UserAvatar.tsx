@@ -1,5 +1,6 @@
 import React from 'react';
 import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
 
 import CircleButton from '../../../../components/CircleButton/CircleButton';
 
@@ -35,14 +36,15 @@ const UserAvatar: React.FC<PropsType> = (props) => {
     reader.readAsDataURL(file![0]);
     reader.onloadend = async () => {
       try {
-        const fileName = await userApi.setAvatar(userId, reader.result);
-        dispatch(userSliceActions.setAvatar(fileName));
+        const { avatar, message } = await userApi.setAvatar(userId, reader.result);
+        // eslint-disable-next-line no-console
+        console.log(avatar);
+        dispatch(userSliceActions.setAvatar(avatar));
+        toast.info(message);
       } catch (error) {
         if (error instanceof AxiosError) {
           errorHandler(error);
         }
-        // eslint-disable-next-line no-console
-        console.log(error);
       }
     };
   };

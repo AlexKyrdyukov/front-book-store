@@ -39,8 +39,10 @@ axiosInstance.interceptors.response.use((response) => {
     }
     // eslint-disable-next-line no-console
     console.log(error);
-    throw error;
   }
+  // eslint-disable-next-line no-console
+  console.log(error);
+  throw error;
 });
 
 export default axiosInstance;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { AxiosError } from 'axios';
 
@@ -29,7 +30,9 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
       await userApi.deleteUser(userId);
       dispatch(userSliceActions.removeUser());
     } catch (error) {
-      console.error(error);
+      if (error instanceof AxiosError) {
+        errorHandler(error);
+      }
     }
   };
   const [formState, setFormState] = React.useState<boolean>(false);
@@ -48,9 +51,10 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
 
     onSubmit: async (values, actions) => {
       try {
-        await userApi.changePassword(
+        const { message } = await userApi.changePassword(
           userId, values.password, values.newPassword,
         );
+        toast.info(message);
         actions.resetForm({
           values: {
             newPassword: '',
@@ -62,7 +66,6 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
         if (error instanceof AxiosError) {
           return actions.setErrors(errorHandler(error));
         }
-        console.error(error);
       }
     },
   });

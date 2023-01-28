@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { AxiosError } from 'axios';
 
@@ -40,7 +41,7 @@ const SignUp: React.FC = () => {
           email: values.email,
           password: values.password,
         });
-        const { accessToken, refreshToken, user } = response;
+        const { accessToken, refreshToken, user, message } = response;
         cookies.access.set(accessToken);
         cookies.refresh.set(refreshToken);
         actions.resetForm({
@@ -51,6 +52,7 @@ const SignUp: React.FC = () => {
           },
         });
         dispatch(userSliceActions.setUser(user));
+        toast.info(message);
       } catch (error) {
         if (error instanceof AxiosError) {
           return actions.setErrors(errorHandler(error));

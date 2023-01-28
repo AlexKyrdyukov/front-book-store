@@ -28,7 +28,7 @@ const App = () => {
 
       <ToastContainer
         position="top-center"
-        autoClose={9000}
+        autoClose={5000}
       />
 
       <AppNavigation />

@@ -14,13 +14,15 @@ const Footer: React.FC = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
 
-  const logOut = () => {
+  const logOut = (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
+    const flag = event.currentTarget.tagName === 'A';
     if (!user) {
       return;
     }
     dispatch(userSliceActions.removeUser());
     cookies.access.remove();
-    cookies.refresh.remove();
+    // eslint-disable-next-line no-unused-expressions
+    flag ? cookies.refresh.remove() : null;
   };
 
   return (
@@ -41,6 +43,7 @@ const Footer: React.FC = () => {
           <Link className="footer__link" to="/account">My Account</Link>
           <Link className="footer__link" to="/cart">Cart</Link>
           <Link className="footer__link" to="/">Home Page</Link>
+          <Link onClick={logOut} className="footer__link" to="/">log-out</Link>
         </nav>
         <div className="footer__map-block">
           <p className="footer__address">

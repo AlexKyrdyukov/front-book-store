@@ -10,7 +10,7 @@ type UserType = {
 };
 
 const changeData = async (userId: number | undefined, fullName: string, email: string) => {
-  const response = await axiosInstance.patch<{ user: UserType }>(`/user/${userId}`, { fullName, email });
+  const response = await axiosInstance.patch<{ user: UserType; message: string }>(`/user/${userId}`, { fullName, email });
   return response.data;
 };
 
@@ -22,12 +22,14 @@ const deleteUser = async (userId: number | undefined) => {
 const changePassword = async (
   userId: number | undefined, password: string, newPassword: string,
 ) => {
-  const response = await axiosInstance.patch<AxiosResponse | AxiosError>(`/user/${userId}/password`, { password, newPassword });
+  // const response = await axiosInstance.patch<AxiosResponse
+  // AxiosError>(`/user/${userId}/password`, { password, newPassword });
+  const response = await axiosInstance.patch<{ message: string }>(`/user/${userId}/password`, { password, newPassword });
   return response.data;
 };
 
 const setAvatar = async (userId: number | undefined, file: string | ArrayBuffer | null) => {
-  const response = await axiosInstance.post<UserType['avatar']>(`user/${userId}/avatar`, { file });
+  const response = await axiosInstance.post<{ avatar: UserType['avatar']; message: string }>(`user/${userId}/avatar`, { file });
   return response.data;
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { AxiosError } from 'axios';
 
@@ -42,19 +43,19 @@ const UserDataForm: React.FC<PropType> = (props) => {
 
     onSubmit: async (values, actions) => {
       try {
-        const response = await userApi.changeData(userId, values.fullName, values.email);
-        dispatch(userSliceActions.setUser(response.user));
+        const { user, message } = await userApi.changeData(userId, values.fullName, values.email);
+        dispatch(userSliceActions.setUser(user));
+        toast.info(message);
         actions.resetForm({
           values: {
-            fullName: response.user.fullName,
-            email: response.user.email,
+            fullName: user.fullName,
+            email: user.email,
           },
         });
       } catch (error) {
         if (error instanceof AxiosError) {
           return actions.setErrors(errorHandler(error));
         }
-        console.error(error);
       }
     },
   });

@@ -19,7 +19,7 @@ export const userSlice = createSlice({
       state.user = null;
     },
     setAvatar(state, action) {
-      state.user!.avatar = action.payload.avatar;
+      state.user!.avatar = action.payload;
     },
   },
   extraReducers: (builder) => {

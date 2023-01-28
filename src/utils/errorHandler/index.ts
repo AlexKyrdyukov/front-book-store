@@ -20,14 +20,16 @@ const errorHandler = (error: AxiosError<CustomErrorType>) => {
   const errors: FormikErrors<{ [index: string]: string }> = {};
 
   if (!error.response?.status) {
-    toast('error server connection');
+    toast.error('error server connection');
   }
   if (error.response?.status) {
-    toast(error.response?.data?.message);
+    toast.error(error.response?.data?.message);
   }
   if (error.response?.data?.message === 'please log in') {
     store.dispatch(userSliceActions.removeUser());
   }
+  console.error(error);
+
   if (error.response?.data?.errors) {
     error.response.data.errors.forEach((item: ErrorType) => {
       errors[item.key] = item.message;

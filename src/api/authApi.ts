@@ -8,7 +8,7 @@ type AuthType = {
 };
 
 const signUp = async (user: AuthType) => {
-  const response = await axiosInstance.post<{ accessToken: string; refreshToken: string; user: UserType }>('/auth/sign-up', user);
+  const response = await axiosInstance.post<{ accessToken: string; refreshToken: string; user: UserType; message: string }>('/auth/sign-up', user);
   return response.data;
 };
 

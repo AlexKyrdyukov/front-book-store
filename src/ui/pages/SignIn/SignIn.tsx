@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { AxiosError } from 'axios';
 
@@ -43,6 +44,7 @@ const SignUp: React.FC = () => {
         cookies.access.set(accessToken);
         cookies.refresh.set(refreshToken);
         dispatch(userSliceActions.setUser(user));
+        toast.info('welcome to account wish you happy shopping');
         actions.resetForm({
           values: {
             email: '',
