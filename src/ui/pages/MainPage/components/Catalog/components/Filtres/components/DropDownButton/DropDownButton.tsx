@@ -16,10 +16,11 @@ const DropDownButton: React.FC<PropsType> = (props) => {
   return (
     <StyledDropDownButton
       onClick={() => setButtonState(!buttonState)}
+      onBlur={() => setButtonState(!buttonState)}
     >
-      {props.title}
-      <img src={buttonState ? open : close} alt="open button" />
-      {buttonState ? props.component : null}
+      <h6 className="drop-down__title-text">{props.title}</h6>
+      <img className="drop-down__image" src={buttonState ? open : close} alt="open button" />
+      <div className="drop-down__block">{buttonState ? props.component : null}</div>
     </StyledDropDownButton>
   );
 };
