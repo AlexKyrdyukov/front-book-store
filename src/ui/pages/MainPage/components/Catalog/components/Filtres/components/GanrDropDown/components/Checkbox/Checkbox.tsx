@@ -13,14 +13,20 @@ type PropsType = {
 const Checkbox: React.FC<PropsType> = (props) => {
   const [isChecked, setIsChecked] = React.useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  searchParams.set('bigDick', 'dick');
-  setSearchParams(searchParams);
-  searchParams.set('genres', props.value);
-  // eslint-disable-next-line no-console
-  console.log(searchParams.get('genres'));
+  const handleClick = () => {
+    setIsChecked(!isChecked);
+    if (!isChecked) {
+      // eslint-disable-next-line no-console
+      console.log('event', props.value);
+      searchParams.set('genre', props.value);
+
+      setSearchParams(searchParams);
+    }
+  };
+
   return (
     <StyledCheckbox
-      onClick={() => setIsChecked(!isChecked)}
+      onClick={handleClick}
     >
       <img
         className="checkbox__image"
