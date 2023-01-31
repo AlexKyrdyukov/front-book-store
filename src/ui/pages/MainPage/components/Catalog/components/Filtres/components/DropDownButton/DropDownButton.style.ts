@@ -6,8 +6,6 @@ const StyledDropDownButton = styled.div`
   padding-bottom: 10px;
   cursor: pointer;
   position: relative;
-  display: flex;
-  align-items: center;
   width: 196px;
   background: #F0F4EF;
   border-radius: 16px;
@@ -21,10 +19,15 @@ const StyledDropDownButton = styled.div`
   }
 
   .drop-down__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .drop-down__container {
     z-index: 4;
     position: absolute;
-    top: 100px;
-    width: 305px;
+    top: 70px;
   }
 
   .drop-down__image {

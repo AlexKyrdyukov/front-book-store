@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import checked from './images/checked.svg';
 import unchecked from './images/unchecked.svg';
@@ -6,28 +7,29 @@ import unchecked from './images/unchecked.svg';
 import StyledCheckbox from './Checkbox.style';
 
 type PropsType = {
-  id: number;
-  handleCheckChildElement?(event: React.FormEvent<HTMLInputElement>): void;
-  isChecked?: boolean;
-  value?: string;
-  label?: string;
+  value: string;
 };
 
 const Checkbox: React.FC<PropsType> = (props) => {
   const [isChecked, setIsChecked] = React.useState(false);
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  searchParams.set('bigDick', 'dick');
+  setSearchParams(searchParams);
+  searchParams.set('genres', props.value);
+  // eslint-disable-next-line no-console
+  console.log(searchParams.get('genres'));
   return (
-    <StyledCheckbox>
-      <img src={props.isChecked ? checked : unchecked} alt="" />
-      <input
-        key={props.id}
-        onClick={props.handleCheckChildElement}
-        type="checkbox"
-        onChange={() => setIsChecked(!isChecked)}
-        checked={props.isChecked}
-        value={props.value}
+    <StyledCheckbox
+      onClick={() => setIsChecked(!isChecked)}
+    >
+      <img
+        className="checkbox__image"
+        src={isChecked ? checked : unchecked} alt="checkbox"
       />
-      <label htmlFor={props.value}>{props.label}</label>
+      <span
+        className="checkbox__text"
+      >{props.value}
+      </span>
 
     </StyledCheckbox>
   );

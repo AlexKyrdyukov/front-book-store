@@ -1,7 +1,7 @@
 import React from 'react';
 
 import GanrDropDown from './components/GanrDropDown';
-import SortDropDown from './components/SortDropDown';
+import SortByDropDown from './components/SortByDropDown';
 import PriceDropDown from './components/PriceDropDown';
 import DropDownButton from './components/DropDownButton';
 
@@ -16,11 +16,11 @@ const Filtres: React.FC = () => {
       />
       <DropDownButton
         title="Price"
-        component={<SortDropDown />}
+        component={<PriceDropDown />}
       />
       <DropDownButton
-      title="Sort by price"
-      component={<PriceDropDown />}
+        title="Sort by price"
+        component={<SortByDropDown />}
       />
     </StyledFiltres>
   );

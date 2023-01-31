@@ -1,6 +1,8 @@
 import React from 'react';
 
-import StyledSortDropDown from './SortDropDown.style';
+import SortByItem from './components/SortByItem/SortByItem';
+
+import StyledSortDropDown from './SortByDropDown.style';
 
 const SortDropDown: React.FC = () => {
   return (
