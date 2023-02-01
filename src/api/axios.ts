@@ -11,8 +11,9 @@ const axiosInstance = axios.create({
 });
 axiosInstance.interceptors.request.use((request) => {
   const accessToken = cookies.access.get();
-  // const refreshToken = cookies.refresh.get();
-  if (!accessToken) {
+  if (accessToken) {
+    // eslint-disable-next-line no-console
+    console.log('event');
     const customRequest = request;
     customRequest.headers!.authorization = `Bearer ${accessToken}`;
   }
@@ -24,9 +25,8 @@ axiosInstance.interceptors.response.use((response) => {
   const originalRequest = error.config;
   if (error instanceof AxiosError && error.response?.status === 401) {
     try {
-      cookies.access.remove();
-      const refresh = cookies.refresh.get();
-      const response = await authApi.refresh(refresh);
+      const oldRefreshToken = cookies.refresh.get();
+      const response = await authApi.refresh(`Bearer ${oldRefreshToken}`);
       const { accessToken, refreshToken } = response;
       cookies.access.set(accessToken);
       cookies.refresh.set(refreshToken);
