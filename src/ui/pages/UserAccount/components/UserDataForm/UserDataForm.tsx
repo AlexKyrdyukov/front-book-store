@@ -10,7 +10,7 @@ import Input from '../../../../components/Input';
 import { useAppSelector, useAppDispatch } from '../../../../../store';
 import { userSliceActions } from '../../../../../store/slices/userSlice';
 import validationDate from '../../../../../utils/validationSchemas';
-import userApi from '../../../../../api/userApi';
+import { userApi } from '../../../../../api';
 import errorHandler from '../../../../../utils/errorHandler';
 
 import mailImage from './images/mailInput.svg';

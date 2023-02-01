@@ -14,11 +14,10 @@ const App = () => {
 
   React.useEffect(() => {
     const token = cookies.refresh.get();
-    const getUser = async () => {
-      await dispatch(userThunks.getUser());
-    };
     if (token) {
-      getUser();
+      (async () => {
+        await dispatch(userThunks.getUser());
+      })();
     }
   }, [dispatch]);
   return (

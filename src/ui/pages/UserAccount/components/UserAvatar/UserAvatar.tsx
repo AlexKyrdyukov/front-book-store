@@ -6,7 +6,7 @@ import CircleButton from '../../../../components/CircleButton/CircleButton';
 
 import { useAppSelector, useAppDispatch } from '../../../../../store';
 import { userSliceActions } from '../../../../../store/slices/userSlice';
-import userApi from '../../../../../api/userApi';
+import { userApi } from '../../../../../api';
 import errorHandler from '../../../../../utils/errorHandler';
 
 import pseudoPhoto from './images/user.svg';

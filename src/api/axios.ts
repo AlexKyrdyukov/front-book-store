@@ -11,10 +11,10 @@ const axiosInstance = axios.create({
 });
 axiosInstance.interceptors.request.use((request) => {
   const accessToken = cookies.access.get();
-  const refreshToken = cookies.refresh.get();
-  if (refreshToken) {
+  // const refreshToken = cookies.refresh.get();
+  if (!accessToken) {
     const customRequest = request;
-    customRequest.headers!.authorization = [`Bearer ${accessToken}`, `Bearer ${refreshToken}`];
+    customRequest.headers!.authorization = `Bearer ${accessToken}`;
   }
   return request;
 });
@@ -24,7 +24,9 @@ axiosInstance.interceptors.response.use((response) => {
   const originalRequest = error.config;
   if (error instanceof AxiosError && error.response?.status === 401) {
     try {
-      const response = await authApi.refresh();
+      cookies.access.remove();
+      const refresh = cookies.refresh.get();
+      const response = await authApi.refresh(refresh);
       const { accessToken, refreshToken } = response;
       cookies.access.set(accessToken);
       cookies.refresh.set(refreshToken);
@@ -37,8 +39,6 @@ axiosInstance.interceptors.response.use((response) => {
       console.log(error);
       throw error;
     }
-    // eslint-disable-next-line no-console
-    console.log(error);
   }
   // eslint-disable-next-line no-console
   console.log(error);

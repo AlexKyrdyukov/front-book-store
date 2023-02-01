@@ -9,7 +9,7 @@ import Button from '../../components/Button';
 
 import { useAppDispatch } from '../../../store';
 import { userSliceActions } from '../../../store/slices/userSlice';
-import authApi from '../../../api/authApi';
+import { authApi } from '../../../api';
 import cookies from '../../../utils/coookieHelper';
 import validationData from '../../../utils/validationSchemas';
 import errorHandler from '../../../utils/errorHandler';

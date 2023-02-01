@@ -8,7 +8,7 @@ import Button from '../../../../components/Button';
 import Input from '../../../../components/Input';
 
 import validationDate from '../../../../../utils/validationSchemas';
-import userApi from '../../../../../api/userApi';
+import { userApi } from '../../../../../api';
 import { userSliceActions } from '../../../../../store/slices/userSlice';
 import { useAppSelector, useAppDispatch } from '../../../../../store';
 import errorHandler from '../../../../../utils/errorHandler';

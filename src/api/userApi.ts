@@ -1,6 +1,6 @@
 import type { AxiosError, AxiosResponse } from 'axios';
 
-import axiosInstance from './axios';
+import { axiosInstance } from '../api';
 
 type UserType = {
   id: number;

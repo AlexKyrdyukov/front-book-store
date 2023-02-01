@@ -6,7 +6,7 @@ import { AxiosError } from 'axios';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import authApi from '../../../api/authApi';
+import { authApi } from '../../../api';
 
 import { useAppDispatch } from '../../../store';
 import { userSliceActions } from '../../../store/slices/userSlice';

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
-import authApi from '../../api/authApi';
+import { authApi } from '../../api';
 
 const getUser = createAsyncThunk('getUser', async (_, { rejectWithValue }) => {
   try {

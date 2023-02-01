@@ -1,5 +1,5 @@
 import type { BookType } from '../store/slices/bookSlice';
-import axiosInstance from './axios';
+import { axiosInstance } from '../api';
 
 const getAll = async () => {
   const response = await axiosInstance.get<{ books: BookType[] }>('/book/get-all');
