@@ -18,12 +18,16 @@ const signIn = async (user: AuthType) => {
 };
 
 const getMe = async () => {
+  // eslint-disable-next-line no-console
+  console.log('get me request');
   const response = await axiosInstance.get('/auth/me');
   return response.data || null;
 };
 
 const refresh = async (token: string | undefined) => {
-  const response = await axiosInstance.post<{ accessToken: string; refreshToken: string }>('/auth/refresh', token);
+  // eslint-disable-next-line no-console
+  console.log('refresh request');
+  const response = await axiosInstance.post<{ accessToken: string; refreshToken: string }>('/auth/refresh', { token });
   return response.data;
 };
 

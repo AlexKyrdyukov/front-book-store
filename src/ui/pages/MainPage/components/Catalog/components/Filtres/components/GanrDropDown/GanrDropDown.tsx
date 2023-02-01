@@ -8,14 +8,26 @@ import StyledGanrDropDown from './GanrDropDown.style';
 import { genresApi } from '../../../../../../../../../api';
 import errorHandler from '../../../../../../../../../utils/errorHandler';
 
+type GenreType = {
+  genreId: number;
+  name: string;
+};
+
 const DropDown: React.FC = () => {
-  const [genres, setGenres] = React.useState<string[]>([]);
+  const [genres, setGenres] = React.useState<GenreType[]>([]);
+
+  const [selectedGenresId, setSelectedGenresId] = React.useState([]);
+
+  // const onClickHandler = (id) => {
+  //   setSelectedGenresId(prev => [...prev, id]);
+  // }
 
   React.useEffect(() => {
     (async () => {
       try {
-        const response = await genresApi.getAll();
-        setGenres(response);
+        const { genres } = await genresApi.getAll();
+
+        setGenres(genres);
       } catch (error) {
         if (error instanceof AxiosError) {
           errorHandler(error);
@@ -23,29 +35,10 @@ const DropDown: React.FC = () => {
       }
     })();
   }, []);
-
-  // const genres = [
-  //   'Fiction',
-  //   'Non—fiction',
-  //   'Light fiction',
-  //   'Science-fiction',
-  //   'Fantasy',
-  //   'Business & Finance',
-  //   'Politics',
-  //   'Travel books',
-  //   'Autobiography',
-  //   'History',
-  //   'Thriller / Mystery',
-  //   'Romance',
-  //   'Satire',
-  //   'Horror',
-  //   'Health / Medicine',
-  //   'Children\'s books',
-  //   'Encyclopedia'];
   return (
     <StyledGanrDropDown>
-      <img className="drop-down__triangle" src={triangle} alt="" />
-      {genres.map((item) => (<Checkbox key={item} value={item} />))}
+      <img className="drop-down__triangle" src={triangle} alt="cool triangle" />
+      {genres.map((item) => (<Checkbox key={item.name} value={item.name} />))}
     </StyledGanrDropDown>
   );
 };

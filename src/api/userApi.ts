@@ -22,8 +22,6 @@ const deleteUser = async (userId: number | undefined) => {
 const changePassword = async (
   userId: number | undefined, password: string, newPassword: string,
 ) => {
-  // const response = await axiosInstance.patch<AxiosResponse
-  // AxiosError>(`/user/${userId}/password`, { password, newPassword });
   const response = await axiosInstance.patch<{ message: string }>(`/user/${userId}/password`, { password, newPassword });
   return response.data;
 };
