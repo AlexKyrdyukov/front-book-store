@@ -9,6 +9,7 @@ import StyledDropDownButton from './DropDownButton.style';
 type PropsType = {
   component: React.ReactElement<unknown | JSXElementConstructor<unknown>>;
   title: string;
+  genres?: string[];
 };
 
 const DropDownButton: React.FC<PropsType> = (props) => {

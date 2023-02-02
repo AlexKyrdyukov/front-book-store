@@ -1,44 +1,60 @@
 import React from 'react';
-import { AxiosError } from 'axios';
+import { useSearchParams } from 'react-router-dom';
 
 import Checkbox from './components/Checkbox';
 
-import triangle from './image/triangle.svg';
+import triangle from '../../image/triangle.svg';
 import StyledGanrDropDown from './GanrDropDown.style';
-import { genresApi } from '../../../../../../../../../api';
-import errorHandler from '../../../../../../../../../utils/errorHandler';
+
+type PropsType = {
+  genres: GenreType[];
+};
 
 type GenreType = {
   genreId: number;
   name: string;
 };
 
-const DropDown: React.FC = () => {
-  const [genres, setGenres] = React.useState<GenreType[]>([]);
-
-  const [selectedGenresId, setSelectedGenresId] = React.useState([]);
-
-  // const onClickHandler = (id) => {
-  //   setSelectedGenresId(prev => [...prev, id]);
-  // }
+const DropDown: React.FC<PropsType> = (props) => {
+  const [selectedGenresId, setSelectedGenresId] = React.useState<string[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   React.useEffect(() => {
-    (async () => {
-      try {
-        const { genres } = await genresApi.getAll();
-
-        setGenres(genres);
-      } catch (error) {
-        if (error instanceof AxiosError) {
-          errorHandler(error);
-        }
-      }
-    })();
+    if (searchParams.get('genres')) {
+      setSelectedGenresId(searchParams.get('genres')?.split(',') as string[]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  React.useEffect(() => {
+    if (selectedGenresId.length) {
+      searchParams.set('genres', selectedGenresId.join(','));
+    } else {
+      searchParams.delete('genres');
+    }
+    setSearchParams(searchParams);
+  }, [selectedGenresId, searchParams, setSearchParams]);
+
+  const changeFilters = (genreId: string) => {
+    setSelectedGenresId((prevFilter) => {
+      if (prevFilter.includes(genreId)) {
+        return prevFilter.filter((searchFilter) => searchFilter !== genreId);
+      }
+      return [...prevFilter, genreId];
+    });
+  };
+
   return (
     <StyledGanrDropDown>
       <img className="drop-down__triangle" src={triangle} alt="cool triangle" />
-      {genres.map((item) => (<Checkbox key={item.name} value={item.name} />))}
+      {props.genres.map((item) => (
+        <Checkbox
+          key={item.name}
+          id={item.genreId}
+          value={item.name}
+          state={selectedGenresId.includes(String(item.genreId))}
+          onClickHandler={changeFilters}
+        />))}
     </StyledGanrDropDown>
   );
 };

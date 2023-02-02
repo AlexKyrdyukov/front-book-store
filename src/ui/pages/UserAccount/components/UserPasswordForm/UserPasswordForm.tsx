@@ -14,6 +14,7 @@ import { useAppSelector, useAppDispatch } from '../../../../../store';
 import errorHandler from '../../../../../utils/errorHandler';
 
 import eyeImage from './images/eyeInput.svg';
+import cookies from '../../../../../utils/coookieHelper';
 
 import StyledFormPassword from './UserPasswordForm.style';
 
@@ -29,6 +30,8 @@ const UserPasswordForm: React.FC<PropType> = (props) => {
     try {
       await userApi.deleteUser(userId);
       dispatch(userSliceActions.removeUser());
+      cookies.access.remove();
+      cookies.refresh.remove();
     } catch (error) {
       if (error instanceof AxiosError) {
         errorHandler(error);
