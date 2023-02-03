@@ -17,10 +17,19 @@ type GenreType = {
   name: string;
 };
 
-const Filtres: React.FC = () => {
+const Filters: React.FC = () => {
   const [genres, setGenres] = React.useState<GenreType[]>([]);
+  // const [selectedGenresId,
+  //   setSelectedGenresId,
+  // ] = React.useState<string[]>(searchParams.get('genres')?.split(',') as string[] || []);
+
   const [searchParams, setSearchParams] = useSearchParams();
+
   React.useEffect(() => {
+    if (!searchParams.get('sortBy')) {
+      searchParams.set('sortBy', 'Price');
+      setSearchParams(searchParams);
+    }
     (async () => {
       try {
         const { genres } = await genresApi.getAll();
@@ -33,7 +42,9 @@ const Filtres: React.FC = () => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  const sortTitle = React.useMemo(() => {
+    return searchParams.get('sortBy')?.toLowerCase();
+  }, [searchParams]);
   return (
     <StyledFiltres>
       <DropDownButton
@@ -45,11 +56,11 @@ const Filtres: React.FC = () => {
         component={<PriceDropDown />}
       />
       <DropDownButton
-        title={`Sort by ${searchParams.get('sortBy')?.toLowerCase() || ''}`}
+        title={`Sort by ${sortTitle}`}
         component={<SortByDropDown />}
       />
     </StyledFiltres>
   );
 };
 
-export default Filtres;
+export default Filters;

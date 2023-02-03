@@ -7,7 +7,6 @@ import triangle from '../../image/triangle.svg';
 import StyledSortDropDown from './SortByDropDown.style';
 
 const SortDropDown: React.FC = () => {
-  // const [state, setState] = React.useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const sortVariant = [
     'Price',
@@ -17,23 +16,16 @@ const SortDropDown: React.FC = () => {
     'Date of issue',
   ];
 
-  React.useEffect(() => {
-    if (searchParams.get('sortBy')) {
-      searchParams.get('sortBy');
+  const handleSortBy = (text: string) => {
+    if ((text !== 'Price') && (text !== searchParams.get('sortBy'))) {
+      searchParams.set('sortBy', text);
+      setSearchParams(searchParams);
+      return;
+    }
+    if (text === 'Price' || (text === searchParams.get('sortBy'))) {
+      searchParams.set('sortBy', 'Price');
       setSearchParams(searchParams);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const handleSortBy = (text: string) => {
-    // eslint-disable-next-line no-console
-    console.log('event', text);
-    if (searchParams.get('sortBy') === text) {
-      searchParams.delete('sortBy');
-    } else {
-      searchParams.set('sortBy', text);
-    }
-    setSearchParams(searchParams);
   };
 
   return (

@@ -42,6 +42,9 @@ body {
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;     
 }
 
 input,

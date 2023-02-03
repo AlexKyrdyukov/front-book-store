@@ -16,31 +16,28 @@ type GenreType = {
 };
 
 const DropDown: React.FC<PropsType> = (props) => {
-  const [selectedGenresId, setSelectedGenresId] = React.useState<string[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [selectedGenresId,
+    setSelectedGenresId,
+  ] = React.useState<string[]>(searchParams.get('genres')?.split(',') || []);
 
   React.useEffect(() => {
-    if (searchParams.get('genres')) {
-      setSelectedGenresId(searchParams.get('genres')?.split(',') as string[]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  React.useEffect(() => {
-    if (selectedGenresId.length) {
-      searchParams.set('genres', selectedGenresId.join(','));
-    } else {
+    searchParams.set('genres', selectedGenresId.join(','));
+    if (!selectedGenresId.length) {
       searchParams.delete('genres');
     }
     setSearchParams(searchParams);
   }, [selectedGenresId, searchParams, setSearchParams]);
 
   const changeFilters = (genreId: string) => {
-    setSelectedGenresId((prevFilter) => {
-      if (prevFilter.includes(genreId)) {
-        return prevFilter.filter((searchFilter) => searchFilter !== genreId);
+    setSelectedGenresId((prevState) => {
+      const index = prevState?.findIndex((item) => item === genreId);
+      // eslint-disable-next-line no-bitwise
+      if (~index) {
+        prevState.splice(index, 1);
+        return [...prevState];
       }
-      return [...prevFilter, genreId];
+      return [...prevState, genreId];
     });
   };
 
@@ -52,7 +49,7 @@ const DropDown: React.FC<PropsType> = (props) => {
           key={item.name}
           id={item.genreId}
           value={item.name}
-          state={selectedGenresId.includes(String(item.genreId))}
+          state={selectedGenresId?.includes(String(item.genreId))}
           onClickHandler={changeFilters}
         />))}
     </StyledGanrDropDown>

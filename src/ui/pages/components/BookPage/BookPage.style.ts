@@ -17,6 +17,8 @@ const StyledBookPage = styled.div`
     font-weight: 500;
     font-size: 20px;
     margin-top: 30px;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .book__author {
@@ -25,6 +27,8 @@ const StyledBookPage = styled.div`
     font-size: 20px;
     color: #B9BAC4;
     margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .image__block {

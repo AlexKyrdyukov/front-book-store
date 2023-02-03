@@ -1,5 +1,6 @@
+import type { ChangeEvent } from 'react';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -16,6 +17,17 @@ import StyledHeader from './Herader.style';
 
 const Header: React.FC = () => {
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
+  const [searchParams, setSarchParams] = useSearchParams();
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    const word = event.target.value;
+    if (!word) {
+      searchParams.delete('search');
+      setSarchParams(searchParams);
+      return;
+    }
+    searchParams.set('search', word);
+    setSarchParams(searchParams);
+  };
   return (
     <StyledHeader
       user={Boolean(user)}
@@ -39,14 +51,17 @@ const Header: React.FC = () => {
       <form
         className="header__form-block"
         action="submit"
+        onSubmit={(e) => e.preventDefault()}
       >
         <Input
+          value={searchParams.get('search') || ''}
           name="search"
           placeholder="search"
           type="text"
           alt="logo search"
           src={inputLogo}
           className="header__input"
+          onChange={handleSearch}
         />
       </form>
       {!user ? (
