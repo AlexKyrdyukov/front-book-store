@@ -19,10 +19,6 @@ type GenreType = {
 
 const Filters: React.FC = () => {
   const [genres, setGenres] = React.useState<GenreType[]>([]);
-  // const [selectedGenresId,
-  //   setSelectedGenresId,
-  // ] = React.useState<string[]>(searchParams.get('genres')?.split(',') as string[] || []);
-
   const [searchParams, setSearchParams] = useSearchParams();
 
   React.useEffect(() => {
@@ -41,7 +37,7 @@ const Filters: React.FC = () => {
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [searchParams]);
   const sortTitle = React.useMemo(() => {
     return searchParams.get('sortBy')?.toLowerCase();
   }, [searchParams]);

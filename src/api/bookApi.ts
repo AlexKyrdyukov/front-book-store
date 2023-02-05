@@ -12,7 +12,7 @@ const getById = async (bookId: string | undefined) => {
 };
 
 const filtered = async (params: object) => {
-  const response = await axiosInstance.get<{ books: BookType[] }>('/book/filtered-books', { params });
+  const response = await axiosInstance.get<{ books: BookType[]; numberOfBooks: number }>('/book/filtered-books', { params });
   return response.data;
 };
 

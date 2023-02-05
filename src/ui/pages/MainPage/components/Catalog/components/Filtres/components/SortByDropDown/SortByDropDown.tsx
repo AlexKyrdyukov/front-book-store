@@ -38,6 +38,11 @@ const SortDropDown: React.FC = () => {
           state={searchParams.get('sortBy') === item}
           handleSortBy={handleSortBy}
         />))}
+      <SortByItem
+        text="Sort Direction"
+        state
+        handleSortBy={handleSortBy}
+      />
     </StyledSortDropDown>
   );
 };
