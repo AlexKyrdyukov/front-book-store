@@ -41,10 +41,9 @@ const Catalog: React.FC = () => {
     const getBooks = async () => {
       const response = await dispatch(bookThunks.getBooks(params));
       const { numberOfBooks } = response.payload as PayloadType;
-      // eslint-disable-next-line no-console
-      console.log(numberOfBooks, response);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      setCountState(numberOfBooks);
+      if (numberOfBooks && (numberOfBooks !== 0)) {
+        setCountState(numberOfBooks);
+      }
       if (response.payload instanceof AxiosError) {
         errorHandler(response.payload);
       }
