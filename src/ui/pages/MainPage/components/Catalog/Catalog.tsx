@@ -19,14 +19,24 @@ type PayloadType = {
 const Catalog: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const params: Record<string, string> = {};
-  let count = 100;
+  let count = 1;
 
   const dispatch = useAppDispatch();
+
   React.useEffect(() => {
-    searchParams.forEach((value, key, parent) => {
+    searchParams.set('perPage', '12');
+    if (!searchParams.get('sortBy')) {
+      searchParams.set('sortBy', 'Price');
+    }
+    if (!searchParams.get('sortDirection')) {
+      searchParams.set('sortDirection', 'true');
+    }
+    if (!searchParams.get('page')) {
+      searchParams.set('page', '1');
+    }
+    setSearchParams(searchParams);
+    searchParams.forEach((value, key) => {
       params[key] = value;
-      // eslint-disable-next-line no-console
-      console.log(key, value, parent);
     });
     const getBooks = async () => {
       const response = await dispatch(bookThunks.getBooks(params));
@@ -40,7 +50,7 @@ const Catalog: React.FC = () => {
       }
     };
     getBooks();
-  }, [searchParams, setSearchParams]);
+  }, [searchParams]);
 
   return (
     <StyledCatalog>

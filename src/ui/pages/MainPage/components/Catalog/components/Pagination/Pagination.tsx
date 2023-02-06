@@ -15,25 +15,15 @@ type PropsType = {
 const Pagination: React.FC<PropsType> = (props) => {
   const [currentPage, setCurrentPage] = React.useState<number[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  // eslint-disable-next-line no-console
-  console.log(searchParams.get('page'));
-  React.useEffect(() => {
-    // if (!searcParams.get('page')) {
-    searchParams.set('page', '1');
-    // searchParams.delete('page');
 
-    searchParams.set('perPage', '12');
-    setSearchParams(searchParams);
-    // }
-    const numberPage = props.countBooks / +(searchParams.get('perPage') as string);
+  React.useEffect(() => {
+    const numberPage = props.countBooks / (+(searchParams.get('perPage') as string) || 12);
     const arr = [...new Array(Math.ceil(numberPage))].map((item, index) => index + 1);
     setCurrentPage(arr);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.countBooks]);
 
   const handleSpecificPage = (page?: number) => {
-    // eslint-disable-next-line no-console
-    console.log(page);
     if (page) {
       searchParams.set('page', String(page));
       setSearchParams(searchParams);

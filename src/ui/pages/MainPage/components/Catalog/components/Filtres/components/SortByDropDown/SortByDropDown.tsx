@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
-import SortByItem from './components/SortByItem/SortByItem';
 
+import SortByItem from './components/SortByItem/SortByItem';
+import SortDirection from './components/SortDirection';
 import triangle from '../../image/triangle.svg';
 
 import StyledSortDropDown from './SortByDropDown.style';
@@ -38,10 +39,8 @@ const SortDropDown: React.FC = () => {
           state={searchParams.get('sortBy') === item}
           handleSortBy={handleSortBy}
         />))}
-      <SortByItem
+      <SortDirection
         text="Sort Direction"
-        state
-        handleSortBy={handleSortBy}
       />
     </StyledSortDropDown>
   );

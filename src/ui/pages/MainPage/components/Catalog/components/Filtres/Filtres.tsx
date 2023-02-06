@@ -22,10 +22,6 @@ const Filters: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   React.useEffect(() => {
-    if (!searchParams.get('sortBy')) {
-      searchParams.set('sortBy', 'Price');
-      setSearchParams(searchParams);
-    }
     (async () => {
       try {
         const { genres } = await genresApi.getAll();
@@ -37,7 +33,7 @@ const Filters: React.FC = () => {
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams]);
+  }, []);
   const sortTitle = React.useMemo(() => {
     return searchParams.get('sortBy')?.toLowerCase();
   }, [searchParams]);

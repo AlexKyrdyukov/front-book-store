@@ -19,7 +19,9 @@ const SelectedProduct: React.FC<PropsType> = ({ book }) => {
       <div className="product__text-block">
         <h3>{book?.name}</h3>
         <h5>{book?.author}</h5>
-        <Raiting raiting={book?.raiting} />
+        <Raiting
+          raiting={book!.raiting}
+        />
         <div className="product__description-block">
           <h4>Description</h4>
           <p>{book?.description}</p>
