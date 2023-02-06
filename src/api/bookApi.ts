@@ -7,7 +7,7 @@ import { axiosInstance } from '../api';
 // };
 
 const getById = async (bookId: string | undefined) => {
-  const response = await axiosInstance.get<{ book: BookType }>(`/book/${bookId}/book`);
+  const response = await axiosInstance.get<{ book: BookType }>(`/book/${bookId}`);
   return response.data;
 };
 

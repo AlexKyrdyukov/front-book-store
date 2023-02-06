@@ -5,6 +5,7 @@ import StyledSortByItem from './SortByItem.style';
 type PropsType = {
   text: string;
   state: boolean;
+  value: string;
   handleSortBy: (text: string) => void;
 };
 
@@ -15,7 +16,7 @@ const SortByItem: React.FC<PropsType> = (props) => {
 
   return (
     <StyledSortByItem
-      onClick={() => props.handleSortBy(props.text)}
+      onClick={() => props.handleSortBy(props.value)}
     >
       <div className={sortByText}>{props.text}</div>
     </StyledSortByItem>

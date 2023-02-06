@@ -24,11 +24,11 @@ const SortDirection: React.FC<PropsType> = (props) => {
   };
 
   const sortDirectionItemFirstChild = classNames('sort-direction__item', {
-    active: (searchParams.get('sortDirection') as string) === 'true',
+    active: (searchParams.get('sortDirection') as string) === 'ASC',
   });
 
   const sortDirectionItemLastChild = classNames('sort-direction__item', {
-    active: (searchParams.get('sortDirection') as string) === 'false',
+    active: (searchParams.get('sortDirection') as string) === 'DESC',
   });
   return (
     <StyledSortDirection
@@ -47,12 +47,12 @@ const SortDirection: React.FC<PropsType> = (props) => {
       {windowState &&
         (<div className="sort-direction__items-block">
           <span
-            onClick={() => handlerSortDirection('true')}
+            onClick={() => handlerSortDirection('ASC')}
             className={sortDirectionItemFirstChild}
           >ascending
           </span>
           <span
-            onClick={() => handlerSortDirection('false')}
+            onClick={() => handlerSortDirection('DESC')}
             className={sortDirectionItemLastChild}
           >
             descending

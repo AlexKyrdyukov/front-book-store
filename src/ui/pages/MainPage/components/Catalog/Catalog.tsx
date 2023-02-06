@@ -18,18 +18,18 @@ type PayloadType = {
 
 const Catalog: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [countState, setCountState] = React.useState<number>(1);
   const params: Record<string, string> = {};
-  let count = 1;
 
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
     searchParams.set('perPage', '12');
     if (!searchParams.get('sortBy')) {
-      searchParams.set('sortBy', 'Price');
+      searchParams.set('sortBy', 'priceInCent');
     }
     if (!searchParams.get('sortDirection')) {
-      searchParams.set('sortDirection', 'true');
+      searchParams.set('sortDirection', 'ASC');
     }
     if (!searchParams.get('page')) {
       searchParams.set('page', '1');
@@ -41,17 +41,19 @@ const Catalog: React.FC = () => {
     const getBooks = async () => {
       const response = await dispatch(bookThunks.getBooks(params));
       const { numberOfBooks } = response.payload as PayloadType;
-      if (numberOfBooks) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        count = numberOfBooks;
-      }
+      // eslint-disable-next-line no-console
+      console.log(numberOfBooks, response);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      setCountState(numberOfBooks);
       if (response.payload instanceof AxiosError) {
         errorHandler(response.payload);
       }
     };
     getBooks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
-
+  // eslint-disable-next-line no-console
+  console.log(countState);
   return (
     <StyledCatalog>
       <div className="title-filters__block">
@@ -61,7 +63,7 @@ const Catalog: React.FC = () => {
         <Filters />
       </div>
       <BooksList />
-      <Pagination countBooks={count} />
+      <Pagination countBooks={countState} />
     </StyledCatalog>
   );
 };

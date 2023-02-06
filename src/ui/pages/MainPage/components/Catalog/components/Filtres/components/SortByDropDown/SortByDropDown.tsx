@@ -10,21 +10,21 @@ import StyledSortDropDown from './SortByDropDown.style';
 const SortDropDown: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const sortVariant = [
-    'Price',
-    'Name',
-    'Author name',
-    'Rating',
-    'Date of issue',
+    { title: 'Price', value: 'priceInCent' },
+    { title: 'Name', value: 'name' },
+    { title: 'Author name', value: 'author' },
+    { title: 'Rating', value: 'raiting' },
+    { title: 'Date of issue', value: 'dateOfIssue' },
   ];
 
   const handleSortBy = (text: string) => {
-    if ((text !== 'Price') && (text !== searchParams.get('sortBy'))) {
+    if ((text !== 'price') && (text !== searchParams.get('sortBy'))) {
       searchParams.set('sortBy', text);
       setSearchParams(searchParams);
       return;
     }
-    if (text === 'Price' || (text === searchParams.get('sortBy'))) {
-      searchParams.set('sortBy', 'Price');
+    if (text === 'price' || (text === searchParams.get('sortBy'))) {
+      searchParams.set('sortBy', 'priceInCent');
       setSearchParams(searchParams);
     }
   };
@@ -34,9 +34,10 @@ const SortDropDown: React.FC = () => {
       <img className="drop-down__triangle" src={triangle} alt="cool triangle" />
       {sortVariant.map((item) => (
         <SortByItem
-          key={item}
-          text={item}
-          state={searchParams.get('sortBy') === item}
+          key={item.title}
+          text={item.title}
+          value={item.value}
+          state={searchParams.get('sortBy') === item.value}
           handleSortBy={handleSortBy}
         />))}
       <SortDirection

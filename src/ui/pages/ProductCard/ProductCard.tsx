@@ -37,7 +37,7 @@ const ProductCard: React.FC = () => {
   }, [bookId]);
   return (
     <StyledProductCard>
-      <SelectedProduct book={bookState} />
+      {bookState && <SelectedProduct book={bookState} />}
       <CommentsBook />
       {!user && <LowBanner />}
       <h2 className="recommendation__title">Recommendations</h2>
