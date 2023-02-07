@@ -1,13 +1,13 @@
 import type { BookType } from '../store/slices/bookSlice';
 import { axiosInstance } from '../api';
 
-// const getAll = async () => {
-//   const response = await axiosInstance.get<{ books: BookType[] }>('/book/get-all-books');
-//   return response.data;
-// };
-
 const getById = async (bookId: string | undefined) => {
   const response = await axiosInstance.get<{ book: BookType }>(`/book/${bookId}`);
+  return response.data;
+};
+
+const likeBook = async (bookId: number, userId?: number) => {
+  const response = await axiosInstance.post('book/like-book/', { bookId, userId });
   return response.data;
 };
 
@@ -19,4 +19,5 @@ const filtered = async (params: object) => {
 export default {
   getById,
   filtered,
+  likeBook,
 };

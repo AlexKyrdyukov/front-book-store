@@ -10,6 +10,7 @@ import Raiting from '../Raiting';
 
 import { bookSliceActions } from '../../../../store/slices/bookSlice';
 import { useAppSelector, useAppDispatch } from '../../../../store';
+import { bookApi } from '../../../../api';
 
 import heart from './image/heart.svg';
 import emptyHeart from './image/border_heart.svg';
@@ -37,8 +38,9 @@ const BookPage: React.FC<PropsType> = (props) => {
     disabled: !props.book.isInStock,
   });
 
-  const handleDarling = () => {
-    dispatch(bookSliceActions.changeBookDarling(props.book.bookId));
+  const handleDarling = async () => {
+    const respnse = await bookApi.likeBook(props.book.bookId, user?.userId);
+    // dispatch(bookSliceActions.changeBookDarling(props.book.bookId));
   };
 
   return (
