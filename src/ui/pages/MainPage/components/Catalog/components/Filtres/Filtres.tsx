@@ -34,6 +34,7 @@ const Filters: React.FC = () => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const sortTitle = React.useMemo(() => {
     return searchParams.get('sortBy') as string;
   }, [searchParams]);
@@ -57,7 +58,7 @@ const Filters: React.FC = () => {
         component={<PriceDropDown />}
       />
       <DropDownButton
-        title={`Sort by ${sortByOptions[sortTitle]}`}
+        title={`Sort by ${sortByOptions[sortTitle]?.toLowerCase() || 'price'}`}
         component={<SortByDropDown />}
       />
     </StyledFiltres>

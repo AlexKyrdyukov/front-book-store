@@ -13,7 +13,8 @@ import errorHandler from '../../../../../utils/errorHandler';
 import StyledCatalog from './Catalog.style';
 
 type PayloadType = {
-  numberOfBooks: number;
+  totalBooks: number;
+  numberOfPage: number;
 };
 
 const Catalog: React.FC = () => {
@@ -24,15 +25,8 @@ const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    searchParams.set('perPage', '12');
-    if (!searchParams.get('sortBy')) {
-      searchParams.set('sortBy', 'priceInCent');
-    }
     if (!searchParams.get('sortDirection')) {
       searchParams.set('sortDirection', 'ASC');
-    }
-    if (!searchParams.get('page')) {
-      searchParams.set('page', '1');
     }
     setSearchParams(searchParams);
     searchParams.forEach((value, key) => {
@@ -40,9 +34,11 @@ const Catalog: React.FC = () => {
     });
     const getBooks = async () => {
       const response = await dispatch(bookThunks.getBooks(params));
-      const { numberOfBooks } = response.payload as PayloadType;
-      if (numberOfBooks && (numberOfBooks !== 0)) {
-        setCountState(numberOfBooks);
+      const { totalBooks, numberOfPage } = response.payload as PayloadType;
+      searchParams.set('page', String(numberOfPage));
+      setSearchParams(searchParams);
+      if (totalBooks && (totalBooks !== 0)) {
+        setCountState(totalBooks);
       }
       if (response.payload instanceof AxiosError) {
         errorHandler(response.payload);
@@ -51,8 +47,6 @@ const Catalog: React.FC = () => {
     getBooks();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
-  // eslint-disable-next-line no-console
-  console.log(countState);
   return (
     <StyledCatalog>
       <div className="title-filters__block">
