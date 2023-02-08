@@ -8,7 +8,7 @@ import CircleButton from '../../../components/CircleButton';
 import BookButton from '../BookButton';
 import Raiting from '../Raiting';
 
-import { bookSliceActions } from '../../../../store/slices/bookSlice';
+import { userSliceActions } from '../../../../store/slices/userSlice';
 import { useAppSelector, useAppDispatch } from '../../../../store';
 import { bookApi } from '../../../../api';
 
@@ -39,8 +39,8 @@ const BookPage: React.FC<PropsType> = (props) => {
   });
 
   const handleDarling = async () => {
-    const respnse = await bookApi.likeBook(props.book.bookId, user?.userId);
-    // dispatch(bookSliceActions.changeBookDarling(props.book.bookId));
+    const response = await bookApi.likeBook(props.book.bookId, user?.userId);
+    dispatch(userSliceActions.setUser(response.user));
   };
 
   return (
@@ -53,7 +53,11 @@ const BookPage: React.FC<PropsType> = (props) => {
             type="button"
             onClick={handleDarling}
             className="darling__button"
-            src={props.book.darling ? heart : emptyHeart}
+            src={
+              (user &&
+                (user?.likeBooks?.findIndex((item) => item.bookId === props.book.bookId) !== -1))
+                ? heart
+                : emptyHeart}
             alt="heart"
           />
         </span>

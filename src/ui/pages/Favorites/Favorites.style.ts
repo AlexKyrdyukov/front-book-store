@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledCatalogPages = styled.main`
+const StyledFavoritPage = styled.main`
   flex-grow: 1;
 
 color:red;
@@ -8,4 +8,4 @@ display: flex;
 justify-content: center;
 `;
 
-export default StyledCatalogPages;
+export default StyledFavoritPage;
