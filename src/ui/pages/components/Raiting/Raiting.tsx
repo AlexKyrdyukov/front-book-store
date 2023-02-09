@@ -2,6 +2,7 @@ import React from 'react';
 import { Rating } from 'react-simple-star-rating';
 
 import { useAppSelector } from '../../../../store';
+
 import StyledRaiting from './Raiting.style';
 
 type PropType = {
@@ -19,15 +20,12 @@ type ResponseType = {
 };
 
 const Raiting: React.FC<PropType> = (props) => {
-  // eslint-disable-next-line no-console
-  console.log(props);
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
   const [raiting, setRaiting] = React.useState(+(props.raiting / 10).toFixed(1));
 
   const handleRating = async (rate: number) => {
     try {
       const response = await props.handleRaitingBook(props.bookId, rate, user!.userId);
-      // const data: Record<string, number> = response;
       setRaiting(response.newRaiting);
     } catch (error) {
       console.error(error);
