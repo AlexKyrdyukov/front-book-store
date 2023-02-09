@@ -15,6 +15,19 @@ import errorHandler from '../../../utils/errorHandler';
 import StyledProductCard from './ProductCard.style';
 import CommentsBook from './components/CommentsBook/CommentsBook';
 
+export const changeRaiting =
+  async (bookId: number, newRaiting: number, userId: number) => {
+    try {
+      const response = await bookApi.changeRaiting(bookId, newRaiting, userId);
+      // eslint-disable-next-line no-console
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
+
 const ProductCard: React.FC = () => {
   const [bookState, setBookState] = React.useState<BookType | null>(null);
 
@@ -35,9 +48,14 @@ const ProductCard: React.FC = () => {
     })();
     return setBookState(null);
   }, [bookId]);
+
   return (
     <StyledProductCard>
-      {bookState && <SelectedProduct book={bookState} />}
+      {bookState &&
+        (<SelectedProduct
+          book={bookState}
+          handleRaiting={changeRaiting}
+        />)}
       <CommentsBook />
       {!user && <LowBanner />}
       <h2 className="recommendation__title">Recommendations</h2>

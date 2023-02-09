@@ -16,8 +16,14 @@ const filtered = async (params: object) => {
   return response.data;
 };
 
+const changeRaiting = async (bookId: number, newRaiting: number, userId: number | undefined) => {
+  const response = await axiosInstance.post<{ bookId: number; newRaiting: number }>('book/raiting', { bookId, userId, newRaiting });
+  return response.data;
+};
+
 export default {
   getById,
   filtered,
   likeBook,
+  changeRaiting,
 };

@@ -37,7 +37,10 @@ const SortDropDown: React.FC = () => {
           key={item.title}
           text={item.title}
           value={item.value}
-          state={searchParams.get('sortBy') === item.value}
+          state={
+            searchParams.get('sortBy')
+              ? searchParams.get('sortBy') === item.value
+              : item.title === 'Price'}
           handleSortBy={handleSortBy}
         />))}
       <SortDirection

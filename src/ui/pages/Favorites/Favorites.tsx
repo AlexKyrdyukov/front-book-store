@@ -1,8 +1,8 @@
 import React from 'react';
 
 import BookPage from '../components/BookPage';
-
-import { useAppSelector, useAppDispatch } from '../../../store';
+import { changeRaiting } from '../ProductCard/ProductCard';
+import { useAppSelector } from '../../../store';
 import StyledFavoritPage from './Favorites.style';
 
 type PropsType = {
@@ -10,13 +10,17 @@ type PropsType = {
 };
 
 const Favorites: React.FC<PropsType> = () => {
-  const dispatch = useAppDispatch();
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
   // eslint-disable-next-line no-console
   console.log(user?.likeBooks);
   return (
     <StyledFavoritPage>
-      {user?.likeBooks.map((item) => <BookPage key={item.bookId} book={item} />)}
+      {user?.likeBooks.map((item) => (
+        <BookPage
+          key={item.bookId}
+          handleRaiting={changeRaiting}
+          book={item}
+        />))}
     </StyledFavoritPage>
   );
 };

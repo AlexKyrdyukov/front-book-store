@@ -6,7 +6,7 @@ type PropsType = {
   comments?: string;
 };
 
-const CommentsBook: React.FC<PropsType> = (props) => {
+const CommentsBook: React.FC<PropsType> = () => {
   return (
     <StyledCommentsBook>
       CommentsBook

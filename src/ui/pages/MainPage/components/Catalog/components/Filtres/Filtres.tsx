@@ -19,7 +19,7 @@ type GenreType = {
 
 const Filters: React.FC = () => {
   const [genres, setGenres] = React.useState<GenreType[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   React.useEffect(() => {
     (async () => {

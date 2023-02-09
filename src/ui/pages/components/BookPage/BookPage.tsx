@@ -19,6 +19,15 @@ import StyledBookPage from './BookPage.style';
 
 type PropsType = {
   book: BookType;
+  handleRaiting: (
+    bookId: number,
+    newRaiting: number,
+    userId: number) => Promise<ResponseType>;
+};
+
+type ResponseType = {
+  newRaiting: number;
+  bookId: number;
 };
 
 const BookPage: React.FC<PropsType> = (props) => {
@@ -76,7 +85,11 @@ const BookPage: React.FC<PropsType> = (props) => {
       </div>
       <h4 className="book__name">{props.book.name}</h4>
       <h5 className="book__author">{props.book.author}</h5>
-      <Raiting raiting={props.book.raiting} />
+      <Raiting
+        handleRaitingBook={props.handleRaiting}
+        raiting={props.book.raiting}
+        bookId={props.book.bookId}
+      />
       <BookButton
         disabled={Boolean(props.book.priceInDollar)}
         className={buyButtonStyle}
