@@ -9,7 +9,7 @@ import cookies from './utils/coookieHelper';
 import userThunks from './store/thunks/userThunks';
 import { useAppDispatch } from './store';
 
-const App = () => {
+const App: React.FC = () => {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
