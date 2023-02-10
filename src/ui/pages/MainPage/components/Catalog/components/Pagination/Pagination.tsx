@@ -13,15 +13,10 @@ type PropsType = {
 };
 
 const Pagination: React.FC<PropsType> = (props) => {
-  const [currentPage, setCurrentPage] = React.useState<number[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  React.useEffect(() => {
-    const numberPage = props.countBooks / (+(searchParams.get('perPage') as string) || 12);
-    const arr = [...new Array(Math.ceil(numberPage))].map((item, index) => index + 1);
-    setCurrentPage(arr);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.countBooks]);
+  const numberPage = props.countBooks / (+(searchParams.get('perPage') as string) || 12);
+  const arr = [...new Array(Math.ceil(numberPage))].map((item, index) => index + 1);
 
   const handleSpecificPage = (page?: number) => {
     if (page) {
@@ -42,7 +37,7 @@ const Pagination: React.FC<PropsType> = (props) => {
         >
           <img src={left_arrow} alt="arrow" />
         </button>
-        {currentPage.map((item) => (
+        {arr.map((item) => (
           <button
             className="pagination__button-circle"
             key={item}
@@ -57,7 +52,7 @@ const Pagination: React.FC<PropsType> = (props) => {
         <button
           className="pagination__button-next"
           onClick={() => handleSpecificPage(+(searchParams.get('page') as string) + 1)}
-          disabled={+(searchParams.get('page') as string) >= currentPage.length}
+          disabled={+(searchParams.get('page') as string) >= arr.length}
         >
           <img src={right_arrow} alt="arrow" />
         </button>
