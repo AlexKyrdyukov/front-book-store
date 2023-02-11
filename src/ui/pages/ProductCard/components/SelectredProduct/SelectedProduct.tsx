@@ -2,20 +2,20 @@ import React from 'react';
 
 import type { BookType } from '../../../../../store/slices/bookSlice';
 import BookButton from '../../../components/BookButton';
-import Raiting from '../../../components/Raiting';
+import Rating from '../../../components/Rating';
 
 import StyledSelectedProduct from './SelectedProduct.style';
 
 type PropsType = {
   book: BookType | null | undefined;
-  handleRaiting: (
+  handleRating: (
     bookId: number,
-    newRaiting: number,
+    newRating: number,
     userId: number) => Promise<ResponseType>;
 };
 
 type ResponseType = {
-  newRaiting: number;
+  newRating: number;
   bookId: number;
 };
 
@@ -28,9 +28,9 @@ const SelectedProduct: React.FC<PropsType> = (props) => {
       <div className="product__text-block">
         <h3>{props.book?.name}</h3>
         <h5>{props.book?.author}</h5>
-        <Raiting
-          handleRaitingBook={props.handleRaiting}
-          raiting={props.book!.raiting}
+        <Rating
+          handleRatingBook={props.handleRating}
+          rating={props.book!.averageRating}
           bookId={props.book!.bookId}
         />
         <div className="product__description-block">

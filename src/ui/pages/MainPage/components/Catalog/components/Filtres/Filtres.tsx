@@ -43,7 +43,7 @@ const Filters: React.FC = () => {
     priceInCent: 'Price',
     name: 'Name',
     author: 'Author name',
-    raiting: 'Raiting',
+    rating: 'Rating',
     dateOfIssue: 'Date of issue',
   };
 

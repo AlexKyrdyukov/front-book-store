@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledRaiting = styled.div`
+const StyledRating = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,4 +15,4 @@ const StyledRaiting = styled.div`
 
 `;
 
-export default StyledRaiting;
+export default StyledRating;

@@ -3,7 +3,7 @@ import React from 'react';
 import BookPage from '../../../../../components/BookPage';
 
 import { useAppSelector } from '../../../../../../../store';
-import { changeRaiting } from '../../../../../ProductCard/ProductCard';
+import { changeRating } from '../../../../../ProductCard/ProductCard';
 import StyledBooksLists from './BooksList.style';
 
 const BooksList: React.FC = () => {
@@ -14,7 +14,7 @@ const BooksList: React.FC = () => {
       {books.map((item) => (
         <BookPage
           key={item.bookId}
-          handleRaiting={changeRaiting}
+          handleRating={changeRating}
           book={item}
         />))}
     </StyledBooksLists>

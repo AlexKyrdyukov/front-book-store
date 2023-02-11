@@ -1,7 +1,7 @@
 import React from 'react';
 
 import BookPage from '../components/BookPage';
-import { changeRaiting } from '../ProductCard/ProductCard';
+import { changeRating } from '../ProductCard/ProductCard';
 import { useAppSelector } from '../../../store';
 import StyledFavoritPage from './Favorites.style';
 
@@ -18,7 +18,7 @@ const Favorites: React.FC<PropsType> = () => {
       {user?.likeBooks.map((item) => (
         <BookPage
           key={item.bookId}
-          handleRaiting={changeRaiting}
+          handleRating={changeRating}
           book={item}
         />))}
     </StyledFavoritPage>

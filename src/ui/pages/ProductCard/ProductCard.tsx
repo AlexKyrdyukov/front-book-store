@@ -15,10 +15,10 @@ import errorHandler from '../../../utils/errorHandler';
 import StyledProductCard from './ProductCard.style';
 import CommentsBook from './components/CommentsBook/CommentsBook';
 
-export const changeRaiting =
-  async (bookId: number, newRaiting: number, userId: number) => {
+export const changeRating =
+  async (bookId: number, newRating: number, userId: number) => {
     try {
-      const response = await bookApi.changeRaiting(bookId, newRaiting, userId);
+      const response = await bookApi.changeRating(bookId, newRating, userId);
       // eslint-disable-next-line no-console
       console.log(response);
       return response;
@@ -54,7 +54,7 @@ const ProductCard: React.FC = () => {
       {bookState &&
         (<SelectedProduct
           book={bookState}
-          handleRaiting={changeRaiting}
+          handleRating={changeRating}
         />)}
       <CommentsBook />
       {!user && <LowBanner />}

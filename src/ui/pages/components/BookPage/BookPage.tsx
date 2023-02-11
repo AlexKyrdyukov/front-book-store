@@ -6,7 +6,7 @@ import type { BookType } from '../../../../store/slices/bookSlice';
 
 import CircleButton from '../../../components/CircleButton';
 import BookButton from '../BookButton';
-import Raiting from '../Raiting';
+import Rating from '../Rating';
 
 import { userSliceActions } from '../../../../store/slices/userSlice';
 import { useAppSelector, useAppDispatch } from '../../../../store';
@@ -19,14 +19,14 @@ import StyledBookPage from './BookPage.style';
 
 type PropsType = {
   book: BookType;
-  handleRaiting: (
+  handleRating: (
     bookId: number,
-    newRaiting: number,
+    newRating: number,
     userId: number) => Promise<ResponseType>;
 };
 
 type ResponseType = {
-  newRaiting: number;
+  newRating: number;
   bookId: number;
 };
 
@@ -85,9 +85,9 @@ const BookPage: React.FC<PropsType> = (props) => {
       </div>
       <h4 className="book__name">{props.book.name}</h4>
       <h5 className="book__author">{props.book.author}</h5>
-      <Raiting
-        handleRaitingBook={props.handleRaiting}
-        raiting={props.book.raiting}
+      <Rating
+        handleRatingBook={props.handleRating}
+        rating={props.book.averageRating}
         bookId={props.book.bookId}
       />
       <BookButton

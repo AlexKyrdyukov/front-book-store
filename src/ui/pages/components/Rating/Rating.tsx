@@ -3,37 +3,37 @@ import { Rating } from 'react-simple-star-rating';
 
 import { useAppSelector } from '../../../../store';
 
-import StyledRaiting from './Raiting.style';
+import StyledRating from './Rating.style';
 
 type PropType = {
-  raiting: number;
+  rating: number;
   bookId: number;
-  handleRaitingBook: (
+  handleRatingBook: (
     bookId: number,
-    newRaiting: number,
+    newRating: number,
     userId: number) => Promise<ResponseType>;
 };
 
 type ResponseType = {
-  newRaiting: number;
+  newRating: number;
   bookId: number;
 };
 
-const Raiting: React.FC<PropType> = (props) => {
+const BookRating: React.FC<PropType> = (props) => {
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
-  const [raiting, setRaiting] = React.useState(+(props.raiting / 10).toFixed(1));
+  const [rating, setRating] = React.useState(+(props.rating / 10).toFixed(1));
 
   const handleRating = async (rate: number) => {
     try {
-      const response = await props.handleRaitingBook(props.bookId, rate, user!.userId);
-      setRaiting(response.newRaiting);
+      const response = await props.handleRatingBook(props.bookId, rate, user!.userId);
+      setRating(response.newRating);
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <StyledRaiting>
+    <StyledRating>
       <Rating
         onClick={handleRating}
         allowFraction
@@ -41,11 +41,11 @@ const Raiting: React.FC<PropType> = (props) => {
         showTooltip={false}
         readonly={!user}
         titleSeparator=""
-        initialValue={+(props.raiting / 10).toFixed(1)}
+        initialValue={+(props.rating / 10).toFixed(1)}
       />
-      <span className="integer__value">{raiting}</span>
-    </StyledRaiting>
+      <span className="integer__value">{rating}</span>
+    </StyledRating>
   );
 };
 
-export default Raiting;
+export default BookRating;

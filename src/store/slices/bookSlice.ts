@@ -13,7 +13,7 @@ export type BookType = {
   name: string;
   new: boolean;
   priceInDollar: number;
-  raiting: number;
+  averageRating: number;
   darling: boolean;
 };
 
