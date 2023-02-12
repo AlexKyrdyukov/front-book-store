@@ -1,10 +1,12 @@
 import React from 'react';
+import { AxiosError } from 'axios';
 
 import BookPage from '../../../../../components/BookPage';
 
 import { useAppSelector } from '../../../../../../../store';
 import { changeRating } from '../../../../../ProductCard/ProductCard';
 import StyledBooksLists from './BooksList.style';
+import errorHandler from '../../../../../../../utils/errorHandler';
 import { cartApi } from '../../../../../../../api';
 
 const BooksList: React.FC = () => {
@@ -19,6 +21,9 @@ const BooksList: React.FC = () => {
         console.log(response);
       }
     } catch (error) {
+      if (error instanceof AxiosError) {
+        errorHandler(error);
+      }
       console.error(error);
     }
   };
