@@ -15,18 +15,22 @@ type PropType = {
 };
 
 type ResponseType = {
-  newRating: number;
+  rating: number;
   bookId: number;
 };
 
 const BookRating: React.FC<PropType> = (props) => {
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
-  const [rating, setRating] = React.useState(+(props.rating / 10).toFixed(1));
+  const [rating, setRating] = React.useState((props.rating / 10).toFixed(1));
 
   const handleRating = async (rate: number) => {
+    // eslint-disable-next-line no-console
+    console.log(rate);
     try {
-      const response = await props.handleRatingBook(props.bookId, rate, user!.userId);
-      setRating(response.newRating);
+      if (user) {
+        const response = await props.handleRatingBook(props.bookId, rate, user.userId);
+        setRating(String(response.rating));
+      }
     } catch (error) {
       console.error(error);
     }

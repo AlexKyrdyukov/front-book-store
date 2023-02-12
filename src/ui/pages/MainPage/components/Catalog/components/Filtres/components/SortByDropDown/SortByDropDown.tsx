@@ -13,7 +13,7 @@ const SortDropDown: React.FC = () => {
     { title: 'Price', value: 'priceInCent' },
     { title: 'Name', value: 'name' },
     { title: 'Author name', value: 'author' },
-    { title: 'Rating', value: 'rating' },
+    { title: 'Rating', value: 'averageRating' },
     { title: 'Date of issue', value: 'dateOfIssue' },
   ];
 
@@ -41,7 +41,8 @@ const SortDropDown: React.FC = () => {
             searchParams.get('sortBy')
               ? searchParams.get('sortBy') === item.value
               : item.title === 'Price'}
-          handleSortBy={handleSortBy}
+          handleSortBy={handleSortBy
+          }
         />))}
       <SortDirection
         text="Sort Direction"
