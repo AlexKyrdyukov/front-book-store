@@ -23,6 +23,7 @@ type PropsType = {
     bookId: number,
     newRating: number,
     userId: number) => Promise<ResponseType>;
+  handleAddBookInCart: (bookId: number) => Promise<void>;
 };
 
 type ResponseType = {
@@ -91,9 +92,9 @@ const BookPage: React.FC<PropsType> = (props) => {
         bookId={props.book.bookId}
       />
       <BookButton
-        disabled={Boolean(props.book.priceInDollar)}
         className={buyButtonStyle}
         type="button"
+        onClick={() => props.handleAddBookInCart(props.book.bookId)}
       >
         {props.book.isInStock
           ? `$ ${props.book.priceInDollar} USD`
