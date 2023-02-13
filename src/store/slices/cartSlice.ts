@@ -4,10 +4,8 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 import type { CartType } from '../../api/cartApi';
 
-const cartBooks: CartType['selectedProducts'] = [];
-
 const getInitialState = () => ({
-  cartBooks,
+  cartBooks: null as CartType | null,
 });
 
 export const cartSlice = createSlice({
@@ -17,7 +15,7 @@ export const cartSlice = createSlice({
     setBook(state, action: PayloadAction<CartType>) {
       // eslint-disable-next-line no-console
       console.log(state.cartBooks, action.payload);
-      state.cartBooks = action.payload.selectedProducts;
+      state.cartBooks = action.payload;
     },
   },
 });

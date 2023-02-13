@@ -32,8 +32,8 @@ const Cart: React.FC = () => {
   console.log(cartBooks);
   return (
     <StyledCartPage>
-      {cartBooks.length
-        ? <BookInCart books={cartBooks} />
+      {cartBooks?.selectedProducts.length
+        ? <BookInCart cartBooks={cartBooks} />
         : <EmptyCart />}
     </StyledCartPage>
   );
