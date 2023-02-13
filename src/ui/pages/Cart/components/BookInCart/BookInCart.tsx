@@ -17,7 +17,7 @@ const BookInCart: React.FC<PropsType> = (props) => {
       <div className="cart-book__button-block">
         <button>-</button>
         <p>{props.book.countBook}</p>
-        <button>+</button>
+        <button >+</button>
         <button>del</button>
       </div>
       <p>$ {props.book.book.priceInDollar} USD</p>
