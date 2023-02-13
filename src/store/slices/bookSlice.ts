@@ -17,10 +17,10 @@ export type BookType = {
   darling: boolean;
 };
 
-const BooksStore: BookType[] = [];
+const booksStore: BookType[] = [];
 
 const getInitialState = () => ({
-  books: BooksStore,
+  books: booksStore,
 });
 
 export const bookSlice = createSlice({

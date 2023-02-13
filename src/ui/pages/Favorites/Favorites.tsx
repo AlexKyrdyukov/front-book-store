@@ -7,7 +7,7 @@ import { useAppSelector } from '../../../store';
 import StyledFavoritPage from './Favorites.style';
 import { cartApi } from '../../../api';
 import errorHandler from '../../../utils/errorHandler';
-import { BookType } from '../../../store/slices/bookSlice';
+import type { BookType } from '../../../store/slices/bookSlice';
 
 type PropsType = {
   value?: string;

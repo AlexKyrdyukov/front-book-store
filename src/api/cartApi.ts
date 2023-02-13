@@ -2,8 +2,19 @@ import type { BookType } from '../store/slices/bookSlice';
 
 import { axiosInstance } from '../api';
 
+export type CartType = {
+  selectedProducts: ProductType[];
+};
+
+export type ProductType = {
+  book: BookType;
+  bookId: number;
+  cartProductId: number;
+  countBook: number;
+};
+
 const getAllFromCart = async (userId: number) => {
-  const response = await axiosInstance.get<{ books: BookType[] }>('cart/get-all', { params: { userId } });
+  const response = await axiosInstance.get<{ books: CartType }>('cart/get-all', { params: { userId } });
   return response.data;
 };
 

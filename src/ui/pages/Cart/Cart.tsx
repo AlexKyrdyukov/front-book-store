@@ -1,7 +1,7 @@
 import React from 'react';
 
 import EmptyCart from './components/EmptyCart';
-
+import BookInCart from './components/CartList/CartList';
 import { useAppSelector, useAppDispatch } from '../../../store';
 
 import StyledCartPage from './Cart.style';
@@ -20,17 +20,21 @@ const Cart: React.FC = () => {
           const response = await cartApi.getAllFromCart(userId);
           dispatch(cartSliceActions.setBook(response.books));
           // eslint-disable-next-line no-console
-          console.log(response);
+          console.log(cartBooks);
         }
       } catch (error) {
         console.error(error);
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
+  // eslint-disable-next-line no-console
+  console.log(cartBooks);
   return (
     <StyledCartPage>
-      {cartBooks && <EmptyCart />}
+      {cartBooks.length
+        ? <BookInCart books={cartBooks} />
+        : <EmptyCart />}
     </StyledCartPage>
   );
 };

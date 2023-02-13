@@ -2,21 +2,22 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-import type { BookType } from './bookSlice';
+import type { CartType } from '../../api/cartApi';
 
-const CartType: BookType[] = [];
+const cartBooks: CartType['selectedProducts'] = [];
 
 const getInitialState = () => ({
-  cartBooks: CartType,
+  cartBooks,
 });
 
 export const cartSlice = createSlice({
   name: 'cartSlice',
   initialState: getInitialState,
   reducers: {
-    setBook(state, action: PayloadAction<BookType[]>) {
+    setBook(state, action: PayloadAction<CartType>) {
       // eslint-disable-next-line no-console
       console.log(state.cartBooks, action.payload);
+      state.cartBooks = action.payload.selectedProducts;
     },
   },
 });
