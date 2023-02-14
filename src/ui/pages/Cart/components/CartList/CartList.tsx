@@ -17,7 +17,7 @@ const CartList: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
   const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.userId);
   const cartId = props.cartBooks.cartId;
-
+  const totalPrice = cart
   type ApiType = 'minus' | 'plus' | 'delete';
 
   const changeCountBook = async (
@@ -57,6 +57,7 @@ const CartList: React.FC<PropsType> = (props) => {
           cartHandler={changeCountBook}
         />
       ))}
+
     </StyledCartList>
   );
 };
