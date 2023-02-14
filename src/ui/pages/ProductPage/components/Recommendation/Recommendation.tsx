@@ -1,7 +1,7 @@
 import React from 'react';
 import { AxiosError } from 'axios';
 
-import BookPage from '../../../components/BookPage';
+import BookPage from '../../../components/BookPage/BookPage';
 
 import { useAppSelector } from '../../../../../store';
 import changeRating from '../../../../../utils/ratingHelper';

@@ -23,18 +23,20 @@ const CommentItem: React.FC<PropsType> = (props) => {
           src={avatar} alt="user avatar"
         />
       </div>
-      <p
-        className="comment-item__user-full-name"
-      >{comment.user.fullName || 'User'}
-      </p>
-      <p
-        className="comment-item__data"
-      >{comment.createdDate}
-      </p>
-      <p
-        className="comment-item__text"
-      >{comment.commentText}
-      </p>
+      <div>
+        <p
+          className="comment-item__user-full-name"
+        >{comment.user.fullName || 'User'}
+        </p>
+        <p
+          className="comment-item__data"
+        >{comment.createdDate}
+        </p>
+        <p
+          className="comment-item__text"
+        >{comment.commentText}
+        </p>
+      </div>
     </StyledCommentItem>
   );
 };

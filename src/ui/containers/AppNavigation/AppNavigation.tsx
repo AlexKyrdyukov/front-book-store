@@ -11,7 +11,7 @@ const SignIn = React.lazy(() => import('../../pages/SignIn'));
 const ProtectedNoAuthRoute = React.lazy(() => import('../../../utils/privateRoute/ProtectedUserNoAuth'));
 const ProtectedAuthRoute = React.lazy(() => import('../../../utils/privateRoute/ProtectedUserAuth'));
 const Cart = React.lazy(() => import('../../pages/Cart'));
-const ProductPage = React.lazy(() => import('../../pages/ProductCard'));
+const ProductPage = React.lazy(() => import('../../pages/ProductPage'));
 const Account = React.lazy(() => import('../../pages/UserAccount'));
 const Favorites = React.lazy(() => import('../../pages/Favorites'));
 const MainPage = React.lazy(() => import('../../pages/MainPage'));

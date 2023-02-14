@@ -4,18 +4,18 @@ import { AxiosError } from 'axios';
 
 import type { BookType } from '../../../store/slices/bookSlice';
 
-import LowBanner from '../components/LowBanner';
-import CommentCreate from './components/CommentCreate';
-import Recommendation from './components/Recommendation';
-import SelectedProduct from './components/SelectredProduct';
-import CommentsBook from './components/CommentsBook';
+import LowBanner from '../components/LowBanner/LowBanner';
+import CommentCreate from './components/CommentCreate/CommentCreate';
+import Recommendation from './components/Recommendation/Recommendation';
+import SelectedProduct from './components/SelectredProduct/SelectedProduct';
+import CommentsBook from './components/CommentsBook/CommentsBook';
 
 import { useAppSelector } from '../../../store';
 import { cartApi, bookApi, commentApi } from '../../../api';
 import errorHandler from '../../../utils/errorHandler';
 import changeRating from '../../../utils/ratingHelper';
 
-import StyledProductCard from './ProductCard.style';
+import StyledProductCard from './ProductPage.style';
 
 const ProductCard: React.FC = () => {
   const [bookState, setBookState] = React.useState<BookType | null>(null);
@@ -55,8 +55,13 @@ const ProductCard: React.FC = () => {
     if (bookId && user) {
       try {
         const response = await commentApi.create(user?.userId, bookId, commentText);
+        const { comments } = response;
         // eslint-disable-next-line no-console
         console.log(response);
+        setBookState({
+          ...bookState as BookType,
+          comments,
+        });
       } catch (error) {
         if (error instanceof AxiosError) {
           errorHandler(error);
