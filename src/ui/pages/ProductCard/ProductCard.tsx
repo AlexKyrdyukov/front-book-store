@@ -1,31 +1,21 @@
 import React from 'react';
-import { AxiosError } from 'axios';
 import { useParams } from 'react-router-dom';
+import { AxiosError } from 'axios';
 
 import type { BookType } from '../../../store/slices/bookSlice';
 
 import LowBanner from '../components/LowBanner';
+import CommentCreate from './components/CommentCreate';
 import Recommendation from './components/Recommendation';
-import SelectedProduct from './components/SelectredProduct/SelectedProduct';
+import SelectedProduct from './components/SelectredProduct';
+import CommentsBook from './components/CommentsBook';
 
 import { useAppSelector } from '../../../store';
-import bookApi from '../../../api/bookApi';
+import { cartApi, bookApi, commentApi } from '../../../api';
 import errorHandler from '../../../utils/errorHandler';
+import changeRating from '../../../utils/ratingHelper';
 
 import StyledProductCard from './ProductCard.style';
-import CommentsBook from './components/CommentsBook/CommentsBook';
-import { cartApi } from '../../../api';
-
-export const changeRating =
-  async (bookId: number, newRating: number, userId: number) => {
-    try {
-      const response = await bookApi.changeRating(bookId, newRating, userId);
-      return response;
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  };
 
 const ProductCard: React.FC = () => {
   const [bookState, setBookState] = React.useState<BookType | null>(null);
@@ -48,12 +38,10 @@ const ProductCard: React.FC = () => {
     return setBookState(null);
   }, [bookId]);
 
-  const addToCart = async (bookId: number) => {
+  const addToCartHandler = async (bookId: number) => {
     try {
       if (user?.userId) {
-        const response = await cartApi.addToCart(bookId, user.userId);
-        // eslint-disable-next-line no-console
-        console.log(response);
+        await cartApi.addToCart(bookId, user.userId);
       }
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -63,17 +51,36 @@ const ProductCard: React.FC = () => {
     }
   };
 
+  const commentHandler = async (commentText: string) => {
+    if (bookId && user) {
+      try {
+        const response = await commentApi.create(user?.userId, bookId, commentText);
+        // eslint-disable-next-line no-console
+        console.log(response);
+      } catch (error) {
+        if (error instanceof AxiosError) {
+          errorHandler(error);
+          return;
+        }
+        console.error(error);
+      }
+    }
+  };
+
   return (
     <StyledProductCard>
       {bookState &&
         (<SelectedProduct
           user={user}
-          handleAddBookInCart={addToCart}
+          handleAddBookInCart={addToCartHandler}
           book={bookState}
           handleRating={changeRating}
         />)}
-      {!!user && (<CommentsBook
-        bookComments={bookState ? bookState.author : 'null'}
+      <CommentsBook
+        bookComments={bookState ? bookState.comments : undefined}
+      />
+      {!!user && (<CommentCreate
+        onCommentCreate={commentHandler}
       />)}
       {!user && <LowBanner />}
       <h2 className="recommendation__title">Recommendations</h2>

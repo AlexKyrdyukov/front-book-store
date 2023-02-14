@@ -19,8 +19,6 @@ const Cart: React.FC = () => {
         if (userId) {
           const response = await cartApi.getAllFromCart(userId);
           dispatch(cartSliceActions.setBooks(response.cartBooks));
-          // eslint-disable-next-line no-console
-          console.log(cartBooks);
         }
       } catch (error) {
         console.error(error);
@@ -28,8 +26,6 @@ const Cart: React.FC = () => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
-  // eslint-disable-next-line no-console
-  console.log(cartBooks);
   return (
     <StyledCartPage>
       {cartBooks?.selectedProducts.length

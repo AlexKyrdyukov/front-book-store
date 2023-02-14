@@ -24,8 +24,6 @@ const BookRating: React.FC<PropType> = (props) => {
   const [rating, setRating] = React.useState((props.rating / 10).toFixed(1));
 
   const handleRating = async (rate: number) => {
-    // eslint-disable-next-line no-console
-    console.log(rate);
     try {
       if (user) {
         const response = await props.handleRatingBook(props.bookId, rate, user.userId);

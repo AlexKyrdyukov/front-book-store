@@ -13,13 +13,9 @@ export const cartSlice = createSlice({
   initialState: getInitialState,
   reducers: {
     setBooks(state, action: PayloadAction<CartType>) {
-      // eslint-disable-next-line no-console
-      console.log(state.cartBooks, action.payload);
       state.cartBooks = action.payload;
     },
     changeCount(state, action: PayloadAction<{ updatedData: ProductType }>) {
-      // eslint-disable-next-line no-console
-      console.log(action.payload);
       if (state.cartBooks) {
         const index = state.cartBooks.selectedProducts.findIndex(
           (item) => +item.bookId === +action.payload.updatedData.bookId,
@@ -28,13 +24,8 @@ export const cartSlice = createSlice({
           return;
         }
         if (+action.payload.updatedData.countBook <= 0) {
-          // eslint-disable-next-line no-console
-          console.log(state.cartBooks.selectedProducts.length);
           state.cartBooks.selectedProducts.splice(index, 1);
           state.cartBooks.selectedProducts = [...state.cartBooks.selectedProducts];
-          // eslint-disable-next-line no-console
-          console.log(state.cartBooks.selectedProducts.length);
-
           return;
         }
         const book = state.cartBooks?.selectedProducts[index];

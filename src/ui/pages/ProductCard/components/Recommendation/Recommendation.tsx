@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 import BookPage from '../../../components/BookPage';
 
 import { useAppSelector } from '../../../../../store';
-import { changeRating } from '../../ProductCard';
+import changeRating from '../../../../../utils/ratingHelper';
 import StyledRecommendation from './Recommendation.style';
 import { cartApi } from '../../../../../api';
 import errorHandler from '../../../../../utils/errorHandler';

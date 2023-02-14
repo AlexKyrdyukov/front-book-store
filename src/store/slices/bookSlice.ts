@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { UserType } from '../../types/userType';
 
 import bookThunks from '../thunks/bookThunks';
 
@@ -15,6 +16,14 @@ export type BookType = {
   priceInDollar: number;
   averageRating: number;
   darling: boolean;
+  comments: CommentsType[];
+};
+
+export type CommentsType = {
+  commentId: number;
+  commentText: string;
+  createdDate: string;
+  user: UserType;
 };
 
 const booksStore: BookType[] = [];
@@ -42,8 +51,6 @@ export const bookSlice = createSlice({
     builder
       .addCase(bookThunks.getBooks.fulfilled,
         (state, action) => {
-          // eslint-disable-next-line no-console
-          console.log(action.payload);
           state.books = action!.payload!.books;
         });
   },

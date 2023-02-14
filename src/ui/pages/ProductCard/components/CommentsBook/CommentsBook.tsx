@@ -1,17 +1,18 @@
 import React from 'react';
+import type { CommentsType } from '../../../../../store/slices/bookSlice';
 import CommentItem from '../CommentItem';
-import CommentCreate from '../CommentCreate/CommentCreate';
 import StyledCommentsBook from './CommentsBook.style';
 
 type PropsType = {
-  bookComments: string;
+  bookComments: CommentsType[] | undefined;
 };
 
 const CommentsBook: React.FC<PropsType> = (props) => {
   return (
     <StyledCommentsBook>
-      <CommentItem />
-      <CommentCreate />
+      {props?.bookComments?.map((item) => (
+        <CommentItem key={item.createdDate} comment={item} />
+      ))}
     </StyledCommentsBook>
   );
 };

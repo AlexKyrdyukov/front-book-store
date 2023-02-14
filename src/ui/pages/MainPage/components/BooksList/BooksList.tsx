@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 import BookPage from '../../../components/BookPage/BookPage';
 
 import { useAppSelector } from '../../../../../store';
-import { changeRating } from '../../../ProductCard/ProductCard';
+import changeRating from '../../../../../utils/ratingHelper';
 import StyledBooksLists from './BooksList.style';
 import errorHandler from '../../../../../utils/errorHandler';
 import { cartApi } from '../../../../../api';
@@ -16,9 +16,7 @@ const BooksList: React.FC = () => {
   const addToCart = async (bookId: number) => {
     try {
       if (userId) {
-        const response = await cartApi.addToCart(bookId, userId);
-        // eslint-disable-next-line no-console
-        console.log(response);
+        await cartApi.addToCart(bookId, userId);
       }
     } catch (error) {
       if (error instanceof AxiosError) {
