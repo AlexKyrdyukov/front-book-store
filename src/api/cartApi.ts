@@ -15,27 +15,27 @@ export type ProductType = {
 };
 
 const getAllFromCart = async (userId: number) => {
-  const response = await axiosInstance.get<{ books: CartType }>('cart/get-all', { params: { userId } });
+  const response = await axiosInstance.get<{ cartBooks: CartType }>('cart/get-all', { params: { userId } });
   return response.data;
 };
 
 const addingProductQuantity = async (bookId: number, userId: number, cartId: number) => {
-  const response = await axiosInstance.post<{ books: CartType }>(`cart/${userId}/adding-quantity`, { params: { bookId, cartId } });
+  const response = await axiosInstance.post<{ updatedData: ProductType }>(`cart/${userId}/adding-quantity`, { params: { bookId, cartId } });
   return response.data;
 };
 
 const deletingQuantity = async (bookId: number, userId: number, cartId: number) => {
-  const response = await axiosInstance.delete<{ books: CartType }>(`cart/${userId}/delete-quantity`, { params: { bookId, cartId } });
+  const response = await axiosInstance.delete<{ updatedData: ProductType }>(`cart/${userId}/delete-quantity`, { params: { bookId, cartId } });
   return response.data;
 };
 
 const addToCart = async (bookId: number, userId: number) => {
-  const response = await axiosInstance.post<{ books: CartType }>(`cart/${userId}/add-book-to-cart`, { bookId });
+  const response = await axiosInstance.post<{ cartBooks: CartType }>(`cart/${userId}/add-book-to-cart`, { bookId });
   return response.data;
 };
 
 const deleteFromCart = async (bookId: number, userId: number, cartId: number) => {
-  const response = await axiosInstance.delete<{ books: CartType }>(`cart/${userId}/delete-from-cart`, { data: { bookId, cartId } });
+  const response = await axiosInstance.delete<{ updatedData: ProductType }>(`cart/${userId}/delete-from-cart`, { data: { bookId, cartId } });
   return response.data;
 };
 

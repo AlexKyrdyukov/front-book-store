@@ -5,6 +5,10 @@ const StyledSelectedProduct = styled.section`
   margin: 0px auto;
   padding-left: 80px;
   padding-right: 80px;
+
+  .product__button {
+    background: #344966;
+  }
   
   .product__image-block {
     width: 522px;

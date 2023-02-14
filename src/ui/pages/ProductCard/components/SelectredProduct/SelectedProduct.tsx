@@ -1,6 +1,7 @@
 import React from 'react';
 
 import type { BookType } from '../../../../../store/slices/bookSlice';
+import type { UserType } from '../../../../../types/userType';
 import BookButton from '../../../components/BookButton';
 import Rating from '../../../components/Rating';
 
@@ -8,10 +9,12 @@ import StyledSelectedProduct from './SelectedProduct.style';
 
 type PropsType = {
   book: BookType | null | undefined;
+  user: UserType | null;
   handleRating: (
     bookId: number,
     newRating: number,
     userId: number) => Promise<ResponseType>;
+  handleAddBookInCart: (bookId: number) => Promise<void>; //
 };
 
 type ResponseType = {
@@ -41,11 +44,27 @@ const SelectedProduct: React.FC<PropsType> = (props) => {
       <div>
         <div>
           <span>Paperback</span>
-          <BookButton>{props.book?.coverType.includes('Paperback') ? props.book.priceInDollar : 'Not available'}</BookButton>
+          <BookButton
+            className="product__button"
+            disabled={!props.user}
+            onClick={() => props.handleAddBookInCart(props!.book!.bookId)}
+          >{
+              props.book?.isInStock
+                ? `$ ${props.book.priceInDollar} USD`
+                : 'Not available'}
+          </BookButton>
         </div>
         <div>
           <span>HardCover</span>
-          <BookButton>{props.book?.coverType.includes('Hardcover') ? props.book.priceInDollar : 'Not available'}</BookButton>
+          <BookButton
+            className="product__button"
+            disabled={!props.user}
+            onClick={() => props.handleAddBookInCart(props!.book!.bookId)}
+          >{
+              props.book?.isInStock
+                ? `$ ${props.book.priceInDollar} USD`
+                : 'Not available'}
+          </BookButton>
         </div>
       </div>
 

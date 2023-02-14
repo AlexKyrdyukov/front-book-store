@@ -2,9 +2,9 @@ import React from 'react';
 import { AxiosError } from 'axios';
 import { useSearchParams } from 'react-router-dom';
 
-import Filters from './components/Filtres';
-import BooksList from './components/BooksList';
-import Pagination from './components/Pagination/Pagination';
+import Filters from '../Filtres';
+import BooksList from '../BooksList';
+import Pagination from '../Pagination/Pagination';
 
 import { useAppDispatch } from '../../../../../store';
 import bookThunks from '../../../../../store/thunks/bookThunks';

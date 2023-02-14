@@ -95,6 +95,7 @@ const BookPage: React.FC<PropsType> = (props) => {
         className={buyButtonStyle}
         type="button"
         onClick={() => props.handleAddBookInCart(props.book.bookId)}
+        disabled={!user}
       >
         {props.book.isInStock
           ? `$ ${props.book.priceInDollar} USD`

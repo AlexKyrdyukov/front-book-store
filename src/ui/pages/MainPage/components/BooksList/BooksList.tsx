@@ -1,13 +1,13 @@
 import React from 'react';
 import { AxiosError } from 'axios';
 
-import BookPage from '../../../../../components/BookPage';
+import BookPage from '../../../components/BookPage/BookPage';
 
-import { useAppSelector } from '../../../../../../../store';
-import { changeRating } from '../../../../../ProductCard/ProductCard';
+import { useAppSelector } from '../../../../../store';
+import { changeRating } from '../../../ProductCard/ProductCard';
 import StyledBooksLists from './BooksList.style';
-import errorHandler from '../../../../../../../utils/errorHandler';
-import { cartApi } from '../../../../../../../api';
+import errorHandler from '../../../../../utils/errorHandler';
+import { cartApi } from '../../../../../api';
 
 const BooksList: React.FC = () => {
   const books = useAppSelector(({ rootSlice }) => rootSlice.bookSlice.books);

@@ -2,13 +2,13 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { AxiosError } from 'axios';
 
-import { genresApi } from '../../../../../../../api';
+import { genresApi } from '../../../../../api';
 
 import GanrDropDown from './components/GanrDropDown';
 import SortByDropDown from './components/SortByDropDown';
 import PriceDropDown from './components/PriceDropDown';
 import DropDownButton from './components/DropDownButton';
-import errorHandler from '../../../../../../../utils/errorHandler';
+import errorHandler from '../../../../../utils/errorHandler';
 
 import StyledFiltres from './Filtres.style';
 

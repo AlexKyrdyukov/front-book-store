@@ -18,7 +18,7 @@ const Cart: React.FC = () => {
       try {
         if (userId) {
           const response = await cartApi.getAllFromCart(userId);
-          dispatch(cartSliceActions.setBook(response.books));
+          dispatch(cartSliceActions.setBooks(response.cartBooks));
           // eslint-disable-next-line no-console
           console.log(cartBooks);
         }

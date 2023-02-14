@@ -18,23 +18,26 @@ const CartList: React.FC<PropsType> = (props) => {
   const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.userId);
   const cartId = props.cartBooks.cartId;
 
+  type ApiType = 'minus' | 'plus' | 'delete';
+
   const changeCountBook = async (
     bookId: number,
-    flag: 'minus' | 'plus' | 'delete',
+    flag: ApiType,
   ) => {
     if (userId) {
-      const select = {
+      const cartResponse = {
         plus: cartApi.addingProductQuantity,
         minus: cartApi.deletingQuantity,
         delete: cartApi.deleteFromCart,
       };
+
       try {
-        // eslint-disable-next-line no-console
-        console.log('select');
-        const response = await select[flag](bookId, userId, cartId);
-        // // dispatch(cartSliceActions.setBook(response.books));
-        // eslint-disable-next-line no-console
-        console.log(response);
+        const response = await cartResponse[flag](bookId, userId, cartId);
+        if (flag !== 'delete') {
+          dispatch(cartSliceActions.changeCount(response));
+          return;
+        }
+        dispatch(cartSliceActions.deleteById(response));
       } catch (error) {
         if (error instanceof AxiosError) {
           errorHandler(error);

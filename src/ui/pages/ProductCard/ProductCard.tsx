@@ -14,13 +14,12 @@ import errorHandler from '../../../utils/errorHandler';
 
 import StyledProductCard from './ProductCard.style';
 import CommentsBook from './components/CommentsBook/CommentsBook';
+import { cartApi } from '../../../api';
 
 export const changeRating =
   async (bookId: number, newRating: number, userId: number) => {
     try {
       const response = await bookApi.changeRating(bookId, newRating, userId);
-      // eslint-disable-next-line no-console
-      console.log(response);
       return response;
     } catch (error) {
       console.error(error);
@@ -49,14 +48,33 @@ const ProductCard: React.FC = () => {
     return setBookState(null);
   }, [bookId]);
 
+  const addToCart = async (bookId: number) => {
+    try {
+      if (user?.userId) {
+        const response = await cartApi.addToCart(bookId, user.userId);
+        // eslint-disable-next-line no-console
+        console.log(response);
+      }
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        errorHandler(error);
+      }
+      console.error(error);
+    }
+  };
+
   return (
     <StyledProductCard>
       {bookState &&
         (<SelectedProduct
+          user={user}
+          handleAddBookInCart={addToCart}
           book={bookState}
           handleRating={changeRating}
         />)}
-      <CommentsBook />
+      {!!user && (<CommentsBook
+        bookComments={bookState ? bookState.author : 'null'}
+      />)}
       {!user && <LowBanner />}
       <h2 className="recommendation__title">Recommendations</h2>
       <Recommendation />
