@@ -7,7 +7,7 @@ import CommentItem from '../CommentItem';
 import StyledCommentsBook from './CommentsBook.style';
 
 type PropsType = {
-  bookComments: CommentsType[] | undefined;
+  bookComments?: CommentsType[];
 };
 
 const CommentsBook: React.FC<PropsType> = (props) => {

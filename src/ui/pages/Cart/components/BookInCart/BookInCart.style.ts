@@ -31,12 +31,15 @@ const StyledBookInCart = styled.div`
 
   .cart-book__button-minus {
     background: #F0F4EF;
-    padding: 0px 20px;
+    padding: 10px 20px;
     border-radius: 50px;
     font-size: 24px;
   }
 
   .cart-book__total-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
     font-size: 24px;
   }
@@ -44,7 +47,7 @@ const StyledBookInCart = styled.div`
   .cart-book__button-plus {
     font-size: 24px;
     background: #F0F4EF;
-    padding: 0px 20px;
+    padding: 10px 20px;
     border-radius: 50px;
   }
 
