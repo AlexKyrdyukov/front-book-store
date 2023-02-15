@@ -10,6 +10,7 @@ type PropsType = {
   bookComments?: CommentsType[];
 };
 
+
 const CommentsBook: React.FC<PropsType> = (props) => {
   return (
     <StyledCommentsBook>
