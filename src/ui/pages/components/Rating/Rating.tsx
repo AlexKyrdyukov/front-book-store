@@ -36,6 +36,7 @@ const BookRating: React.FC<PropType> = (props) => {
 
   return (
     <StyledRating>
+
       <Rating
         onClick={handleRating}
         allowFraction
@@ -46,6 +47,7 @@ const BookRating: React.FC<PropType> = (props) => {
         initialValue={+(props.rating / 10).toFixed(1)}
       />
       <span className="integer__value">{rating}</span>
+
     </StyledRating>
   );
 };

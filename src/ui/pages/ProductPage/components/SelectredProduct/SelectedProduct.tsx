@@ -1,9 +1,10 @@
 import React from 'react';
 
-import type { BookType } from '../../../../../store/slices/bookSlice';
 import type { UserType } from '../../../../../types/userType';
-import BookButton from '../../../components/BookButton/BookButton';
-import Rating from '../../../components/Rating/Rating';
+import type { BookType } from '../../../../../store/slices/bookSlice';
+
+import Rating from '../../../components/Rating';
+import BookButton from '../../../components/BookButton';
 
 import StyledSelectedProduct from './SelectedProduct.style';
 

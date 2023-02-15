@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import SortByItem from './components/SortByItem/SortByItem';
-import SortDirection from './components/SortDirection';
-import triangle from '../../image/triangle.svg';
+import SortByItem from '../SortByItem/SortByItem';
+import SortDirection from '../SortDirection/SortDirection';
+import triangle from '../Filtres/image/triangle.svg';
 
 import StyledSortDropDown from './SortByDropDown.style';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
-import Diapason from './components/Diapason';
+import Diapason from '../Diapason/Diapason';
 
-import triangle from '../../image/triangle.svg';
+import triangle from '../Filtres/image/triangle.svg';
 import StyledPriceDropDown from './PriceDropDown.style';
 
 const PriceDropDown: React.FC = () => {

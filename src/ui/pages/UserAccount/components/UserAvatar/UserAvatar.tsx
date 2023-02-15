@@ -4,10 +4,10 @@ import { toast } from 'react-toastify';
 
 import CircleButton from '../../../../components/CircleButton/CircleButton';
 
-import { useAppSelector, useAppDispatch } from '../../../../../store';
-import { userSliceActions } from '../../../../../store/slices/userSlice';
 import { userApi } from '../../../../../api';
 import errorHandler from '../../../../../utils/errorHandler';
+import { useAppSelector, useAppDispatch } from '../../../../../store';
+import { userSliceActions } from '../../../../../store/slices/userSlice';
 
 import pseudoPhoto from './images/user.svg';
 import camera from './images/camera.png';
@@ -24,7 +24,7 @@ const UserAvatar: React.FC<PropsType> = (props) => {
 
   const userAvatar = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.avatar);
 
-  const avatar = userAvatar || pseudoPhoto;
+  const avatar = userAvatar?.slice(-4) === 'null' ? pseudoPhoto : userAvatar as string;
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files;
@@ -37,8 +37,6 @@ const UserAvatar: React.FC<PropsType> = (props) => {
     reader.onloadend = async () => {
       try {
         const { avatar, message } = await userApi.setAvatar(userId, reader.result);
-        // eslint-disable-next-line no-console
-        console.log(avatar);
         dispatch(userSliceActions.setAvatar(avatar));
         toast.info(message);
       } catch (error) {

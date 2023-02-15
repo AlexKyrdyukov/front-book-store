@@ -30,13 +30,6 @@ const StyledCommentItem = styled.div`
     margin-bottom: 10px;
   }
 
-  .comment-item__data {
-    font-weight: 500;
-    font-size: 12px;
-    color: #B9BAC4;
-    margin-bottom: 10px;
-  }
-
   .comment-item__text {
     font-weight: 500;
     font-size: 16px;

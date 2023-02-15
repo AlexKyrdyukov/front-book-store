@@ -1,6 +1,9 @@
 import React from 'react';
+
 import type { CommentsType } from '../../../../../store/slices/bookSlice';
+
 import CommentItem from '../CommentItem';
+
 import StyledCommentsBook from './CommentsBook.style';
 
 type PropsType = {

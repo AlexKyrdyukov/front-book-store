@@ -1,8 +1,7 @@
 import React from 'react';
+import type { ProductType } from '../../../../../api/cartApi';
 
 import StyledBookInCart from './BookInCart.style';
-
-import type { ProductType } from '../../../../../api/cartApi';
 
 type PropsType = {
   book: ProductType;

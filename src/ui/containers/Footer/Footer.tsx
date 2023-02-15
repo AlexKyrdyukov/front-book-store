@@ -21,8 +21,10 @@ const Footer: React.FC = () => {
     }
     dispatch(userSliceActions.removeUser());
     cookies.access.remove();
-    // eslint-disable-next-line no-unused-expressions
-    flag ? cookies.refresh.remove() : null;
+
+    if (flag) {
+      cookies.refresh.remove();
+    }
   };
 
   return (
@@ -33,10 +35,18 @@ const Footer: React.FC = () => {
             className="button__log-out"
             onClick={logOut}
           >
-            <img className="footer__logo" src={logoSite} alt="site logo" />
+            <img className="footer__logo"
+              src={logoSite} alt="site logo"
+            />
           </button>
-          <span className="footer__url">tranthuy.nute@gmail.com</span>
-          <span className="footer__phone-nuber">(480) 555-0103</span>
+          <span
+            className="footer__url"
+          >tranthuy.nute@gmail.com
+          </span>
+          <span
+            className="footer__phone-nuber"
+          >(480) 555-0103
+          </span>
         </div>
         <nav className="links__list">
           <Link className="footer__link" to="/">Catalog</Link>
@@ -45,12 +55,20 @@ const Footer: React.FC = () => {
           <Link className="footer__link" to="/">Home Page</Link>
           <Link onClick={logOut} className="footer__link" to="/">log-out</Link>
         </nav>
-        <div className="footer__map-block">
-          <p className="footer__address">
+        <div
+          className="footer__map-block"
+        >
+          <p
+            className="footer__address"
+          >
             6391 Elgin St. Celina, Delaware 10299
           </p>
-          <div className="image__block">
-            <img className="footer__map-image" src={mapCart} alt="map address" />
+          <div
+            className="image__block"
+          >
+            <img
+              className="footer__map-image" src={mapCart} alt="map address"
+            />
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
 import type { TypedUseSelectorHook } from 'react-redux';
 
@@ -10,9 +10,6 @@ export const store = configureStore({
     rootSlice,
   },
   devTools: true,
-  middleware: getDefaultMiddleware({
-    serializableCheck: false,
-  }),
 });
 
 export type AppStateType = typeof store.getState;

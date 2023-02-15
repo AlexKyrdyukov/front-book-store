@@ -105,7 +105,6 @@ const UserDataForm: React.FC<PropType> = (props) => {
             <Button
               type="submit"
               className="confirm-button"
-            // disabled={formik.isSubmitting}
             >
               Confirm
             </Button>) : null}

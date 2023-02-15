@@ -5,21 +5,23 @@ import { AxiosError } from 'axios';
 import type { BookType } from '../../../store/slices/bookSlice';
 
 import LowBanner from '../components/LowBanner/LowBanner';
+import CommentsBook from './components/CommentsBook/CommentsBook';
 import CommentCreate from './components/CommentCreate/CommentCreate';
 import Recommendation from './components/Recommendation/Recommendation';
 import SelectedProduct from './components/SelectredProduct/SelectedProduct';
-import CommentsBook from './components/CommentsBook/CommentsBook';
 
-import { useAppSelector } from '../../../store';
-import { cartApi, bookApi, commentApi } from '../../../api';
 import errorHandler from '../../../utils/errorHandler';
 import changeRating from '../../../utils/ratingHelper';
+import { cartApi, bookApi, commentApi } from '../../../api';
+import { useAppSelector, useAppDispatch } from '../../../store';
+import { userSliceActions } from '../../../store/slices/userSlice';
 
 import StyledProductCard from './ProductPage.style';
 
 const ProductCard: React.FC = () => {
   const [bookState, setBookState] = React.useState<BookType | null>(null);
 
+  const dispatch = useAppDispatch();
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
 
   const { bookId } = useParams();
@@ -41,7 +43,8 @@ const ProductCard: React.FC = () => {
   const addToCartHandler = async (bookId: number) => {
     try {
       if (user?.userId) {
-        await cartApi.addToCart(bookId, user.userId);
+        const response = await cartApi.addToCart(bookId, user.userId);
+        dispatch(userSliceActions.setBooks(response.cartBooks));
       }
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -51,17 +54,16 @@ const ProductCard: React.FC = () => {
     }
   };
 
-  const commentHandler = async (commentText: string) => {
+  const onCommentHandler = async (commentText: string) => {
     if (bookId && user) {
       try {
         const response = await commentApi.create(user?.userId, bookId, commentText);
         const { comments } = response;
-        // eslint-disable-next-line no-console
-        console.log(response);
         setBookState({
           ...bookState as BookType,
           comments,
         });
+        return;
       } catch (error) {
         if (error instanceof AxiosError) {
           errorHandler(error);
@@ -85,7 +87,7 @@ const ProductCard: React.FC = () => {
         bookComments={bookState ? bookState.comments : undefined}
       />
       {!!user && (<CommentCreate
-        onCommentCreate={commentHandler}
+        commentHandler={onCommentHandler}
       />)}
       {!user && <LowBanner />}
       <h2 className="recommendation__title">Recommendations</h2>

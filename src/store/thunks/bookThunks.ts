@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
+
 import { bookApi } from '../../api';
 
 const getBooks = createAsyncThunk('getBooks', async (params: object, { rejectWithValue }) => {

@@ -2,17 +2,18 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
+
 import { AxiosError } from 'axios';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import { authApi } from '../../../api';
 
+import { authApi } from '../../../api';
 import { useAppDispatch } from '../../../store';
-import { userSliceActions } from '../../../store/slices/userSlice';
 import cookies from '../../../utils/coookieHelper';
-import validationDate from '../../../utils/validationSchemas';
 import errorHandler from '../../../utils/errorHandler';
+import validationDate from '../../../utils/validationSchemas';
+import { userSliceActions } from '../../../store/slices/userSlice';
 
 import mainImage from './images/human.png';
 import hideLogo from './images/hide.svg';
@@ -59,6 +60,7 @@ const SignUp: React.FC = () => {
       }
     },
   });
+
   return (
     <StyledSignInPage>
       <form

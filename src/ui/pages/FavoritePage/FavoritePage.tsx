@@ -1,13 +1,14 @@
 import React from 'react';
 import { AxiosError } from 'axios';
 
-import BookPage from '../components/BookPage';
+import BookPage from '../components/BookPage/BookPage';
+
 import changeRating from '../../../utils/ratingHelper';
-import { useAppSelector } from '../../../store';
 import { cartApi } from '../../../api';
+import { useAppSelector } from '../../../store';
 import errorHandler from '../../../utils/errorHandler';
 
-import StyledFavoritPage from './Favorites.style';
+import StyledFavoritPage from './FavoritePage.style';
 
 const Favorites: React.FC = () => {
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
@@ -23,6 +24,7 @@ const Favorites: React.FC = () => {
       console.error(error);
     }
   };
+
   return (
     <StyledFavoritPage>
       {user?.likeBooks.map((item) => (

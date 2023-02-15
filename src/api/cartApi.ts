@@ -1,5 +1,4 @@
 import type { BookType } from '../store/slices/bookSlice';
-
 import { axiosInstance } from '../api';
 
 export type CartType = {
@@ -30,7 +29,7 @@ const deletingQuantity = async (bookId: number, userId: number, cartId: number) 
 };
 
 const addToCart = async (bookId: number, userId: number) => {
-  const response = await axiosInstance.post<{ cartBooks: CartType }>(`cart/${userId}/add-book-to-cart`, { bookId });
+  const response = await axiosInstance.post<{ cartBooks: ProductType[] }>(`cart/${userId}/add-book-to-cart`, { bookId });
   return response.data;
 };
 
@@ -40,9 +39,9 @@ const deleteFromCart = async (bookId: number, userId: number, cartId: number) =>
 };
 
 export default {
-  getAllFromCart,
-  addingProductQuantity,
-  deletingQuantity,
   addToCart,
   deleteFromCart,
+  getAllFromCart,
+  deletingQuantity,
+  addingProductQuantity,
 };

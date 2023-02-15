@@ -22,7 +22,6 @@ const Diapason: React.FC<PropsType> = (props) => {
     activeThumb: number,
   ) => {
     if (!Array.isArray(newValue)) {
-      // eslint-disable-next-line no-useless-return
       return;
     }
     if (newValue[1] - newValue[0] < minDistance) {

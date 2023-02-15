@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
-import cookies from '../utils/coookieHelper';
 import authApi from './authApi';
+import cookies from '../utils/coookieHelper';
 import getDeviceId from '../utils/deviceHelper';
 
 const axiosInstance = axios.create({
@@ -9,6 +9,7 @@ const axiosInstance = axios.create({
     device_id: getDeviceId(),
   },
 });
+
 axiosInstance.interceptors.request.use((request) => {
   const accessToken = cookies.access.get();
   if (accessToken) {
@@ -23,6 +24,7 @@ axiosInstance.interceptors.response.use((response) => {
 }, async (error) => {
   try {
     const originalRequest = error.config;
+
     if (error instanceof AxiosError &&
       error.response?.status === 401 &&
       originalRequest.url !== '/auth/refresh'
@@ -32,14 +34,14 @@ axiosInstance.interceptors.response.use((response) => {
       const { accessToken, refreshToken } = response;
       cookies.access.set(accessToken);
       cookies.refresh.set(refreshToken);
+
       if (originalRequest) {
         const req = await axiosInstance.request(originalRequest);
         return req;
       }
     }
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
+    console.error(error);
     throw error;
   }
   throw error;

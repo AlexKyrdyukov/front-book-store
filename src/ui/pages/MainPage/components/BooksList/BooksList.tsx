@@ -3,20 +3,24 @@ import { AxiosError } from 'axios';
 
 import BookPage from '../../../components/BookPage/BookPage';
 
-import { useAppSelector } from '../../../../../store';
-import changeRating from '../../../../../utils/ratingHelper';
-import StyledBooksLists from './BooksList.style';
-import errorHandler from '../../../../../utils/errorHandler';
 import { cartApi } from '../../../../../api';
+import changeRating from '../../../../../utils/ratingHelper';
+import errorHandler from '../../../../../utils/errorHandler';
+import { useAppSelector, useAppDispatch } from '../../../../../store';
+import { userSliceActions } from '../../../../../store/slices/userSlice';
+
+import StyledBooksLists from './BooksList.style';
 
 const BooksList: React.FC = () => {
+  const dispatch = useAppDispatch();
   const books = useAppSelector(({ rootSlice }) => rootSlice.bookSlice.books);
   const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.userId);
 
   const addToCart = async (bookId: number) => {
     try {
       if (userId) {
-        await cartApi.addToCart(bookId, userId);
+        const response = await cartApi.addToCart(bookId, userId);
+        dispatch(userSliceActions.setBooks(response.cartBooks));
       }
     } catch (error) {
       if (error instanceof AxiosError) {

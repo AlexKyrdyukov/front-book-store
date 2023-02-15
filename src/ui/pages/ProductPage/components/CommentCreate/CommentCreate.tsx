@@ -3,7 +3,7 @@ import React from 'react';
 import StyledCreateComment from './CommentCreate.style';
 
 type PropsType = {
-onCommentCreate: (text: string) => Promise<void>;
+  commentHandler: (text: string) => Promise<void>;
 };
 
 const CommentCreate: React.FC<PropsType> = (props) => {
@@ -12,18 +12,25 @@ const CommentCreate: React.FC<PropsType> = (props) => {
   const textHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextState(e.target.value);
   };
+  const createComment = () => {
+    props.commentHandler(textState);
+    setTextState('');
+  };
+
   return (
     <StyledCreateComment>
-      <form>
+      <form
+      >
         <textarea
           onChange={textHandler}
           className="create-comment__textarea"
           placeholder="Share comment"
-        />
+          value={textState}
+          />
         <button
           type="button"
           disabled={!textState.length}
-          onClick={() => props.onCommentCreate(textState)}
+          onClick={createComment}
           className="create-comment__button"
         >POST A COMMENT
         </button>

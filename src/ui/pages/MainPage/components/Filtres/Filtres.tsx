@@ -4,10 +4,10 @@ import { AxiosError } from 'axios';
 
 import { genresApi } from '../../../../../api';
 
-import GanrDropDown from './components/GanrDropDown';
-import SortByDropDown from './components/SortByDropDown';
-import PriceDropDown from './components/PriceDropDown';
-import DropDownButton from './components/DropDownButton';
+import GanrDropDown from '../GanrDropDown';
+import SortByDropDown from '../SortByDropDown';
+import PriceDropDown from '../PriceDropDown';
+import DropDownButton from '../DropDownButton';
 import errorHandler from '../../../../../utils/errorHandler';
 
 import StyledFiltres from './Filtres.style';

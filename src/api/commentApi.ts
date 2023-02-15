@@ -1,5 +1,5 @@
 import { axiosInstance } from '../api';
-import type { BookType, CommentsType } from '../store/slices/bookSlice';
+import type { CommentsType } from '../store/slices/bookSlice';
 
 const create = async (userId: number, bookId: string, comment: string) => {
   const response = await axiosInstance.post<{ comments: CommentsType[] }>(`comment/${userId}`, { bookId, comment });

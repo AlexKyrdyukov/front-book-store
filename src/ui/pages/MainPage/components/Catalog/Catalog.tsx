@@ -7,8 +7,8 @@ import BooksList from '../BooksList';
 import Pagination from '../Pagination/Pagination';
 
 import { useAppDispatch } from '../../../../../store';
-import bookThunks from '../../../../../store/thunks/bookThunks';
 import errorHandler from '../../../../../utils/errorHandler';
+import bookThunks from '../../../../../store/thunks/bookThunks';
 
 import StyledCatalog from './Catalog.style';
 
@@ -50,9 +50,7 @@ const Catalog: React.FC = () => {
   return (
     <StyledCatalog>
       <div className="title-filters__block">
-
         <h2 className="catalog__title">Catalog</h2>
-
         <Filters />
       </div>
       <BooksList />

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import Checkbox from './components/Checkbox';
+import Checkbox from '../Checkbox';
 
-import triangle from '../../image/triangle.svg';
+import triangle from '../Filtres/image/triangle.svg';
 import StyledGanrDropDown from './GanrDropDown.style';
 
 type PropsType = {

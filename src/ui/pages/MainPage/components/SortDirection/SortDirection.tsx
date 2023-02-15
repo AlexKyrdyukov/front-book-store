@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 
-import close from '../../../DropDownButton/image/close.svg';
-import open from '../../../DropDownButton/image/open.svg';
+import close from '../DropDownButton/image/close.svg';
+import open from '../DropDownButton/image/open.svg';
 
 import StyledSortDirection from './SortDirection.style';
 

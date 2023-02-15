@@ -28,8 +28,8 @@ const refresh = async (token: string | undefined) => {
 };
 
 export default {
+  getMe,
   signIn,
   signUp,
-  getMe,
   refresh,
 };

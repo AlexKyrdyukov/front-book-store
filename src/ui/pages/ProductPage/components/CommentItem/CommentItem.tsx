@@ -1,6 +1,10 @@
 import React from 'react';
 import type { CommentsType } from '../../../../../store/slices/bookSlice';
+
+import CommentDate from '../CommentDate';
+
 import userAvatar from './images/user_avatar.svg';
+
 import StyledCommentItem from './CommentItem.style';
 
 type PropsType = {
@@ -8,7 +12,7 @@ type PropsType = {
 };
 
 const CommentItem: React.FC<PropsType> = (props) => {
-  const comment = props.comment;
+  const { comment } = props;
 
   const avatar = comment.user.avatar?.slice(-4) === 'null' ? userAvatar : comment.user.avatar as string;
   if (!comment) {
@@ -28,10 +32,9 @@ const CommentItem: React.FC<PropsType> = (props) => {
           className="comment-item__user-full-name"
         >{comment.user.fullName || 'User'}
         </p>
-        <p
-          className="comment-item__data"
-        >{comment.createdDate}
-        </p>
+        <CommentDate
+          createdDate={comment.createdDate}
+        />
         <p
           className="comment-item__text"
         >{comment.commentText}

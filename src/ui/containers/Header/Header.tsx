@@ -1,15 +1,17 @@
-import type { ChangeEvent } from 'react';
 import React from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+
+import type { ChangeEvent } from 'react';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import CircleButton from '../../components/CircleButton';
 
-import headerLogo from './images/logo.svg';
 import { useAppSelector } from '../../../store';
+
+import headerLogo from './images/logo.svg';
 import inputLogo from './images/search.svg';
-import cart from './images/Cart.svg';
+import cart from './images/cart.svg';
 import heart from './images/heart.svg';
 import profile from './images/profile.svg';
 

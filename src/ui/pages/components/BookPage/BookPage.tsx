@@ -4,9 +4,9 @@ import classNames from 'classnames';
 
 import type { BookType } from '../../../../store/slices/bookSlice';
 
-import CircleButton from '../../../components/CircleButton';
-import BookButton from '../BookButton';
 import Rating from '../Rating';
+import BookButton from '../BookButton';
+import CircleButton from '../../../components/CircleButton';
 
 import { userSliceActions } from '../../../../store/slices/userSlice';
 import { useAppSelector, useAppDispatch } from '../../../../store';
@@ -55,9 +55,10 @@ const BookPage: React.FC<PropsType> = (props) => {
 
   return (
     <StyledBookPage>
-      <div className="image__block"
-      >
-        <span className="block__circle-button">
+      <div className="image__block">
+        <span
+          className="block__circle-button"
+        >
           <CircleButton
             disabled={Boolean(!user)}
             type="button"
@@ -65,7 +66,9 @@ const BookPage: React.FC<PropsType> = (props) => {
             className="darling__button"
             src={
               (user &&
-                (user?.likeBooks?.findIndex((item) => item.bookId === props.book.bookId) !== -1))
+                (user?.likeBooks?.findIndex((
+                  item,
+                ) => item.bookId === props.book.bookId) !== -1))
                 ? heart
                 : emptyHeart}
             alt="heart"
@@ -84,8 +87,12 @@ const BookPage: React.FC<PropsType> = (props) => {
           : null
         }
       </div>
-      <h4 className="book__name">{props.book.name}</h4>
-      <h5 className="book__author">{props.book.author}</h5>
+      <h4 className="book__name"
+      >{props.book.name}
+      </h4>
+      <h5 className="book__author"
+      >{props.book.author}
+      </h5>
       <Rating
         handleRatingBook={props.handleRating}
         rating={props.book.averageRating}

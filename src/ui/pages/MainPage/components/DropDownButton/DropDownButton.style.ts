@@ -18,7 +18,6 @@ const StyledDropDownButton = styled.div`
     color: #344966;
     white-space: nowrap;
     overflow: hidden;
-    /* text-overflow: ellipsis; */
   }
 
   .drop-down__block {

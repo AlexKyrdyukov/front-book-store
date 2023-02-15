@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type { ProductType } from '../../api/cartApi';
 import type { UserType } from '../../types/userType';
 
 import userThunks from '../thunks/userThunks';
@@ -20,6 +22,40 @@ export const userSlice = createSlice({
     },
     setAvatar(state, action) {
       state.user!.avatar = action.payload;
+    },
+    setBooks(state, action: PayloadAction<ProductType[]>) {
+      if (state.user) {
+        state.user.cart.selectedProducts = action.payload;
+      }
+    },
+    changeCount(state, action: PayloadAction<{ updatedData: ProductType }>) {
+      if (state.user?.cart.selectedProducts) {
+        const index = state.user?.cart.selectedProducts.findIndex(
+          (item) => +item.bookId === +action.payload.updatedData.bookId,
+        );
+        if (index === -1) {
+          return;
+        }
+        if (+action.payload.updatedData.countBook <= 0) {
+          state.user?.cart.selectedProducts.splice(index, 1);
+          state.user.cart.selectedProducts = [...state.user.cart.selectedProducts];
+          return;
+        }
+        const book = state.user.cart.selectedProducts[index];
+        book.countBook = action.payload.updatedData.countBook;
+      }
+    },
+    deleteById(state, action: PayloadAction<{ updatedData: ProductType }>) {
+      if (state.user) {
+        const index = state.user.cart.selectedProducts.findIndex(
+          (item) => +item.bookId === +action.payload.updatedData.bookId,
+        );
+        if (index === -1) {
+          return;
+        }
+        state.user.cart.selectedProducts.splice(index, 1);
+        state.user.cart.selectedProducts = [...state.user.cart.selectedProducts];
+      }
     },
   },
   extraReducers: (builder) => {

@@ -1,10 +1,7 @@
 import React, { Suspense } from 'react';
-
 import { Routes, Route } from 'react-router-dom';
 
 import Preloader from '../PreLoader';
-
-import StyledNavigation from './AppNavigation.style';
 
 const SignUp = React.lazy(() => import('../../pages/SignUp'));
 const SignIn = React.lazy(() => import('../../pages/SignIn'));
@@ -13,12 +10,12 @@ const ProtectedAuthRoute = React.lazy(() => import('../../../utils/privateRoute/
 const Cart = React.lazy(() => import('../../pages/Cart'));
 const ProductPage = React.lazy(() => import('../../pages/ProductPage'));
 const Account = React.lazy(() => import('../../pages/UserAccount'));
-const Favorites = React.lazy(() => import('../../pages/Favorites'));
+const Favorites = React.lazy(() => import('../../pages/FavoritePage'));
 const MainPage = React.lazy(() => import('../../pages/MainPage'));
 
 const AppNavigation = () => {
   return (
-    <StyledNavigation>
+    <div>
       <Suspense fallback={<Preloader />}>
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -35,7 +32,7 @@ const AppNavigation = () => {
           <Route path="*" element={<MainPage />} />
         </Routes >
       </Suspense>
-    </StyledNavigation>
+    </div>
   );
 };
 

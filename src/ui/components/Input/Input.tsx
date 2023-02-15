@@ -1,9 +1,9 @@
 import React from 'react';
-import type { FormikErrors } from 'formik';
-
 import classNames from 'classnames';
 
-import imageEye from './image/View.svg';
+import type { FormikErrors } from 'formik';
+
+import imageEye from './image/view.svg';
 
 import StyledInput from './Input.style';
 
@@ -66,15 +66,24 @@ const Input: React.FC<PropType> = (props) => {
         name={props.name}
         className="input"
         type={
-          props.type === 'password' && inputState
+          props.type === 'password' &&
+            inputState
             ? 'text'
             : props.type
         }
         placeholder={props.placeholder}
       />
       {props.errorText && props.touchedInfo
-        ? <div className="hint__text error__text">{props.errorText}</div>
-        : <div className="hint__text">{props.hintText}</div>}
+        ? (<div
+          className="hint__text error__text"
+        >{props.errorText}
+           </div>
+        )
+        : (<div
+          className="hint__text"
+        >{props.hintText}
+           </div>
+        )}
     </StyledInput>
   );
 };

@@ -16,8 +16,14 @@ const CircleButton: React.FC<PropsType> = ({ src, alt, ...props }) => {
     <StyledCircleButton
       {...props}
     >
-      <div className="image__block">
-        <img className="image" src={src} alt={alt} />
+      <div
+        className="image__block"
+      >
+        <img
+          className="image"
+          src={src}
+          alt={alt}
+        />
       </div>
     </StyledCircleButton>
   );

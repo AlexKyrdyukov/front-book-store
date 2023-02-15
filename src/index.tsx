@@ -7,7 +7,7 @@ import { store } from './store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import GlobalStyles from './ui/containers/GlobalStyles/GlobalStyle';
+import GlobalStyles from './ui/containers/GlobalStyle';
 
 import 'react-toastify/dist/ReactToastify.css';
 

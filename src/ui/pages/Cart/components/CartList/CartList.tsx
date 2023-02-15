@@ -1,12 +1,16 @@
-import { AxiosError } from 'axios';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { AxiosError } from 'axios';
 import type { CartType } from '../../../../../api/cartApi';
-import cartApi from '../../../../../api/cartApi';
 
-import { useAppDispatch, useAppSelector } from '../../../../../store';
-import { cartSliceActions } from '../../../../../store/slices/cartSlice';
-import errorHandler from '../../../../../utils/errorHandler';
 import BookInCart from '../BookInCart';
+import Button from '../../../../components/Button/Button';
+
+import cartApi from '../../../../../api/cartApi';
+import errorHandler from '../../../../../utils/errorHandler';
+import { userSliceActions } from '../../../../../store/slices/userSlice';
+import { useAppDispatch, useAppSelector } from '../../../../../store';
+
 import StyledCartList from './CartList.style';
 
 type PropsType = {
@@ -17,7 +21,14 @@ const CartList: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
   const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.userId);
   const cartId = props.cartBooks.cartId;
-  const totalPrice = cart
+
+  const totalPrice = React.useMemo(() => {
+    return props.cartBooks.selectedProducts.reduce((accum, item) => {
+      // eslint-disable-next-line no-param-reassign
+      accum += (+item.book.priceInDollar * +item.countBook);
+      return accum;
+    }, 0);
+  }, [props.cartBooks.selectedProducts]);
   type ApiType = 'minus' | 'plus' | 'delete';
 
   const changeCountBook = async (
@@ -34,10 +45,10 @@ const CartList: React.FC<PropsType> = (props) => {
       try {
         const response = await cartResponse[flag](bookId, userId, cartId);
         if (flag !== 'delete') {
-          dispatch(cartSliceActions.changeCount(response));
+          dispatch(userSliceActions.changeCount(response));
           return;
         }
-        dispatch(cartSliceActions.deleteById(response));
+        dispatch(userSliceActions.deleteById(response));
       } catch (error) {
         if (error instanceof AxiosError) {
           errorHandler(error);
@@ -57,8 +68,30 @@ const CartList: React.FC<PropsType> = (props) => {
           cartHandler={changeCountBook}
         />
       ))}
-
-    </StyledCartList>
+      <p
+        className="cart-list__total-price"
+      >Total: <span>{totalPrice.toFixed(2)}</span>
+      </p>
+      <div
+        className="cart-list__button-block"
+      >
+        <Link
+          className="cart-list__link-shopping"
+          to="/"
+        >
+          <Button
+            className="cart-list__button-shopping"
+          >Continue shopping
+          </Button>
+        </Link>
+        <a href="https://gfycat.com/wavyunsungclumber">
+          <Button
+            className="cart-list__button-checkout"
+          >Checkout
+          </Button>
+        </a>
+      </div >
+    </StyledCartList >
   );
 };
 

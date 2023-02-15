@@ -23,7 +23,7 @@ const changeRating = async (bookId: number, newRating: number, userId: number | 
 
 export default {
   getById,
-  filtered,
   likeBook,
+  filtered,
   changeRating,
 };

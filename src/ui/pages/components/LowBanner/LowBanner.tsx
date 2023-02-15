@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 import Button from '../../../components/Button';
 
-import castle from './images/castleTable.png';
-import fairyDesktop from './images/fairyDesktop.png';
-import fairyTablet from './images/fairyTablet.png';
-import fairyMobile from './images/fairyMobile.png';
+import castle from './images/castle_table.png';
+import fairyTablet from './images/fairy_tablet.png';
+import fairyMobile from './images/fairy_mobile.png';
+import fairyDesktop from './images/fairy_desktop.png';
 
 import StyledLowBanner from './LowBanner.style';
 
