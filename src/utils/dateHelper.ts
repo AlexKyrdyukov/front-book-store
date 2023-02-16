@@ -1,4 +1,4 @@
-import DAYjs from 'dayjs';
+import dayjs from 'dayjs';
 
 const SEC = 1000;
 const MIN = SEC * 60;
@@ -8,7 +8,7 @@ const MONTH = DAY * 30;
 const YEAR = MONTH * 12;
 
 const getCreatedCommentDate = (createdDate: string) => {
-  const diffTime = DAYjs().diff(DAYjs(createdDate));
+  const diffTime = dayjs().diff(dayjs(createdDate));
 
   if (diffTime < SEC) {
     return '1s';
