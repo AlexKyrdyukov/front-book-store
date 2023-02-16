@@ -10,7 +10,7 @@ import CircleButton from '../../../components/CircleButton';
 
 import { userSliceActions } from '../../../../store/slices/userSlice';
 import { useAppSelector, useAppDispatch } from '../../../../store';
-import { bookApi } from '../../../../api';
+import { favoritesApi } from '../../../../api';
 
 import heart from './image/heart.svg';
 import emptyHeart from './image/border_heart.svg';
@@ -49,8 +49,8 @@ const BookPage: React.FC<PropsType> = (props) => {
   });
 
   const handleDarling = async () => {
-    const response = await bookApi.likeBook(props.book.bookId, user?.userId);
-    dispatch(userSliceActions.setUser(response.user));
+    // const response = await favoritesApi(props.book.bookId, user?.userId);// develop
+    // dispatch(userSliceActions.setUser(response.user));
   };
 
   return (

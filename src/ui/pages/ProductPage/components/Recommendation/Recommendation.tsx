@@ -20,8 +20,8 @@ const Recommendation: React.FC = () => {
   const addToCart = async (bookId: number) => {
     try {
       if (userId) {
-        const response = await cartApi.addToCart(bookId, userId);
-        dispatch(userSliceActions.setBooks(response.cartBooks));
+        // const response = await cartApi.addingProductQuantity(bookId, userId, 15); // develop
+        // dispatch(userSliceActions.setBooks(response.cartBooks));
       }
     } catch (error) {
       if (error instanceof AxiosError) {

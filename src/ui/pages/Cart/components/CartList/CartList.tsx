@@ -29,7 +29,7 @@ const CartList: React.FC<PropsType> = (props) => {
       return accum;
     }, 0);
   }, [props.cartBooks.selectedProducts]);
-  type ApiType = 'minus' | 'plus' | 'delete';
+  type ApiType = 'minus' | 'plus';
 
   const changeCountBook = async (
     bookId: number,
@@ -37,18 +37,15 @@ const CartList: React.FC<PropsType> = (props) => {
   ) => {
     if (userId) {
       const cartResponse = {
-        plus: cartApi.addingProductQuantity,
-        minus: cartApi.deletingQuantity,
-        delete: cartApi.deleteFromCart,
+        plus: cartApi.changeQuantity,
+        minus: cartApi.changeQuantity,
+        // delete: cartApi.deleteFromCart, // develop
       };
 
       try {
-        const response = await cartResponse[flag](bookId, userId, cartId);
-        if (flag !== 'delete') {
-          dispatch(userSliceActions.changeCount(response));
-          return;
-        }
-        dispatch(userSliceActions.deleteById(response));
+        // const response = await cartResponse[flag](bookId, userId, cartId);
+        // dispatch(userSliceActions.changeCount(response));
+        // dispatch(userSliceActions.deleteById(response));
       } catch (error) {
         if (error instanceof AxiosError) {
           errorHandler(error);

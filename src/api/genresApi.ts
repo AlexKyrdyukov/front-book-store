@@ -6,7 +6,7 @@ type GenreType = {
 };
 
 const getAll = async () => {
-  const response = await axiosInstance.get<{ genres: GenreType[] }>('/genres/get-all-genres');
+  const response = await axiosInstance.get<{ genres: GenreType[] }>('/genres');
   return response.data;
 };
 

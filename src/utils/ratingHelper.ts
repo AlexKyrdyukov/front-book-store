@@ -1,9 +1,9 @@
-import { bookApi } from '../api';
+import { ratingApi } from '../api';
 
 const changeRating =
   async (bookId: number, newRating: number, userId: number) => {
     try {
-      const response = await bookApi.changeRating(bookId, newRating, userId);
+      const response = await ratingApi.changeRating(bookId, newRating, userId);
       return response;
     } catch (error) {
       console.error(error);

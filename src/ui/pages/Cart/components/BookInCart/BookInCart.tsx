@@ -8,8 +8,7 @@ type PropsType = {
   cartHandler: (
     bookId: number,
     flag: 'minus' |
-      'plus' |
-      'delete'
+      'plus'
   ) => Promise<void>;
 };
 
@@ -46,7 +45,7 @@ const BookInCart: React.FC<PropsType> = (props) => {
           >+
           </button>
           <button
-            onClick={() => props.cartHandler(props.book.bookId, 'delete')}
+            // onClick={() => props.cartHandler(props.book.bookId, 'delete')}
             className="cart-book__button-delete"
           >del
           </button>

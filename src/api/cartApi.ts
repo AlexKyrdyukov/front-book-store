@@ -13,35 +13,29 @@ export type ProductType = {
   countBook: number;
 };
 
-const getAllFromCart = async (userId: number) => {
-  const response = await axiosInstance.get<{ cartBooks: CartType }>('cart/get-all', { params: { userId } });
+const getAll = async (userId: number) => {
+  const response = await axiosInstance.get<{ cartBooks: CartType }>('/cart', { params: { userId } });
   return response.data;
 };
 
-const addingProductQuantity = async (bookId: number, userId: number, cartId: number) => {
-  const response = await axiosInstance.post<{ updatedData: ProductType }>(`cart/${userId}/adding-quantity`, { params: { bookId, cartId } });
+const addById = async (bookId: number, userId: number, cartId: number) => {
+  const response = await axiosInstance.post<{ updatedData: ProductType }>('/cart/add', { params: { bookId, cartId } });
   return response.data;
 };
 
-const deletingQuantity = async (bookId: number, userId: number, cartId: number) => {
-  const response = await axiosInstance.delete<{ updatedData: ProductType }>(`cart/${userId}/delete-quantity`, { params: { bookId, cartId } });
+const delById = async (bookId: number, userId: number, cartId: number) => {
+  const response = await axiosInstance.delete<{ updatedData: ProductType }>('/cart/delete', { data: { bookId, cartId } });
   return response.data;
 };
 
-const addToCart = async (bookId: number, userId: number) => {
-  const response = await axiosInstance.post<{ cartBooks: ProductType[] }>(`cart/${userId}/add-book-to-cart`, { bookId });
-  return response.data;
-};
-
-const deleteFromCart = async (bookId: number, userId: number, cartId: number) => {
-  const response = await axiosInstance.delete<{ updatedData: ProductType }>(`cart/${userId}/delete-from-cart`, { data: { bookId, cartId } });
+const changeQuantity = async (bookId: number, quantity: number) => {
+  const response = await axiosInstance.patch('/cart/update', { bookId, quantity });
   return response.data;
 };
 
 export default {
-  addToCart,
-  deleteFromCart,
-  getAllFromCart,
-  deletingQuantity,
-  addingProductQuantity,
+  getAll,
+  delById,
+  addById,
+  changeQuantity,
 };

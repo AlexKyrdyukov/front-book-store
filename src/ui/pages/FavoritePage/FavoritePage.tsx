@@ -15,7 +15,7 @@ const Favorites: React.FC = () => {
   const addToCart = async (bookId: number) => {
     try {
       if (user?.userId) {
-        await cartApi.addToCart(bookId, user.userId);
+        // await cartApi.addingProductQuantity(bookId, user.userId, 22);
       }
     } catch (error) {
       if (error instanceof AxiosError) {

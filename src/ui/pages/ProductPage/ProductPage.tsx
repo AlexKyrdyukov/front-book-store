@@ -43,8 +43,8 @@ const ProductCard: React.FC = () => {
   const addToCartHandler = async (bookId: number) => {
     try {
       if (user?.userId) {
-        const response = await cartApi.addToCart(bookId, user.userId);
-        dispatch(userSliceActions.setBooks(response.cartBooks));
+        // const response = await cartApi.addingProductQuantity(bookId, user.userId, 13); // develop
+        // dispatch(userSliceActions.setBooks(response.cartBooks));
       }
     } catch (error) {
       if (error instanceof AxiosError) {
