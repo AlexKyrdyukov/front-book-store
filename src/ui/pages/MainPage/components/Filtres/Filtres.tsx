@@ -17,7 +17,7 @@ type GenreType = {
   name: string;
 };
 
-const Filters: React.FC = () => {
+const Filters: React.FC = React.memo(() => {
   const [genres, setGenres] = React.useState<GenreType[]>([]);
   const [searchParams] = useSearchParams();
 
@@ -63,6 +63,6 @@ const Filters: React.FC = () => {
       />
     </StyledFiltres>
   );
-};
+});
 
 export default Filters;

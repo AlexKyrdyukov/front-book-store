@@ -24,7 +24,7 @@ const UserAvatar: React.FC<PropsType> = (props) => {
 
   const userAvatar = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.avatar);
 
-  const avatar = userAvatar?.slice(-4) === 'null' ? pseudoPhoto : userAvatar as string;
+  const avatar = userAvatar ? userAvatar as string : pseudoPhoto;
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files;

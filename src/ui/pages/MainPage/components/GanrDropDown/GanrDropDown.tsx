@@ -21,25 +21,31 @@ const DropDown: React.FC<PropsType> = (props) => {
     setSelectedGenresId,
   ] = React.useState<string[]>(searchParams.get('genres')?.split(',') || []);
 
-  React.useEffect(() => {
-    searchParams.set('genres', selectedGenresId.join(','));
-    if (!selectedGenresId.length) {
-      searchParams.delete('genres');
-    }
-    setSearchParams(searchParams);
-  }, [selectedGenresId, searchParams, setSearchParams]);
-
   const changeFilters = (genreId: string) => {
+    // eslint-disable-next-line no-console
+    console.log('event');
     setSelectedGenresId((prevState) => {
       const index = prevState?.findIndex((item) => item === genreId);
-      // eslint-disable-next-line no-bitwise
-      if (~index) {
+      if (index !== -1) {
         prevState.splice(index, 1);
         return [...prevState];
       }
       return [...prevState, genreId];
     });
+    // eslint-disable-next-line no-console
+    console.log(selectedGenresId.join(','));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   };
+
+  React.useEffect(() => {
+    if (selectedGenresId.length) {
+      // eslint-disable-next-line no-console
+      console.log(selectedGenresId.join(','));
+      searchParams.set('genres', selectedGenresId.join(','));
+      setSearchParams(searchParams);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedGenresId]);
 
   return (
     <StyledGanrDropDown>

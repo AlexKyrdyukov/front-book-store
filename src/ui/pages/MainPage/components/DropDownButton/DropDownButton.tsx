@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import type { JSXElementConstructor } from 'react';
 
 import close from './image/close.svg';
@@ -22,7 +22,7 @@ const DropDownButton: React.FC<PropsType> = (props) => {
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     document.addEventListener('click', handleClickOutside, true);
     return () => {
       document.removeEventListener('click', handleClickOutside, true);

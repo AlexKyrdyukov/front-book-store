@@ -11,6 +11,8 @@ import errorHandler from '../../../../../utils/errorHandler';
 import bookThunks from '../../../../../store/thunks/bookThunks';
 
 import StyledCatalog from './Catalog.style';
+import { bookApi } from '../../../../../api';
+import { bookSliceActions } from '../../../../../store/slices/bookSlice';
 
 type PayloadType = {
   totalBooks: number;
@@ -23,30 +25,24 @@ const Catalog: React.FC = () => {
   const params: Record<string, string> = {};
 
   const dispatch = useAppDispatch();
-
-  React.useEffect(() => {
-    if (!searchParams.get('sortDirection')) {
-      searchParams.set('sortDirection', 'ASC');
+  React.useLayoutEffect(() => {
+    try {
+      (async () => {
+        const response = await bookApi.filtered(params);
+        dispatch(bookSliceActions.setBooksState(response.books));
+        setCountState(response.totalBooks);
+        // eslint-disable-next-line no-console
+        console.log(response);
+      })();
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        errorHandler(error);
+        return;
+      }
+      console.error(error);
     }
-    setSearchParams(searchParams);
-    searchParams.forEach((value, key) => {
-      params[key] = value;
-    });
-    const getBooks = async () => {
-      const response = await dispatch(bookThunks.getBooks(params));
-      const { totalBooks, numberOfPage } = response.payload as PayloadType;
-      searchParams.set('page', String(numberOfPage));
-      setSearchParams(searchParams);
-      if (totalBooks && (totalBooks !== 0)) {
-        setCountState(totalBooks);
-      }
-      if (response.payload instanceof AxiosError) {
-        errorHandler(response.payload);
-      }
-    };
-    getBooks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams]);
+  });
+
   return (
     <StyledCatalog>
       <div className="title-filters__block">

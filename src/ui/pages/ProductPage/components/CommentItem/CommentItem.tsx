@@ -14,7 +14,7 @@ type PropsType = {
 const CommentItem: React.FC<PropsType> = (props) => {
   const { comment } = props;
 
-  const avatar = comment.user.avatar?.slice(-4) === 'null' ? userAvatar : comment.user.avatar as string;
+  const avatar = comment.user.avatar ? comment.user.avatar as string : userAvatar;
   if (!comment) {
     return null;
   }

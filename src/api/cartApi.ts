@@ -24,12 +24,12 @@ const addById = async (bookId: number) => {
 };
 
 const delById = async (bookId: number) => {
-  const response = await axiosInstance.delete<{ updatedData: ProductType }>('/cart/delete', { data: { bookId } });
+  const response = await axiosInstance.delete<{ updatedData: ProductType }>(`/cart/${bookId}`);
   return response.data;
 };
 
 const changeQuantity = async (bookId: number, quantity: number) => {
-  const response = await axiosInstance.patch('/cart/update', { bookId, quantity });
+  const response = await axiosInstance.patch(`/cart/${bookId}`, { quantity });
   return response.data;
 };
 

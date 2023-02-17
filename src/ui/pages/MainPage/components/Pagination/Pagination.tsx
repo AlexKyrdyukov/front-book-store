@@ -15,7 +15,7 @@ type PropsType = {
 const Pagination: React.FC<PropsType> = (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const numberPage = props.countBooks / (+(searchParams.get('perPage') as string) || 12);
+  const numberPage = props.countBooks / (+(searchParams.get('perPage') as string) || 10);
   const arr = [...new Array(Math.ceil(numberPage))].map((item, index) => index + 1);
 
   const handleSpecificPage = (page?: number) => {
