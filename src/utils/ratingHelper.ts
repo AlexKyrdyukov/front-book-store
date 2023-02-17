@@ -3,7 +3,7 @@ import { ratingApi } from '../api';
 const changeRating =
   async (bookId: number, newRating: number, userId: number) => {
     try {
-      const response = await ratingApi.changeRating(bookId, newRating, userId);
+      const response = await ratingApi.changeRating(bookId, newRating);
       return response;
     } catch (error) {
       console.error(error);
