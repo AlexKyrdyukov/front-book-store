@@ -1,22 +1,22 @@
 import { axiosInstance } from '../api';
 
-const getFavorites = async (bookId: number) => {
-  const response = await axiosInstance.get('/favorites', { params: { bookId } });
+const getAll = async () => {
+  const response = await axiosInstance.get('/favorites');
   return response.data;
 };
 
-const addFavorite = async (bookId: number) => {
+const addById = async (bookId: number) => {
   const response = await axiosInstance.post('/favorites/add', { bookId });
   return response.data;
 };
 
-const removeFavorite = async (bookId: number) => {
-  const response = await axiosInstance.delete('/favorites/remove', { data: { bookId } });
+const deleteById = async (bookId: number) => {
+  const response = await axiosInstance.delete('/favorites/delete', { data: { bookId } });
   return response.data;
 };
 
 export default {
-  addFavorite,
-  getFavorites,
-  removeFavorite,
+  getAll,
+  addById,
+  deleteById,
 };

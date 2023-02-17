@@ -57,7 +57,7 @@ const ProductCard: React.FC = () => {
   const onCommentHandler = async (commentText: string) => {
     if (bookId && user) {
       try {
-        const response = await commentApi.create(user?.userId, bookId, commentText);
+        const response = await commentApi.create(bookId, commentText);
         const { comments } = response;
         setBookState({
           ...bookState as BookType,
