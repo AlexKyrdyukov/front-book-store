@@ -13,18 +13,18 @@ export type ProductType = {
   countBook: number;
 };
 
-const getAll = async (userId: number) => {
-  const response = await axiosInstance.get<{ cartBooks: CartType }>('/cart', { params: { userId } });
+const getAll = async () => {
+  const response = await axiosInstance.get<{ cartBooks: CartType }>('/cart');
   return response.data;
 };
 
-const addById = async (bookId: number, userId: number, cartId: number) => {
-  const response = await axiosInstance.post<{ updatedData: ProductType }>('/cart/add', { params: { bookId, cartId } });
+const addById = async (bookId: number) => {
+  const response = await axiosInstance.post<{ updatedData: ProductType }>('/cart/add', { params: { bookId } });
   return response.data;
 };
 
-const delById = async (bookId: number, userId: number, cartId: number) => {
-  const response = await axiosInstance.delete<{ updatedData: ProductType }>('/cart/delete', { data: { bookId, cartId } });
+const delById = async (bookId: number) => {
+  const response = await axiosInstance.delete<{ updatedData: ProductType }>('/cart/delete', { data: { bookId } });
   return response.data;
 };
 
