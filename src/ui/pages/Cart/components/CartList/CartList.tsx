@@ -20,7 +20,6 @@ type PropsType = {
 const CartList: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
   const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.userId);
-  const cartId = props.cartBooks.cartId;
 
   const totalPrice = React.useMemo(() => {
     return props.cartBooks.selectedProducts.reduce((accum, item) => {

@@ -14,12 +14,12 @@ type PropsType = {
   handleRating: (
     bookId: number,
     newRating: number,
-    userId: number) => Promise<ResponseType>;
+  ) => Promise<ResponseType>;
   handleAddBookInCart: (bookId: number) => Promise<void>; //
 };
 
 type ResponseType = {
-  rating: number;
+  newRating: number;
   bookId: number;
 };
 

@@ -22,12 +22,12 @@ type PropsType = {
   handleRating: (
     bookId: number,
     newRating: number,
-    userId: number) => Promise<ResponseType>;
+  ) => Promise<ResponseType>;
   handleAddBookInCart: (bookId: number) => Promise<void>;
 };
 
 type ResponseType = {
-  rating: number;
+  newRating: number;
   bookId: number;
 };
 
@@ -48,10 +48,26 @@ const BookPage: React.FC<PropsType> = (props) => {
     disabled: !props.book.isInStock,
   });
 
-  const handleDarling = async () => {
-    // const response = await favoritesApi(props.book.bookId, user?.userId);// develop
-    // dispatch(userSliceActions.setUser(response.user));
-  };
+  const handleDarling = React.useCallback(async (isFavorite: boolean) => {
+    // eslint-disable-next-line no-console
+    console.log(isFavorite);
+    if (!isFavorite) {
+      const response = await favoritesApi.addById(props.book.bookId);
+      dispatch(userSliceActions.setFavoriteBooks(response.favoriteBook));
+      return;
+    }
+    const response = await favoritesApi.deleteById(props.book.bookId);
+    dispatch(userSliceActions.setFavoriteBooks(response.favoriteBook));
+  }, [dispatch, props.book.bookId]);
+
+  const favoriteBook = React.useMemo(() => {
+    const flag = user?.favoriteBooks?.findIndex((item) => {
+      return item.bookId === props.book.bookId;
+    });
+    // eslint-disable-next-line no-console
+    console.log(flag);
+    return flag !== -1;
+  }, [props.book.bookId, user?.favoriteBooks]);
 
   return (
     <StyledBookPage>
@@ -62,15 +78,9 @@ const BookPage: React.FC<PropsType> = (props) => {
           <CircleButton
             disabled={Boolean(!user)}
             type="button"
-            onClick={handleDarling}
+            onClick={() => handleDarling(favoriteBook)}
             className="darling__button"
-            src={
-              (user &&
-                (user?.likeBooks?.findIndex((
-                  item,
-                ) => item.bookId === props.book.bookId) !== -1))
-                ? heart
-                : emptyHeart}
+            src={favoriteBook ? heart : emptyHeart}
             alt="heart"
           />
         </span>

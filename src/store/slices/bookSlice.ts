@@ -1,3 +1,4 @@
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import type { UserType } from '../../types/userType';
 
@@ -38,6 +39,11 @@ export const bookSlice = createSlice({
   reducers: {
     setBooksState(state, action) {
       state.books = action.payload;
+    },
+    setNewRating(state, action: PayloadAction<{ newRating: number; bookId: number }>) {
+      const index = action.payload.bookId;
+      const book = state.books[index];
+      book.averageRating = action.payload.newRating;
     },
     changeBookDarling(state, action) {
       const book = state!.books!.findIndex(

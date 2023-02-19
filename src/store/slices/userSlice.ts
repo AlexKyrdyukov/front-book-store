@@ -21,11 +21,20 @@ export const userSlice = createSlice({
       state.user = null;
     },
     setAvatar(state, action) {
-      state.user!.avatar = action.payload;
+      if (state.user) {
+        state.user.avatar = action.payload;
+      }
     },
-    setBooks(state, action: PayloadAction<ProductType[]>) {
+    setCartBooks(state, action: PayloadAction<ProductType[]>) {
       if (state.user) {
         state.user.cart.selectedProducts = action.payload;
+      }
+    },
+    setFavoriteBooks(state, action) {
+      // eslint-disable-next-line no-console
+      console.log(action.payload);
+      if (state.user) {
+        state.user.favoriteBooks = action.payload;
       }
     },
     changeCount(state, action: PayloadAction<{ updatedData: ProductType }>) {

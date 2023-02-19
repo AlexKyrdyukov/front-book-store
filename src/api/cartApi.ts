@@ -2,7 +2,6 @@ import type { BookType } from '../store/slices/bookSlice';
 import { axiosInstance } from '../api';
 
 export type CartType = {
-  cartId: number;
   selectedProducts: ProductType[];
 };
 

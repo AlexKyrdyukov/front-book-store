@@ -6,6 +6,6 @@ export type UserType = {
   userId: number;
   fullName?: string | null;
   avatar?: string | null;
-  likeBooks: BookType[];
+  favoriteBooks: BookType[];
   cart: CartType;
 };

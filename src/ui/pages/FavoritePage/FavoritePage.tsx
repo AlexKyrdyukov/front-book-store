@@ -27,7 +27,7 @@ const Favorites: React.FC = () => {
 
   return (
     <StyledFavoritPage>
-      {user?.likeBooks.map((item) => (
+      {user?.favoriteBooks?.map((item) => (
         <BookPage
           handleAddBookInCart={addToCart}
           key={item.bookId}
