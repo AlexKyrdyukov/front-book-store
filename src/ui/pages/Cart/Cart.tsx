@@ -1,19 +1,19 @@
 import React from 'react';
 
 import EmptyCart from './components/EmptyCart';
-import BookInCart from './components/CartList/CartList';
+import BookInCart from './components/CartList';
 
 import { useAppSelector } from '../../../store';
 
 import StyledCartPage from './Cart.style';
 
 const Cart: React.FC = () => {
-  const cartBooks = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.cart);
+  const cartProducts = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.cartProducts);
   return (
     <StyledCartPage>
 
-      {cartBooks?.selectedProducts.length
-        ? <BookInCart cartBooks={cartBooks} />
+      {cartProducts?.length
+        ? <BookInCart cartProducts={cartProducts} />
         : <EmptyCart />}
 
     </StyledCartPage>

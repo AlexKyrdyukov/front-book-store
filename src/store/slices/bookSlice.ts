@@ -40,10 +40,11 @@ export const bookSlice = createSlice({
     setBooksState(state, action) {
       state.books = action.payload;
     },
-    setNewRating(state, action: PayloadAction<{ newRating: number; bookId: number }>) {
-      const index = action.payload.bookId;
+    setNewRating(state, action: PayloadAction<{ newRating: string; bookId: number }>) {
+      const index = state.books.findIndex((item) => item.bookId === action.payload.bookId);
       const book = state.books[index];
-      book.averageRating = action.payload.newRating;
+      const averageRating = Number(action.payload.newRating) * 10;
+      book.averageRating = averageRating;
     },
     changeBookDarling(state, action) {
       const book = state!.books!.findIndex(

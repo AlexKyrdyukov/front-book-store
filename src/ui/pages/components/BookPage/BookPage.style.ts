@@ -76,6 +76,12 @@ const StyledBookPage = styled.div`
   .disabled {
     background: #B9BAC4;
   }
+
+  .added {
+    background: #FFFFFF;
+    color: #0D1821;
+    border: 1px solid black;
+  }
 `;
 
 export default StyledBookPage;

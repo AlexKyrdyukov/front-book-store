@@ -5,6 +5,7 @@ import type { ProductType } from '../../api/cartApi';
 import type { UserType } from '../../types/userType';
 
 import userThunks from '../thunks/userThunks';
+import type { BookType } from './bookSlice';
 
 const getInitialState = () => ({
   user: null as UserType | null,
@@ -25,45 +26,53 @@ export const userSlice = createSlice({
         state.user.avatar = action.payload;
       }
     },
-    setCartBooks(state, action: PayloadAction<ProductType[]>) {
+    setCartBooks(state, action: PayloadAction<ProductType>) {
       if (state.user) {
-        state.user.cart.selectedProducts = action.payload;
+        state.user.cartProducts = [...state.user.cartProducts, action.payload];
       }
     },
-    setFavoriteBooks(state, action) {
+    setFavoriteBook(state, action: PayloadAction<{ favoriteBook: BookType}>) {
+      if (state.user) {
+        state.user.favoriteBooks = [...state.user.favoriteBooks, action.payload.favoriteBook];
+      }
+    },
+    deleteFavoriteBook(state, action: PayloadAction<{ bookId: number}>) {
+      if (state.user) {
+        const bookId = action.payload.bookId;
+        const index = state.user.favoriteBooks.findIndex((item) => item.bookId === bookId);
+        state.user.favoriteBooks.splice(index, 1);
+        state.user.favoriteBooks = [...state.user.favoriteBooks];
+      }
+    },
+    changeCountBookInCart(state, action: PayloadAction<{ bookId: number; total: number }>) {
       // eslint-disable-next-line no-console
       console.log(action.payload);
       if (state.user) {
-        state.user.favoriteBooks = action.payload;
-      }
-    },
-    changeCount(state, action: PayloadAction<{ updatedData: ProductType }>) {
-      if (state.user?.cart.selectedProducts) {
-        const index = state.user?.cart.selectedProducts.findIndex(
-          (item) => +item.bookId === +action.payload.updatedData.bookId,
+        const index = state.user?.cartProducts?.findIndex(
+          (item) => +item.bookId === +action.payload.bookId,
         );
         if (index === -1) {
           return;
         }
-        if (+action.payload.updatedData.countBook <= 0) {
-          state.user?.cart.selectedProducts.splice(index, 1);
-          state.user.cart.selectedProducts = [...state.user.cart.selectedProducts];
+        if (+action.payload.total <= 0) {
+          state.user.cartProducts.splice(index, 1);
+          state.user.cartProducts = [...state.user.cartProducts];
           return;
         }
-        const book = state.user.cart.selectedProducts[index];
-        book.countBook = action.payload.updatedData.countBook;
+        const book = state.user.cartProducts[index];
+        book.countBook = action.payload.total;
       }
     },
-    deleteById(state, action: PayloadAction<{ updatedData: ProductType }>) {
+    deleteCartBooks(state, action: PayloadAction<{ bookId: number }>) {
       if (state.user) {
-        const index = state.user.cart.selectedProducts.findIndex(
-          (item) => +item.bookId === +action.payload.updatedData.bookId,
+        const index = state.user.cartProducts.findIndex(
+          (item) => +item.bookId === +action.payload.bookId,
         );
         if (index === -1) {
           return;
         }
-        state.user.cart.selectedProducts.splice(index, 1);
-        state.user.cart.selectedProducts = [...state.user.cart.selectedProducts];
+        state.user.cartProducts.splice(index, 1);
+        state.user.cartProducts = [...state.user.cartProducts];
       }
     },
   },

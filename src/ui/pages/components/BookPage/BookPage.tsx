@@ -7,34 +7,22 @@ import type { BookType } from '../../../../store/slices/bookSlice';
 import Rating from '../Rating';
 import BookButton from '../BookButton';
 import CircleButton from '../../../components/CircleButton';
-
-import { userSliceActions } from '../../../../store/slices/userSlice';
-import { useAppSelector, useAppDispatch } from '../../../../store';
-import { favoritesApi } from '../../../../api';
+import changeRating from '../../../../utils/ratingHelper';
 
 import heart from './image/heart.svg';
 import emptyHeart from './image/border_heart.svg';
-
+import { favoriteHelper, cartHelper } from '../../../../utils';
 import StyledBookPage from './BookPage.style';
 
 type PropsType = {
   book: BookType;
-  handleRating: (
-    bookId: number,
-    newRating: number,
-  ) => Promise<ResponseType>;
-  handleAddBookInCart: (bookId: number) => Promise<void>;
-};
-
-type ResponseType = {
-  newRating: number;
-  bookId: number;
+  isFavorite: boolean;
+  isInCart: boolean;
+  isUser: boolean;
 };
 
 const BookPage: React.FC<PropsType> = (props) => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
 
   const handleClick = () => {
     navigate(`/productCard/${props.book.bookId}`);
@@ -46,28 +34,14 @@ const BookPage: React.FC<PropsType> = (props) => {
 
   const buyButtonStyle = classNames('buy__button', {
     disabled: !props.book.isInStock,
+    added: props.isInCart,
   });
 
-  const handleDarling = React.useCallback(async (isFavorite: boolean) => {
-    // eslint-disable-next-line no-console
-    console.log(isFavorite);
-    if (!isFavorite) {
-      const response = await favoritesApi.addById(props.book.bookId);
-      dispatch(userSliceActions.setFavoriteBooks(response.favoriteBook));
-      return;
-    }
-    const response = await favoritesApi.deleteById(props.book.bookId);
-    dispatch(userSliceActions.setFavoriteBooks(response.favoriteBook));
-  }, [dispatch, props.book.bookId]);
-
-  const favoriteBook = React.useMemo(() => {
-    const flag = user?.favoriteBooks?.findIndex((item) => {
-      return item.bookId === props.book.bookId;
-    });
-    // eslint-disable-next-line no-console
-    console.log(flag);
-    return flag !== -1;
-  }, [props.book.bookId, user?.favoriteBooks]);
+  const checkIsInStock = () => {
+    return (!props.isInCart
+      ? `$ ${props.book.priceInDollar} USD`
+      : 'Added to cart');
+  };
 
   return (
     <StyledBookPage>
@@ -76,11 +50,14 @@ const BookPage: React.FC<PropsType> = (props) => {
           className="block__circle-button"
         >
           <CircleButton
-            disabled={Boolean(!user)}
+            disabled={Boolean(!props.isUser)}
             type="button"
-            onClick={() => handleDarling(favoriteBook)}
+            onClick={() => favoriteHelper.changeFavorites({
+              isFavorite: props.isFavorite,
+              bookId: props.book.bookId,
+            })}
             className="darling__button"
-            src={favoriteBook ? heart : emptyHeart}
+            src={props.isFavorite ? heart : emptyHeart}
             alt="heart"
           />
         </span>
@@ -104,19 +81,20 @@ const BookPage: React.FC<PropsType> = (props) => {
       >{props.book.author}
       </h5>
       <Rating
-        handleRatingBook={props.handleRating}
+        handleRatingBook={changeRating}
         rating={props.book.averageRating}
         bookId={props.book.bookId}
       />
       <BookButton
         className={buyButtonStyle}
         type="button"
-        onClick={() => props.handleAddBookInCart(props.book.bookId)}
-        disabled={!user}
+        onClick={() => cartHelper.addById(props.book.bookId)}
+        disabled={!props.isUser || props.isInCart || !props.book.isInStock}
       >
         {props.book.isInStock
-          ? `$ ${props.book.priceInDollar} USD`
-          : 'Not available'}
+          ? checkIsInStock()
+          : 'Not Availabble'
+        }
       </BookButton>
     </StyledBookPage>
   );

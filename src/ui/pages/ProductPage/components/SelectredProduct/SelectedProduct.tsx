@@ -19,7 +19,7 @@ type PropsType = {
 };
 
 type ResponseType = {
-  newRating: number;
+  newRating: string;
   bookId: number;
 };
 

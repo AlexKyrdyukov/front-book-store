@@ -1,10 +1,6 @@
 import type { BookType } from '../store/slices/bookSlice';
 import { axiosInstance } from '../api';
 
-export type CartType = {
-  selectedProducts: ProductType[];
-};
-
 export type ProductType = {
   book: BookType;
   bookId: number;
@@ -13,17 +9,17 @@ export type ProductType = {
 };
 
 const getAll = async () => {
-  const response = await axiosInstance.get<{ cartBooks: CartType }>('/cart');
+  const response = await axiosInstance.get<{ cartBooks: ProductType[] }>('/cart');
   return response.data;
 };
 
 const addById = async (bookId: number) => {
-  const response = await axiosInstance.post<{ updatedData: ProductType }>('/cart/add', { params: { bookId } });
+  const response = await axiosInstance.post<{ cartProduct: ProductType }>('/cart/add', { bookId });
   return response.data;
 };
 
-const delById = async (bookId: number) => {
-  const response = await axiosInstance.delete<{ updatedData: ProductType }>(`/cart/${bookId}`);
+const deleteById = async (bookId: number) => {
+  const response = await axiosInstance.delete(`/cart/${bookId}`);
   return response.data;
 };
 
@@ -34,7 +30,7 @@ const changeQuantity = async (bookId: number, quantity: number) => {
 
 export default {
   getAll,
-  delById,
+  deleteById,
   addById,
   changeQuantity,
 };

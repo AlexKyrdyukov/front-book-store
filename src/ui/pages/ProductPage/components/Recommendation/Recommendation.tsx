@@ -1,43 +1,25 @@
 import React from 'react';
-import { AxiosError } from 'axios';
-
 import BookPage from '../../../components/BookPage/BookPage';
-
-import { cartApi } from '../../../../../api';
-import changeRating from '../../../../../utils/ratingHelper';
-import errorHandler from '../../../../../utils/errorHandler';
-import { useAppSelector, useAppDispatch } from '../../../../../store';
-import { userSliceActions } from '../../../../../store/slices/userSlice';
+import { useAppSelector } from '../../../../../store';
 
 import StyledRecommendation from './Recommendation.style';
+import { cartHelper, favoriteHelper } from '../../../../../utils';
 
 const Recommendation: React.FC = () => {
-  const dispatch = useAppDispatch();
   const books = useAppSelector(({ rootSlice }) => rootSlice.bookSlice.books);
-  const userId = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.userId);
+  const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
 
   const recommendationBooks = books.slice(-4);
-  const addToCart = async (bookId: number) => {
-    try {
-      if (userId) {
-        // const response = await cartApi.addingProductQuantity(bookId, userId, 15); // develop
-        // dispatch(userSliceActions.setBooks(response.cartBooks));
-      }
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        errorHandler(error);
-      }
-      console.error(error);
-    }
-  };
+
   return (
     <StyledRecommendation>
       {recommendationBooks.map((item) => (
         <BookPage
           key={item.bookId}
           book={item}
-          handleAddBookInCart={addToCart}
-          handleRating={changeRating}
+          isUser={!!user}
+          isFavorite={favoriteHelper.handleIsFavorite(item.bookId, user?.favoriteBooks) as boolean}
+          isInCart={cartHelper.checkIsInCart(item.bookId, user?.cartProducts) as boolean}
         />))}
     </StyledRecommendation>
   );

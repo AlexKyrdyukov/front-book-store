@@ -12,7 +12,7 @@ const addById = async (bookId: number) => {
 };
 
 const deleteById = async (bookId: number) => {
-  const response = await axiosInstance.delete<{ favoriteBook: BookType }>(`/favorites/${bookId}`);
+  const response = await axiosInstance.delete(`/favorites/${bookId}`);
   return response.data;
 };
 

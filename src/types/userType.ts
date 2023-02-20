@@ -1,4 +1,4 @@
-import type { CartType } from '../api/cartApi';
+import type { ProductType } from '../api/cartApi';
 import type { BookType } from '../store/slices/bookSlice';
 
 export type UserType = {
@@ -7,5 +7,5 @@ export type UserType = {
   fullName?: string | null;
   avatar?: string | null;
   favoriteBooks: BookType[];
-  cart: CartType;
+  cartProducts: ProductType[];
 };

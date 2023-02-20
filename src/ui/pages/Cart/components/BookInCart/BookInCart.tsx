@@ -1,15 +1,10 @@
 import React from 'react';
 import type { ProductType } from '../../../../../api/cartApi';
-
+import { cartHelper } from '../../../../../utils';
 import StyledBookInCart from './BookInCart.style';
 
 type PropsType = {
   book: ProductType;
-  cartHandler: (
-    bookId: number,
-    flag: 'minus' |
-      'plus'
-  ) => Promise<void>;
 };
 
 const BookInCart: React.FC<PropsType> = (props) => {
@@ -31,7 +26,7 @@ const BookInCart: React.FC<PropsType> = (props) => {
           className="cart-book__button-block"
         >
           <button
-            onClick={() => props.cartHandler(props.book.bookId, 'minus')}
+            onClick={() => cartHelper.changeTotalCount(props.book.bookId, props.book.countBook - 1)}
             className="cart-book__button-minus"
           >-
           </button>
@@ -40,12 +35,12 @@ const BookInCart: React.FC<PropsType> = (props) => {
           >{props.book.countBook}
           </p>
           <button
-            onClick={() => props.cartHandler(props.book.bookId, 'plus')}
+            onClick={() => cartHelper.changeTotalCount(props.book.bookId, props.book.countBook + 1)}
             className="cart-book__button-plus"
           >+
           </button>
           <button
-            // onClick={() => props.cartHandler(props.book.bookId, 'delete')}
+            onClick={() => cartHelper.deleteById(props.book.bookId)}
             className="cart-book__button-delete"
           >del
           </button>
