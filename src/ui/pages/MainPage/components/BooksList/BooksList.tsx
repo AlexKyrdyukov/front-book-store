@@ -6,8 +6,20 @@ import { favoriteHelper, cartHelper } from '../../../../../utils';
 import { useAppSelector } from '../../../../../store';
 
 import StyledBooksLists from './BooksList.style';
+import { cartApi, favoritesApi } from '../../../../../api';
 
 const BooksList: React.FC = () => {
+  React.useEffect(() => {
+    (async () => {
+      const responseFavorite = await favoritesApi.getAll();
+      const responseCart = await cartApi.getAll();
+      // eslint-disable-next-line no-console
+      console.log(responseFavorite);
+      // eslint-disable-next-line no-console
+      console.log(responseCart);
+    })();
+  }, []);
+
   const books = useAppSelector(({ rootSlice }) => rootSlice.bookSlice.books);
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
 
