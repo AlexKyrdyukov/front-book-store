@@ -22,12 +22,12 @@ type PayloadType = {
 const Catalog: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [countState, setCountState] = React.useState<number>(1);
-  const params: Record<string, string> = {};
 
   const dispatch = useAppDispatch();
   React.useLayoutEffect(() => {
     try {
       (async () => {
+        const params: Record<string, string> = {};
         const response = await bookApi.filtered(params);
         dispatch(bookSliceActions.setBooksState(response.books));
         setCountState(response.totalBooks);
@@ -41,7 +41,7 @@ const Catalog: React.FC = () => {
       }
       console.error(error);
     }
-  });
+  }, [dispatch]);
 
   return (
     <StyledCatalog>

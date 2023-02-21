@@ -45,8 +45,6 @@ export const userSlice = createSlice({
       }
     },
     changeCountBookInCart(state, action: PayloadAction<{ bookId: number; total: number }>) {
-      // eslint-disable-next-line no-console
-      console.log(action.payload);
       if (state.user) {
         const index = state.user?.cartProducts?.findIndex(
           (item) => +item.bookId === +action.payload.bookId,

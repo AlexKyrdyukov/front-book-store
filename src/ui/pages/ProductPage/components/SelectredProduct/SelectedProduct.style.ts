@@ -48,6 +48,20 @@ const StyledSelectedProduct = styled.section`
     color: #344966;
   }
 
+  .buy__button {
+    background: #344966;
+  }
+
+  .disabled {
+    background: #B9BAC4;
+  }
+
+  .added {
+    background: #FFFFFF;
+    color: #0D1821;
+    border: 1px solid black;
+  }
+
 `;
 
 export default StyledSelectedProduct;

@@ -11,17 +11,15 @@ import Recommendation from './components/Recommendation/Recommendation';
 import SelectedProduct from './components/SelectredProduct/SelectedProduct';
 
 import errorHandler from '../../../utils/errorHandler';
-import changeRating from '../../../utils/ratingHelper';
-import { cartApi, bookApi, commentApi } from '../../../api';
-import { useAppSelector, useAppDispatch } from '../../../store';
-import { userSliceActions } from '../../../store/slices/userSlice';
+import { bookApi, commentApi } from '../../../api';
+import { useAppSelector } from '../../../store';
 
 import StyledProductCard from './ProductPage.style';
+import { cartHelper, favoriteHelper } from '../../../utils';
 
 const ProductCard: React.FC = () => {
   const [bookState, setBookState] = React.useState<BookType | null>(null);
 
-  const dispatch = useAppDispatch();
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
 
   const { bookId } = useParams();
@@ -39,20 +37,6 @@ const ProductCard: React.FC = () => {
     })();
     return setBookState(null);
   }, [bookId]);
-
-  const addToCartHandler = async (bookId: number) => {
-    try {
-      if (user?.userId) {
-        // const response = await cartApi.addingProductQuantity(bookId, user.userId, 13); // develop
-        // dispatch(userSliceActions.setBooks(response.cartBooks));
-      }
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        errorHandler(error);
-      }
-      console.error(error);
-    }
-  };
 
   const onCommentHandler = async (commentText: string) => {
     if (bookId && user) {
@@ -78,10 +62,14 @@ const ProductCard: React.FC = () => {
     <StyledProductCard>
       {bookState &&
         (<SelectedProduct
-          user={user}
-          handleAddBookInCart={addToCartHandler}
+          isUser={!!user}
           book={bookState}
-          handleRating={changeRating}
+          isFavorite={favoriteHelper.handleIsFavorite(
+            bookState.bookId, user?.favoriteBooks,
+          ) as boolean}
+          isInCart={cartHelper.checkIsInCart(
+            bookState.bookId, user?.cartProducts,
+          ) as boolean}
         />)}
       <CommentsBook
         bookComments={bookState ? bookState.comments : undefined}

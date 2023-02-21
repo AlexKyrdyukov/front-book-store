@@ -12,6 +12,7 @@ import changeRating from '../../../../utils/ratingHelper';
 import heart from './image/heart.svg';
 import emptyHeart from './image/border_heart.svg';
 import { favoriteHelper, cartHelper } from '../../../../utils';
+
 import StyledBookPage from './BookPage.style';
 
 type PropsType = {

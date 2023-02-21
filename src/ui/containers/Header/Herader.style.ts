@@ -55,14 +55,33 @@ const StyledHeader = styled.header<StyleType>`
 
   .button__cart {
     margin-right: 27px;
+    position: relative;
   }
 
   .button__likes-books {
     margin-right: 27px;
+    position: relative;
   }
 
   .sign-in__button {
     padding: 10px 20px;
+  }
+
+  .header__count-books {
+    width: 20px;
+    height: 20px;
+    border-radius: 30px;
+    background: #BFCC94;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+
+    & span {
+      color: #344966;
+    }
   }
 
   @media (max-width: 1028px)  {

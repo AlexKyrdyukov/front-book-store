@@ -1,29 +1,34 @@
 import React from 'react';
 
-import type { UserType } from '../../../../../types/userType';
+import classNames from 'classnames';
 import type { BookType } from '../../../../../store/slices/bookSlice';
 
 import Rating from '../../../components/Rating';
 import BookButton from '../../../components/BookButton';
+import changeRating from '../../../../../utils/ratingHelper';
 
 import StyledSelectedProduct from './SelectedProduct.style';
+import { cartHelper } from '../../../../../utils';
 
 type PropsType = {
   book: BookType | null | undefined;
-  user: UserType | null;
-  handleRating: (
-    bookId: number,
-    newRating: number,
-  ) => Promise<ResponseType>;
-  handleAddBookInCart: (bookId: number) => Promise<void>; //
-};
-
-type ResponseType = {
-  newRating: string;
-  bookId: number;
+  isUser: boolean;
+  isFavorite: boolean;
+  isInCart: boolean;
 };
 
 const SelectedProduct: React.FC<PropsType> = (props) => {
+  const checkIsInStock = () => {
+    return (!props.isInCart
+      ? `$ ${props?.book?.priceInDollar} USD`
+      : 'Added to cart');
+  };
+
+  const buyButtonStyle = classNames('buy__button', {
+    disabled: !props?.book?.isInStock,
+    added: props.isInCart,
+  });
+
   return (
     <StyledSelectedProduct>
       <div className="product__image-block">
@@ -33,7 +38,7 @@ const SelectedProduct: React.FC<PropsType> = (props) => {
         <h3>{props.book?.name}</h3>
         <h5>{props.book?.author}</h5>
         <Rating
-          handleRatingBook={props.handleRating}
+          handleRatingBook={changeRating}
           rating={props.book!.averageRating}
           bookId={props.book!.bookId}
         />
@@ -44,27 +49,15 @@ const SelectedProduct: React.FC<PropsType> = (props) => {
       </div>
       <div>
         <div>
-          <span>Paperback</span>
-          <BookButton
-            className="product__button"
-            disabled={!props.user}
-            onClick={() => props.handleAddBookInCart(props!.book!.bookId)}
-          >{
-              props.book?.isInStock
-                ? `$ ${props.book.priceInDollar} USD`
-                : 'Not available'}
-          </BookButton>
-        </div>
-        <div>
           <span>HardCover</span>
           <BookButton
-            className="product__button"
-            disabled={!props.user}
-            onClick={() => props.handleAddBookInCart(props!.book!.bookId)}
-          >{
-              props.book?.isInStock
-                ? `$ ${props.book.priceInDollar} USD`
-                : 'Not available'}
+        className={buyButtonStyle}
+        disabled={!props.isUser || props?.isInCart || !props?.book?.isInStock}
+            onClick={() => cartHelper.addById(props.book!.bookId)}
+          >{props?.book?.isInStock
+            ? checkIsInStock()
+            : 'Not Availabble'
+          }
           </BookButton>
         </div>
       </div>
