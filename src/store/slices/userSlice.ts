@@ -1,11 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { PayloadAction } from '@reduxjs/toolkit';
-import type { ProductType } from '../../api/cartApi';
 import type { UserType } from '../../types/userType';
 
 import userThunks from '../thunks/userThunks';
-import type { BookType } from './bookSlice';
 
 const getInitialState = () => ({
   user: null as UserType | null,
@@ -24,53 +21,6 @@ export const userSlice = createSlice({
     setAvatar(state, action) {
       if (state.user) {
         state.user.avatar = action.payload;
-      }
-    },
-    setCartBooks(state, action: PayloadAction<ProductType>) {
-      if (state.user) {
-        state.user.cartProducts = [...state.user.cartProducts, action.payload];
-      }
-    },
-    setFavoriteBook(state, action: PayloadAction<{ favoriteBook: BookType}>) {
-      if (state.user) {
-        state.user.favoriteBooks = [...state.user.favoriteBooks, action.payload.favoriteBook];
-      }
-    },
-    deleteFavoriteBook(state, action: PayloadAction<{ bookId: number}>) {
-      if (state.user) {
-        const bookId = action.payload.bookId;
-        const index = state.user.favoriteBooks.findIndex((item) => item.bookId === bookId);
-        state.user.favoriteBooks.splice(index, 1);
-        state.user.favoriteBooks = [...state.user.favoriteBooks];
-      }
-    },
-    changeCountBookInCart(state, action: PayloadAction<{ bookId: number; total: number }>) {
-      if (state.user) {
-        const index = state.user?.cartProducts?.findIndex(
-          (item) => +item.bookId === +action.payload.bookId,
-        );
-        if (index === -1) {
-          return;
-        }
-        if (+action.payload.total <= 0) {
-          state.user.cartProducts.splice(index, 1);
-          state.user.cartProducts = [...state.user.cartProducts];
-          return;
-        }
-        const book = state.user.cartProducts[index];
-        book.countBook = action.payload.total;
-      }
-    },
-    deleteCartBooks(state, action: PayloadAction<{ bookId: number }>) {
-      if (state.user) {
-        const index = state.user.cartProducts.findIndex(
-          (item) => +item.bookId === +action.payload.bookId,
-        );
-        if (index === -1) {
-          return;
-        }
-        state.user.cartProducts.splice(index, 1);
-        state.user.cartProducts = [...state.user.cartProducts];
       }
     },
   },

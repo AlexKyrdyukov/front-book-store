@@ -14,34 +14,34 @@ import StyledCatalog from './Catalog.style';
 import { bookApi } from '../../../../../api';
 import { bookSliceActions } from '../../../../../store/slices/bookSlice';
 
-type PayloadType = {
-  totalBooks: number;
-  numberOfPage: number;
-};
-
 const Catalog: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [countState, setCountState] = React.useState<number>(1);
 
   const dispatch = useAppDispatch();
-  React.useLayoutEffect(() => {
-    try {
-      (async () => {
-        const params: Record<string, string> = {};
-        const response = await bookApi.filtered(params);
-        dispatch(bookSliceActions.setBooksState(response.books));
-        setCountState(response.totalBooks);
-        // eslint-disable-next-line no-console
-        console.log(response);
-      })();
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        errorHandler(error);
-        return;
-      }
-      console.error(error);
-    }
-  }, [dispatch]);
+  // React.useEffect(() => {
+  //   // eslint-disable-next-line no-console
+  //   console.log('catalog');
+  //   try {
+  //     (async () => {
+  //       const params: Record<string, string> = {};
+  //       searchParams.forEach((value, key) => {
+  //         params[key] = value;
+  //       });
+  //       const response = await bookApi.filtered(params);
+  //       dispatch(bookSliceActions.setBooksState(response.books));
+  //       setCountState(response.totalBooks);
+  //       // eslint-disable-next-line no-console
+  //       console.log(response);
+  //     })();
+  //   } catch (error) {
+  //     if (error instanceof AxiosError) {
+  //       errorHandler(error);
+  //       return;
+  //     }
+  //     console.error(error);
+  //   }
+  // }, [dispatch, searchParams]);
 
   return (
     <StyledCatalog>

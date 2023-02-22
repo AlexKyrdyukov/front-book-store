@@ -19,6 +19,8 @@ import StyledHeader from './Herader.style';
 
 const Header: React.FC = () => {
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
+  const cartBooks = useAppSelector(({ rootSlice }) => rootSlice.cartSlice.cartBooks);
+
   const [searchParams, setSarchParams] = useSearchParams();
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const word = event.target.value;
@@ -90,7 +92,7 @@ const Header: React.FC = () => {
                   className="header__count-books"
                 >
                   <span>
-                    {user.cartProducts.length}
+                    {cartBooks.length}
                   </span>
                  </div>)
               }

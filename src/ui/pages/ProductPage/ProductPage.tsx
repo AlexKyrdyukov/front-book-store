@@ -21,6 +21,8 @@ const ProductCard: React.FC = () => {
   const [bookState, setBookState] = React.useState<BookType | null>(null);
 
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
+  const favoriteBooks = useAppSelector(({ rootSlice }) => rootSlice.favoriteSlice.favoriteBooks);
+  const cartBooks = useAppSelector(({ rootSlice }) => rootSlice.cartSlice.cartBooks);
 
   const { bookId } = useParams();
 
@@ -65,10 +67,10 @@ const ProductCard: React.FC = () => {
           isUser={!!user}
           book={bookState}
           isFavorite={favoriteHelper.handleIsFavorite(
-            bookState.bookId, user?.favoriteBooks,
+            bookState.bookId, favoriteBooks,
           ) as boolean}
           isInCart={cartHelper.checkIsInCart(
-            bookState.bookId, user?.cartProducts,
+            bookState.bookId, cartBooks,
           ) as boolean}
         />)}
       <CommentsBook

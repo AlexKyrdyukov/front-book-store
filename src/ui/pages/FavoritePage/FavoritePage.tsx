@@ -2,25 +2,38 @@ import React from 'react';
 
 import BookPage from '../components/BookPage/BookPage';
 
-import { useAppSelector } from '../../../store';
+import { useAppSelector, useAppDispatch } from '../../../store';
 import { cartHelper, favoriteHelper } from '../../../utils';
 
 import StyledFavoritPage from './FavoritePage.style';
+import { favoritesApi } from '../../../api';
+import { favoriteSliceActions } from '../../../store/slices/favoriteSlice';
 
 const Favorites: React.FC = () => {
+  const dispatch = useAppDispatch();
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
+  const favoriteBooks = useAppSelector(({ rootSlice }) => rootSlice.favoriteSlice.favoriteBooks);
+  const cartBooks = useAppSelector(({ rootSlice }) => rootSlice.cartSlice.cartBooks);
+
+  React.useEffect(() => {
+    (async () => {
+      const { favoriteBooks } = await favoritesApi.getAll();
+      dispatch(favoriteSliceActions.setAllBooks(favoriteBooks));
+    })();
+  }, [dispatch]);
+
   return (
     <StyledFavoritPage>
-      {user?.favoriteBooks?.map((item) => (
+      {favoriteBooks.map((item) => (
         <BookPage
           key={item.bookId}
           book={item}
           isUser={!!user}
           isFavorite={
-            favoriteHelper.handleIsFavorite(item.bookId, user.favoriteBooks) as boolean
+            favoriteHelper.handleIsFavorite(item.bookId, favoriteBooks) as boolean
           }
           isInCart={
-            cartHelper.checkIsInCart(item.bookId, user.cartProducts) as boolean
+            cartHelper.checkIsInCart(item.bookId, cartBooks) as boolean
           }
         />))}
     </StyledFavoritPage>

@@ -8,6 +8,8 @@ import { cartHelper, favoriteHelper } from '../../../../../utils';
 const Recommendation: React.FC = () => {
   const books = useAppSelector(({ rootSlice }) => rootSlice.bookSlice.books);
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
+  const favoriteBooks = useAppSelector(({ rootSlice }) => rootSlice.favoriteSlice.favoriteBooks);
+  const cartBooks = useAppSelector(({ rootSlice }) => rootSlice.cartSlice.cartBooks);
 
   const recommendationBooks = books.slice(-4);
 
@@ -18,8 +20,8 @@ const Recommendation: React.FC = () => {
           key={item.bookId}
           book={item}
           isUser={!!user}
-          isFavorite={favoriteHelper.handleIsFavorite(item.bookId, user?.favoriteBooks) as boolean}
-          isInCart={cartHelper.checkIsInCart(item.bookId, user?.cartProducts) as boolean}
+          isFavorite={favoriteHelper.handleIsFavorite(item.bookId, favoriteBooks) as boolean}
+          isInCart={cartHelper.checkIsInCart(item.bookId, cartBooks) as boolean}
         />))}
     </StyledRecommendation>
   );

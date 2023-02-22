@@ -33,7 +33,7 @@ const getInitialState = () => ({
   books: booksStore,
 });
 
-export const bookSlice = createSlice({
+const bookSlice = createSlice({
   name: 'bookSlice',
   initialState: getInitialState,
   reducers: {

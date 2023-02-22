@@ -1,4 +1,4 @@
-import { userSliceActions } from '../../store/slices/userSlice';
+import { favoriteSliceActions } from '../../store/slices/favoriteSlice';
 import { favoritesApi } from '../../api';
 import { store } from '../../store';
 
@@ -12,11 +12,11 @@ const changeFavorites = (async (params: ParamsType) => {
   try {
     if (!isFavorite) {
       const response = await favoritesApi.addById(bookId);
-      store.dispatch(userSliceActions.setFavoriteBook(response));
+      store.dispatch(favoriteSliceActions.setFavoriteBook(response));
       return;
     }
     await favoritesApi.deleteById(bookId);
-    store.dispatch(userSliceActions.deleteFavoriteBook({ bookId }));
+    store.dispatch(favoriteSliceActions.deleteFavoriteBook({ bookId }));
   } catch (error) {
     console.error(error);
   }

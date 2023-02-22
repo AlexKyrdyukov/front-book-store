@@ -9,6 +9,8 @@ import mapCart from './images/map.svg';
 import logoSite from './images/logo.svg';
 
 import StyledFooter from './Footer.style';
+import { cartSliceActions } from '../../../store/slices/cartSlice';
+import { favoriteSliceActions } from '../../../store/slices/favoriteSlice';
 
 const Footer: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -20,6 +22,8 @@ const Footer: React.FC = () => {
       return;
     }
     dispatch(userSliceActions.removeUser());
+    dispatch(cartSliceActions.removeAllBooks());
+    dispatch(favoriteSliceActions.removeAllBooks());
     cookies.access.remove();
 
     if (flag) {

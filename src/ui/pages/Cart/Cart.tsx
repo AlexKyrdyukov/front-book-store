@@ -3,17 +3,30 @@ import React from 'react';
 import EmptyCart from './components/EmptyCart';
 import BookInCart from './components/CartList';
 
-import { useAppSelector } from '../../../store';
+import { useAppSelector, useAppDispatch } from '../../../store';
 
 import StyledCartPage from './Cart.style';
+import { cartApi } from '../../../api';
+import { cartSliceActions } from '../../../store/slices/cartSlice';
 
 const Cart: React.FC = () => {
-  const cartProducts = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user?.cartProducts);
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
+  const cartBooks = useAppSelector(({ rootSlice }) => rootSlice.cartSlice.cartBooks);
+  React.useEffect(() => {
+    (async () => {
+      if (user) {
+        const { cartBooks } = await cartApi.getAll();
+        dispatch(cartSliceActions.setAllBooks(cartBooks));
+      }
+    })();
+  }, [dispatch, user]);
+
   return (
     <StyledCartPage>
 
-      {cartProducts?.length
-        ? <BookInCart cartProducts={cartProducts} />
+      {cartBooks.length
+        ? <BookInCart cartProducts={cartBooks} />
         : <EmptyCart />}
 
     </StyledCartPage>
