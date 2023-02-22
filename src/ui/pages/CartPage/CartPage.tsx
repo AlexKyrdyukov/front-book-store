@@ -1,11 +1,11 @@
 import React from 'react';
 
-import EmptyCart from './components/EmptyCart';
-import BookInCart from './components/CartList';
+import EmptyCart from './components/EmptyCart/EmptyCart';
+import BookInCart from './components/CartList/CartList';
 
 import { useAppSelector, useAppDispatch } from '../../../store';
 
-import StyledCartPage from './Cart.style';
+import StyledCartPage from './CartPage.style';
 import { cartApi } from '../../../api';
 import { cartSliceActions } from '../../../store/slices/cartSlice';
 
@@ -15,9 +15,13 @@ const Cart: React.FC = () => {
   const cartBooks = useAppSelector(({ rootSlice }) => rootSlice.cartSlice.cartBooks);
   React.useEffect(() => {
     (async () => {
-      if (user) {
-        const { cartBooks } = await cartApi.getAll();
-        dispatch(cartSliceActions.setAllBooks(cartBooks));
+      try {
+        if (user) {
+          const { cartBooks } = await cartApi.getAll();
+          dispatch(cartSliceActions.setAllBooks(cartBooks));
+        }
+      } catch (error) {
+        console.error(error);
       }
     })();
   }, [dispatch, user]);

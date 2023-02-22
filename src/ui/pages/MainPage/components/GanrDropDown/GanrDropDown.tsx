@@ -22,8 +22,6 @@ const DropDown: React.FC<PropsType> = (props) => {
   ] = React.useState<string[]>(searchParams.get('genres')?.split(',') || []);
 
   const changeFilters = (genreId: string) => {
-    // eslint-disable-next-line no-console
-    console.log('event');
     setSelectedGenresId((prevState) => {
       const index = prevState?.findIndex((item) => item === genreId);
       if (index !== -1) {
@@ -32,20 +30,16 @@ const DropDown: React.FC<PropsType> = (props) => {
       }
       return [...prevState, genreId];
     });
-    // eslint-disable-next-line no-console
-    console.log(selectedGenresId.join(','));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
   React.useEffect(() => {
-    if (selectedGenresId.length) {
-      // eslint-disable-next-line no-console
-      console.log(selectedGenresId.join(','));
-      searchParams.set('genres', selectedGenresId.join(','));
+    searchParams.set('genres', selectedGenresId.join(','));
+    setSearchParams(searchParams);
+    if (!selectedGenresId.length) {
+      searchParams.delete('genres');
       setSearchParams(searchParams);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedGenresId]);
+  }, [searchParams, selectedGenresId, setSearchParams]);
 
   return (
     <StyledGanrDropDown>

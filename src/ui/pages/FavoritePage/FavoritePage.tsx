@@ -17,8 +17,12 @@ const Favorites: React.FC = () => {
 
   React.useEffect(() => {
     (async () => {
-      const { favoriteBooks } = await favoritesApi.getAll();
-      dispatch(favoriteSliceActions.setAllBooks(favoriteBooks));
+      try {
+        const { favoriteBooks } = await favoritesApi.getAll();
+        dispatch(favoriteSliceActions.setAllBooks(favoriteBooks));
+      } catch (error) {
+        console.error(error);
+      }
     })();
   }, [dispatch]);
 

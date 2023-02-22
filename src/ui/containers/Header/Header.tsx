@@ -20,17 +20,29 @@ import StyledHeader from './Herader.style';
 const Header: React.FC = () => {
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
   const cartBooks = useAppSelector(({ rootSlice }) => rootSlice.cartSlice.cartBooks);
-
-  const [searchParams, setSarchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchWord, setSearchWord] = React.useState(searchParams.get('search') || '');
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    // eslint-disable-next-line no-console
+    console.log(event);
+    const date = Date.now();
+    // eslint-disable-next-line no-console
+    console.log(date);
     const word = event.target.value;
+    setSearchWord(word);
     if (!word) {
       searchParams.delete('search');
-      setSarchParams(searchParams);
+      setSearchParams(searchParams);
       return;
     }
-    searchParams.set('search', word);
-    setSarchParams(searchParams);
+    // searchParams.set('search', word);
+    // setSarchParams(searchParams);
+    const timerSearch = setTimeout(() => {
+      // eslint-disable-next-line no-console
+      console.log('event');
+      searchParams.set('search', searchWord);
+      setSearchParams(searchParams);
+    }, 1000);
   };
   return (
     <StyledHeader
@@ -58,7 +70,7 @@ const Header: React.FC = () => {
         onSubmit={(e) => e.preventDefault()}
       >
         <Input
-          value={searchParams.get('search') || ''}
+          value={searchWord}
           name="search"
           placeholder="search"
           type="text"

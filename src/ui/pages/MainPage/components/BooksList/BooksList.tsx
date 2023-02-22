@@ -1,31 +1,24 @@
 import React from 'react';
 
-import BookPage from '../../../components/BookPage/BookPage';
-
-import { favoriteHelper, cartHelper } from '../../../../../utils';
+import BookPage from '../../../components/BookPage';
 import { useAppSelector } from '../../../../../store';
+import { favoriteHelper, cartHelper } from '../../../../../utils';
 
 import StyledBooksLists from './BooksList.style';
-import { cartApi, favoritesApi } from '../../../../../api';
 
 const BooksList: React.FC = () => {
-  const books = useAppSelector(({ rootSlice }) => rootSlice.bookSlice.books);
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
-  const favoriteBooks = useAppSelector(({ rootSlice }) => rootSlice.favoriteSlice.favoriteBooks);
+  const books = useAppSelector(({ rootSlice }) => rootSlice.bookSlice.books);
   const cartBooks = useAppSelector(({ rootSlice }) => rootSlice.cartSlice.cartBooks);
+  const favoriteBooks = useAppSelector(({ rootSlice }) => rootSlice.favoriteSlice.favoriteBooks);
 
-  React.useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log('bookslist');
-    (async () => {
-      // const responseFavorite = await favoritesApi.getAll();
-      // const responseCart = await cartApi.getAll();
-      // // eslint-disable-next-line no-console
-      // console.log(responseFavorite);
-      // // eslint-disable-next-line no-console
-      // console.log(responseCart);
-    })();
-  }, []);
+  const isInCart = React.useCallback((bookId: number) => {
+    return cartHelper.checkIsInCart(bookId, cartBooks);
+  }, [cartBooks]);
+
+  const isFavorite = React.useCallback((bookId: number) => {
+    return favoriteHelper.handleIsFavorite(bookId, favoriteBooks);
+  }, [favoriteBooks]);
 
   return (
     <StyledBooksLists>
@@ -34,8 +27,8 @@ const BooksList: React.FC = () => {
           key={item.bookId}
           book={item}
           isUser={!!user}
-          isFavorite={favoriteHelper.handleIsFavorite(item.bookId, favoriteBooks) as boolean}
-          isInCart={cartHelper.checkIsInCart(item.bookId, cartBooks) as boolean}
+          isFavorite={isFavorite(item.bookId)}
+          isInCart={isInCart(item.bookId)}
         />))}
     </StyledBooksLists>
 
