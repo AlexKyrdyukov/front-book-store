@@ -17,33 +17,40 @@ import profile from './images/profile.svg';
 
 import StyledHeader from './Herader.style';
 
+const useDebounce = (value: string, delay: number) => {
+  const [debounceValue, setDebounceValue] = React.useState(value);
+
+  React.useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebounceValue(value);
+    }, delay);
+    return () => clearTimeout(handler);
+  }, [delay, value]);
+  return debounceValue;
+};
+
 const Header: React.FC = () => {
   const user = useAppSelector(({ rootSlice }) => rootSlice.userSlice.user);
   const cartBooks = useAppSelector(({ rootSlice }) => rootSlice.cartSlice.cartBooks);
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchWord, setSearchWord] = React.useState(searchParams.get('search') || '');
-  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    // eslint-disable-next-line no-console
-    console.log(event);
-    const date = Date.now();
-    // eslint-disable-next-line no-console
-    console.log(date);
+
+  const debounce = useDebounce(searchWord, 500);
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const word = event.target.value;
     setSearchWord(word);
-    if (!word) {
+  };
+
+  React.useEffect(() => {
+    if (!debounce) {
       searchParams.delete('search');
       setSearchParams(searchParams);
       return;
     }
-    // searchParams.set('search', word);
-    // setSarchParams(searchParams);
-    const timerSearch = setTimeout(() => {
-      // eslint-disable-next-line no-console
-      console.log('event');
-      searchParams.set('search', searchWord);
-      setSearchParams(searchParams);
-    }, 1000);
-  };
+    searchParams.set('search', searchWord);
+    setSearchParams(searchParams);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debounce]);
   return (
     <StyledHeader
       user={Boolean(user)}
@@ -100,13 +107,14 @@ const Header: React.FC = () => {
           <Link to="/cart">
             <div className="button__cart">
               {user &&
-                (<div
-                  className="header__count-books"
-                >
-                  <span>
-                    {cartBooks.length}
-                  </span>
-                 </div>)
+                (
+                  <div
+                    className="header__count-books"
+                  >
+                    <span>
+                      {cartBooks.length}
+                    </span>
+                  </div>)
               }
               <CircleButton
                 type="button"

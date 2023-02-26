@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { AxiosError } from 'axios';
-
 import type { BookType } from '../../../store/slices/bookSlice';
 
 import LowBanner from '../components/LowBanner/LowBanner';
@@ -10,6 +9,7 @@ import CommentCreate from './components/CommentCreate/CommentCreate';
 import Recommendation from './components/Recommendation/Recommendation';
 import SelectedProduct from './components/SelectredProduct/SelectedProduct';
 
+import { socket } from '../../../App';
 import errorHandler from '../../../utils/errorHandler';
 import { bookApi, commentApi } from '../../../api';
 import { useAppSelector } from '../../../store';
@@ -25,6 +25,19 @@ const ProductCard: React.FC = () => {
   const cartBooks = useAppSelector(({ rootSlice }) => rootSlice.cartSlice.cartBooks);
 
   const { bookId } = useParams();
+
+  React.useEffect(() => {
+    socket.on('new-comment', ({ comments }) => {
+      setBookState({
+        ...bookState as BookType,
+        comments,
+      });
+    });
+
+    return () => {
+      socket.off('new-comment');
+    };
+  }, [bookState]);
 
   React.useEffect(() => {
     (async () => {
@@ -74,7 +87,7 @@ const ProductCard: React.FC = () => {
           ) as boolean}
         />)}
       <CommentsBook
-        bookComments={bookState ? bookState.comments : undefined}
+        bookComments={bookState ? bookState.comments : null}
       />
       {!!user && (<CommentCreate
         commentHandler={onCommentHandler}
